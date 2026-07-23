@@ -45,6 +45,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::resource('users', Admin\UserController::class);
         Route::resource('roles', Admin\RoleController::class);
+        Route::resource('permissions', Admin\PermissionController::class)->except(['show']);
 
         Route::get('activity-logs', [Admin\ActivityLogController::class, 'index'])->name('activity-logs.index');
         Route::delete('activity-logs/clear', [Admin\ActivityLogController::class, 'clear'])->name('activity-logs.clear');

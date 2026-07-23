@@ -45,6 +45,7 @@
                     ['route' => 'admin.settings.index',         'icon' => 'fa-gear',               'label' => 'Settings'],
                     ['route' => 'admin.users.index',            'icon' => 'fa-user-shield',        'label' => 'Users'],
                     ['route' => 'admin.roles.index',            'icon' => 'fa-key',                'label' => 'Roles'],
+                    ['route' => 'admin.permissions.index',      'icon' => 'fa-shield-halved',      'label' => 'Permissions'],
                     ['route' => 'admin.activity-logs.index',    'icon' => 'fa-clock-rotate-left',  'label' => 'Activity Logs'],
                 ];
             @endphp
