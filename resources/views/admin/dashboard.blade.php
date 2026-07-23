@@ -4,14 +4,15 @@
 @section('content')
 
 {{-- Stats grid --}}
-<div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
     @php
         $statCards = [
-            ['label' => 'Services',        'value' => $stats['services'],        'icon' => 'fa-bolt',    'color' => 'text-brand-green',  'bg' => 'bg-brand-green/10',  'href' => route('admin.services.index')],
-            ['label' => 'Branches',        'value' => $stats['branches'],        'icon' => 'fa-map-pin', 'color' => 'text-sky-400',      'bg' => 'bg-sky-400/10',      'href' => route('admin.branches.index')],
-            ['label' => 'Team Members',    'value' => $stats['team'],            'icon' => 'fa-users',   'color' => 'text-violet-400',   'bg' => 'bg-violet-400/10',   'href' => route('admin.teams.index')],
-            ['label' => 'New Requests',    'value' => $stats['new_requests'],    'icon' => 'fa-inbox',   'color' => 'text-brand-orange', 'bg' => 'bg-brand-orange/10', 'href' => route('admin.service-requests.index')],
-            ['label' => 'Unread Messages', 'value' => $stats['unread_messages'], 'icon' => 'fa-envelope','color' => 'text-purple-400',   'bg' => 'bg-purple-400/10',   'href' => route('admin.contact-messages.index')],
+            ['label' => 'Services',        'value' => $stats['services'],        'icon' => 'fa-bolt',         'color' => 'text-brand-green',  'bg' => 'bg-brand-green/10',  'href' => route('admin.services.index')],
+            ['label' => 'Branches',        'value' => $stats['branches'],        'icon' => 'fa-map-pin',      'color' => 'text-sky-400',      'bg' => 'bg-sky-400/10',      'href' => route('admin.branches.index')],
+            ['label' => 'Team Members',    'value' => $stats['team'],            'icon' => 'fa-users',        'color' => 'text-violet-400',   'bg' => 'bg-violet-400/10',   'href' => route('admin.teams.index')],
+            ['label' => 'New Requests',    'value' => $stats['new_requests'],    'icon' => 'fa-inbox',        'color' => 'text-brand-orange', 'bg' => 'bg-brand-orange/10', 'href' => route('admin.service-requests.index')],
+            ['label' => 'Unread Messages', 'value' => $stats['unread_messages'], 'icon' => 'fa-envelope',     'color' => 'text-purple-400',   'bg' => 'bg-purple-400/10',   'href' => route('admin.contact-messages.index')],
+            ['label' => 'Users',           'value' => $stats['users'],           'icon' => 'fa-user-shield',  'color' => 'text-teal-400',     'bg' => 'bg-teal-400/10',     'href' => route('admin.users.index')],
         ];
     @endphp
 
@@ -83,5 +84,27 @@
         </div>
     </div>
 
+</div>
+
+{{-- Recent Activity --}}
+<div class="mt-6 bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+        <h2 class="font-semibold text-slate-100 text-sm"><i class="fa-solid fa-clock-rotate-left text-slate-500 mr-2"></i>Recent Activity</h2>
+        <a href="{{ route('admin.activity-logs.index') }}" class="text-xs text-brand-green hover:underline">View all</a>
+    </div>
+    <div class="divide-y divide-slate-800">
+        @forelse($recentActivity as $log)
+            <div class="flex items-center gap-3 px-5 py-3">
+                <span class="px-2 py-0.5 text-[10px] font-semibold rounded-full flex-shrink-0 {{ $log->actionBadge() }}">
+                    {{ $log->action }}
+                </span>
+                <p class="text-xs text-slate-300 flex-1 min-w-0 truncate">{{ $log->description }}</p>
+                <p class="text-xs text-slate-600 flex-shrink-0">{{ $log->user?->name ?? '—' }}</p>
+                <p class="text-xs text-slate-600 flex-shrink-0 hidden sm:block">{{ $log->created_at->diffForHumans() }}</p>
+            </div>
+        @empty
+            <p class="px-5 py-8 text-center text-sm text-slate-500">No activity yet.</p>
+        @endforelse
+    </div>
 </div>
 @endsection

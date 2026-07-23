@@ -43,12 +43,15 @@
                     ['route' => 'admin.service-requests.index', 'icon' => 'fa-inbox',              'label' => 'Service Requests',  'badge' => \App\Models\ServiceRequest::where("status","new")->count()],
                     ['route' => 'admin.contact-messages.index', 'icon' => 'fa-envelope',           'label' => 'Messages',          'badge' => \App\Models\ContactMessage::where("is_read",false)->count()],
                     ['route' => 'admin.settings.index',         'icon' => 'fa-gear',               'label' => 'Settings'],
+                    ['route' => 'admin.users.index',            'icon' => 'fa-user-shield',        'label' => 'Users'],
+                    ['route' => 'admin.roles.index',            'icon' => 'fa-key',                'label' => 'Roles'],
+                    ['route' => 'admin.activity-logs.index',    'icon' => 'fa-clock-rotate-left',  'label' => 'Activity Logs'],
                 ];
             @endphp
 
             @foreach($navItems as $item)
                 @php $active = request()->routeIs(rtrim($item['route'], '.index') . '*'); @endphp
-                <a href="{{ route($item['route']) }}"
+                <a href="{{ route($item['route']) }}" @click="sidebarOpen = false"
                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all {{ $active ? 'bg-brand-green/15 text-brand-green font-semibold' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800' }}">
                     <i class="fa-solid {{ $item['icon'] }} w-4 text-center {{ $active ? 'text-brand-green' : '' }}"></i>
                     <span class="flex-1">{{ $item['label'] }}</span>
@@ -83,15 +86,16 @@
             </button>
             <h1 class="text-base font-bold text-slate-100 flex-1">@yield('title', 'Dashboard')</h1>
             <a href="{{ route('home') }}" target="_blank"
-               class="text-xs text-slate-400 hover:text-brand-green transition flex items-center gap-1.5">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> View Site
+               class="text-xs text-slate-400 hover:text-brand-green transition flex items-center gap-1.5 flex-shrink-0">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <span class="hidden sm:inline">View Site</span>
             </a>
         </header>
         {{-- Mobile overlay --}}
         <div class="lg:hidden fixed inset-0 bg-black/60 z-30" x-show="sidebarOpen" @click="sidebarOpen = false" style="display:none"></div>
 
         {{-- Content --}}
-        <main class="flex-1 overflow-y-auto p-6">
+        <main class="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-6">
 
             {{-- Flash --}}
             @if(session('success'))

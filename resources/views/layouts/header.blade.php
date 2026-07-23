@@ -81,12 +81,12 @@
     <div id="mobile-menu" class="hidden lg:hidden section-bg-secondary border-b border-gray-700/80 px-4 pt-4 pb-6 space-y-2 text-sm transition-all duration-300 shadow-xl">
         @php
             $mobileLinks = [
-                ['href' => route('about'),    'km' => 'ក្រុមហ៊ុន​យើង​ខ្ញុំ',   'en' => 'About Us',                    'icon' => 'fa-building',   'color' => 'text-brand-green'],
-                ['href' => route('services'), 'km' => 'សេវាកម្ម',             'en' => 'Core Products & Services',   'icon' => 'fa-bolt',       'color' => 'text-brand-orange'],
-                ['href' => route('coverage'), 'km' => 'ការគ្របដណ្តប់',        'en' => 'Coverage',                   'icon' => 'fa-globe',      'color' => 'text-brand-green'],
-                ['href' => route('kpi'),      'km' => 'ស្តង់ដារប្រតិបត្តិការ', 'en' => 'Standard Operation',         'icon' => 'fa-chart-line', 'color' => 'text-brand-green'],
-                ['href' => route('team'),     'km' => 'ក្រុមការងារ',           'en' => 'Contact Us',                 'icon' => 'fa-users',      'color' => 'text-brand-green'],
-                ['href' => route('portal'),   'km' => 'ចូលប្រើប្រាស់',                'en' => 'Portal',                     'icon' => 'fa-headset',    'color' => 'text-brand-orange'],
+                ['href' => route('about'),    'km' => 'ក្រុមហ៊ុន​យើង​ខ្ញុំ',    'en' => 'About Us',                    'icon' => 'fa-building',   'color' => 'text-brand-green'],
+                ['href' => route('services'), 'km' => 'សេវាកម្ម',        'en' => 'Core Products & Services',   'icon' => 'fa-bolt',       'color' => 'text-brand-orange'],
+                ['href' => route('coverage'), 'km' => 'ការគ្របដណ្តប់',    'en' => 'Coverage',                   'icon' => 'fa-globe',      'color' => 'text-brand-green'],
+                ['href' => route('kpi'),      'km' => 'ស្តង់ដារប្រតិបត្តិការ',  'en' => 'Standard Operation',         'icon' => 'fa-chart-line', 'color' => 'text-brand-green'],
+                ['href' => route('team'),     'km' => 'ក្រុមការងារ',      'en' => 'Contact Us',                 'icon' => 'fa-users',      'color' => 'text-brand-green'],
+                ['href' => route('portal'),   'km' => 'ចូលប្រើប្រាស់',    'en' => 'Portal',                     'icon' => 'fa-headset',    'color' => 'text-brand-orange'],
             ];
         @endphp
         @foreach($mobileLinks as $link)

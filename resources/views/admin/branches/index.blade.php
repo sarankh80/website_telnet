@@ -11,7 +11,8 @@
 </div>
 
 <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-    <table class="w-full text-sm">
+    <div class="overflow-x-auto">
+    <table class="w-full text-sm min-w-[580px]">
         <thead>
             <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
                 <th class="px-5 py-3.5 text-left">Branch</th>
@@ -65,6 +66,7 @@
             @endforelse
         </tbody>
     </table>
+    </div>{{-- /overflow-x-auto --}}
     @if($branches->hasPages())
         <div class="px-5 py-4 border-t border-slate-800">{{ $branches->links() }}</div>
     @endif

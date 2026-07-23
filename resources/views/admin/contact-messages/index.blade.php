@@ -6,7 +6,7 @@
 {{-- Filters --}}
 <form method="GET" class="flex flex-wrap gap-3 mb-6">
     <input type="text" name="search" value="{{ request('search') }}" placeholder="Search name, email, subject…"
-           class="flex-1 min-w-48 bg-slate-900 border border-slate-700 text-slate-100 rounded-lg px-4 py-2 text-sm
+           class="flex-1 min-w-0 bg-slate-900 border border-slate-700 text-slate-100 rounded-lg px-4 py-2 text-sm
                   focus:outline-none focus:border-brand-green transition placeholder-slate-500">
     <select name="is_read"
             class="bg-slate-900 border border-slate-700 text-slate-100 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-brand-green transition">
@@ -25,7 +25,8 @@
 </form>
 
 <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-    <table class="w-full text-sm">
+    <div class="overflow-x-auto">
+    <table class="w-full text-sm min-w-[560px]">
         <thead>
             <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
                 <th class="px-5 py-3.5 text-left">Sender</th>
@@ -81,6 +82,7 @@
             @endforelse
         </tbody>
     </table>
+    </div>{{-- /overflow-x-auto --}}
     @if($messages->hasPages())
         <div class="px-5 py-4 border-t border-slate-800">{{ $messages->links() }}</div>
     @endif

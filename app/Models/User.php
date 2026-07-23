@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
 
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'is_active', 'last_login_at'];
 
     protected $hidden = ['password', 'remember_token'];
 
@@ -19,12 +19,19 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'last_login_at'     => 'datetime',
+            'password'          => 'hashed',
+            'is_active'         => 'boolean',
         ];
     }
 
     public function isAdmin(): bool
     {
         return $this->hasRole(['admin', 'super-admin']);
+    }
+
+    public function activityLogs()
+    {
+        return $this->hasMany(\App\Models\ActivityLog::class);
     }
 }

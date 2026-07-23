@@ -42,5 +42,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('settings', [Admin\SettingController::class, 'index'])->name('settings.index');
         Route::post('settings', [Admin\SettingController::class, 'update'])->name('settings.update');
+
+        Route::resource('users', Admin\UserController::class);
+        Route::resource('roles', Admin\RoleController::class);
+
+        Route::get('activity-logs', [Admin\ActivityLogController::class, 'index'])->name('activity-logs.index');
+        Route::delete('activity-logs/clear', [Admin\ActivityLogController::class, 'clear'])->name('activity-logs.clear');
     });
 });
