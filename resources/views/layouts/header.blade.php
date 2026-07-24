@@ -104,7 +104,7 @@
                 <i class="fa-solid fa-headset"></i> NOC Support: 097 513 5135 (24/7)
             </a>
             <button onclick="closeMobileMenu(); openModal('serviceModal');"
-                    class="w-full text-xs bg-gradient-to-r from-brand-green to-brand-orange text-white py-3 rounded-xl font-bold shadow-md"
+                    class="w-full text-xs gradient-brand text-white py-3 rounded-xl font-bold shadow-md"
                     data-km="ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត" data-en="Request Service">
                 ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត
             </button>

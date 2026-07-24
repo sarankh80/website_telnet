@@ -73,7 +73,7 @@
 
     <div class="flex justify-end sticky bottom-4">
         <button type="submit"
-                class="px-7 py-3 bg-gradient-to-r from-brand-green to-brand-orange hover:from-[#7ab534] hover:to-[#dc6e11] text-white font-semibold rounded-xl transition shadow-lg text-sm flex items-center gap-2">
+                class="px-7 py-3 gradient-brand hover:from-[#7ab534] hover:to-[#dc6e11] text-white font-semibold rounded-xl transition shadow-lg text-sm flex items-center gap-2">
             <i class="fa-solid fa-floppy-disk"></i>
             Save All Settings
         </button>

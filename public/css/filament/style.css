@@ -1,0 +1,292 @@
+/* Scrollbar width (vertical) / height (horizontal) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Hover effect */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+
+.bg-gray-primary {
+    background-color: #777;
+    border: 2px solid #aaa9a9;
+    border-left: none;
+    border-right: none;
+}
+.bg-gray-primary ul {
+    justify-content: center;
+    align-items: center;
+}
+@font-face {
+    font-family: "FontAwesome";
+    src: url("../fonts/fontawesome-webfont.eot?v=4.7.0");
+    src:
+        url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0")
+            format("embedded-opentype"),
+        url("../fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"),
+        url("../fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"),
+        url("../fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"),
+        url("../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular")
+            format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "FontKhJrungThom";
+    src: url("../fonts/KhJrungThom.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "MoulLight";
+    src: url("../fonts/KHMEROSMUOLLIGHT.TTF");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Khmerbattambang";
+    src: url("../fonts/Khmerbattambang.woff");
+    font-weight: normal;
+    font-style: normal;
+}
+.h-khmer-battambang {
+    font-family: Khmerbattambang;
+}
+.h-khmer-title {
+    font-family: FontKhJrungThom;
+}
+a,
+p,
+span,
+button,
+label,
+input,
+th,
+td,
+div,
+body {
+    font-family: verdana;
+    font-size: 14px;
+}
+
+.active {
+    background-color: #8fc74a;
+    color: #fff !important;
+    font-weight: bold;
+}
+.hover\:bg-green-600:hover {
+    background-color: #8fc74a !important;
+}
+
+@media screen and (max-width: 992px) {
+    .word_governace {
+        display: none;
+    }
+}
+.nav-ul-li {
+    background-color: #fff;
+    color: #000;
+}
+ul.absolute {
+    z-index: 1000 !important;
+}
+li ul li .block:hover {
+    background-color: #777;
+    color: #fff !important;
+}
+.select2-container {
+    z-index: 0 !important;
+}
+
+.select2-dropdown {
+    z-index: 1 !important; /* Lower z-index so it stays under other elements */
+}
+a.header {
+    font-weight: bold !important;
+}
+.outer-bg-gray-primary {
+    padding: 1px 0px !important;
+    border: solid 1.5px #777 !important;
+}
+.bg-gray-primary {
+    border: none !important;
+}
+#tabButtons .p-2 {
+    background-color: #f0f0f0 !important;
+    color: #000 !important;
+    padding: 4px 8px !important;
+}
+/* --- Tab Content Areas --- */
+/* .tab-content-area {
+    background-color: #fff;
+} */
+#tabButtons .show {
+    background-color: #8fc74a;
+    color: #fff !important;
+    font-weight: bold;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.tab-content {
+    display: none; /* Hidden by default */
+}
+
+.tab-content.active {
+    display: block; /* Shown when active */
+}
+
+/* --- Order Information Detail Grid (inside tab) --- */
+.order-info-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 30px;
+}
+
+/* Responsive adjustment for detail grid */
+@media (max-width: 900px) {
+    .order-info-detail-grid {
+        grid-template-columns: 1fr; /* Single column on medium/small screens */
+    }
+    .order-info-label {
+        text-align: left;
+        width: 140px;
+    }
+}
+
+.order-info-item {
+    display: flex;
+}
+
+.order-info-label {
+    font-weight: bold;
+    color: #666;
+    width: 150px;
+    text-align: right;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.order-info-value {
+    color: #333;
+    flex-grow: 1;
+}
+.show {
+    display: block !important;
+}
+#tabButtons button {
+    margin: 0px 1px;
+    border: solid 1px #777;
+    border-bottom: none;
+}
+#sidebar .show,
+#tabButtons .show,
+#tabButtons .show {
+    background-color: #8fc74a !important;
+    color:#fff !important;
+    font-weight: bold !important;
+}
+
+.h-12 {
+    height: 70px !important;
+}
+.container-button {
+    border: solid 1px #000 !important;
+}
+.c-p-h {
+    font-size: 16px;
+    font-weight: bold;
+}
+.fieldset-lg {
+    font-size: 14px;
+    font-weight: bold;
+}
+.pc-2 {
+    padding: 2px;
+}
+.pc-2-4 {
+    padding: 2px 4px;
+}
+.pc-4 {
+    padding: 4px;
+}
+.pc-4-8 {
+    padding: 4px 8px;
+}
+.pc-8 {
+    padding: 8px;
+}
+.rounded-c-4 {
+    border-radius: 4px;
+}
+.rounded-c-2 {
+    border-radius: 2px;
+}
+.font-c-10 {
+    font-size: 10px;
+}
+.font-c-11 {
+    font-size: 11px;
+}
+.font-c-12 {
+    font-size: 12px;
+}
+.font-c-13 {
+    font-size: 13px;
+}
+.message {
+    font-style: italic !important;
+}
+.success {
+    color: #8fc74a !important;
+}
+.failed {
+    color: red !important;
+}
+.folder-toggle,
+.file-item {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari/Chrome */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    user-select: none; /* standard */
+}
+.folder-toggle:hover,
+.file-item:hover {
+    background-color: #e7e7e7;
+}
+.button-option:hover {
+    cursor: pointer !important;
+}
+.fc-button-group button,
+.fc-toolbar-chunk button {
+    background-color: #777 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    font-size: 12px !important;
+}
+.fc-event {
+    padding: 10px 8px !important;
+}
+.modal .select2 {
+    width: 100% !important;
+}
+.modal .select2 .select2-selection--multiple {
+    width: 100% !important;
+    height: 100px !important;
+    overflow-y: scroll !important;
+}

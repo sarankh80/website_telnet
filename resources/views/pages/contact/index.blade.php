@@ -91,7 +91,7 @@
                         @error('message') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
                     <button type="submit"
-                            class="w-full bg-gradient-to-r from-brand-green to-brand-orange hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold py-3 rounded-xl text-sm transition shadow-md">
+                            class="w-full gradient-brand hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold py-3 rounded-xl text-sm transition shadow-md">
                         <i class="fa-solid fa-paper-plane mr-2"></i> ផ្ញើសារ
                     </button>
                 </form>

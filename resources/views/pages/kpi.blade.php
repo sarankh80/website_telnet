@@ -140,7 +140,7 @@
             ស្នើ SLA លម្អិតសម្រាប់អ្នក?
         </h2>
         <button onclick="openModal('serviceModal')"
-                class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-green to-brand-orange text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5">
+                class="inline-flex items-center gap-2 gradient-brand text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5">
             <i class="fa-solid fa-paper-plane"></i>
             <span data-km="ទាក់ទងទៅ TELNET" data-en="Contact TELNET">ទាក់ទងទៅ TELNET</span>
         </button>

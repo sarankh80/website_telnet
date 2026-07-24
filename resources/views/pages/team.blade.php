@@ -141,7 +141,7 @@
                 យើងកំពុងស្វែងរកអ្នកទេពកោសល្យ ដើម្បីរួមគ្នាកសាងបណ្ដាញអ៊ីនធឺណិតកម្ពុជា
             </p>
             <a href="{{ route('contact') }}"
-               class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-green to-brand-orange text-white font-bold px-7 py-3 rounded-xl text-sm transition hover:-translate-y-0.5">
+               class="inline-flex items-center gap-2 gradient-brand text-white font-bold px-7 py-3 rounded-xl text-sm transition hover:-translate-y-0.5">
                 <i class="fa-solid fa-envelope"></i>
                 <span data-km="ទំនាក់ទំនងមកយើង" data-en="Contact Us">ទំនាក់ទំនងមកយើង</span>
             </a>

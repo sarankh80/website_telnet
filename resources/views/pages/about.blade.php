@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- Page Hero --}}
-<section class="py-12 section-bg-primary border-b border-gray-200 dark:border-gray-800">
+<section class="py-12 section-bg-primary ">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-2 text-xs text-adaptive-muted mb-4">
             <a href="{{ route('home') }}" class="hover:text-brand-green transition" data-km="ទំព័រដើម" data-en="Home">ទំព័រដើម</a>
@@ -124,14 +124,14 @@
 </section>
 
 {{-- CTA --}}
-<section class="py-14 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20 border-y border-gray-200 dark:border-gray-800">
+<section class="py-14 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20 ">
     <div class="max-w-4xl mx-auto px-4 text-center space-y-5">
         <h2 class="text-2xl font-extrabold text-adaptive-main"
             data-km="ត្រៀមតភ្ជាប់ជាមួយ TELNET?" data-en="Ready to connect with TELNET?">
             ត្រៀមតភ្ជាប់ជាមួយ TELNET?
         </h2>
         <button onclick="openModal('serviceModal')"
-                class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-green to-brand-orange text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5">
+                class="inline-flex items-center gap-2 gradient-brand text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5">
             <i class="fa-solid fa-paper-plane"></i>
             <span data-km="ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត" data-en="Request Internet Service">ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត</span>
         </button>

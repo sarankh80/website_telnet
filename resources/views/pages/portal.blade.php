@@ -137,7 +137,7 @@
                 097 513 5135
             </a>
             <button onclick="openModal('serviceModal')"
-                    class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-green to-brand-orange text-white font-bold px-7 py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5">
+                    class="inline-flex items-center justify-center gap-2 gradient-brand text-white font-bold px-7 py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5">
                 <i class="fa-solid fa-paper-plane"></i>
                 <span data-km="ស្នើសុំសេវាកម្ម" data-en="Request Service">ស្នើសុំសេវាកម្ម</span>
             </button>

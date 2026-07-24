@@ -1,8 +1,140 @@
 @extends('layouts.app')
 @section('title', 'សេវាកម្មស្នូល — TELNET CO., LTD.')
-
 @section('content')
+<nav class="sticky top-20 z-40 max-w-8xl h-10 mx-auto px-4 sm:px-6 lg:px-16 relative border-b border-white/10">
 
+    <!-- Chamfered Background Layer -->
+    <div class="absolute inset-0 gradient-brand lg:[clip-path:polygon(0_0,_100%_0,_100%_calc(100%-7rem),_calc(100%-12.6rem)_100%,_12.6rem_100%,_0_calc(100%-7rem))] pointer-events-none z-0"></div>
+
+    <!-- Interactive Links Layer -->
+    <div class="relative z-10 flex items-center justify-center gap-2 sm:gap-6 h-full text-xs font-medium text-white">
+
+        <!-- Child Item 1: Home Packages -->
+        <div class="relative group h-full flex items-center">
+            <a href="#sub-link-1" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
+                <span class="!text-lg" data-km="កញ្ចប់សម្រាប់គេហដ្ឋាន" data-en="Home Packages">Home Packages</span>
+                <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
+            </a>
+
+            <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
+                <div class="max-w-7xl mx-auto p-6 grid grid-cols-2 sm:grid-cols-4 gap-6">
+
+                    <a href="#model-s" class="group/card p-4 rounded-2xl hover:bg-gray-50 transition flex flex-col items-center text-center border border-transparent hover:border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=500&auto=format&fit=crop&q=60" alt="Model S" class="w-full h-32 object-cover rounded-xl mb-3 shadow-sm group-hover/card:scale-[1.02] transition duration-300" />
+                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">Model S</h4>
+                        <span class="text-[11px] text-brand-green font-semibold">Explore Specs</span>
+                    </a>
+
+                    <a href="#model-3" class="group/card p-4 rounded-2xl hover:bg-gray-50 transition flex flex-col items-center text-center border border-transparent hover:border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&auto=format&fit=crop&q=60" alt="Model 3" class="w-full h-32 object-cover rounded-xl mb-3 shadow-sm group-hover/card:scale-[1.02] transition duration-300" />
+                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">Model 3</h4>
+                        <span class="text-[11px] text-brand-green font-semibold">Order Now</span>
+                    </a>
+
+                    <a href="#model-x" class="group/card p-4 rounded-2xl hover:bg-gray-50 transition flex flex-col items-center text-center border border-transparent hover:border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1536700503339-1e4b06520771?w=500&auto=format&fit=crop&q=60" alt="Model X" class="w-full h-32 object-cover rounded-xl mb-3 shadow-sm group-hover/card:scale-[1.02] transition duration-300" />
+                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">Model X</h4>
+                        <span class="text-[11px] text-brand-green font-semibold">Explore Specs</span>
+                    </a>
+
+                    <a href="#model-y" class="group/card p-4 rounded-2xl hover:bg-gray-50 transition flex flex-col items-center text-center border border-transparent hover:border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1571127236794-81c0137ce69e?w=500&auto=format&fit=crop&q=60" alt="Model Y" class="w-full h-32 object-cover rounded-xl mb-3 shadow-sm group-hover/card:scale-[1.02] transition duration-300" />
+                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">Model Y</h4>
+                        <span class="text-[11px] text-brand-green font-semibold">Order Now</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Child Item 2: Business Packages -->
+        <div class="relative group h-full flex items-center">
+            <a href="#sub-link-2" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
+                <span class="!text-lg" data-km="កញ្ចប់សម្រាប់ពាណិជ្ជកម្ម" data-en="Business Packages">Business Packages</span>
+                <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
+            </a>
+
+            <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
+                <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
+                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
+                            <img src="IMAGE/IDC.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02]" />
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
+                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Child Item 3: Dedicated Packages -->
+        <div class="relative group h-full flex items-center">
+            <a href="#sub-link-3" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
+                <span class="!text-lg" data-km="កញ្ចប់សម្រាប់" data-en="Dedicated Packages">Dedicated Packages</span>
+                <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
+            </a>
+
+            <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
+                <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
+                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
+                            <img src="IMAGE/IDC.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02]" />
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
+                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Child Item 4: Others -->
+        <div class="relative group h-full flex items-center">
+            <a href="#sub-link-4" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
+                <span class="!text-lg" data-km="សេវាកម្មផ្សេងទៀត" data-en="Others">Others</span>
+                <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
+            </a>
+
+            <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
+                <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
+                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
+                            <img src="IMAGE/IDC.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02] transition duration-300" />
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
+                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
+                    </a>
+
+                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
+                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
+                            <img src="IMAGE/OLT.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02] transition duration-300" />
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
+                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
+                    </a>
+
+                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
+                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
+                            <img src="IMAGE/Conectivity.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02] transition duration-300" />
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
+                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
+                    </a>
+
+                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
+                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
+                            <img src="IMAGE/ICT.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02] transition duration-300" />
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
+                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
 <section class="py-12 section-bg-primary border-b border-gray-200 dark:border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-2 text-xs text-adaptive-muted mb-4">
@@ -15,8 +147,8 @@
             ផលិតផល និងសេវាកម្មស្នូល
         </h1>
         <p class="text-adaptive-muted text-sm max-w-2xl"
-           data-km="ដំណោះស្រាយតភ្ជាប់អ៊ីនធឺណិត និងព័ត៌មានវិទ្យា ដែលឆ្លើយតបគ្រប់តម្រូវការ"
-           data-en="Internet connectivity and ICT solutions that meet every need">
+            data-km="ដំណោះស្រាយតភ្ជាប់អ៊ីនធឺណិត និងព័ត៌មានវិទ្យា ដែលឆ្លើយតបគ្រប់តម្រូវការ"
+            data-en="Internet connectivity and ICT solutions that meet every need">
             ដំណោះស្រាយតភ្ជាប់អ៊ីនធឺណិត និងព័ត៌មានវិទ្យា ដែលឆ្លើយតបគ្រប់តម្រូវការ
         </p>
     </div>
@@ -26,12 +158,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @php
         $serviceCards = [
-            ['image'=>'/images/High_Speed.png',  'badge'=>'High Speed',      'badge_km'=>'ល្បឿនខ្ពស់',         'desc_en'=>'Provide high-speed, reliable and stable internet connectivity.',      'desc_km'=>'ផ្តល់ការតភ្ជាប់អ៊ីនធឺណិតល្បឿនលឿន ជឿជាក់ និងស្ថិតស្ថេរ។'],
-            ['image'=>'/images/Scalable.png',    'badge'=>'Scalable',        'badge_km'=>'អាចពង្រីកបាន',      'desc_en'=>'Build scalable and secure network infrastructure across Cambodia.',   'desc_km'=>'សាងសង់ហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញអាចពង្រីក និងមានសុវត្ថិភាពទូទាំងកម្ពុជា។'],
-            ['image'=>'/images/Hot_Service.png', 'badge'=>'Best Experience', 'badge_km'=>'បទពិសោធន៍ល្អបំផុត','desc_en'=>'Deliver excellent customer experience and innovative ICT.',             'desc_km'=>'ផ្តល់បទពិសោធន៍អតិថិជនដ៏ល្អ និង ICT ប្រកបដោយភាពច្នៃប្រឌិត។'],
-            ['image'=>'/images/Reliable.png',   'badge'=>'Reliable',        'badge_km'=>'ជឿជាក់',            'desc_en'=>'Maintain high standards of customer support and service reliability.','desc_km'=>'រក្សាស្តង់ដារខ្ពស់នៃការគាំទ្រអតិថិជន និងការជឿជាក់លើសេវាកម្ម។'],
-            ['image'=>'/images/Quality.png',    'badge'=>'Quality & Saving', 'badge_km'=>'គុណភាព & សន្សំ',  'desc_en'=>'Offering high quality, prompt service and selling what you need.',    'desc_km'=>'ផ្តល់ការេវាកម្មគុណភាពខ្ពស់ ឆ្លើយតបរហ័ស និងលក់តែអ្វីដែលអ្នកត្រូវការ។'],
-            ['image'=>'/images/Contribute.png', 'badge'=>'Contribute',      'badge_km'=>'រួមចំណែក',          'desc_en'=>"Contribute to Cambodia's digital transformation.",                   'desc_km'=>'រួមចំណែកក្នុងការផ្លាស់ប្តូរឌីជីថលរបស់ប្រទេសកម្ពុជា។'],
+        ['image'=>'/images/High_Speed.png', 'badge'=>'High Speed', 'badge_km'=>'ល្បឿនខ្ពស់', 'desc_en'=>'Provide high-speed, reliable and stable internet connectivity.', 'desc_km'=>'ផ្តល់ការតភ្ជាប់អ៊ីនធឺណិតល្បឿនលឿន ជឿជាក់ និងស្ថិតស្ថេរ។'],
+        ['image'=>'/images/Scalable.png', 'badge'=>'Scalable', 'badge_km'=>'អាចពង្រីកបាន', 'desc_en'=>'Build scalable and secure network infrastructure across Cambodia.', 'desc_km'=>'សាងសង់ហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញអាចពង្រីក និងមានសុវត្ថិភាពទូទាំងកម្ពុជា។'],
+        ['image'=>'/images/Hot_Service.png', 'badge'=>'Best Experience', 'badge_km'=>'បទពិសោធន៍ល្អបំផុត','desc_en'=>'Deliver excellent customer experience and innovative ICT.', 'desc_km'=>'ផ្តល់បទពិសោធន៍អតិថិជនដ៏ល្អ និង ICT ប្រកបដោយភាពច្នៃប្រឌិត។'],
+        ['image'=>'/images/Reliable.png', 'badge'=>'Reliable', 'badge_km'=>'ជឿជាក់', 'desc_en'=>'Maintain high standards of customer support and service reliability.','desc_km'=>'រក្សាស្តង់ដារខ្ពស់នៃការគាំទ្រអតិថិជន និងការជឿជាក់លើសេវាកម្ម។'],
+        ['image'=>'/images/Quality.png', 'badge'=>'Quality & Saving', 'badge_km'=>'គុណភាព & សន្សំ', 'desc_en'=>'Offering high quality, prompt service and selling what you need.', 'desc_km'=>'ផ្តល់ការេវាកម្មគុណភាពខ្ពស់ ឆ្លើយតបរហ័ស និងលក់តែអ្វីដែលអ្នកត្រូវការ។'],
+        ['image'=>'/images/Contribute.png', 'badge'=>'Contribute', 'badge_km'=>'រួមចំណែក', 'desc_en'=>"Contribute to Cambodia's digital transformation.", 'desc_km'=>'រួមចំណែកក្នុងការផ្លាស់ប្តូរឌីជីថលរបស់ប្រទេសកម្ពុជា។'],
         ];
         @endphp
 
@@ -43,10 +175,10 @@
                 </div>
                 <div class="w-full flex justify-center mb-2">
                     <span class="font-bold text-brand-green bg-brand-green/10 px-3 py-1 rounded-md text-sm"
-                          data-km="{{ $card['badge_km'] }}" data-en="{{ $card['badge'] }}">{{ $card['badge_km'] }}</span>
+                        data-km="{{ $card['badge_km'] }}" data-en="{{ $card['badge'] }}">{{ $card['badge_km'] }}</span>
                 </div>
                 <p class="text-center font-bold text-[#777] mt-2 text-sm leading-relaxed"
-                   data-km="{{ $card['desc_km'] }}" data-en="{{ $card['desc_en'] }}">{{ $card['desc_km'] }}</p>
+                    data-km="{{ $card['desc_km'] }}" data-en="{{ $card['desc_en'] }}">{{ $card['desc_km'] }}</p>
             </div>
             @endforeach
         </div>
@@ -68,7 +200,7 @@
                     <h3 class="text-lg font-bold text-adaptive-main mt-3 mb-2">{{ $service->getName() }}</h3>
                     <p class="text-adaptive-muted text-sm leading-relaxed">{{ $service->getDescription() }}</p>
                     <button onclick="openModal('serviceModal')"
-                            class="mt-4 text-xs font-bold {{ $service->color === 'green' ? 'text-brand-green' : 'text-brand-orange' }} flex items-center gap-1 hover:gap-2 transition-all">
+                        class="mt-4 text-xs font-bold {{ $service->color === 'green' ? 'text-brand-green' : 'text-brand-orange' }} flex items-center gap-1 hover:gap-2 transition-all">
                         <span data-km="សាកសួរព័ត៌មាន" data-en="Inquire Now">សាកសួរព័ត៌មាន</span>
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </button>
@@ -87,7 +219,7 @@
             ចាប់អារម្មណ៍ចង់ប្រើសេវាកម្មមែនទេ?
         </h2>
         <button onclick="openModal('serviceModal')"
-                class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-green to-brand-orange text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5">
+            class="inline-flex items-center gap-2 gradient-brand text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5">
             <i class="fa-solid fa-paper-plane"></i>
             <span data-km="ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត" data-en="Request Internet Service">ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត</span>
         </button>

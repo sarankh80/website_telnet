@@ -1,0 +1,142 @@
+
+/* ===========================================
+        Organization Chart Style
+==============================================*/
+        .toolbar-btn {
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .toolbar-btn:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+        }
+
+        /* ================= CHART CORE STYLES ================= */
+        #chart-viewport {
+            cursor: grab;
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: relative;
+            /* Allow vertical scrolling on the viewport itself */
+            overflow: auto; 
+        }
+        #chart-viewport:active { cursor: grabbing; }
+
+        #chart-container {
+            transform-origin: top center;
+            transition: transform 0.2s ease-out;
+            padding: 40px;
+            display: inline-block;
+            min-width: 100%;
+        }
+
+        /* ================= TREE ARCHITECTURE ================= */
+        .tree ul {
+            padding-top: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .tree li {
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 20px 10px 0 10px;
+            font-weight: normal !important;
+        }
+
+        /* Connecting lines */
+        .tree li::before, .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            border-top: 2px solid #cbd5e1;
+            width: 50%;
+            height: 20px;
+        }
+        .tree li::after {
+            right: auto;
+            left: 50%;
+            border-left: 2px solid #cbd5e1;
+        }
+        .tree li:only-child::after, .tree li:only-child::before { display: none; }
+        .tree li:only-child { padding-top: 0; }
+        .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
+        .tree li:last-child::before {
+            border-right: 2px solid #cbd5e1;
+            border-radius: 0 8px 0 0;
+        }
+        .tree li:first-child::after {
+            border-radius: 8px 0 0 0;
+        }
+        .tree ul ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 2px solid #cbd5e1;
+            width: 0;
+            height: 20px;
+        }
+
+        /* Node Cards */
+        .node-card {
+            display: inline-block;
+            width: 190px;
+            padding: 16px 12px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .node-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            border: 2px solid #3b82f6;
+            object-fit: cover;
+            background: #f1f5f9;
+        }
+
+        /* ================= PRINT OPTIMIZATION ================= */
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 5mm;
+            }
+            body { 
+                background: white !important; 
+                overflow: visible !important;
+                width: 100%;
+            }
+            #toolbar, #loading-spinner { display: none !important; }
+            #chart-viewport { 
+                overflow: visible !important; 
+                height: auto !important; 
+                background: none !important;
+                padding: 0 !important;
+                width: 100% !important;
+            }
+            #chart-container {
+                width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .node-card {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }

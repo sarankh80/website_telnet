@@ -2,7 +2,6 @@
 
 @section('content')
 
-{{-- ===== HERO SECTION ===== --}}
 <section class="relative overflow-hidden py-8 lg:py-16 section-bg-primary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -14,16 +13,16 @@
                         data-en="High-Speed Internet Service &amp; Digital Solutions ">
                         ផ្តល់សេវាអ៊ីនធឺណិតល្បឿនខ្ពស់ និងដំណោះស្រាយឌីជីថល
                     </span>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-brand-orange"
-                          data-km="ដែលអ្នកអាចទុកចិត្ត"
-                          data-en="You Can Trust">
+                    <span class="text-transparent bg-clip-text gradient-brand"
+                        data-km="ដែលអ្នកអាចទុកចិត្ត"
+                        data-en="You Can Trust">
                         ដែលអ្នកអាចទុកចិត្ត
                     </span>
                 </h1>
 
                 <p class="text-adaptive-muted !text-[#777] text-base sm:text-lg max-w-2xl leading-relaxed"
-                   data-km="ក្រុមហ៊ុន TELNET CO., LTD ផ្តល់ហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតល្អប្រណីត (FTTH, FTTB, FTTX, FTTR) និងដំណោះស្រាយបណ្តាញ ICT ដល់គ្រួសារ អាជីវកម្ម ក្រុមហ៊ុន និងស្ថាប័នរដ្ឋាភិបាល"
-                   data-en="TELNET CO., LTD provides state-of-the-art optical fiber infrastructure (FTTH, FTTB, FTTX, FTTR) and ICT network solutions for households, businesses, enterprises, and government institutions.">
+                    data-km="ក្រុមហ៊ុន TELNET CO., LTD ផ្តល់ហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតល្អប្រណីត (FTTH, FTTB, FTTX, FTTR) និងដំណោះស្រាយបណ្តាញ ICT ដល់គ្រួសារ អាជីវកម្ម ក្រុមហ៊ុន និងស្ថាប័នរដ្ឋាភិបាល"
+                    data-en="TELNET CO., LTD provides state-of-the-art optical fiber infrastructure (FTTH, FTTB, FTTX, FTTR) and ICT network solutions for households, businesses, enterprises, and government institutions.">
                     ក្រុមហ៊ុន <strong>TELNET CO., LTD</strong>
                     ផ្តល់ហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតល្អប្រណីត (FTTH, FTTB, FTTX, FTTR)
                     និងដំណោះស្រាយបណ្តាញ ICT ដល់គ្រួសារ អាជីវកម្ម ក្រុមហ៊ុន និងស្ថាប័នរដ្ឋាភិបាល
@@ -31,12 +30,12 @@
 
                 <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
                     <button onclick="openModal('serviceModal')"
-                            class="bg-gradient-to-r from-brand-green to-brand-orange hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-brand-green/20 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                        class="gradient-brand hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-brand-green/20 transition transform hover:-translate-y-0.5 flex items-center gap-2">
                         <span data-km="ចុះឈ្មោះប្រើសេវាអ៊ីនធឺណិត" data-en="Subscribe Internet">ចុះឈ្មោះប្រើសេវាអ៊ីនធឺណិត</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
-                    <a href="#services"
-                       class="glass-card hover:bg-slate-200 dark:hover:bg-slate-800 text-adaptive-main font-semibold px-6 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 transition flex items-center gap-2">
+                    <a href="{{route('services')}}"
+                        class="glass-card hover:-translate-y-0.5 transition text-adaptive-main font-semibold px-6 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 transition flex items-center gap-2">
                         <i class="fa-solid fa-list-check text-brand-orange"></i>
                         <span data-km="មើលបន្ថែមអំពីសេវាកម្ម" data-en="Explore Services">មើលបន្ថែមអំពីសេវាកម្ម</span>
                     </a>
@@ -63,8 +62,8 @@
                     </div>
                 </div>
                 <p class="text-adaptive-muted text-sm leading-relaxed"
-                   data-km="ក្លាយជាអ្នកផ្តល់សេវាអ៉ីនធឺណិត (ISP) ឈានមុខគេនៅកម្ពុជា ដោយផ្តល់សេវាដែលមានគុណភាពខ្ពស់ ល្បឿនលឿន គួរឱ្យទុកចិត្ត និងដំណោះស្រាយតភ្ជាប់ឌីជីថលប្រកបដោយភាពច្នៃប្រឌិតខ្ពស់បំផុត។"
-                   data-en="To become a leading Internet Service Provider (ISP) in Cambodia by offering high-quality, high-speed, reliable services and innovative digital connectivity solutions.">
+                    data-km="ក្លាយជាអ្នកផ្តល់សេវាអ៉ីនធឺណិត (ISP) ឈានមុខគេនៅកម្ពុជា ដោយផ្តល់សេវាដែលមានគុណភាពខ្ពស់ ល្បឿនលឿន គួរឱ្យទុកចិត្ត និងដំណោះស្រាយតភ្ជាប់ឌីជីថលប្រកបដោយភាពច្នៃប្រឌិតខ្ពស់បំផុត។"
+                    data-en="To become a leading Internet Service Provider (ISP) in Cambodia by offering high-quality, high-speed, reliable services and innovative digital connectivity solutions.">
                     ក្លាយជាអ្នកផ្តល់សេវាអ៉ីនធឺណិត (ISP) ឈានមុខគេនៅកម្ពុជា ដោយផ្តល់សេវាដែលមានគុណភាពខ្ពស់ ល្បឿនលឿន គួរឱ្យទុកចិត្ត និងដំណោះស្រាយតភ្ជាប់ឌីជីថលប្រកបដោយភាពច្នៃប្រឌិតខ្ពស់បំផុត។
                 </p>
             </div>
@@ -88,14 +87,14 @@
             <h3 class="text-center text-lg font-bold text-adaptive-main mb-6" data-km="គុណតម្លៃស្នូល (CORE VALUES) ចំនួន ៨ គោលការណ៍" data-en="OUR 8 CORE VALUES">គុណតម្លៃស្នូល (CORE VALUES) ចំនួន ៨ គោលការណ៍</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 @php $coreValues = [
-                    ['icon'=>'fa-network-wired','color'=>'brand-green','km'=>'1. ការតភ្ជាប់ដែលអាចទុកចិត្តបាន','en'=>'1. Reliable Connectivity','dk'=>'ផ្តល់សេវាអ៉ីនធឺណិតដែលមានស្ថេរភាពឥតរអាក់រអួល។','de'=>'Ensure seamless, stable internet service for all users.'],
-                    ['icon'=>'fa-user-gear','color'=>'brand-orange','km'=>'2. អតិថិជនជាចម្បង','en'=>'2. Customer First','dk'=>'ការប្តេជ្ញាចិត្តខ្ពស់ក្នុងការបម្រើតម្រូវការរបស់អតិថិជន។','de'=>'Dedicated commitment to serving every customer need.'],
-                    ['icon'=>'fa-award','color'=>'brand-green','km'=>'3. ភាពឆ្នើមផ្នែកប្រតិបត្តិការ','en'=>'3. Operational Excellence','dk'=>'រក្សាស្តង់ដារបច្ចេកទេស និងប្រតិបត្តិការកម្រិតខ្ពស់។','de'=>'Maintain rigorous technical and operational standards.'],
-                    ['icon'=>'fa-lightbulb','color'=>'brand-orange','km'=>'4. នវានុវត្តន៍បច្ចេកវិទ្យា','en'=>'4. Technological Innovation','dk'=>'ដឹកនាំក្នុងការប្រើប្រាស់បច្ចេកវិទ្យាឌីជីថលថ្មីៗ។','de'=>'Lead the adoption of modern digital tech solutions.'],
-                    ['icon'=>'fa-users','color'=>'brand-green','km'=>'5. ក្រុមការងារមានវិជ្ជាជីវៈ','en'=>'5. Professional Team','dk'=>'សមត្ថភាពខ្ពស់ និងការសហការគ្នាយ៉ាងជិតស្និទ្ធ។','de'=>'High competence and close team collaboration.'],
-                    ['icon'=>'fa-shield-heart','color'=>'brand-orange','km'=>'6. សុចរិតភាព និងឥរិយាបថ','en'=>'6. Integrity & Ethics','dk'=>'ប្រកាន់ខ្ជាប់នូវភាពស្មោះត្រង់ និងឥរិយាបថវិជ្ជមាន។','de'=>'Uphold honesty and positive professional ethics.'],
-                    ['icon'=>'fa-graduation-cap','color'=>'brand-green','km'=>'7. ការរៀនសូត្រពេញមួយជីវិត','en'=>'7. Lifelong Learning','dk'=>'អភិវឌ្ឍចំណេះដឹង និងជំនាញបច្ចេកទេសជាប្រចាំ។','de'=>'Continuously develop knowledge and technical skills.'],
-                    ['icon'=>'fa-building-flag','color'=>'brand-orange','km'=>'8. អភិវឌ្ឍសហគមន៍ និងជាតិ','en'=>'8. Community & Nation Building','dk'=>'ចូលរួមចំណែកក្នុងការអភិវឌ្ឍសង្គម និងសេដ្ឋកិច្ចឌីជីថល។','de'=>'Contribute to social development and digital economy.'],
+                ['icon'=>'fa-network-wired','color'=>'brand-green','km'=>'1. ការតភ្ជាប់ដែលអាចទុកចិត្តបាន','en'=>'1. Reliable Connectivity','dk'=>'ផ្តល់សេវាអ៉ីនធឺណិតដែលមានស្ថេរភាពឥតរអាក់រអួល។','de'=>'Ensure seamless, stable internet service for all users.'],
+                ['icon'=>'fa-user-gear','color'=>'brand-orange','km'=>'2. អតិថិជនជាចម្បង','en'=>'2. Customer First','dk'=>'ការប្តេជ្ញាចិត្តខ្ពស់ក្នុងការបម្រើតម្រូវការរបស់អតិថិជន។','de'=>'Dedicated commitment to serving every customer need.'],
+                ['icon'=>'fa-award','color'=>'brand-green','km'=>'3. ភាពឆ្នើមផ្នែកប្រតិបត្តិការ','en'=>'3. Operational Excellence','dk'=>'រក្សាស្តង់ដារបច្ចេកទេស និងប្រតិបត្តិការកម្រិតខ្ពស់។','de'=>'Maintain rigorous technical and operational standards.'],
+                ['icon'=>'fa-lightbulb','color'=>'brand-orange','km'=>'4. នវានុវត្តន៍បច្ចេកវិទ្យា','en'=>'4. Technological Innovation','dk'=>'ដឹកនាំក្នុងការប្រើប្រាស់បច្ចេកវិទ្យាឌីជីថលថ្មីៗ។','de'=>'Lead the adoption of modern digital tech solutions.'],
+                ['icon'=>'fa-users','color'=>'brand-green','km'=>'5. ក្រុមការងារមានវិជ្ជាជីវៈ','en'=>'5. Professional Team','dk'=>'សមត្ថភាពខ្ពស់ និងការសហការគ្នាយ៉ាងជិតស្និទ្ធ។','de'=>'High competence and close team collaboration.'],
+                ['icon'=>'fa-shield-heart','color'=>'brand-orange','km'=>'6. សុចរិតភាព និងឥរិយាបថ','en'=>'6. Integrity & Ethics','dk'=>'ប្រកាន់ខ្ជាប់នូវភាពស្មោះត្រង់ និងឥរិយាបថវិជ្ជមាន។','de'=>'Uphold honesty and positive professional ethics.'],
+                ['icon'=>'fa-graduation-cap','color'=>'brand-green','km'=>'7. ការរៀនសូត្រពេញមួយជីវិត','en'=>'7. Lifelong Learning','dk'=>'អភិវឌ្ឍចំណេះដឹង និងជំនាញបច្ចេកទេសជាប្រចាំ។','de'=>'Continuously develop knowledge and technical skills.'],
+                ['icon'=>'fa-building-flag','color'=>'brand-orange','km'=>'8. អភិវឌ្ឍសហគមន៍ និងជាតិ','en'=>'8. Community & Nation Building','dk'=>'ចូលរួមចំណែកក្នុងការអភិវឌ្ឍសង្គម និងសេដ្ឋកិច្ចឌីជីថល។','de'=>'Contribute to social development and digital economy.'],
                 ]; @endphp
                 @foreach($coreValues as $val)
                 <div class="glass-card p-5 rounded-xl border border-gray-200 dark:border-gray-800 glass-card-hover">
@@ -114,12 +113,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @php
         $serviceCards = [
-            ['image' => '/images/High_Speed.png',  'badge' => 'High Speed',       'badge_km' => 'ល្បឿនខ្ពស់',         'desc_en' => 'Provide high-speed, reliable and stable internet connectivity.',       'desc_km' => 'ផ្តល់ការតភ្ជាប់អ៊ីនធឺណិតល្បឿនលឿន ជឿជាក់ និងស្ថិតស្ថេរ។'],
-            ['image' => '/images/Scalable.png',    'badge' => 'Scalable',         'badge_km' => 'អាចពង្រីកបាន',       'desc_en' => 'Build scalable and secure network infrastructure across Cambodia.',    'desc_km' => 'សាងសង់ហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញអាចពង្រីក និងមានសុវត្ថិភាពទូទាំងកម្ពុជា។'],
-            ['image' => '/images/Hot_Service.png', 'badge' => 'Best Experience',  'badge_km' => 'បទពិសោធន៍ល្អបំផុត', 'desc_en' => 'Deliver excellent customer experience and innovative ICT.',               'desc_km' => 'ផ្តល់បទពិសោធន៍អតិថិជនដ៏ល្អ និង ICT ប្រកបដោយភាពច្នៃប្រឌិត។'],
-            ['image' => '/images/Reliable.png',   'badge' => 'Reliable',         'badge_km' => 'ជឿជាក់',             'desc_en' => 'Maintain high standards of customer support and service reliability.', 'desc_km' => 'រក្សាស្តង់ដារខ្ពស់នៃការគាំទ្រអតិថិជន និងការជឿជាក់លើសេវាកម្ម។'],
-            ['image' => '/images/Quality.png',    'badge' => 'Quality & Saving', 'badge_km' => 'គុណភាព & សន្សំ',   'desc_en' => 'Offering high quality, prompt service and selling what you need.',     'desc_km' => 'ផ្តល់ការេវាកម្មគុណភាពខ្ពស់ ឆ្លើយតបរហ័ស និងលក់តែអ្វីដែលអ្នកត្រូវការ។'],
-            ['image' => '/images/Contribute.png', 'badge' => 'Contribute',       'badge_km' => 'រួមចំណែក',           'desc_en' => "Contribute to Cambodia's digital transformation.",                   'desc_km' => 'រួមចំណែកក្នុងការផ្លាស់ប្តូរឌីជីថលរបស់ប្រទេសកម្ពុជា។'],
+        ['image' => '/images/High_Speed.png', 'badge' => 'High Speed', 'badge_km' => 'ល្បឿនខ្ពស់', 'desc_en' => 'Provide high-speed, reliable and stable internet connectivity.', 'desc_km' => 'ផ្តល់ការតភ្ជាប់អ៊ីនធឺណិតល្បឿនលឿន ជឿជាក់ និងស្ថិតស្ថេរ។'],
+        ['image' => '/images/Scalable.png', 'badge' => 'Scalable', 'badge_km' => 'អាចពង្រីកបាន', 'desc_en' => 'Build scalable and secure network infrastructure across Cambodia.', 'desc_km' => 'សាងសង់ហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញអាចពង្រីក និងមានសុវត្ថិភាពទូទាំងកម្ពុជា។'],
+        ['image' => '/images/Hot_Service.png', 'badge' => 'Best Experience', 'badge_km' => 'បទពិសោធន៍ល្អបំផុត', 'desc_en' => 'Deliver excellent customer experience and innovative ICT.', 'desc_km' => 'ផ្តល់បទពិសោធន៍អតិថិជនដ៏ល្អ និង ICT ប្រកបដោយភាពច្នៃប្រឌិត។'],
+        ['image' => '/images/Reliable.png', 'badge' => 'Reliable', 'badge_km' => 'ជឿជាក់', 'desc_en' => 'Maintain high standards of customer support and service reliability.', 'desc_km' => 'រក្សាស្តង់ដារខ្ពស់នៃការគាំទ្រអតិថិជន និងការជឿជាក់លើសេវាកម្ម។'],
+        ['image' => '/images/Quality.png', 'badge' => 'Quality & Saving', 'badge_km' => 'គុណភាព & សន្សំ', 'desc_en' => 'Offering high quality, prompt service and selling what you need.', 'desc_km' => 'ផ្តល់ការេវាកម្មគុណភាពខ្ពស់ ឆ្លើយតបរហ័ស និងលក់តែអ្វីដែលអ្នកត្រូវការ។'],
+        ['image' => '/images/Contribute.png', 'badge' => 'Contribute', 'badge_km' => 'រួមចំណែក', 'desc_en' => "Contribute to Cambodia's digital transformation.", 'desc_km' => 'រួមចំណែកក្នុងការផ្លាស់ប្តូរឌីជីថលរបស់ប្រទេសកម្ពុជា។'],
         ];
         @endphp
 
@@ -131,7 +130,7 @@
                 </div>
                 <div class="w-full flex justify-center">
                     <span class="text-md text-center font-bold text-brand-green bg-brand-green/10 px-2.5 py-1 rounded-md"
-                          data-km="{{ $card['badge_km'] }}" data-en="{{ $card['badge'] }}">{{ $card['badge_km'] }}</span>
+                        data-km="{{ $card['badge_km'] }}" data-en="{{ $card['badge'] }}">{{ $card['badge_km'] }}</span>
                 </div>
                 <h3 class="text-md text-center font-bold text-[#777] mt-2"
                     data-km="{{ $card['desc_km'] }}" data-en="{{ $card['desc_en'] }}">{{ $card['desc_km'] }}</h3>
@@ -149,7 +148,7 @@
             @foreach($branches as $branch)
             <div class="glass-card p-6 rounded-2xl {{ $branch->type === 'hq' ? 'border border-brand-green/40' : 'border border-gray-200 dark:border-gray-800' }} relative">
                 @if($branch->type === 'hq')
-                    <span class="absolute top-4 right-4 text-xs bg-brand-green/20 text-brand-green px-2.5 py-0.5 rounded-full font-bold">សำนักงานใหญ่</span>
+                <span class="absolute top-4 right-4 text-xs bg-brand-green/20 text-brand-green px-2.5 py-0.5 rounded-full font-bold">សำนักงานใหญ่</span>
                 @endif
                 <div class="flex items-center gap-3 mb-3">
                     <div class="w-10 h-10 rounded-lg {{ $branch->type === 'hq' ? 'bg-brand-green text-white' : ($loop->even ? 'bg-brand-orange/20 text-brand-orange' : 'bg-brand-green/20 text-brand-green') }} flex items-center justify-center font-bold">
@@ -161,26 +160,246 @@
                     </div>
                 </div>
                 @if($branch->address_km)
-                    <p class="text-xs text-adaptive-main mt-2">
-                        <i class="fa-solid fa-location-dot text-brand-orange mr-1.5"></i>{{ $branch->getAddress() }}
-                    </p>
+                <p class="text-xs text-adaptive-main mt-2">
+                    <i class="fa-solid fa-location-dot text-brand-orange mr-1.5"></i>{{ $branch->getAddress() }}
+                </p>
                 @endif
                 @if($branch->phone)
-                    <p class="text-xs text-adaptive-main mt-1">
-                        <i class="fa-solid fa-phone text-brand-green mr-1.5"></i>{{ $branch->phone }}
-                    </p>
+                <p class="text-xs text-adaptive-main mt-1">
+                    <i class="fa-solid fa-phone text-brand-green mr-1.5"></i>{{ $branch->phone }}
+                </p>
                 @endif
                 @if($branch->type !== 'hq')
-                    <p class="text-xs text-brand-green mt-1 font-medium">
-                        <i class="fa-solid fa-circle-check mr-1"></i>
-                        <span data-km="មានហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតសកម្ម" data-en="Active Fiber Optic Infrastructure">មានហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតសកម្ម</span>
-                    </p>
+                <p class="text-xs text-brand-green mt-1 font-medium">
+                    <i class="fa-solid fa-circle-check mr-1"></i>
+                    <span data-km="មានហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតសកម្ម" data-en="Active Fiber Optic Infrastructure">មានហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតសកម្ម</span>
+                </p>
                 @endif
             </div>
             @endforeach
         </div>
     </div>
 </section>
+<!-- Service Coverage Checker Section -->
+<section class="py-16 px-4 sm:px-6 lg:px-8 font-sans text-slate-100">
+    <div class="max-w-7xl mx-auto space-y-8" x-data="coverageChecker()">
+
+        <!-- Section Header -->
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold tracking-tight text-[#8FC74A] sm:text-4xl">
+                Check Service Availability
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base">
+                Enter your city or postal code to verify high-speed service coverage in your area.
+            </p>
+        </div>
+
+        <!-- Search & Control Card -->
+        <div class="bg-white backdrop-blur-md border border-orange-300 rounded-xl p-4 sm:p-6 shadow-md">
+            <form @submit.prevent="checkCoverage()" class="flex flex-col sm:flex-row gap-3">
+                <div class="relative flex-1">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <input
+                        type="text"
+                        x-model="searchQuery"
+                        placeholder="Enter City, District, or Zip Code..."
+                        class="w-full pl-10 pr-4 py-3  border border-gray-200 rounded-lg text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#8FC74A] focus:border-transparent transition-all text-sm" />
+                </div>
+
+                <button
+                    type="submit"
+                    class="bg-[#8FC74A] hover:bg-[#7db53d] text-white font-bold px-6 py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm shrink-0"
+                    :disabled="isLoading">
+                    <template x-if="!isLoading">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            <span>CHECK LOCATION</span>
+                        </div>
+                    </template>
+                    <template x-if="isLoading">
+                        <span class="inline-block animate-spin border-2 border-slate-950 border-t-transparent rounded-full w-4 h-4"></span>
+                    </template>
+                </button>
+            </form>
+
+            <!-- Quick Preset Suggestions -->
+            <div class="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-400">
+                <span class="text-lg bold text-[#8FC74A]">Popular regions:</span>
+                <template x-for="region in presetRegions" :key="region.name">
+                    <button
+                        type="button"
+                        @click="selectRegion(region)"
+                        class="px-2.5 py-1 bg-[#F79633] hover:bg-[#8FC74A] rounded-md shadow-md text-white transition-colors"
+                        x-text="region.name"></button>
+                </template>
+            </div>
+
+            <!-- Result Banner -->
+            <div x-show="status !== null" x-cloak class="mt-4 pt-4 border-t border-slate-700/60">
+                <!-- Active / Available -->
+                <div x-show="status === 'available'" class="p-3 bg-[#8FC74A]/10 border border-[#8FC74A]/40 rounded-lg flex items-center justify-between text-[#8FC74A] text-sm">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#8FC74A] animate-pulse"></span>
+                        <span>Great news! High-speed service is fully active in <strong x-text="searchedLocation" class="text-[#8FC74A] bold"></strong>.</span>
+                    </div>
+                    <span class="text-xs bg-[#8FC74A]/20 text-[#8FC74A] px-2 py-0.5 rounded font-mono font-medium">Ready</span>
+                </div>
+
+                <!-- Planned / Coming Soon -->
+                <div x-show="status === 'planned'" class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg flex items-center justify-between text-amber-400 text-sm">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                        <span>Expansion scheduled! Coverage is coming soon to <strong x-text="searchedLocation" class="text-white"></strong>.</span>
+                    </div>
+                    <span class="text-xs bg-amber-500/20 px-2 py-0.5 rounded font-mono font-medium">Q3 2026</span>
+                </div>
+
+                <!-- No Coverage -->
+                <div x-show="status === 'unavailable'" class="p-3 bg-rose-500/10 border border-rose-500/30 rounded-lg flex items-center justify-between text-rose-400 text-sm">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                        <span>Service is currently unavailable in <strong x-text="searchedLocation" class="text-white"></strong>.</span>
+                    </div>
+                    <button class="text-xs underline hover:text-rose-300 font-medium">Request Expansion</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map & Legend Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+            <!-- Interactive Map Frame -->
+            <div class="lg:col-span-3  border border-orange-200 shadow rounded-xl overflow-hidden relative min-h-[380px] flex items-center justify-center">
+
+                <!-- Placeholder visual (Replace element ID with Mapbox / Leaflet instance) -->
+                <div id="coverage-map" class="absolute inset-0 bg-white flex flex-col items-center justify-center p-6 text-center">
+                    <svg class="w-12 h-12 text-[#8FC74A]/60 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                    </svg>
+                    <p class="text-slate-400 text-sm font-medium">Interactive Map View Target</p>
+                    <span class="text-xs text-slate-500 mt-1">Bind your Leaflet or Mapbox instance to <code class="text-[#8FC74A]">#coverage-map</code></span>
+                </div>
+
+                <!-- Floating Quick Map Legend -->
+                <div class="absolute bottom-4 left-4 bg-white backdrop-blur-md border border-green-400  rounded-lg p-3 text-xs space-y-2 z-10 shadow-lg">
+                    <div class="font-semibold text-gray-400 mb-1">Coverage Status</div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded bg-[#8FC74A] border border-[#8FC74A]/80"></span>
+                        <span class="text-gray-400">Active Service</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded bg-amber-500/60 border border-amber-400"></span>
+                        <span class="text-gray-400">Planned Expansion</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded bg-slate-600/40 border border-slate-500"></span>
+                        <span class="text-slate-400">Under Review</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Side Stats & Details -->
+            <div class="space-y-4">
+                <div class="bg-white border border-orange-200 rounded-xl p-4">
+                    <h3 class="text-sm font-semibold text-[#8fc74a] mb-3">Network Highlights</h3>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="flex justify-between pb-2 border-b border-slate-700/50">
+                            <span class="text-gray-400 font-bold">Avg. Latency</span>
+                            <span class="font-semibold text-[#8FC74A]">&lt; 15 ms</span>
+                        </li>
+                        <li class="flex justify-between pb-2 border-b border-slate-700/50">
+                            <span class="text-gray-400 font-bold">Network Uptime</span>
+                            <span class="font-semibold  text-[#8FC74A]">99.9%</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-gray-400 font-bold">Total Covered Zones</span>
+                            <span class="font-semibold text-[#8FC74A]">120+ Districts</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Secondary Color Block (#2E7D32) -->
+                <div class="bg-white border border-gray-300 shadow-lg rounded-xl p-4 text-xs space-y-2">
+                    <div class="font-semibold text-[#8FC74A]">Need Custom Deployment?</div>
+                    <p class="text-slate-300">
+                        For dedicated business lines or unlisted regions, submit a direct inquiry to our infrastructure team.
+                    </p>
+                    <a href="#" class="inline-block text-[#8FC74A] font-semibold hover:underline pt-1">Contact Infrastructure →</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Alpine.js Component Script -->
+<script>
+    function coverageChecker() {
+        return {
+            searchQuery: '',
+            searchedLocation: '',
+            isLoading: false,
+            status: null, // 'available' | 'planned' | 'unavailable'
+            presetRegions: [{
+                    name: 'SVARY RIENG',
+                    status: 'available'
+                },
+                {
+                    name: 'B.MEANCHEY',
+                    status: 'available'
+                },
+                {
+                    name: 'KANDAL',
+                    status: 'available'
+                },
+                {
+                    name: 'PHNOM PENH',
+                    status: 'available'
+                },
+                {
+                    name: 'PAILIN',
+                    status: 'available'
+                },
+                {
+                    name: 'BATTAMBANG',
+                    status: 'available'
+                },
+            ],
+            selectRegion(region) {
+                this.searchQuery = region.name;
+                this.executeCheck(region.name, region.status);
+            },
+            checkCoverage() {
+                if (!this.searchQuery.trim()) return;
+
+                // Mocking check - replace with real API / Geocoding call
+                const mockStatus = ['available', 'planned', 'unavailable'][Math.floor(Math.random() * 3)];
+                this.executeCheck(this.searchQuery, mockStatus);
+            },
+            executeCheck(locationName, resolvedStatus) {
+                this.isLoading = true;
+                this.status = null;
+
+                setTimeout(() => {
+                    this.searchedLocation = locationName;
+                    this.status = resolvedStatus;
+                    this.isLoading = false;
+                }, 400);
+            }
+        };
+    }
+</script>
+
+
 
 {{-- ===== BSS/OSS SECTION — hidden ===== --}}
 <section id="bss-oss" class="py-16 section-bg-primary hidden">
@@ -239,13 +458,41 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-800 text-adaptive-muted">
-                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition"><td class="p-4 font-bold text-adaptive-main">1</td><td class="p-4 font-medium">គុណភាពប្រតិបត្តិការបណ្តាញស្នូល (Core Network) គ្រប់ពេលវេលា</td><td class="p-4 text-brand-green font-bold">≤ 99.99%</td></tr>
-                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition"><td class="p-4 font-bold text-adaptive-main">2</td><td class="p-4 font-medium">កម្រិតបញ្ជូនទិន្នន័យថ្នាក់ជាតិ និងអន្តរជាតិ — SLA</td><td class="p-4 text-brand-orange font-bold">≥ 95%</td></tr>
-                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition"><td class="p-4 font-bold text-adaptive-main">3</td><td class="p-4 font-medium">ភាពយឺតយ៉ាវ (Latency Benchmark)</td><td class="p-4"><span class="block">ថ្នាក់ជាតិ: <strong class="text-brand-green">&lt; 50ms</strong></span><span class="block">អាស៊ីប៉ាស៊ីហ្វិក: <strong class="text-brand-orange">&lt; 70ms</strong></span><span class="block">អឺរ៉ុប: <strong>&lt; 200ms</strong> | USA: <strong>&lt; 300ms</strong></span></td></tr>
-                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition"><td class="p-4 font-bold text-adaptive-main">4</td><td class="p-4 font-medium">ភាពប្រែប្រួលនៃពេលវេលា (Jitter)</td><td class="p-4 text-brand-orange font-bold">≤ 50 មីលីវិនាទី</td></tr>
-                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition"><td class="p-4 font-bold text-adaptive-main">5</td><td class="p-4 font-medium">ការបាត់ទិន្នន័យ (Packet Loss)</td><td class="p-4 text-brand-green font-bold">≤ 0.001%</td></tr>
-                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition"><td class="p-4 font-bold text-adaptive-main">6</td><td class="p-4 font-medium">ការចូលមើលគេហទំព័រ (Web Loading &lt; 3s)</td><td class="p-4 text-brand-green font-bold">អត្រាជោគជ័យ 98%</td></tr>
-                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition"><td class="p-4 font-bold text-adaptive-main">7</td><td class="p-4 font-medium">ការទស្សនាវីដេអូ (Video Streaming)</td><td class="p-4"><span class="block text-xs">ក្រុង: ជោគជ័យ &gt; 95%, ចូល &lt; 5s, ដាំង &lt; 5%</span><span class="block text-xs text-adaptive-muted">ជនបទ: ជោគជ័យ &gt; 85%, ចូល &lt; 5s, ដាំង &lt; 10%</span></td></tr>
+                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition">
+                        <td class="p-4 font-bold text-adaptive-main">1</td>
+                        <td class="p-4 font-medium">គុណភាពប្រតិបត្តិការបណ្តាញស្នូល (Core Network) គ្រប់ពេលវេលា</td>
+                        <td class="p-4 text-brand-green font-bold">≤ 99.99%</td>
+                    </tr>
+                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition">
+                        <td class="p-4 font-bold text-adaptive-main">2</td>
+                        <td class="p-4 font-medium">កម្រិតបញ្ជូនទិន្នន័យថ្នាក់ជាតិ និងអន្តរជាតិ — SLA</td>
+                        <td class="p-4 text-brand-orange font-bold">≥ 95%</td>
+                    </tr>
+                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition">
+                        <td class="p-4 font-bold text-adaptive-main">3</td>
+                        <td class="p-4 font-medium">ភាពយឺតយ៉ាវ (Latency Benchmark)</td>
+                        <td class="p-4"><span class="block">ថ្នាក់ជាតិ: <strong class="text-brand-green">&lt; 50ms</strong></span><span class="block">អាស៊ីប៉ាស៊ីហ្វិក: <strong class="text-brand-orange">&lt; 70ms</strong></span><span class="block">អឺរ៉ុប: <strong>&lt; 200ms</strong> | USA: <strong>&lt; 300ms</strong></span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition">
+                        <td class="p-4 font-bold text-adaptive-main">4</td>
+                        <td class="p-4 font-medium">ភាពប្រែប្រួលនៃពេលវេលា (Jitter)</td>
+                        <td class="p-4 text-brand-orange font-bold">≤ 50 មីលីវិនាទី</td>
+                    </tr>
+                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition">
+                        <td class="p-4 font-bold text-adaptive-main">5</td>
+                        <td class="p-4 font-medium">ការបាត់ទិន្នន័យ (Packet Loss)</td>
+                        <td class="p-4 text-brand-green font-bold">≤ 0.001%</td>
+                    </tr>
+                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition">
+                        <td class="p-4 font-bold text-adaptive-main">6</td>
+                        <td class="p-4 font-medium">ការចូលមើលគេហទំព័រ (Web Loading &lt; 3s)</td>
+                        <td class="p-4 text-brand-green font-bold">អត្រាជោគជ័យ 98%</td>
+                    </tr>
+                    <tr class="hover:bg-slate-100 dark:hover:bg-slate-800/40 transition">
+                        <td class="p-4 font-bold text-adaptive-main">7</td>
+                        <td class="p-4 font-medium">ការទស្សនាវីដេអូ (Video Streaming)</td>
+                        <td class="p-4"><span class="block text-xs">ក្រុង: ជោគជ័យ &gt; 95%, ចូល &lt; 5s, ដាំង &lt; 5%</span><span class="block text-xs text-adaptive-muted">ជនបទ: ជោគជ័យ &gt; 85%, ចូល &lt; 5s, ដាំង &lt; 10%</span></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -258,9 +505,9 @@
         <x-section-title label="06. ការគាំទ្រ និងប្រព័ន្ធ ២៤/៧" title="កម្រិតការឡើងនៃបញ្ហា (Escalation Level Matrix)" subtitle="ក្រុមការងារជំនាញត្រៀមខ្លួនដោះស្រាយបញ្ហារហ័ស ២៤ ម៉ោង" labelColor="text-brand-green" />
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             @php $levels = [
-                ['color'=>'green','level'=>'Level 1','tk'=>'ក្រុមការងារ NOC 24/7','te'=>'NOC Team 24/7','dk'=>'ទទួលសំបុត្រ (Ticket) វិភាគ និងដោះស្រាយពីចម្ងាយ','de'=>'Receive tickets, analyze, and resolve remotely','phone'=>'097 513 5135','email'=>'noc@telnet.com.kh'],
-                ['color'=>'orange','level'=>'Level 2','tk'=>'ប្រធានផ្នែក NOC','te'=>'NOC Department Head','dk'=>'លោក នី សាវណ្ណ (Mr. Ny Savann)','de'=>'Mr. Ny Savann','phone'=>'088 891 6667','email'=>'ny.savann@telnet.com.kh'],
-                ['color'=>'green','level'=>'Level 3','tk'=>'ប្រតិបត្តិការ និងនាយក','te'=>'Operations & Director','dk'=>'លោក ណេត សុគន្ធធារិទ្ធ (Mr. Neth Sokunthearith)','de'=>'Mr. Neth Sokunthearith','phone'=>'081 687 697','email'=>'neth.sokunthearith@telnet.com.kh'],
+            ['color'=>'green','level'=>'Level 1','tk'=>'ក្រុមការងារ NOC 24/7','te'=>'NOC Team 24/7','dk'=>'ទទួលសំបុត្រ (Ticket) វិភាគ និងដោះស្រាយពីចម្ងាយ','de'=>'Receive tickets, analyze, and resolve remotely','phone'=>'097 513 5135','email'=>'noc@telnet.com.kh'],
+            ['color'=>'orange','level'=>'Level 2','tk'=>'ប្រធានផ្នែក NOC','te'=>'NOC Department Head','dk'=>'លោក នី សាវណ្ណ (Mr. Ny Savann)','de'=>'Mr. Ny Savann','phone'=>'088 891 6667','email'=>'ny.savann@telnet.com.kh'],
+            ['color'=>'green','level'=>'Level 3','tk'=>'ប្រតិបត្តិការ និងនាយក','te'=>'Operations & Director','dk'=>'លោក ណេត សុគន្ធធារិទ្ធ (Mr. Neth Sokunthearith)','de'=>'Mr. Neth Sokunthearith','phone'=>'081 687 697','email'=>'neth.sokunthearith@telnet.com.kh'],
             ]; @endphp
             @foreach($levels as $i => $lvl)
             <div class="glass-card p-6 rounded-2xl border-t-4 {{ $lvl['color']==='green' ? 'border-t-brand-green' : 'border-t-brand-orange' }} relative">
@@ -294,9 +541,9 @@
             <div class="flex flex-col md:flex-row items-center gap-6">
                 <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-tr from-brand-green to-brand-orange p-1 flex-shrink-0 shadow-lg">
                     @if($ceo->photo)
-                        <img src="{{ asset('storage/'.$ceo->photo) }}" alt="{{ $ceo->getName() }}" class="w-full h-full rounded-full object-cover">
+                    <img src="{{ asset('storage/'.$ceo->photo) }}" alt="{{ $ceo->getName() }}" class="w-full h-full rounded-full object-cover">
                     @else
-                        <div class="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-3xl text-brand-green font-bold"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-3xl text-brand-green font-bold"><i class="fa-solid fa-user-tie"></i></div>
                     @endif
                 </div>
                 <div class="text-center md:text-left space-y-2">
@@ -330,7 +577,7 @@
 </section>
 
 {{-- ===== CTA SECTION — visible ===== --}}
-<section class="py-16 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20 border-y border-gray-200 dark:border-gray-800">
+<section class="py-16 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
         <h2 class="text-2xl sm:text-4xl font-extrabold text-adaptive-main"
             data-km="តើអ្នកត្រៀមរួចរាល់ដើម្បីទទួលបានអ៊ីនធឺណិតល្បឿនខ្ពស់ហើយឬ?"
@@ -338,13 +585,13 @@
             តើអ្នកត្រៀមរួចរាល់ដើម្បីទទួលបានអ៊ីនធឺណិតល្បឿនខ្ពស់ហើយឬ?
         </h2>
         <p class="text-adaptive-muted text-sm max-w-2xl mx-auto"
-           data-km="ទាក់ទងមកកាន់ TELNET CO., LTD ឥឡូវនេះ ដើម្បីទទួលបានការពិគ្រោះយោបល់ និងការតំឡើងសេវាអ៊ីនធឺណិតនៅទីតាំងរបស់អ្នក!"
-           data-en="Contact TELNET CO., LTD now for a consultation and internet installation at your location!">
+            data-km="ទាក់ទងមកកាន់ TELNET CO., LTD ឥឡូវនេះ ដើម្បីទទួលបានការពិគ្រោះយោបល់ និងការតំឡើងសេវាអ៊ីនធឺណិតនៅទីតាំងរបស់អ្នក!"
+            data-en="Contact TELNET CO., LTD now for a consultation and internet installation at your location!">
             ទាក់ទងមកកាន់ <strong>TELNET CO., LTD</strong> ឥឡូវនេះ ដើម្បីទទួលបានការពិគ្រោះយោបល់ និងការតំឡើងសេវា!
         </p>
         <div class="flex justify-center gap-4 flex-wrap">
             <button onclick="openModal('serviceModal')"
-                    class="bg-gradient-to-r from-brand-green to-brand-orange hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand-green/20 text-sm transition">
+                class="gradient-brand hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand-green/20 text-sm transition">
                 <i class="fa-solid fa-paper-plane mr-2"></i>
                 <span data-km="ស្នើសុំតំឡើងសេវាអ៊ីនធឺណិតថ្ងៃនេះ" data-en="Submit Service Connection Request">ស្នើសុំតំឡើងសេវាអ៊ីនធឺណិតថ្ងៃនេះ</span>
             </button>
