@@ -213,7 +213,7 @@
 
                 <button
                     type="submit"
-                    class="bg-[#8FC74A] hover:bg-[#7db53d] text-white font-bold px-6 py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm shrink-0"
+                    class="bg-[#8FC74A] hover:bg-[#7db53d] text-white font-bold px-6 py-3 rounded-lg transition-colors  duration-200 flex items-center justify-center gap-2 text-sm shrink-0"
                     :disabled="isLoading">
                     <template x-if="!isLoading">
                         <div class="flex items-center gap-2">
@@ -236,7 +236,7 @@
                     <button
                         type="button"
                         @click="selectRegion(region)"
-                        class="px-2.5 py-1 bg-[#F79633] hover:bg-[#8FC74A] rounded-md shadow-md text-white transition-colors"
+                        class="px-2.5 py-1 bg-[#F79633]  transition transform hover:-translate-y-0.5 hover:bg-[#8FC74A] rounded-md shadow-md text-white transition-colors"
                         x-text="region.name"></button>
                 </template>
             </div>
@@ -313,15 +313,15 @@
                     <ul class="space-y-3 text-xs text-slate-300">
                         <li class="flex justify-between pb-2 border-b border-slate-700/50">
                             <span class="text-gray-400 font-bold">Avg. Latency</span>
-                            <span class="font-semibold text-[#8FC74A]">&lt; 15 ms</span>
+                            <span class="font-semibold text-[#8FC74A]">---</span>
                         </li>
                         <li class="flex justify-between pb-2 border-b border-slate-700/50">
                             <span class="text-gray-400 font-bold">Network Uptime</span>
-                            <span class="font-semibold  text-[#8FC74A]">99.9%</span>
+                            <span class="font-semibold  text-[#8FC74A]">---</span>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-400 font-bold">Total Covered Zones</span>
-                            <span class="font-semibold text-[#8FC74A]">120+ Districts</span>
+                            <span class="font-semibold text-[#8FC74A]">---</span>
                         </li>
                     </ul>
                 </div>

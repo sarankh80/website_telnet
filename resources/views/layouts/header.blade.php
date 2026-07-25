@@ -52,7 +52,7 @@
                         <span id="lang-en-badge" class="px-1.5 py-0.5 rounded text-[10px] text-adaptive-muted font-bold transition">EN</span>
                     </div>
                     <span onclick="event.stopPropagation(); toggleTheme()"
-                          class="dark:bg-slate-800/80 text-amber-500 dark:text-amber-300 hover:bg-amber-500/10 dark:hover:bg-slate-700 transition-all duration-300 flex items-center justify-center"
+                          class=" text-amber-500 dark:text-amber-300  transition-all duration-300 flex items-center justify-center"
                           title="ប្តូរ Dark / Light Mode">
                         <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-base hidden"></i>
                         <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-base"></i>

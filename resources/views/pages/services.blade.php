@@ -12,7 +12,7 @@
         <!-- Child Item 1: Home Packages -->
         <div class="relative group h-full flex items-center">
             <a href="#sub-link-1" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-lg" data-km="កញ្ចប់សម្រាប់គេហដ្ឋាន" data-en="Home Packages">Home Packages</span>
+                <span class="!text-[1rem] font-medium !text-white" data-km="កញ្ចប់សម្រាប់គេហដ្ឋាន" data-en="Home Packages">Home Packages</span>
                 <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
             </a>
 
@@ -50,7 +50,7 @@
         <!-- Child Item 2: Business Packages -->
         <div class="relative group h-full flex items-center">
             <a href="#sub-link-2" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-lg" data-km="កញ្ចប់សម្រាប់ពាណិជ្ជកម្ម" data-en="Business Packages">Business Packages</span>
+                <span class="!text-[1rem]" data-km="កញ្ចប់សម្រាប់ពាណិជ្ជកម្ម" data-en="Business Packages">Business Packages</span>
                 <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
             </a>
 
@@ -70,7 +70,7 @@
         <!-- Child Item 3: Dedicated Packages -->
         <div class="relative group h-full flex items-center">
             <a href="#sub-link-3" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-lg" data-km="កញ្ចប់សម្រាប់" data-en="Dedicated Packages">Dedicated Packages</span>
+                <span class="!text-[1rem]" data-km="កញ្ចប់សម្រាប់" data-en="Dedicated Packages">Dedicated Packages</span>
                 <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
             </a>
 
@@ -90,7 +90,7 @@
         <!-- Child Item 4: Others -->
         <div class="relative group h-full flex items-center">
             <a href="#sub-link-4" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-lg" data-km="សេវាកម្មផ្សេងទៀត" data-en="Others">Others</span>
+                <span class="!text-[1rem]" data-km="សេវាកម្មផ្សេងទៀត" data-en="Others">Others</span>
                 <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
             </a>
 

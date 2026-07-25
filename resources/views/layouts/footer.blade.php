@@ -20,129 +20,228 @@ $li_url = Setting::get('linkedin_url','');
 $latitude="11.54732899907136";
 $longitude="104.9089653152003";
 @endphp
-<!-- Collaborators / Partners Horizontal Scrolling Section -->
-<section class="w-full py-12  text-white overflow-hidden relative">
+<section class="w-full py-12 text-white relative">
 
-    <!-- Subtle Background Glows using Brand Colors -->
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#8FC74A]/4 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Subtle Background Glows -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#8FC74A]/10 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#F79633]/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <!-- Section Title -->
     <div class="relative z-10 max-w-7xl mx-auto px-4 mb-8 text-center sm:text-left">
-        <h3 class="text-xs text-center  font-semibold tracking-widest uppercase text-[#F79633]">Strategic Partners</h3>
+        <h3 class="text-xs text-center font-semibold tracking-widest uppercase text-[#F79633]">Strategic Partners</h3>
         <h2 class="text-2xl text-center sm:text-3xl font-bold text-[#8FC74A] mt-1">Corporate Subscribers</h2>
     </div>
 
-    <!-- Infinite Scroll Track Outer Container -->
-    <div class="relative z-10 w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)]">
+    <!-- Full Viewport Width Outer Container (Infinite Width) -->
+    <div class="relative z-10 w-screen left-1/2 -translate-x-1/2 overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)]">
 
-        <!-- Animated Flex Belt (Infinite Loop) -->
-        <div class="flex gap-6 w-max animate-infinite-scroll hover:[animation-play-state:paused] cursor-grab active:cursor-grabbing">
+        <!-- Animated Flex Belt (Seamless Infinite Scroll) -->
+        <div class="animate-marquee gap-6">
 
             <!-- FIRST SET OF ITEMS -->
-            <div class="flex gap-6 items-center">
+            <div class="flex gap-6 items-center partner-track">
                 <!-- Item 1 -->
-                <a href="#collab-1" class="flex-none w-64 p-4 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/10 hover:border-[#8FC74A]/60 hover:bg-slate-800/80 transition-all duration-300 group shadow-lg">
+                <a href="#collab-1" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-white/10 group-hover:scale-105 transition duration-300">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="{{asset('storage/partner/TRC.png')}}" alt="Avatar" class="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h4 class="text-sm font-bold text-white group-hover:text-[#8FC74A] transition-colors">Nexus Tech</h4>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Nexus Tech</h4>
                             <p class="text-xs text-[#F79633]">Infrastructure Partner</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- Item 2 -->
-                <a href="#collab-2" class="flex-none w-64 p-4 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/10 hover:border-[#8FC74A]/60 hover:bg-slate-800/80 transition-all duration-300 group shadow-lg">
+                <a href="#collab-2" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-white/10 group-hover:scale-105 transition duration-300">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="{{asset('storage/partner/Hi Park.png')}}" alt="Avatar" class="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h4 class="text-sm font-bold text-white group-hover:text-[#8FC74A] transition-colors">Global Fiber</h4>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Global Fiber</h4>
                             <p class="text-xs text-[#F79633]">Connectivity Systems</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- Item 3 -->
-                <a href="#collab-3" class="flex-none w-64 p-4 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/10 hover:border-[#8FC74A]/60 hover:bg-slate-800/80 transition-all duration-300 group shadow-lg">
+                <a href="#collab-3" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-white/10 group-hover:scale-105 transition duration-300">
-                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="{{asset('storage/partner/TAI SENG.png')}}" alt="Avatar" class="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h4 class="text-sm font-bold text-white group-hover:text-[#8FC74A] transition-colors">Aura Cloud</h4>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Aura Cloud</h4>
                             <p class="text-xs text-[#F79633]">Datacenter Solutions</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- Item 4 -->
-                <a href="#collab-4" class="flex-none w-64 p-4 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/10 hover:border-[#8FC74A]/60 hover:bg-slate-800/80 transition-all duration-300 group shadow-lg">
+                <a href="#collab-4" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-white/10 group-hover:scale-105 transition duration-300">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="{{asset('storage/partner/EZEPROMO.png')}}" alt="Avatar" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Vortex Labs</h4>
+                            <p class="text-xs text-[#F79633]">Security & RBAC</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Item 1 -->
+                <a href="#collab-1" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="{{asset('storage/partner/UCB.png')}}" alt="Avatar" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Nexus Tech</h4>
+                            <p class="text-xs text-[#F79633]">Infrastructure Partner</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 2 -->
+                <a href="#collab-2" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Global Fiber</h4>
+                            <p class="text-xs text-[#F79633]">Connectivity Systems</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 3 -->
+                <a href="#collab-3" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Aura Cloud</h4>
+                            <p class="text-xs text-[#F79633]">Datacenter Solutions</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 4 -->
+                <a href="#collab-4" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
                             <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h4 class="text-sm font-bold text-white group-hover:text-[#8FC74A] transition-colors">Vortex Labs</h4>
+                            <h4 class="text-sm font-bold text-white group-hover:text-white transition-colors">Vortex Labs</h4>
                             <p class="text-xs text-[#F79633]">Security & RBAC</p>
                         </div>
                     </div>
                 </a>
             </div>
-
-            <!-- SECOND SET OF ITEMS (Identical clone for seamless loop) -->
-            <div class="flex gap-6 items-center" aria-hidden="true">
+            <div class="flex gap-6 items-center marquee-box">
                 <!-- Item 1 -->
-                <a href="#collab-1" class="flex-none w-64 p-4 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/10 hover:border-[#8FC74A]/60 hover:bg-slate-800/80 transition-all duration-300 group shadow-lg">
+                <a href="#collab-1" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-white/10 group-hover:scale-105 transition duration-300">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
                             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h4 class="text-sm font-bold text-white group-hover:text-[#8FC74A] transition-colors">Nexus Tech</h4>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Nexus Tech</h4>
                             <p class="text-xs text-[#F79633]">Infrastructure Partner</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- Item 2 -->
-                <a href="#collab-2" class="flex-none w-64 p-4 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/10 hover:border-[#8FC74A]/60 hover:bg-slate-800/80 transition-all duration-300 group shadow-lg">
+                <a href="#collab-2" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-white/10 group-hover:scale-105 transition duration-300">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
                             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h4 class="text-sm font-bold text-white group-hover:text-[#8FC74A] transition-colors">Global Fiber</h4>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Global Fiber</h4>
                             <p class="text-xs text-[#F79633]">Connectivity Systems</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- Item 3 -->
-                <a href="#collab-3" class="flex-none w-64 p-4 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/10 hover:border-[#8FC74A]/60 hover:bg-slate-800/80 transition-all duration-300 group shadow-lg">
+                <a href="#collab-3" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-white/10 group-hover:scale-105 transition duration-300">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
                             <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h4 class="text-sm font-bold text-white group-hover:text-[#8FC74A] transition-colors">Aura Cloud</h4>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Aura Cloud</h4>
                             <p class="text-xs text-[#F79633]">Datacenter Solutions</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- Item 4 -->
-                <a href="#collab-4" class="flex-none w-64 p-4 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/10 hover:border-[#8FC74A]/60 hover:bg-slate-800/80 transition-all duration-300 group shadow-lg">
+                <a href="#collab-4" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center overflow-hidden border border-white/10 group-hover:scale-105 transition duration-300">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
                             <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h4 class="text-sm font-bold text-white group-hover:text-[#8FC74A] transition-colors">Vortex Labs</h4>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Vortex Labs</h4>
+                            <p class="text-xs text-[#F79633]">Security & RBAC</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Item 1 -->
+                <a href="#collab-1" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Nexus Tech</h4>
+                            <p class="text-xs text-[#F79633]">Infrastructure Partner</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 2 -->
+                <a href="#collab-2" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Global Fiber</h4>
+                            <p class="text-xs text-[#F79633]">Connectivity Systems</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 3 -->
+                <a href="#collab-3" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-[#8FC74A] group-hover:text-white transition-colors">Aura Cloud</h4>
+                            <p class="text-xs text-[#F79633]">Datacenter Solutions</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Item 4 -->
+                <a href="#collab-4" class="flex-none w-64 p-4 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:bg-[#8FC74A] transition-all duration-300 group shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-105 transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white group-hover:text-white transition-colors">Vortex Labs</h4>
                             <p class="text-xs text-[#F79633]">Security & RBAC</p>
                         </div>
                     </div>
@@ -156,7 +255,7 @@ $longitude="104.9089653152003";
 <!-- Standard Keyframe snippet (Put in your main <style> tag or CSS file) -->
 <footer class="gradient-brand  py-12 text-white text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
 
             {{-- Brand + Tagline --}}
 
@@ -199,15 +298,6 @@ $longitude="104.9089653152003";
                     data-km="អាសយដ្ឋាន" data-en="Address">អាសយដ្ឋាន</h4>
                 <p class=" font-bold"
                     data-km="ផ្ទះលេខ ២១ ផ្លូវលេខ៣៨៨ សង្កាត់ទួលស្វាយព្រៃទី១ ខណ្ឌបឹងកេងកង រាជធានីភ្នំពេញ" data-en="No. 21, St 388, Village 5, Sangkat Toul Svay Prey I, Khan Beoung Keng Kong, Phnom Penh.">ខណ្ឌបឹងកេងកង រាជធានីភ្នំពេញ</p>
-                <p
-                    data-km="{{ $f_ceo_ttl_km }}" data-en="{{ $f_ceo_ttl_en }}">{{ $f_ceo_ttl_km }}</p>
-                @if($f_ceo_tg)
-                <p class=" mt-2">
-                    <i class="fa-brands fa-telegram text-white mr-1"></i>
-                    <a href="https://t.me/{{ ltrim($f_ceo_tg,'@') }}" target="_blank" rel="noopener"
-                        class="hover:text-white transition">{{ $f_ceo_tg }}</a>
-                </p>
-                @endif
             </div>
             <div style="width:100%;height:100%;">
                 <iframe
