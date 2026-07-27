@@ -23,10 +23,12 @@
 
 body.dark {
     background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), url('/images/bg_dark.png');
+    background:#1f2937;
 }
 body {
     font-family: 'Kantumruy Pro', 'Inter', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
+    background:#fff !important;
     background-image: url('/images/bg.png');
     background-attachment: fixed;
     background-position: center center;
