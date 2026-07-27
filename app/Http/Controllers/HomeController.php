@@ -51,4 +51,8 @@ class HomeController extends Controller
     {
         return view('pages.portal');
     }
+    public function career()
+    {
+        return view('pages.career');
+    }
 }

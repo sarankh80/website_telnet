@@ -5,6 +5,7 @@
     @include('layouts.head')
     <link rel="icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
     <script src="{{asset('js/filament/tailwind.js')}}"></script>
+    <script src="{{asset('js/filament/additional/coreProduct.pagination.js')}}"></script>
     <style>
         .gradient-brand {
             background: linear-gradient(to right, #8FC74A, #F79633);
@@ -99,28 +100,28 @@
     const track = document.querySelector('.partner-track');
     if (track) {
 
-    // Clone until the track is wider than twice the viewport
-    while (track.scrollWidth < window.innerWidth * 2) {
-        track.innerHTML += track.innerHTML;
-    }
-
-    let x = 0;
-    const speed = 0.6; // pixels per frame
-
-    function animate() {
-
-        x -= speed;
-
-        if (Math.abs(x) >= track.scrollWidth / 2) {
-            x = 0;
+        // Clone until the track is wider than twice the viewport
+        while (track.scrollWidth < window.innerWidth * 2) {
+            track.innerHTML += track.innerHTML;
         }
 
-        track.style.transform = `translate3d(${x}px,0,0)`;
+        let x = 0;
+        const speed = 0.6; // pixels per frame
 
-        requestAnimationFrame(animate);
-    }
+        function animate() {
 
-    animate();
+            x -= speed;
+
+            if (Math.abs(x) >= track.scrollWidth / 2) {
+                x = 0;
+            }
+
+            track.style.transform = `translate3d(${x}px,0,0)`;
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
     } // end if(track)
 </script>
 

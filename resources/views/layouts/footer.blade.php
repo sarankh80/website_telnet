@@ -17,8 +17,7 @@ $fb_url = Setting::get('facebook_url','');
 $tg_url = Setting::get('telegram_url','');
 $yt_url = Setting::get('youtube_url', '');
 $li_url = Setting::get('linkedin_url','');
-$latitude="11.54732899907136";
-$longitude="104.9089653152003";
+$latlong="11.54732899907136,104.9089653152003";
 @endphp
 <section class="w-full py-12 text-white relative">
 
@@ -33,7 +32,7 @@ $longitude="104.9089653152003";
     </div>
 
     <!-- Full Viewport Width Outer Container (Infinite Width) -->
-    <div class="relative z-10 w-screen left-1/2 -translate-x-1/2 overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)]">
+    <div class="relative z-10 w-screen  overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)]">
 
         <!-- Animated Flex Belt (Seamless Infinite Scroll) -->
         <div class="animate-marquee gap-6">
@@ -261,26 +260,24 @@ $longitude="104.9089653152003";
 
             {{-- Quick Links --}}
             <div class="space-y-2">
-                <h4 class="text-sm font-bold text-white mb-3"
-                    data-km="តំណភ្ជាប់រហ័ស" data-en="Quick Links">តំណភ្ជាប់រហ័ស</h4>
+                <h4 class="text-sm font-bold text-white mb-3">{{ __('app.footer.quick_links') }}</h4>
                 @foreach([
-                ['href'=>route('about'), 'km'=>'ក្រុមហ៊ុន​យើង​ខ្ញុំ', 'en'=>'About Us'],
-                ['href'=>route('services'), 'km'=>'សេវាកម្មស្នូល', 'en'=>'Services'],
-                ['href'=>route('coverage'), 'km'=>'ការគ្របដណ្តប់', 'en'=>'Coverage'],
-                ['href'=>route('kpi'), 'km'=>'ស្តង់ដារប្រតិបត្តិការ', 'en'=>'Standard Operation'],
-                ['href'=>route('team'), 'km'=>'ក្រុមការងារ', 'en'=>'Our Team'],
-                ['href'=>route('contact'), 'km'=>'ទំនាក់ទំនង', 'en'=>'Contact'],
+
+                ['href'=>route('home'), 'label'=> __('app.footer.home')],
+                ['href'=>route('services'), 'label'=> __('app.footer.services')],
+                ['href'=>route('services'), 'label'=> __('app.footer.business')],
+                ['href'=>route('contact'), 'label'=> __('app.footer.support')],
+                ['href'=>route('about'), 'label'=> __('app.footer.about')],
+                ['href'=>route('career'), 'label'=> __('app.footer.careers')],
+                ['href'=>route('portal'), 'label'=> __('app.footer.portal')],
                 ] as $link)
-                <p><a href="{{ $link['href'] }}"
-                        class="hover:text-brand-green transition"
-                        data-km="{{ $link['km'] }}" data-en="{{ $link['en'] }}">{{ $link['km'] }}</a></p>
+                <p><a href="{{ $link['href'] }}" class="hover:text-brand-green transition">{{ $link['label'] }}</a></p>
                 @endforeach
             </div>
 
             {{-- Contact --}}
             <div class="space-y-2">
-                <h4 class="text-sm font-bold text-white mb-3"
-                    data-km="ទំនាក់ទំនង" data-en="Office Contact">ទំនាក់ទំនង</h4>
+                <h4 class="text-sm font-bold text-white mb-3">{{ __('app.footer.contact') }}</h4>
                 <p><i class="fa-solid fa-phone text-white mr-1.5"></i>
                     <a href="tel:{{ preg_replace('/\s+/','',$phone_main) }}" class="hover:text-white transition">{{ $phone_main }}</a>
                 </p>
@@ -292,16 +289,14 @@ $longitude="104.9089653152003";
                 <p><i class="fa-solid fa-globe text-white mr-1.5"></i> {{ $website }}</p>
             </div>
 
-            {{-- Leadership --}}
+            {{-- Address --}}
             <div class="space-y-2">
-                <h4 class="text-sm font-bold text-white mb-3"
-                    data-km="អាសយដ្ឋាន" data-en="Address">អាសយដ្ឋាន</h4>
-                <p class=" font-bold"
-                    data-km="ផ្ទះលេខ ២១ ផ្លូវលេខ៣៨៨ សង្កាត់ទួលស្វាយព្រៃទី១ ខណ្ឌបឹងកេងកង រាជធានីភ្នំពេញ" data-en="No. 21, St 388, Village 5, Sangkat Toul Svay Prey I, Khan Beoung Keng Kong, Phnom Penh.">ខណ្ឌបឹងកេងកង រាជធានីភ្នំពេញ</p>
+                <h4 class="text-sm font-bold text-white mb-3">{{ __('app.footer.address') }}</h4>
+                <p class="font-bold">{{ __('app.footer.address_text') }}</p>
             </div>
             <div style="width:100%;height:100%;">
                 <iframe
-                    src="https://maps.google.com/maps?q=11.5564,104.9282&output=embed"
+                    src="https://maps.google.com/maps?q={{$latlong}}&output=embed"
                     style="width:100%;height:100%;border:0;"
                     loading="lazy"
                     allowfullscreen>
@@ -310,7 +305,7 @@ $longitude="104.9089653152003";
         </div>
 
         <div class="border-t border-white-800 pt-6 text-center text-white-500">
-            <p data-km="{{ $f_copy_km }}" data-en="{{ $f_copy_en }}">{{ $f_copy_km }}</p>
+            <p>{{ __('app.footer.copyright') }}</p>
         </div>
     </div>
 </footer>

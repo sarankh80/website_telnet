@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('title', 'សេវាកម្មស្នូល — TELNET CO., LTD.')
 @section('content')
+
+@php $isKm = app()->getLocale() === 'km'; @endphp
+
 <nav class="sticky top-20 z-40 max-w-8xl h-10 mx-auto px-4 sm:px-6 lg:px-16 relative border-b border-white/10">
 
     <!-- Chamfered Background Layer -->
@@ -12,7 +15,7 @@
         <!-- Child Item 1: Home Packages -->
         <div class="relative group h-full flex items-center">
             <a href="#sub-link-1" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-[1rem] font-medium !text-white" data-km="កញ្ចប់សម្រាប់គេហដ្ឋាន" data-en="Home Packages">Home Packages</span>
+                <span class="!text-[1rem] font-medium !text-white">{{ $isKm ? 'កញ្ចប់សម្រាប់គេហដ្ឋាន' : 'Home Packages' }}</span>
                 <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
             </a>
 
@@ -50,7 +53,7 @@
         <!-- Child Item 2: Business Packages -->
         <div class="relative group h-full flex items-center">
             <a href="#sub-link-2" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-[1rem]" data-km="កញ្ចប់សម្រាប់ពាណិជ្ជកម្ម" data-en="Business Packages">Business Packages</span>
+                <span class="!text-[1rem]">{{ $isKm ? 'កញ្ចប់សម្រាប់ពាណិជ្ជកម្ម' : 'Business Packages' }}</span>
                 <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
             </a>
 
@@ -70,7 +73,7 @@
         <!-- Child Item 3: Dedicated Packages -->
         <div class="relative group h-full flex items-center">
             <a href="#sub-link-3" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-[1rem]" data-km="កញ្ចប់សម្រាប់" data-en="Dedicated Packages">Dedicated Packages</span>
+                <span class="!text-[1rem]">{{ $isKm ? 'កញ្ចប់សម្រាប់' : 'Dedicated Packages' }}</span>
                 <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
             </a>
 
@@ -90,7 +93,7 @@
         <!-- Child Item 4: Others -->
         <div class="relative group h-full flex items-center">
             <a href="#sub-link-4" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-[1rem]" data-km="សេវាកម្មផ្សេងទៀត" data-en="Others">Others</span>
+                <span class="!text-[1rem]">{{ $isKm ? 'សេវាកម្មផ្សេងទៀត' : 'Others' }}</span>
                 <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
             </a>
 
@@ -138,18 +141,17 @@
 <section class="py-12 section-bg-primary border-b border-gray-200 dark:border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-2 text-xs text-adaptive-muted mb-4">
-            <a href="{{ route('home') }}" class="hover:text-brand-green transition" data-km="ទំព័រដើម" data-en="Home">ទំព័រដើម</a>
+            <a href="{{ route('home') }}" class="hover:text-brand-green transition">{{ __('app.nav.home') }}</a>
             <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            <span data-km="សេវាកម្មស្នូល" data-en="Core Products &amp; Services">សេវាកម្មស្នូល</span>
+            <span>{{ $isKm ? 'សេវាកម្មស្នូល' : 'Core Products & Services' }}</span>
         </div>
-        <h1 class="text-3xl sm:text-4xl font-black text-adaptive-main mb-3"
-            data-km="ផលិតផល និងសេវាកម្មស្នូល" data-en="Core Products &amp; Services">
-            ផលិតផល និងសេវាកម្មស្នូល
+        <h1 class="text-3xl sm:text-4xl font-black text-adaptive-main mb-3">
+            {{ $isKm ? 'ផលិតផល និងសេវាកម្មស្នូល' : 'Core Products & Services' }}
         </h1>
-        <p class="text-adaptive-muted text-sm max-w-2xl"
-            data-km="ដំណោះស្រាយតភ្ជាប់អ៊ីនធឺណិត និងព័ត៌មានវិទ្យា ដែលឆ្លើយតបគ្រប់តម្រូវការ"
-            data-en="Internet connectivity and ICT solutions that meet every need">
-            ដំណោះស្រាយតភ្ជាប់អ៊ីនធឺណិត និងព័ត៌មានវិទ្យា ដែលឆ្លើយតបគ្រប់តម្រូវការ
+        <p class="text-adaptive-muted text-sm max-w-2xl">
+            {{ $isKm
+                ? 'ដំណោះស្រាយតភ្ជាប់អ៊ីនធឺណិត និងព័ត៌មានវិទ្យា ដែលឆ្លើយតបគ្រប់តម្រូវការ'
+                : 'Internet connectivity and ICT solutions that meet every need' }}
         </p>
     </div>
 </section>
@@ -174,11 +176,13 @@
                     <img src="{{ $card['image'] }}" alt="{{ $card['badge'] }}" class="h-24 w-auto object-contain">
                 </div>
                 <div class="w-full flex justify-center mb-2">
-                    <span class="font-bold text-brand-green bg-brand-green/10 px-3 py-1 rounded-md text-sm"
-                        data-km="{{ $card['badge_km'] }}" data-en="{{ $card['badge'] }}">{{ $card['badge_km'] }}</span>
+                    <span class="font-bold text-brand-green bg-brand-green/10 px-3 py-1 rounded-md text-sm">
+                        {{ $isKm ? $card['badge_km'] : $card['badge'] }}
+                    </span>
                 </div>
-                <p class="text-center font-bold text-[#777] mt-2 text-sm leading-relaxed"
-                    data-km="{{ $card['desc_km'] }}" data-en="{{ $card['desc_en'] }}">{{ $card['desc_km'] }}</p>
+                <p class="text-center font-bold text-[#777] mt-2 text-sm leading-relaxed">
+                    {{ $isKm ? $card['desc_km'] : $card['desc_en'] }}
+                </p>
             </div>
             @endforeach
         </div>
@@ -186,8 +190,9 @@
         {{-- DB services detail --}}
         @if($services->count())
         <div class="border-t border-gray-200 dark:border-gray-800 pt-12">
-            <h2 class="text-2xl font-bold text-adaptive-main mb-8 text-center"
-                data-km="ប្រភេទសេវាកម្មលម្អិត" data-en="Service Details">ប្រភេទសេវាកម្មលម្អិត</h2>
+            <h2 class="text-2xl font-bold text-adaptive-main mb-8 text-center">
+                {{ $isKm ? 'ប្រភេទសេវាកម្មលម្អិត' : 'Service Details' }}
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($services as $service)
                 <div class="glass-card p-6 rounded-2xl glass-card-hover">
@@ -201,7 +206,7 @@
                     <p class="text-adaptive-muted text-sm leading-relaxed">{{ $service->getDescription() }}</p>
                     <button onclick="openModal('serviceModal')"
                         class="mt-4 text-xs font-bold {{ $service->color === 'green' ? 'text-brand-green' : 'text-brand-orange' }} flex items-center gap-1 hover:gap-2 transition-all">
-                        <span data-km="សាកសួរព័ត៌មាន" data-en="Inquire Now">សាកសួរព័ត៌មាន</span>
+                        <span>{{ $isKm ? 'សាកសួរព័ត៌មាន' : 'Inquire Now' }}</span>
                         <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </button>
                 </div>
@@ -214,14 +219,13 @@
 
 <section class="py-14 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20 border-y border-gray-200 dark:border-gray-800">
     <div class="max-w-4xl mx-auto px-4 text-center space-y-5">
-        <h2 class="text-2xl font-extrabold text-adaptive-main"
-            data-km="ចាប់អារម្មណ៍ចង់ប្រើសេវាកម្មមែនទេ?" data-en="Interested in our services?">
-            ចាប់អារម្មណ៍ចង់ប្រើសេវាកម្មមែនទេ?
+        <h2 class="text-2xl font-extrabold text-adaptive-main">
+            {{ $isKm ? 'ចាប់អារម្មណ៍ចង់ប្រើសេវាកម្មមែនទេ?' : 'Interested in our services?' }}
         </h2>
         <button onclick="openModal('serviceModal')"
             class="inline-flex items-center gap-2 gradient-brand text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5">
             <i class="fa-solid fa-paper-plane"></i>
-            <span data-km="ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត" data-en="Request Internet Service">ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត</span>
+            <span>{{ $isKm ? 'ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត' : 'Request Internet Service' }}</span>
         </button>
     </div>
 </section>

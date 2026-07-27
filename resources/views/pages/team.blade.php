@@ -3,21 +3,20 @@
 
 @section('content')
 
+@php $isKm = app()->getLocale() === 'km'; @endphp
+
 <section class="py-12 section-bg-primary border-b border-gray-200 dark:border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-2 text-xs text-adaptive-muted mb-4">
-            <a href="{{ route('home') }}" class="hover:text-brand-green transition" data-km="ទំព័រដើម" data-en="Home">ទំព័រដើម</a>
+            <a href="{{ route('home') }}" class="hover:text-brand-green transition">{{ __('app.nav.home') }}</a>
             <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            <span data-km="ក្រុមការងារ" data-en="Our Team">ក្រុមការងារ</span>
+            <span>{{ __('app.nav.team') }}</span>
         </div>
-        <h1 class="text-3xl sm:text-4xl font-black text-adaptive-main mb-3"
-            data-km="ក្រុមការងារ & ថ្នាក់ដឹកនាំ" data-en="Our Team &amp; Leadership">
-            ក្រុមការងារ & ថ្នាក់ដឹកនាំ
+        <h1 class="text-3xl sm:text-4xl font-black text-adaptive-main mb-3">
+            {{ $isKm ? 'ក្រុមការងារ & ថ្នាក់ដឹកនាំ' : 'Our Team & Leadership' }}
         </h1>
-        <p class="text-adaptive-muted text-sm max-w-2xl"
-           data-km="ក្រុមអ្នកជំនាញដែលដឹកនាំ TELNET ឆ្ពោះទៅអនាគតឌីជីថល"
-           data-en="The expert team leading TELNET into the digital future">
-            ក្រុមអ្នកជំនាញដែលដឹកនាំ TELNET ឆ្ពោះទៅអនាគតឌីជីថល
+        <p class="text-adaptive-muted text-sm max-w-2xl">
+            {{ $isKm ? 'ក្រុមអ្នកជំនាញដែលដឹកនាំ TELNET ឆ្ពោះទៅអនាគតឌីជីថល' : 'The expert team leading TELNET into the digital future' }}
         </p>
     </div>
 </section>
@@ -41,27 +40,24 @@
                     @endif
                     <div class="mt-3">
                         <span class="text-xs bg-brand-green/20 text-brand-green font-bold px-3 py-1 rounded-full">
-                            <data-km="{{ $ceo->position_km ?? 'CEO & Founder' }}" data-en="{{ $ceo->position_en ?? 'CEO & Founder' }}">
-                                {{ $ceo->position_km ?? 'CEO & Founder' }}
-                            </data-km>
+                            {{ $isKm ? ($ceo->position_km ?? 'CEO & Founder') : ($ceo->position_en ?? 'CEO & Founder') }}
                         </span>
                     </div>
                 </div>
                 <div class="text-center md:text-left">
-                    <div class="text-xs text-brand-orange font-extrabold uppercase tracking-widest mb-1"
-                         data-km="ដឹកនាំកំពូល" data-en="Executive Leadership">ដឹកនាំកំពូល</div>
+                    <div class="text-xs text-brand-orange font-extrabold uppercase tracking-widest mb-1">
+                        {{ $isKm ? 'ដឹកនាំកំពូល' : 'Executive Leadership' }}
+                    </div>
                     <h2 class="text-2xl sm:text-3xl font-black text-adaptive-main mb-3">{{ $ceo->getName() }}</h2>
                     @if($ceo->bio_km || $ceo->bio_en)
-                    <p class="text-adaptive-muted text-sm leading-relaxed max-w-xl"
-                       data-km="{{ $ceo->bio_km }}" data-en="{{ $ceo->bio_en }}">
-                        {{ $ceo->bio_km ?? $ceo->bio_en }}
+                    <p class="text-adaptive-muted text-sm leading-relaxed max-w-xl">
+                        {{ $isKm ? ($ceo->bio_km ?? $ceo->bio_en) : ($ceo->bio_en ?? $ceo->bio_km) }}
                     </p>
                     @else
-                    <p class="text-adaptive-muted text-sm leading-relaxed max-w-xl"
-                       data-km="ដឹកនាំក្រុម TELNET ដ៏ចំណានក្នុងការផ្តល់សេវា ISP ប្រកបដោយគុណភាព និងច្នៃប្រឌិតទូទាំងព្រះរាជាណាចក្រកម្ពុជា។"
-                       data-en="Leading TELNET's talented team in delivering quality and innovative ISP services across the Kingdom of Cambodia.">
-                        ដឹកនាំក្រុម TELNET ដ៏ចំណានក្នុងការផ្តល់សេវា ISP ប្រកបដោយគុណភាព
-                        និងច្នៃប្រឌិតទូទាំងព្រះរាជាណាចក្រកម្ពុជា។
+                    <p class="text-adaptive-muted text-sm leading-relaxed max-w-xl">
+                        {{ $isKm
+                            ? 'ដឹកនាំក្រុម TELNET ដ៏ចំណានក្នុងការផ្តល់សេវា ISP ប្រកបដោយគុណភាព និងច្នៃប្រឌិតទូទាំងព្រះរាជាណាចក្រកម្ពុជា។'
+                            : "Leading TELNET's talented team in delivering quality and innovative ISP services across the Kingdom of Cambodia." }}
                     </p>
                     @endif
                     <div class="mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
@@ -77,9 +73,8 @@
         {{-- Management Team --}}
         @php $members = $teamMembers->where('is_ceo', false); @endphp
         @if($members->count())
-        <h2 class="text-xl font-bold text-adaptive-main mb-6"
-            data-km="ក្រុមអ្នកគ្រប់គ្រង & ថ្នាក់ដឹកនាំ" data-en="Management &amp; Leadership Team">
-            ក្រុមអ្នកគ្រប់គ្រង & ថ្នាក់ដឹកនាំ
+        <h2 class="text-xl font-bold text-adaptive-main mb-6">
+            {{ $isKm ? 'ក្រុមអ្នកគ្រប់គ្រង & ថ្នាក់ដឹកនាំ' : 'Management & Leadership Team' }}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             @foreach($members as $member)
@@ -95,9 +90,8 @@
                 @endif
                 <h4 class="font-bold text-adaptive-main text-sm">{{ $member->getName() }}</h4>
                 @if($member->position_km || $member->position_en)
-                <p class="text-xs text-brand-green mt-1 font-medium"
-                   data-km="{{ $member->position_km }}" data-en="{{ $member->position_en }}">
-                    {{ $member->position_km ?? $member->position_en }}
+                <p class="text-xs text-brand-green mt-1 font-medium">
+                    {{ $isKm ? ($member->position_km ?? $member->position_en) : ($member->position_en ?? $member->position_km) }}
                 </p>
                 @endif
             </div>
@@ -105,9 +99,8 @@
         </div>
         @else
         {{-- Placeholder cards when no team data --}}
-        <h2 class="text-xl font-bold text-adaptive-main mb-6"
-            data-km="ក្រុមអ្នកគ្រប់គ្រង & ថ្នាក់ដឹកនាំ" data-en="Management &amp; Leadership Team">
-            ក្រុមអ្នកគ្រប់គ្រង & ថ្នាក់ដឹកនាំ
+        <h2 class="text-xl font-bold text-adaptive-main mb-6">
+            {{ $isKm ? 'ក្រុមអ្នកគ្រប់គ្រង & ថ្នាក់ដឹកនាំ' : 'Management & Leadership Team' }}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             @foreach([
@@ -120,9 +113,8 @@
                 <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-slate-700 to-slate-600 flex items-center justify-center mx-auto mb-3">
                     <i class="fa-solid fa-user text-3xl text-slate-400"></i>
                 </div>
-                <h4 class="font-bold text-adaptive-main text-sm" data-km="{{ $placeholder['title_km'] }}" data-en="{{ $placeholder['title_en'] }}">{{ $placeholder['title_km'] }}</h4>
-                <p class="text-xs text-{{ $placeholder['color'] }} mt-1 font-medium"
-                   data-km="TELNET CO., LTD." data-en="TELNET CO., LTD.">TELNET CO., LTD.</p>
+                <h4 class="font-bold text-adaptive-main text-sm">{{ $isKm ? $placeholder['title_km'] : $placeholder['title_en'] }}</h4>
+                <p class="text-xs text-{{ $placeholder['color'] }} mt-1 font-medium">TELNET CO., LTD.</p>
             </div>
             @endforeach
         </div>
@@ -131,19 +123,18 @@
         {{-- Join Us CTA --}}
         <div class="mt-12 glass-card rounded-2xl p-8 text-center border border-brand-green/20">
             <div class="text-3xl mb-3"><i class="fa-solid fa-handshake text-brand-green"></i></div>
-            <h3 class="text-lg font-bold text-adaptive-main mb-2"
-                data-km="ចង់ចូលរួមជាមួយ TELNET?" data-en="Want to join the TELNET team?">
-                ចង់ចូលរួមជាមួយ TELNET?
+            <h3 class="text-lg font-bold text-adaptive-main mb-2">
+                {{ $isKm ? 'ចង់ចូលរួមជាមួយ TELNET?' : 'Want to join the TELNET team?' }}
             </h3>
-            <p class="text-adaptive-muted text-sm mb-5"
-               data-km="យើងកំពុងស្វែងរកអ្នកទេពកោសល្យ ដើម្បីរួមគ្នាកសាងបណ្ដាញអ៊ីនធឺណិតកម្ពុជា"
-               data-en="We are looking for talented individuals to help build Cambodia's internet infrastructure.">
-                យើងកំពុងស្វែងរកអ្នកទេពកោសល្យ ដើម្បីរួមគ្នាកសាងបណ្ដាញអ៊ីនធឺណិតកម្ពុជា
+            <p class="text-adaptive-muted text-sm mb-5">
+                {{ $isKm
+                    ? 'យើងកំពុងស្វែងរកអ្នកទេពកោសល្យ ដើម្បីរួមគ្នាកសាងបណ្ដាញអ៊ីនធឺណិតកម្ពុជា'
+                    : "We are looking for talented individuals to help build Cambodia's internet infrastructure." }}
             </p>
             <a href="{{ route('contact') }}"
                class="inline-flex items-center gap-2 gradient-brand text-white font-bold px-7 py-3 rounded-xl text-sm transition hover:-translate-y-0.5">
                 <i class="fa-solid fa-envelope"></i>
-                <span data-km="ទំនាក់ទំនងមកយើង" data-en="Contact Us">ទំនាក់ទំនងមកយើង</span>
+                <span>{{ $isKm ? 'ទំនាក់ទំនងមកយើង' : 'Contact Us' }}</span>
             </a>
         </div>
     </div>

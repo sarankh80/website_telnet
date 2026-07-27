@@ -5,6 +5,14 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
+// ─── Locale Switch ─────────────────────────────────────────
+Route::get('locale/{locale}', function (string $locale) {
+    if (in_array($locale, ['km', 'en'], true)) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back()->withHeaders(['Cache-Control' => 'no-store']);
+})->name('locale.switch');
+
 // ─── Frontend ──────────────────────────────────────────────
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
@@ -13,6 +21,7 @@ Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/kpi', [HomeController::class, 'kpi'])->name('kpi');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/portal', [HomeController::class, 'portal'])->name('portal');
+Route::get('/career', [HomeController::class, 'career'])->name('career');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::post('/service-request', [ContactController::class, 'serviceRequest'])->name('service.request');

@@ -35,52 +35,6 @@ window.toggleTheme = function () {
     applyTheme(!isDark);
 };
 
-// Language Management
-let currentLang = localStorage.getItem('lang') || 'en';
-
-function applyLanguage(lang) {
-    currentLang = lang;
-    document.querySelectorAll('[data-km]').forEach(el => {
-        if (el.querySelector('[data-km]')) return; // skip containers — only update leaf nodes
-        const text = el.getAttribute('data-' + lang);
-        if (text) el.textContent = text;
-    });
-    document.querySelectorAll('[data-km-ph]').forEach(el => {
-        const ph = el.getAttribute('data-' + lang + '-ph');
-        if (ph) el.placeholder = ph;
-    });
-
-    const langFlag = document.getElementById('lang-flag');
-    const kmBadge = document.getElementById('lang-km-badge');
-    const enBadge = document.getElementById('lang-en-badge');
-    const mobileLangFlag = document.getElementById('mobile-lang-flag');
-    const mobileLangLabel = document.getElementById('mobile-lang-label');
-
-    if (langFlag) langFlag.textContent = lang === 'km' ? '🇰🇭' : '🇺🇸';
-    if (kmBadge && enBadge) {
-        if (lang === 'km') {
-            kmBadge.className = "px-1.5 py-0.5 rounded text-[10px] bg-brand-green text-white font-extrabold shadow-sm transition";
-            enBadge.className = "px-1.5 py-0.5 rounded text-[10px] text-adaptive-muted font-bold transition";
-        } else {
-            kmBadge.className = "px-1.5 py-0.5 rounded text-[10px] text-adaptive-muted font-bold transition";
-            enBadge.className = "px-1.5 py-0.5 rounded text-[10px] bg-brand-orange text-white font-extrabold shadow-sm transition";
-        }
-    }
-    if (mobileLangFlag) mobileLangFlag.textContent = lang === 'km' ? '🇰🇭' : '🇺🇸';
-    if (mobileLangLabel) {
-        mobileLangLabel.textContent = lang === 'km' ? 'KM' : 'EN';
-        mobileLangLabel.className = lang === 'km'
-            ? 'text-[11px] font-extrabold text-brand-green'
-            : 'text-[11px] font-extrabold text-brand-orange';
-    }
-    document.documentElement.lang = lang;
-    localStorage.setItem('lang', lang);
-}
-
-window.toggleLanguage = function () {
-    applyLanguage(currentLang === 'km' ? 'en' : 'km');
-};
-
 // Modal Management
 window.openModal = function (id) {
     document.getElementById(id).classList.remove('hidden');
@@ -126,7 +80,6 @@ window.handleFormSubmit = function (event) {
 function initApp() {
     const savedTheme = localStorage.getItem('theme');
     applyTheme(savedTheme !== 'light');
-    applyLanguage(currentLang);
 
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -145,3 +98,4 @@ if (document.readyState === 'loading') {
 } else {
     initApp();
 }
+

@@ -3,21 +3,22 @@
 
 @section('content')
 
+@php $isKm = app()->getLocale() === 'km'; @endphp
+
 <section class="py-12 section-bg-primary border-b border-gray-200 dark:border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-2 text-xs text-adaptive-muted mb-4">
-            <a href="{{ route('home') }}" class="hover:text-brand-green transition" data-km="ទំព័រដើម" data-en="Home">ទំព័រដើម</a>
+            <a href="{{ route('home') }}" class="hover:text-brand-green transition">{{ __('app.nav.home') }}</a>
             <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            <span data-km="ស្តង់ដារប្រតិបត្តិការ" data-en="Standard Operation">ស្តង់ដារប្រតិបត្តិការ</span>
+            <span>{{ $isKm ? 'ស្តង់ដារប្រតិបត្តិការ' : 'Standard Operation' }}</span>
         </div>
-        <h1 class="text-3xl sm:text-4xl font-black text-adaptive-main mb-3"
-            data-km="ស្តង់ដារប្រតិបត្តិការ & KPI" data-en="Standard Operation &amp; KPIs">
-            ស្តង់ដារប្រតិបត្តិការ & KPI
+        <h1 class="text-3xl sm:text-4xl font-black text-adaptive-main mb-3">
+            {{ $isKm ? 'ស្តង់ដារប្រតិបត្តិការ & KPI' : 'Standard Operation & KPIs' }}
         </h1>
-        <p class="text-adaptive-muted text-sm max-w-2xl"
-           data-km="ការវាស់វែងគុណភាព និងសន្ទស្សន៍វដ្ដ/ភាពជឿជាក់ដែល TELNET ប្រតិបត្តិ"
-           data-en="Quality benchmarks and reliability indicators that TELNET operates under">
-            ការវាស់វែងគុណភាព និងសន្ទស្សន៍វដ្ដ/ភាពជឿជាក់ដែល TELNET ប្រតិបត្តិ
+        <p class="text-adaptive-muted text-sm max-w-2xl">
+            {{ $isKm
+                ? 'ការវាស់វែងគុណភាព និងសន្ទស្សន៍វដ្ដ/ភាពជឿជាក់ដែល TELNET ប្រតិបត្តិ'
+                : 'Quality benchmarks and reliability indicators that TELNET operates under' }}
         </p>
     </div>
 </section>
@@ -36,7 +37,7 @@
             @foreach($kpiStats as $s)
             <div class="glass-card p-5 rounded-2xl text-center">
                 <div class="text-2xl font-black {{ $s['color'] }} mb-1">{{ $s['value'] }}</div>
-                <div class="text-xs text-adaptive-muted" data-km="{{ $s['label_km'] }}" data-en="{{ $s['label_en'] }}">{{ $s['label_km'] }}</div>
+                <div class="text-xs text-adaptive-muted">{{ $isKm ? $s['label_km'] : $s['label_en'] }}</div>
             </div>
             @endforeach
         </div>
@@ -45,25 +46,19 @@
         <div class="glass-card rounded-2xl overflow-hidden mb-12">
             <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-800 flex items-center gap-3">
                 <i class="fa-solid fa-chart-line text-brand-green text-lg"></i>
-                <h2 class="font-bold text-adaptive-main"
-                    data-km="ស្តង់ដារប្រតិបត្តិការ (KPI Table)" data-en="Key Performance Indicators (KPI Table)">
-                    ស្តង់ដារប្រតិបត្តិការ (KPI Table)
+                <h2 class="font-bold text-adaptive-main">
+                    {{ $isKm ? 'ស្តង់ដារប្រតិបត្តិការ (KPI Table)' : 'Key Performance Indicators (KPI Table)' }}
                 </h2>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm">
                     <thead>
                         <tr class="bg-slate-800/50 text-xs">
-                            <th class="text-left px-6 py-3 text-adaptive-muted font-bold"
-                                data-km="#"           data-en="#">#</th>
-                            <th class="text-left px-6 py-3 text-adaptive-muted font-bold"
-                                data-km="ស្តង់ដារ"   data-en="Standard">ស្តង់ដារ</th>
-                            <th class="text-left px-6 py-3 text-adaptive-muted font-bold"
-                                data-km="សសិការ"     data-en="Metric">សសិការ</th>
-                            <th class="text-left px-6 py-3 text-adaptive-muted font-bold"
-                                data-km="គោលដៅ"      data-en="Target">គោលដៅ</th>
-                            <th class="text-left px-6 py-3 text-adaptive-muted font-bold"
-                                data-km="ស្ថានភាព"   data-en="Status">ស្ថានភាព</th>
+                            <th class="text-left px-6 py-3 text-adaptive-muted font-bold">#</th>
+                            <th class="text-left px-6 py-3 text-adaptive-muted font-bold">{{ $isKm ? 'ស្តង់ដារ' : 'Standard' }}</th>
+                            <th class="text-left px-6 py-3 text-adaptive-muted font-bold">{{ $isKm ? 'សសិការ' : 'Metric' }}</th>
+                            <th class="text-left px-6 py-3 text-adaptive-muted font-bold">{{ $isKm ? 'គោលដៅ' : 'Target' }}</th>
+                            <th class="text-left px-6 py-3 text-adaptive-muted font-bold">{{ $isKm ? 'ស្ថានភាព' : 'Status' }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,15 +77,13 @@
                         @foreach($kpiRows as $i => $row)
                         <tr class="border-t border-gray-200 dark:border-gray-800 hover:bg-slate-800/30 transition">
                             <td class="px-6 py-3.5 text-adaptive-muted text-xs">{{ $i + 1 }}</td>
-                            <td class="px-6 py-3.5 font-medium text-adaptive-main"
-                                data-km="{{ $row['std_km'] }}" data-en="{{ $row['std_en'] }}">{{ $row['std_km'] }}</td>
-                            <td class="px-6 py-3.5 text-adaptive-muted"
-                                data-km="{{ $row['metric_km'] }}" data-en="{{ $row['metric_en'] }}">{{ $row['metric_km'] }}</td>
+                            <td class="px-6 py-3.5 font-medium text-adaptive-main">{{ $isKm ? $row['std_km'] : $row['std_en'] }}</td>
+                            <td class="px-6 py-3.5 text-adaptive-muted">{{ $isKm ? $row['metric_km'] : $row['metric_en'] }}</td>
                             <td class="px-6 py-3.5 font-bold text-brand-green">{{ $row['target'] }}</td>
                             <td class="px-6 py-3.5">
                                 <span class="inline-flex items-center gap-1 text-xs font-bold bg-brand-green/10 text-brand-green px-2.5 py-1 rounded-full">
                                     <i class="fa-solid fa-circle-check text-[10px]"></i>
-                                    <span data-km="សម្រេចបាន" data-en="Achieved">សម្រេចបាន</span>
+                                    {{ $isKm ? 'សម្រេចបាន' : 'Achieved' }}
                                 </span>
                             </td>
                         </tr>
@@ -101,9 +94,8 @@
         </div>
 
         {{-- SLA Levels --}}
-        <h3 class="text-lg font-bold text-adaptive-main mb-6"
-            data-km="កម្រិតសេវា (SLA) ការធានា" data-en="Service Level Agreement (SLA) Guarantees">
-            កម្រិតសេវា (SLA) ការធានា
+        <h3 class="text-lg font-bold text-adaptive-main mb-6">
+            {{ $isKm ? 'កម្រិតសេវា (SLA) ការធានា' : 'Service Level Agreement (SLA) Guarantees' }}
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             @php $slaPlans = [
@@ -135,14 +127,13 @@
 
 <section class="py-14 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20 border-y border-gray-200 dark:border-gray-800">
     <div class="max-w-4xl mx-auto px-4 text-center space-y-5">
-        <h2 class="text-2xl font-extrabold text-adaptive-main"
-            data-km="ស្នើ SLA លម្អិតសម្រាប់អ្នក?" data-en="Need a detailed SLA for your business?">
-            ស្នើ SLA លម្អិតសម្រាប់អ្នក?
+        <h2 class="text-2xl font-extrabold text-adaptive-main">
+            {{ $isKm ? 'ស្នើ SLA លម្អិតសម្រាប់អ្នក?' : 'Need a detailed SLA for your business?' }}
         </h2>
         <button onclick="openModal('serviceModal')"
                 class="inline-flex items-center gap-2 gradient-brand text-white font-bold px-8 py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5">
             <i class="fa-solid fa-paper-plane"></i>
-            <span data-km="ទាក់ទងទៅ TELNET" data-en="Contact TELNET">ទាក់ទងទៅ TELNET</span>
+            <span>{{ $isKm ? 'ទាក់ទងទៅ TELNET' : 'Contact TELNET' }}</span>
         </button>
     </div>
 </section>
