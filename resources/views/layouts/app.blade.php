@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" class="scroll-smooth dark">
+<html lang="{{ app()->getLocale() }}" class="scroll-smooth">
 
 <head>
     @include('layouts.head')
@@ -16,6 +16,7 @@
             width: max-content;
             animation: infinite-scroll 8s linear infinite;
         }
+
         .marquee-box {
             display: flex;
             white-space: nowrap;
