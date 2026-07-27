@@ -5,6 +5,14 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
+// ─── Locale Switch ─────────────────────────────────────────
+Route::get('locale/{locale}', function (string $locale) {
+    if (in_array($locale, ['km', 'en'], true)) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back()->withHeaders(['Cache-Control' => 'no-store']);
+})->name('locale.switch');
+
 // ─── Frontend ──────────────────────────────────────────────
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');

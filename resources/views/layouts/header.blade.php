@@ -21,13 +21,13 @@
             <nav class="hidden lg:flex items-center space-x-1 xl:space-x-1 text-xs xl:text-sm font-semibold text-adaptive-muted whitespace-nowrap">
                 @php
                 $navLinks = [
-                ['route' => 'home', 'km' => 'ទំព័រដើម', 'en' => 'Home', 'icon' => 'fa-building', 'color' => 'text-brand-green'],
-                ['route' => 'services', 'km' => 'សេវាកម្មអ៊ីនធឺណេត', 'en' => 'Internet Service', 'icon' => 'fa-building', 'color' => 'text-brand-green'],
-                ['route' => 'services', 'km' => 'ពាណិជកម្ម', 'en' => 'Business', 'icon' => 'fa-bolt', 'color' => 'text-brand-orange'],
-                ['route' => 'team', 'km' => 'ការគាំទ្រ', 'en' => 'Support', 'icon' => 'fa-users', 'color' => 'text-brand-green'],
-                ['route' => 'about', 'km' => 'អំពីយើង', 'en' => 'About Us', 'icon' => 'fa-globe', 'color' => 'text-brand-green'],
-                ['route' => 'kpi', 'km' => 'ឲកាសការងារ', 'en' => 'Careers', 'icon' => 'fa-chart-line', 'color' => 'text-brand-green'],
-                ['route' => 'portal', 'km' => 'ចូលប្រើប្រាស់', 'en' => 'Portal', 'icon' => 'fa-headset', 'color' => 'text-brand-orange'],
+                ['route' => 'home',     'label' => __('app.nav.home'),             'icon' => 'fa-house',       'color' => 'text-brand-green'],
+                ['route' => 'services', 'label' => __('app.nav.internet_service'), 'icon' => 'fa-bolt',        'color' => 'text-brand-green'],
+                ['route' => 'services', 'label' => __('app.nav.business'),         'icon' => 'fa-briefcase',   'color' => 'text-brand-orange'],
+                ['route' => 'team',     'label' => __('app.nav.support'),          'icon' => 'fa-headset',     'color' => 'text-brand-green'],
+                ['route' => 'about',    'label' => __('app.nav.about'),            'icon' => 'fa-globe',       'color' => 'text-brand-green'],
+                ['route' => 'kpi',      'label' => __('app.nav.kpi'),              'icon' => 'fa-chart-line',  'color' => 'text-brand-green'],
+                ['route' => 'portal',   'label' => __('app.nav.portal'),           'icon' => 'fa-sign-in-alt', 'color' => 'text-brand-orange'],
                 ];
                 @endphp
                 @foreach($navLinks as $link)
@@ -35,38 +35,40 @@
                 <a href="{{ route($link['route']) }}"
                     class="nav-link-pill px-2 py-2 rounded-lg hover:text-brand-green hover:bg-brand-green/5 transition flex items-center gap-1.5 {{ $active ? 'text-brand-green active' : '' }}">
                     <i class="fa-solid {{ $link['icon'] }} {{ $link['color'] }} text-xs opacity-70"></i>
-                    <span data-km="{{ $link['km'] }}" data-en="{{ $link['en'] }}">{{ $link['km'] }}</span>
+                    <span>{{ $link['label'] }}</span>
                 </a>
                 @endforeach
             </nav>
 
-            <!-- Desktop Actions: Language + Theme (combined button only, no CTA) -->
+            <!-- Desktop Actions: Language + Theme -->
+            @php $currentLocale = app()->getLocale(); @endphp
             <div class="hidden sm:flex items-center space-x-2.5 flex-shrink-0 whitespace-nowrap">
-                <button id="lang-toggle" onclick="toggleLanguage()"
-                    class="lang-switch-btn px-2 py-2 rounded-xl text-xs font-bold text-adaptive-main flex items-center gap-2 group cursor-pointer shadow-lg"
-                    title="Switch Language / ប្តូរភាសា">
-                    <span id="lang-flag" class="text-sm">🇬🇧</span>
-                    <div class="flex items-center gap-1">
-                        <span id="lang-km-badge" class="px-1.5 py-0.5 rounded text-[10px] text-adaptive-muted font-bold transition">ខ្មែរ</span>
-                        <span class="text-adaptive-muted text-[10px]">/</span>
-                        <span id="lang-en-badge" class="px-1.5 py-0.5 rounded text-[10px] bg-brand-green text-white font-extrabold shadow-sm transition">EN</span>
-                    </div>
-                    <span onclick="event.stopPropagation(); toggleTheme()"
-                        class=" text-amber-500 dark:text-amber-300  transition-all duration-300 flex items-center justify-center"
+                <div class="lang-switch-btn px-2 py-2 rounded-xl text-xs font-bold text-adaptive-main flex items-center gap-2 shadow-lg">
+                    <a href="{{ route('locale.switch', $currentLocale === 'km' ? 'en' : 'km') }}"
+                       class="flex items-center gap-1.5 cursor-pointer" title="Switch Language / ប្តូរភាសា">
+                        <span class="text-sm">{{ $currentLocale === 'km' ? '🇰🇭' : '🇺🇸' }}</span>
+                        <div class="flex items-center gap-1">
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold transition {{ $currentLocale === 'km' ? 'bg-brand-green text-white font-extrabold shadow-sm' : 'text-adaptive-muted' }}">ខ្មែរ</span>
+                            <span class="text-adaptive-muted text-[10px]">/</span>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold transition {{ $currentLocale === 'en' ? 'bg-brand-orange text-white font-extrabold shadow-sm' : 'text-adaptive-muted' }}">EN</span>
+                        </div>
+                    </a>
+                    <span onclick="toggleTheme()"
+                        class="text-amber-500 dark:text-amber-300 transition-all duration-300 flex items-center justify-center cursor-pointer"
                         title="ប្តូរ Dark / Light Mode">
                         <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-base hidden"></i>
                         <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-base"></i>
                     </span>
-                </button>
+                </div>
             </div>
 
             <!-- Mobile Header Tools -->
             <div class="lg:hidden flex items-center space-x-2">
-                <button onclick="toggleLanguage()"
-                    class="lang-switch-btn px-2.5 py-1.5 rounded-lg text-adaptive-main text-xs font-bold flex items-center gap-1.5">
-                    <span id="mobile-lang-flag">🇬🇧</span>
-                    <span id="mobile-lang-label" class="text-[11px] font-extrabold text-brand-green">EN</span>
-                </button>
+                <a href="{{ route('locale.switch', $currentLocale === 'km' ? 'en' : 'km') }}"
+                   class="lang-switch-btn px-2.5 py-1.5 rounded-lg text-adaptive-main text-xs font-bold flex items-center gap-1.5">
+                    <span>{{ $currentLocale === 'km' ? '🇰🇭' : '🇺🇸' }}</span>
+                    <span class="text-[11px] font-extrabold {{ $currentLocale === 'km' ? 'text-brand-green' : 'text-brand-orange' }}">{{ strtoupper($currentLocale) }}</span>
+                </a>
                 <button onclick="toggleTheme()" class="p-2 rounded-lg text-amber-400 dark:text-amber-300 bg-slate-800/50">
                     <i id="mobile-theme-icon" class="fa-solid fa-sun text-lg"></i>
                 </button>
@@ -81,20 +83,20 @@
     <div id="mobile-menu" class="hidden lg:hidden section-bg-secondary border-b border-gray-700/80 px-4 pt-4 pb-6 space-y-2 text-sm transition-all duration-300 shadow-xl">
         @php
         $mobileLinks = [
-        ['href' => route('home'), 'km' => 'ទំព័រដើម', 'en' => 'Home', 'icon' => 'fa-users', 'color' => 'text-brand-green'],
-        ['href' => route('services'), 'km' => 'សេវាកម្មអ៊ីនធឺណេត', 'en' => 'Internet Services', 'icon' => 'fa-bolt', 'color' => 'text-brand-orange'],
-        ['href' => "", 'km' => 'ពាណិជកម្ម', 'en' => 'Business', 'icon' => 'fa-globe', 'color' => 'text-brand-green'],
-        ['href' => route('kpi'), 'km' => 'ការគាំទ្រ', 'en' => 'Support', 'icon' => 'fa-chart-line', 'color' => 'text-brand-green'],
-        ['href' => route('about'), 'km' => 'ក្រុមហ៊ុន​យើង​ខ្ញុំ', 'en' => 'About Us', 'icon' => 'fa-building', 'color' => 'text-brand-green'],
-        ['href' => route('team'), 'km' => 'ក្រុមការងារ', 'en' => 'Careers', 'icon' => 'fa-users', 'color' => 'text-brand-green'],
-        ['href' => route('portal'), 'km' => 'ចូលប្រើប្រាស់', 'en' => 'Portal', 'icon' => 'fa-headset', 'color' => 'text-brand-orange'],
+        ['href' => route('home'),     'label' => __('app.nav.home'),             'icon' => 'fa-house',       'color' => 'text-brand-green'],
+        ['href' => route('services'), 'label' => __('app.nav.internet_service'), 'icon' => 'fa-bolt',        'color' => 'text-brand-orange'],
+        ['href' => "",                'label' => __('app.nav.business'),         'icon' => 'fa-briefcase',   'color' => 'text-brand-green'],
+        ['href' => route('kpi'),      'label' => __('app.nav.kpi'),              'icon' => 'fa-chart-line',  'color' => 'text-brand-green'],
+        ['href' => route('about'),    'label' => __('app.nav.about'),            'icon' => 'fa-building',    'color' => 'text-brand-green'],
+        ['href' => route('team'),     'label' => __('app.nav.team'),             'icon' => 'fa-users',       'color' => 'text-brand-green'],
+        ['href' => route('portal'),   'label' => __('app.nav.portal'),           'icon' => 'fa-headset',     'color' => 'text-brand-orange'],
         ];
         @endphp
         @foreach($mobileLinks as $link)
         <a href="{{ $link['href'] }}" onclick="closeMobileMenu()"
             class="flex items-center gap-2.5 text-adaptive-muted hover:text-brand-green hover:bg-brand-green/10 p-2.5 rounded-xl transition font-medium">
             <i class="fa-solid {{ $link['icon'] }} {{ $link['color'] }} w-5"></i>
-            <span data-km="{{ $link['km'] }}" data-en="{{ $link['en'] }}">{{ $link['km'] }}</span>
+            <span>{{ $link['label'] }}</span>
         </a>
         @endforeach
 
@@ -104,9 +106,8 @@
                 <i class="fa-solid fa-headset"></i> NOC Support: 097 513 5135 (24/7)
             </a>
             <button onclick="closeMobileMenu(); openModal('serviceModal');"
-                class="w-full text-xs gradient-brand text-white py-3 rounded-xl font-bold shadow-md"
-                data-km="ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត" data-en="Request Service">
-                ស្នើសុំភ្ជាប់សេវាអ៊ីនធឺណិត
+                class="w-full text-xs gradient-brand text-white py-3 rounded-xl font-bold shadow-md">
+                {{ __('app.nav.request_btn') }}
             </button>
         </div>
     </div>

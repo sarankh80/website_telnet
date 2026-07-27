@@ -261,26 +261,22 @@ $longitude="104.9089653152003";
 
             {{-- Quick Links --}}
             <div class="space-y-2">
-                <h4 class="text-sm font-bold text-white mb-3"
-                    data-km="តំណភ្ជាប់រហ័ស" data-en="Quick Links">តំណភ្ជាប់រហ័ស</h4>
+                <h4 class="text-sm font-bold text-white mb-3">{{ __('app.footer.quick_links') }}</h4>
                 @foreach([
-                ['href'=>route('about'), 'km'=>'ក្រុមហ៊ុន​យើង​ខ្ញុំ', 'en'=>'About Us'],
-                ['href'=>route('services'), 'km'=>'សេវាកម្មស្នូល', 'en'=>'Services'],
-                ['href'=>route('coverage'), 'km'=>'ការគ្របដណ្តប់', 'en'=>'Coverage'],
-                ['href'=>route('kpi'), 'km'=>'ស្តង់ដារប្រតិបត្តិការ', 'en'=>'Standard Operation'],
-                ['href'=>route('team'), 'km'=>'ក្រុមការងារ', 'en'=>'Our Team'],
-                ['href'=>route('contact'), 'km'=>'ទំនាក់ទំនង', 'en'=>'Contact'],
+                ['href'=>route('about'),    'label'=> __('app.footer.about')],
+                ['href'=>route('services'), 'label'=> __('app.footer.services')],
+                ['href'=>route('coverage'), 'label'=> __('app.footer.coverage')],
+                ['href'=>route('kpi'),      'label'=> __('app.footer.standard_op')],
+                ['href'=>route('team'),     'label'=> __('app.footer.our_team')],
+                ['href'=>route('contact'),  'label'=> __('app.footer.contact_link')],
                 ] as $link)
-                <p><a href="{{ $link['href'] }}"
-                        class="hover:text-brand-green transition"
-                        data-km="{{ $link['km'] }}" data-en="{{ $link['en'] }}">{{ $link['km'] }}</a></p>
+                <p><a href="{{ $link['href'] }}" class="hover:text-brand-green transition">{{ $link['label'] }}</a></p>
                 @endforeach
             </div>
 
             {{-- Contact --}}
             <div class="space-y-2">
-                <h4 class="text-sm font-bold text-white mb-3"
-                    data-km="ទំនាក់ទំនង" data-en="Office Contact">ទំនាក់ទំនង</h4>
+                <h4 class="text-sm font-bold text-white mb-3">{{ __('app.footer.contact') }}</h4>
                 <p><i class="fa-solid fa-phone text-white mr-1.5"></i>
                     <a href="tel:{{ preg_replace('/\s+/','',$phone_main) }}" class="hover:text-white transition">{{ $phone_main }}</a>
                 </p>
@@ -292,12 +288,10 @@ $longitude="104.9089653152003";
                 <p><i class="fa-solid fa-globe text-white mr-1.5"></i> {{ $website }}</p>
             </div>
 
-            {{-- Leadership --}}
+            {{-- Address --}}
             <div class="space-y-2">
-                <h4 class="text-sm font-bold text-white mb-3"
-                    data-km="អាសយដ្ឋាន" data-en="Address">អាសយដ្ឋាន</h4>
-                <p class=" font-bold"
-                    data-km="ផ្ទះលេខ ២១ ផ្លូវលេខ៣៨៨ សង្កាត់ទួលស្វាយព្រៃទី១ ខណ្ឌបឹងកេងកង រាជធានីភ្នំពេញ" data-en="No. 21, St 388, Village 5, Sangkat Toul Svay Prey I, Khan Beoung Keng Kong, Phnom Penh.">ខណ្ឌបឹងកេងកង រាជធានីភ្នំពេញ</p>
+                <h4 class="text-sm font-bold text-white mb-3">{{ __('app.footer.address') }}</h4>
+                <p class="font-bold">{{ __('app.footer.address_text') }}</p>
             </div>
             <div style="width:100%;height:100%;">
                 <iframe
@@ -310,7 +304,7 @@ $longitude="104.9089653152003";
         </div>
 
         <div class="border-t border-white-800 pt-6 text-center text-white-500">
-            <p data-km="{{ $f_copy_km }}" data-en="{{ $f_copy_en }}">{{ $f_copy_km }}</p>
+            <p>{{ __('app.footer.copyright') }}</p>
         </div>
     </div>
 </footer>

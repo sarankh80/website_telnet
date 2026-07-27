@@ -8,36 +8,24 @@
             <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
 
                 <h1 class="text-3xl sm:text-5xl font-black leading-tight tracking-normal text-adaptive-main lg:leading-snug">
-                    <span
-                        data-km="ផ្តល់សេវាអ៊ីនធឺណិតល្បឿនខ្ពស់ និងដំណោះស្រាយឌីជីថល "
-                        data-en="High-Speed Internet Service &amp; Digital Solutions ">
-                        ផ្តល់សេវាអ៊ីនធឺណិតល្បឿនខ្ពស់ និងដំណោះស្រាយឌីជីថល
-                    </span>
-                    <span class="text-transparent bg-clip-text gradient-brand"
-                        data-km="ដែលអ្នកអាចទុកចិត្ត"
-                        data-en="You Can Trust">
-                        ដែលអ្នកអាចទុកចិត្ត
-                    </span>
+                    <span>{{ __('app.hero.title') }}</span>
+                    <span class="text-transparent bg-clip-text gradient-brand">{{ __('app.hero.highlight') }}</span>
                 </h1>
 
-                <p class="text-adaptive-muted !text-[#777] text-base sm:text-lg max-w-2xl leading-relaxed"
-                    data-km="ក្រុមហ៊ុន TELNET CO., LTD ផ្តល់ហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតល្អប្រណីត (FTTH, FTTB, FTTX, FTTR) និងដំណោះស្រាយបណ្តាញ ICT ដល់គ្រួសារ អាជីវកម្ម ក្រុមហ៊ុន និងស្ថាប័នរដ្ឋាភិបាល"
-                    data-en="TELNET CO., LTD provides state-of-the-art optical fiber infrastructure (FTTH, FTTB, FTTX, FTTR) and ICT network solutions for households, businesses, enterprises, and government institutions.">
-                    ក្រុមហ៊ុន <strong>TELNET CO., LTD</strong>
-                    ផ្តល់ហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតល្អប្រណីត (FTTH, FTTB, FTTX, FTTR)
-                    និងដំណោះស្រាយបណ្តាញ ICT ដល់គ្រួសារ អាជីវកម្ម ក្រុមហ៊ុន និងស្ថាប័នរដ្ឋាភិបាល
+                <p class="text-adaptive-muted !text-[#777] text-base sm:text-lg max-w-2xl leading-relaxed">
+                    {{ __('app.hero.desc') }}
                 </p>
 
                 <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
                     <button onclick="openModal('serviceModal')"
                         class="gradient-brand hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-brand-green/20 transition transform hover:-translate-y-0.5 flex items-center gap-2">
-                        <span data-km="ចុះឈ្មោះប្រើសេវាអ៊ីនធឺណិត" data-en="Subscribe Internet">ចុះឈ្មោះប្រើសេវាអ៊ីនធឺណិត</span>
+                        <span>{{ __('app.hero.cta_primary') }}</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                     <a href="{{route('services')}}"
                         class="glass-card hover:-translate-y-0.5 transition text-adaptive-main font-semibold px-6 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 transition flex items-center gap-2">
                         <i class="fa-solid fa-list-check text-brand-orange"></i>
-                        <span data-km="មើលបន្ថែមអំពីសេវាកម្ម" data-en="Explore Services">មើលបន្ថែមអំពីសេវាកម្ម</span>
+                        <span>{{ __('app.hero.cta_secondary') }}</span>
                     </a>
                 </div>
             </div>
@@ -57,36 +45,34 @@
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-12 h-12 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center text-xl"><i class="fa-solid fa-eye"></i></div>
                     <div>
-                        <h3 class="text-xl font-bold text-adaptive-main" data-km="ចក្ខុវិស័យ​ (OUR VISION)" data-en="OUR VISION">ចក្ខុវិស័យ (OUR VISION)</h3>
-                        <p class="text-xs text-brand-green font-bold" data-km="គោលដៅអភិវឌ្ឍន៍រយៈពេលវែង" data-en="Long-term Development Goals">គោលដៅអភិវឌ្ឍន៍រយៈពេលវែង</p>
+                        <h3 class="text-xl font-bold text-adaptive-main">{{ __('app.about.vision_title') }}</h3>
+                        <p class="text-xs text-brand-green font-bold">{{ __('app.about.vision_subtitle') }}</p>
                     </div>
                 </div>
-                <p class="text-adaptive-muted text-sm leading-relaxed"
-                    data-km="ក្លាយជាអ្នកផ្តល់សេវាអ៉ីនធឺណិត (ISP) ឈានមុខគេនៅកម្ពុជា ដោយផ្តល់សេវាដែលមានគុណភាពខ្ពស់ ល្បឿនលឿន គួរឱ្យទុកចិត្ត និងដំណោះស្រាយតភ្ជាប់ឌីជីថលប្រកបដោយភាពច្នៃប្រឌិតខ្ពស់បំផុត។"
-                    data-en="To become a leading Internet Service Provider (ISP) in Cambodia by offering high-quality, high-speed, reliable services and innovative digital connectivity solutions.">
-                    ក្លាយជាអ្នកផ្តល់សេវាអ៉ីនធឺណិត (ISP) ឈានមុខគេនៅកម្ពុជា ដោយផ្តល់សេវាដែលមានគុណភាពខ្ពស់ ល្បឿនលឿន គួរឱ្យទុកចិត្ត និងដំណោះស្រាយតភ្ជាប់ឌីជីថលប្រកបដោយភាពច្នៃប្រឌិតខ្ពស់បំផុត។
-                </p>
+                <p class="text-adaptive-muted text-sm leading-relaxed">{{ __('app.about.vision_desc') }}</p>
             </div>
             <div class="glass-card p-8 rounded-2xl border-l-4 border-l-brand-orange relative overflow-hidden">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-12 h-12 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center text-xl"><i class="fa-solid fa-bullseye"></i></div>
                     <div>
-                        <h3 class="text-xl font-bold text-adaptive-main" data-km="បេសកម្ម​ (OUR MISSION)" data-en="OUR MISSION">បេសកម្ម (OUR MISSION)</h3>
-                        <p class="text-xs text-brand-orange font-bold" data-km="ការប្តេជ្ញាចិត្តចំពោះអតិថិជន" data-en="Customer Commitment">ការប្តេជ្ញាចិត្តចំពោះអតិថិជន</p>
+                        <h3 class="text-xl font-bold text-adaptive-main">{{ __('app.about.mission_title') }}</h3>
+                        <p class="text-xs text-brand-orange font-bold">{{ __('app.about.mission_subtitle') }}</p>
                     </div>
                 </div>
                 <ul class="text-adaptive-muted text-xs sm:text-sm space-y-2 list-disc list-inside">
-                    <li data-km="ផ្តល់សេវាតភ្ជាប់អ៉ីនធឺណិតដែលមានល្បឿនលឿន គួរឱ្យទុកចិត្ត និងមានស្ថេរភាព។" data-en="Provide high-speed, reliable, and highly stable internet connectivity.">ផ្តល់សេវាតភ្ជាប់អ៉ីនធឺណិតដែលមានល្បឿនលឿន គួរឱ្យទុកចិត្ត និងមានស្ថេរភាព។</li>
-                    <li data-km="សាងសង់ហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញដែលមានសុវត្ថិភាព និងអាចពង្រីកបានទូទាំងប្រទេសកម្ពុជា។" data-en="Build secure, scalable network infrastructure across Cambodia.">សាងសង់ហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញដែលមានសុវត្ថិភាព និងអាចពង្រីកបានទូទាំងប្រទេសកម្ពុជា។</li>
-                    <li data-km="ផ្តល់បទពិសោធន៍ល្អបំផុតដល់អតិថិជន និងបច្ចេកវិទ្យាព័ត៌មានប្រកបដោយភាពច្នៃប្រឌិត។" data-en="Deliver top customer experience and cutting-edge IT technology.">ផ្តល់បទពិសោធន៍ល្អបំផុតដល់អតិថិជន និងបច្ចេកវិទ្យាព័ត៌មានប្រកបដោយភាពច្នៃប្រឌិត។</li>
-                    <li data-km="រក្សាស្តង់ដារខ្ពស់នៃការគាំទ្រអតិថិជន និងរួមចំណែកដល់ការផ្លាស់ប្តូរឌីជីថល។" data-en="Maintain top-tier customer support and support Cambodia's digital transformation.">រក្សាស្តង់ដារខ្ពស់នៃការគាំទ្រអតិថិជន និងរួមចំណែកដល់ការផ្លាស់ប្តូរឌីជីថល។</li>
+                    <li>{{ __('app.about.mission_item_1') }}</li>
+                    <li>{{ __('app.about.mission_item_2') }}</li>
+                    <li>{{ __('app.about.mission_item_3') }}</li>
+                    <li>{{ __('app.about.mission_item_4') }}</li>
                 </ul>
             </div>
         </div>
         <div class="mt-8">
-            <h3 class="text-center text-lg font-bold text-adaptive-main mb-6" data-km="គុណតម្លៃស្នូល (CORE VALUES) ចំនួន ៨ គោលការណ៍" data-en="OUR 8 CORE VALUES">គុណតម្លៃស្នូល (CORE VALUES) ចំនួន ៨ គោលការណ៍</h3>
+            <h3 class="text-center text-lg font-bold text-adaptive-main mb-6">{{ __('app.about.values_title') }}</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                @php $coreValues = [
+                @php
+                $isKm = app()->getLocale() === 'km';
+                $coreValues = [
                 ['icon'=>'fa-network-wired','color'=>'brand-green','km'=>'1. ការតភ្ជាប់ដែលអាចទុកចិត្តបាន','en'=>'1. Reliable Connectivity','dk'=>'ផ្តល់សេវាអ៉ីនធឺណិតដែលមានស្ថេរភាពឥតរអាក់រអួល។','de'=>'Ensure seamless, stable internet service for all users.'],
                 ['icon'=>'fa-user-gear','color'=>'brand-orange','km'=>'2. អតិថិជនជាចម្បង','en'=>'2. Customer First','dk'=>'ការប្តេជ្ញាចិត្តខ្ពស់ក្នុងការបម្រើតម្រូវការរបស់អតិថិជន។','de'=>'Dedicated commitment to serving every customer need.'],
                 ['icon'=>'fa-award','color'=>'brand-green','km'=>'3. ភាពឆ្នើមផ្នែកប្រតិបត្តិការ','en'=>'3. Operational Excellence','dk'=>'រក្សាស្តង់ដារបច្ចេកទេស និងប្រតិបត្តិការកម្រិតខ្ពស់។','de'=>'Maintain rigorous technical and operational standards.'],
@@ -99,8 +85,8 @@
                 @foreach($coreValues as $val)
                 <div class="glass-card p-5 rounded-xl border border-gray-200 dark:border-gray-800 glass-card-hover">
                     <div class="text-{{ $val['color'] }} text-2xl mb-2"><i class="fa-solid {{ $val['icon'] }}"></i></div>
-                    <h4 class="font-bold text-adaptive-main text-sm" data-km="{{ $val['km'] }}" data-en="{{ $val['en'] }}">{{ $val['km'] }}</h4>
-                    <p class="text-xs text-adaptive-muted mt-1" data-km="{{ $val['dk'] }}" data-en="{{ $val['de'] }}">{{ $val['dk'] }}</p>
+                    <h4 class="font-bold text-adaptive-main text-sm">{{ $isKm ? $val['km'] : $val['en'] }}</h4>
+                    <p class="text-xs text-adaptive-muted mt-1">{{ $isKm ? $val['dk'] : $val['de'] }}</p>
                 </div>
                 @endforeach
             </div>
@@ -112,6 +98,7 @@
 <section id="services" class="py-8 section-bg-primary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @php
+        $isKm = app()->getLocale() === 'km';
         $serviceCards = [
         ['image' => '/images/High_Speed.png', 'badge' => 'High Speed', 'badge_km' => 'ល្បឿនខ្ពស់', 'desc_en' => 'Provide high-speed, reliable and stable internet connectivity.', 'desc_km' => 'ផ្តល់ការតភ្ជាប់អ៊ីនធឺណិតល្បឿនលឿន ជឿជាក់ និងស្ថិតស្ថេរ។'],
         ['image' => '/images/Scalable.png', 'badge' => 'Scalable', 'badge_km' => 'អាចពង្រីកបាន', 'desc_en' => 'Build scalable and secure network infrastructure across Cambodia.', 'desc_km' => 'សាងសង់ហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញអាចពង្រីក និងមានសុវត្ថិភាពទូទាំងកម្ពុជា។'],
@@ -129,11 +116,13 @@
                     <img src="{{ $card['image'] }}" alt="{{ $card['badge'] }}" class="h-24 w-auto object-contain">
                 </div>
                 <div class="w-full flex justify-center">
-                    <span class="text-md text-center font-bold text-brand-green bg-brand-green/10 px-2.5 py-1 rounded-md"
-                        data-km="{{ $card['badge_km'] }}" data-en="{{ $card['badge'] }}">{{ $card['badge_km'] }}</span>
+                    <span class="text-md text-center font-bold text-brand-green bg-brand-green/10 px-2.5 py-1 rounded-md">
+                        {{ $isKm ? $card['badge_km'] : $card['badge'] }}
+                    </span>
                 </div>
-                <h3 class="text-md text-center font-bold text-[#777] mt-2"
-                    data-km="{{ $card['desc_km'] }}" data-en="{{ $card['desc_en'] }}">{{ $card['desc_km'] }}</h3>
+                <h3 class="text-md text-center font-bold text-[#777] mt-2">
+                    {{ $isKm ? $card['desc_km'] : $card['desc_en'] }}
+                </h3>
             </div>
             @endforeach
         </div>
@@ -172,7 +161,7 @@
                 @if($branch->type !== 'hq')
                 <p class="text-xs text-brand-green mt-1 font-medium">
                     <i class="fa-solid fa-circle-check mr-1"></i>
-                    <span data-km="មានហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតសកម្ម" data-en="Active Fiber Optic Infrastructure">មានហេដ្ឋារចនាសម្ព័ន្ធកាប់អ៊ីនធឺណិតសកម្ម</span>
+                    {{ __('app.fiber_active') }}
                 </p>
                 @endif
             </div>
@@ -504,7 +493,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <x-section-title label="06. ការគាំទ្រ និងប្រព័ន្ធ ២៤/៧" title="កម្រិតការឡើងនៃបញ្ហា (Escalation Level Matrix)" subtitle="ក្រុមការងារជំនាញត្រៀមខ្លួនដោះស្រាយបញ្ហារហ័ស ២៤ ម៉ោង" labelColor="text-brand-green" />
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            @php $levels = [
+            @php
+            $isKm = app()->getLocale() === 'km';
+            $levels = [
             ['color'=>'green','level'=>'Level 1','tk'=>'ក្រុមការងារ NOC 24/7','te'=>'NOC Team 24/7','dk'=>'ទទួលសំបុត្រ (Ticket) វិភាគ និងដោះស្រាយពីចម្ងាយ','de'=>'Receive tickets, analyze, and resolve remotely','phone'=>'097 513 5135','email'=>'noc@telnet.com.kh'],
             ['color'=>'orange','level'=>'Level 2','tk'=>'ប្រធានផ្នែក NOC','te'=>'NOC Department Head','dk'=>'លោក នី សាវណ្ណ (Mr. Ny Savann)','de'=>'Mr. Ny Savann','phone'=>'088 891 6667','email'=>'ny.savann@telnet.com.kh'],
             ['color'=>'green','level'=>'Level 3','tk'=>'ប្រតិបត្តិការ និងនាយក','te'=>'Operations & Director','dk'=>'លោក ណេត សុគន្ធធារិទ្ធ (Mr. Neth Sokunthearith)','de'=>'Mr. Neth Sokunthearith','phone'=>'081 687 697','email'=>'neth.sokunthearith@telnet.com.kh'],
@@ -514,8 +505,8 @@
                 <span class="text-xs font-bold {{ $lvl['color']==='green' ? 'text-brand-green bg-brand-green/10' : 'text-brand-orange bg-brand-orange/10' }} px-2.5 py-1 rounded">
                     កម្រិតទ{{ ['ី១','ី២','ី៣'][$i] }} ({{ $lvl['level'] }})
                 </span>
-                <h3 class="text-lg font-bold text-adaptive-main mt-3" data-km="{{ $lvl['tk'] }}" data-en="{{ $lvl['te'] }}">{{ $lvl['tk'] }}</h3>
-                <p class="text-xs text-adaptive-muted mt-1" data-km="{{ $lvl['dk'] }}" data-en="{{ $lvl['de'] }}">{{ $lvl['dk'] }}</p>
+                <h3 class="text-lg font-bold text-adaptive-main mt-3">{{ $isKm ? $lvl['tk'] : $lvl['te'] }}</h3>
+                <p class="text-xs text-adaptive-muted mt-1">{{ $isKm ? $lvl['dk'] : $lvl['de'] }}</p>
                 <div class="mt-6 space-y-3 text-xs">
                     <a href="tel:{{ preg_replace('/\s+/','',$lvl['phone']) }}" class="flex items-center gap-3 p-3 bg-slate-100 dark:bg-slate-900 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition">
                         <i class="fa-solid fa-phone text-{{ $lvl['color']==='green' ? 'brand-green' : 'brand-orange' }} text-base"></i>
@@ -579,21 +570,17 @@
 {{-- ===== CTA SECTION — visible ===== --}}
 <section class="py-16 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-adaptive-main"
-            data-km="តើអ្នកត្រៀមរួចរាល់ដើម្បីទទួលបានអ៊ីនធឺណិតល្បឿនខ្ពស់ហើយឬ?"
-            data-en="Ready to Experience High-Speed Internet?">
-            តើអ្នកត្រៀមរួចរាល់ដើម្បីទទួលបានអ៊ីនធឺណិតល្បឿនខ្ពស់ហើយឬ?
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-adaptive-main">
+            {{ __('app.cta.title') }}
         </h2>
-        <p class="text-adaptive-muted text-sm max-w-2xl mx-auto"
-            data-km="ទាក់ទងមកកាន់ TELNET CO., LTD ឥឡូវនេះ ដើម្បីទទួលបានការពិគ្រោះយោបល់ និងការតំឡើងសេវាអ៊ីនធឺណិតនៅទីតាំងរបស់អ្នក!"
-            data-en="Contact TELNET CO., LTD now for a consultation and internet installation at your location!">
-            ទាក់ទងមកកាន់ <strong>TELNET CO., LTD</strong> ឥឡូវនេះ ដើម្បីទទួលបានការពិគ្រោះយោបល់ និងការតំឡើងសេវា!
+        <p class="text-adaptive-muted text-sm max-w-2xl mx-auto">
+            {{ __('app.cta.desc') }}
         </p>
         <div class="flex justify-center gap-4 flex-wrap">
             <button onclick="openModal('serviceModal')"
                 class="gradient-brand hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand-green/20 text-sm transition">
                 <i class="fa-solid fa-paper-plane mr-2"></i>
-                <span data-km="ស្នើសុំតំឡើងសេវាអ៊ីនធឺណិតថ្ងៃនេះ" data-en="Submit Service Connection Request">ស្នើសុំតំឡើងសេវាអ៊ីនធឺណិតថ្ងៃនេះ</span>
+                {{ __('app.cta.btn') }}
             </button>
         </div>
     </div>
