@@ -33,8 +33,7 @@
                 @foreach($navLinks as $link)
                 @php $active = request()->routeIs($link['route']); @endphp
                 <a href="{{ route($link['route']) }}"
-                    class="nav-link-pill px-2 py-2 rounded-lg hover:text-brand-green hover:bg-brand-green/5 transition flex items-center gap-1.5 {{ $active ? 'text-brand-green active' : '' }}"
-                    data-km="{{ $link['km'] }}" data-en="{{ $link['en'] }}">
+                    class="nav-link-pill px-2 py-2 rounded-lg hover:text-brand-green hover:bg-brand-green/5 transition flex items-center gap-1.5 {{ $active ? 'text-brand-green active' : '' }}">
                     <i class="fa-solid {{ $link['icon'] }} {{ $link['color'] }} text-xs opacity-70"></i>
                     <span data-km="{{ $link['km'] }}" data-en="{{ $link['en'] }}">{{ $link['km'] }}</span>
                 </a>
@@ -93,8 +92,7 @@
         @endphp
         @foreach($mobileLinks as $link)
         <a href="{{ $link['href'] }}" onclick="closeMobileMenu()"
-            class="flex items-center gap-2.5 text-adaptive-muted hover:text-brand-green hover:bg-brand-green/10 p-2.5 rounded-xl transition font-medium"
-            data-km="{{ $link['km'] }}" data-en="{{ $link['en'] }}">
+            class="flex items-center gap-2.5 text-adaptive-muted hover:text-brand-green hover:bg-brand-green/10 p-2.5 rounded-xl transition font-medium">
             <i class="fa-solid {{ $link['icon'] }} {{ $link['color'] }} w-5"></i>
             <span data-km="{{ $link['km'] }}" data-en="{{ $link['en'] }}">{{ $link['km'] }}</span>
         </a>
