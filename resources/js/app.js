@@ -36,7 +36,7 @@ window.toggleTheme = function () {
 };
 
 // Language Management
-let currentLang = localStorage.getItem('lang') || 'km';
+let currentLang = localStorage.getItem('lang') || 'en';
 
 function applyLanguage(lang) {
     currentLang = lang;

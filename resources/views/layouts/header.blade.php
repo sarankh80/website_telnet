@@ -46,11 +46,11 @@
                 <button id="lang-toggle" onclick="toggleLanguage()"
                     class="lang-switch-btn px-2 py-2 rounded-xl text-xs font-bold text-adaptive-main flex items-center gap-2 group cursor-pointer shadow-lg"
                     title="Switch Language / ប្តូរភាសា">
-                    <span id="lang-flag" class="text-sm">🇰🇭</span>
+                    <span id="lang-flag" class="text-sm">🇬🇧</span>
                     <div class="flex items-center gap-1">
-                        <span id="lang-km-badge" class="px-1.5 py-0.5 rounded text-[10px] bg-brand-green text-white font-extrabold shadow-sm transition">ខ្មែរ</span>
+                        <span id="lang-km-badge" class="px-1.5 py-0.5 rounded text-[10px] text-adaptive-muted font-bold transition">ខ្មែរ</span>
                         <span class="text-adaptive-muted text-[10px]">/</span>
-                        <span id="lang-en-badge" class="px-1.5 py-0.5 rounded text-[10px] text-adaptive-muted font-bold transition">EN</span>
+                        <span id="lang-en-badge" class="px-1.5 py-0.5 rounded text-[10px] bg-brand-green text-white font-extrabold shadow-sm transition">EN</span>
                     </div>
                     <span onclick="event.stopPropagation(); toggleTheme()"
                         class=" text-amber-500 dark:text-amber-300  transition-all duration-300 flex items-center justify-center"
@@ -65,8 +65,8 @@
             <div class="lg:hidden flex items-center space-x-2">
                 <button onclick="toggleLanguage()"
                     class="lang-switch-btn px-2.5 py-1.5 rounded-lg text-adaptive-main text-xs font-bold flex items-center gap-1.5">
-                    <span id="mobile-lang-flag">🇰🇭</span>
-                    <span id="mobile-lang-label" class="text-[11px] font-extrabold text-brand-green">KM</span>
+                    <span id="mobile-lang-flag">🇬🇧</span>
+                    <span id="mobile-lang-label" class="text-[11px] font-extrabold text-brand-green">EN</span>
                 </button>
                 <button onclick="toggleTheme()" class="p-2 rounded-lg text-amber-400 dark:text-amber-300 bg-slate-800/50">
                     <i id="mobile-theme-icon" class="fa-solid fa-sun text-lg"></i>
