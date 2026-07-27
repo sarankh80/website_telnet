@@ -97,6 +97,7 @@
 </body>
 <script>
     const track = document.querySelector('.partner-track');
+    if (track) {
 
     // Clone until the track is wider than twice the viewport
     while (track.scrollWidth < window.innerWidth * 2) {
@@ -120,6 +121,7 @@
     }
 
     animate();
+    } // end if(track)
 </script>
 
 </html>

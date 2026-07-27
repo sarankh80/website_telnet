@@ -41,6 +41,7 @@ let currentLang = localStorage.getItem('lang') || 'en';
 function applyLanguage(lang) {
     currentLang = lang;
     document.querySelectorAll('[data-km]').forEach(el => {
+        if (el.querySelector('[data-km]')) return; // skip containers — only update leaf nodes
         const text = el.getAttribute('data-' + lang);
         if (text) el.textContent = text;
     });
@@ -121,8 +122,8 @@ window.handleFormSubmit = function (event) {
     });
 };
 
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize on DOM ready (guard covers both module and classic script timing)
+function initApp() {
     const savedTheme = localStorage.getItem('theme');
     applyTheme(savedTheme !== 'light');
     applyLanguage(currentLang);
@@ -137,4 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[id$="Modal"]').forEach(modal => {
         modal.addEventListener('click', e => { if (e.target === modal) closeModal(modal.id); });
     });
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}

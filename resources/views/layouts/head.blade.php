@@ -9,4 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+@php
+    $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+@endphp
+<link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+<script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
