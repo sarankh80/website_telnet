@@ -21,6 +21,9 @@
     --color-dark-border: #1e293b;
 }
 
+body.dark {
+    background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), url('/images/bg.png');
+}
 body {
     font-family: 'Kantumruy Pro', 'Inter', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -30,7 +33,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 /* Glassmorphism Header */
 .dark .glass-header {
     background: rgba(11, 16, 27, 0.85);

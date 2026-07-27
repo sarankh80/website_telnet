@@ -88,6 +88,7 @@
 </head>
 
 <body class="section-bg-primary text-adaptive-main antialiased selection:bg-brand-green selection:text-white">
+
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
