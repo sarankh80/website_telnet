@@ -22,7 +22,7 @@
 }
 
 body.dark {
-    background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), url('/images/bg.png');
+    background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), url('/images/bg_dark.png');
 }
 body {
     font-family: 'Kantumruy Pro', 'Inter', sans-serif;
