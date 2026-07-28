@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use App\Models\Service;
+use App\Models\Slugs;
 use App\Models\Team;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $currentLocale = app()->getLocale();
         $services    = Service::active()->take(6)->get();
         $branches    = Branch::active()->get();
         $teamMembers = Team::active()->get();
         $ceo         = Team::active()->ceo()->first();
-
-        return view('pages.home.index', compact('services', 'branches', 'teamMembers', 'ceo'));
+        $servicesSlugs=Slugs::all();
+        return view('pages.home.index', compact('currentLocale','services', 'branches', 'teamMembers', 'ceo', 'servicesSlugs'));
     }
 
     public function about()

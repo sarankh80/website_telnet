@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="relative overflow-hidden py-8 lg:py-16 section-bg-primary">
+<section class="relative overflow-hidden py-4 lg:py-6 section-bg-primary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
@@ -12,11 +12,11 @@
                     <span class="text-transparent bg-clip-text gradient-brand">{{ __('app.hero.highlight') }}</span>
                 </h1>
 
-                <p class="text-adaptive-muted !text-[#F79633] text-base sm:text-lg max-w-2xl font-semibold font-bold !dark:text-[#8fc74a]">
+                <p class="text-adaptive-muted text-justify !text-gray-500 text-base sm:text-lg max-w-3xl font-semibold font-bold !dark:text-[#8fc74a] ">
                     {{ __('app.hero.desc') }}
                 </p>
                 <br>
-                <p class="text-adaptive-muted !text-[#F79633] text-base sm:text-lg max-w-2xl font-semibold font-bold !dark:text-[#8fc74a]"> {{ __('app.hero.desc1') }}</p>
+                <p class="text-adaptive-muted text-justify !text-gray-500 text-base sm:text-lg max-w-3xl font-semibold font-bold !dark:text-[#8fc74a]"> {{ __('app.hero.desc1') }}</p>
                 <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
                     <button onclick="openModal('serviceModal')"
                         class="gradient-brand hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-brand-green/20 transition transform hover:-translate-y-0.5 flex items-center gap-2">
@@ -45,12 +45,12 @@
         @php
         $isKm = app()->getLocale() === 'km';
         $serviceCards = [
-        ['image' => '/images/High_Speed.png', 'badge' => 'High Speed', 'badge_km' => 'ល្បឿនខ្ពស់', 'desc_en' => 'Provide high-speed, reliable and stable internet connectivity.', 'desc_km' => 'ផ្តល់ការតភ្ជាប់អ៊ីនធឺណិតល្បឿនលឿន ជឿជាក់ និងស្ថិតស្ថេរ។'],
-        ['image' => '/images/Scalable.png', 'badge' => 'Scalable', 'badge_km' => 'អាចពង្រីកបាន', 'desc_en' => 'Build scalable and secure network infrastructure across Cambodia.', 'desc_km' => 'សាងសង់ហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញអាចពង្រីក និងមានសុវត្ថិភាពទូទាំងកម្ពុជា។'],
-        ['image' => '/images/Hot_Service.png', 'badge' => 'Best Experience', 'badge_km' => 'បទពិសោធន៍ល្អបំផុត', 'desc_en' => 'Deliver excellent customer experience and innovative ICT.', 'desc_km' => 'ផ្តល់បទពិសោធន៍អតិថិជនដ៏ល្អ និង ICT ប្រកបដោយភាពច្នៃប្រឌិត។'],
-        ['image' => '/images/Reliable.png', 'badge' => 'Reliable', 'badge_km' => 'ជឿជាក់', 'desc_en' => 'Maintain high standards of customer support and service reliability.', 'desc_km' => 'រក្សាស្តង់ដារខ្ពស់នៃការគាំទ្រអតិថិជន និងការជឿជាក់លើសេវាកម្ម។'],
-        ['image' => '/images/Quality.png', 'badge' => 'Quality & Saving', 'badge_km' => 'គុណភាព & សន្សំ', 'desc_en' => 'Offering high quality, prompt service and selling what you need.', 'desc_km' => 'ផ្តល់ការេវាកម្មគុណភាពខ្ពស់ ឆ្លើយតបរហ័ស និងលក់តែអ្វីដែលអ្នកត្រូវការ។'],
-        ['image' => '/images/Contribute.png', 'badge' => 'Contribute', 'badge_km' => 'រួមចំណែក', 'desc_en' => "Contribute to Cambodia's digital transformation.", 'desc_km' => 'រួមចំណែកក្នុងការផ្លាស់ប្តូរឌីជីថលរបស់ប្រទេសកម្ពុជា។'],
+        ['image' => '/images/High_Speed.png', 'badge' => 'High Speed', 'badge_km' => 'ល្បឿនលឿន', 'desc_en' => 'Provide high-speed, reliable and stable internet connectivity.', 'desc_km' => 'ផ្តល់ការតភ្ជាប់អ៊ីនធឺណិតល្បឿនលឿន ជឿជាក់ និងស្ថិតស្ថេរ។'],
+        ['image' => '/images/Scalable.png', 'badge' => 'Scalable', 'badge_km' => 'មានសក្តានុពលក្នុងការពង្រីក', 'desc_en' => 'Build scalable and secure network infrastructure across Cambodia.', 'desc_km' => 'សាងសង់ហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញអាចពង្រីក និងមានសុវត្ថិភាពទូទាំងកម្ពុជា។'],
+        ['image' => '/images/Hot_Service.png', 'badge' => 'Best Experience', 'badge_km' => 'បទពិសោធន៍ល្អបំផុតសម្រាប់អតិថិជន', 'desc_en' => 'Deliver excellent customer experience and innovative ICT.', 'desc_km' => 'ផ្តល់បទពិសោធន៍អតិថិជនដ៏ល្អ និង ICT ប្រកបដោយភាពច្នៃប្រឌិត។'],
+        ['image' => '/images/Reliable.png', 'badge' => 'Reliable', 'badge_km' => 'ផ្តល់ឲ្យអតថិជននូវទំនុកចិត្តខ្ពស់', 'desc_en' => 'Maintain high standards of customer support and service reliability.', 'desc_km' => 'រក្សាស្តង់ដារខ្ពស់នៃការគាំទ្រអតិថិជន និងការជឿជាក់លើសេវាកម្ម។'],
+        ['image' => '/images/Quality.png', 'badge' => 'Quality & Saving', 'badge_km' => 'គុណភាពល្អនិង​ សន្សំសំចៃ', 'desc_en' => 'Offering high quality, prompt service and selling what you need.', 'desc_km' => 'ផ្តល់ការេវាកម្មគុណភាពខ្ពស់ ឆ្លើយតបរហ័ស និងលក់តែអ្វីដែលអ្នកត្រូវការ។'],
+        ['image' => '/images/Contribute.png', 'badge' => 'Contribute', 'badge_km' => 'រួមចំណែកសំខាន់ក្នុងការអភិវឌ្ឍន៍សង្គម', 'desc_en' => "Contribute to Cambodia's digital transformation.", 'desc_km' => 'រួមចំណែកក្នុងការផ្លាស់ប្តូរឌីជីថលរបស់ប្រទេសកម្ពុជា។'],
         ];
         @endphp
 
@@ -65,7 +65,7 @@
                         {{ $isKm ? $card['badge_km'] : $card['badge'] }}
                     </span>
                 </div>
-                <h3 class="text-md text-center font-bold text-[#777] mt-2">
+                <h3 class="text-md text-center font-semibold text-[#777] mt-2">
                     {{ $isKm ? $card['desc_km'] : $card['desc_en'] }}
                 </h3>
             </div>
@@ -87,26 +87,26 @@
 
         <!-- 3-Column Responsive Grid -->
         <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
-            @for($i=0;$i<=30;$i++)
-                <!-- Item 1 -->
-                <div class="product-card flex items-start space-x-4 p-2 rounded-2xl">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-2">
-                            <div class="flex-shrink-0">
-                                <img src="{{ asset('images/High_Speed.png') }}" alt="IP Transit Icon" class="w-10 h-10 object-contain" />
-                            </div>
-                            <h3 class="text-2xl tracking-wide text-[#8fc74a] font-bold bg-brand-green/10 px-2.5 py-1/2 rounded">INTERNET SERVICE {{$i}}</h3>
+            @foreach($servicesSlugs as $slug)
+            <!-- Item 1 -->
+            <div class="product-card flex items-start space-x-4 p-2 rounded-2xl ">
+                <div>
+                    <div class="flex items-center space-x-1 mb-2">
+                        <div class="flex-shrink-0">
+                            <img src="{{ asset('images/'.$slug->image) }}" alt="IP Transit Icon" class="w-10 h-10 object-contain" />
                         </div>
-                        <p class="text-[#F79633] text-sm font-semibold mb-1">
-                            IP Transit is the exchange of Internet IP traffic where one party pays another for access to a network
-                        </p>
-                        <a href="#" class="text-blue-600 font-semibold hover:text-red-400 text-sm transition-colors">read more &gt;&gt;</a>
+                        <h3 class="text-xl tracking-wide text-[#8fc74a] font-bold bg-brand-green/10 px-2.5 py-1/2 rounded">{{$currentLocale==="en"?$slug->name:$slug->name_km}} </h3>
                     </div>
+                    <p class="text-gray-500 text-justify text-sm font-semibold mb-1 line-clamp-3 max-w-prose">
+                        {{ $currentLocale==="en"?$slug->desc:$slug->desc_km}}
+                    </p>
+                    <a href="#" class="text-blue-600 underline hover:font-bold text-sm transition-colors">{{__('app.hero.readmore')}} &gt;&gt;</a>
                 </div>
+            </div>
 
-                <!-- Duplicate your product cards here (up to 18, 27, etc.) -->
-                <!-- Ensure each card includes the class "product-card" -->
-                @endfor
+            <!-- Duplicate your product cards here (up to 18, 27, etc.) -->
+            <!-- Ensure each card includes the class "product-card" -->
+            @endforeach
         </div>
 
         <!-- Custom Pagination Controls -->
@@ -125,59 +125,19 @@
 
     </div>
 </section>
-{{-- ===== COVERAGE SECTION — hidden ===== --}}
-<section id="coverage" class="py-16 section-bg-secondary hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <x-section-title label="03. ការគ្របដណ្តប់ &amp; ការិយាល័យ" title="ហេដ្ឋារចនាសម្ព័ន្ធ ១២ PoPs នៅ ២០ ក្រុង/ស្រុក" subtitle="មានវត្តមានការិយាល័យ និងសាខានៅក្នុងខេត្ត-ក្រុងសំខាន់ៗ" />
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach($branches as $branch)
-            <div class="glass-card p-6 rounded-2xl {{ $branch->type === 'hq' ? 'border border-brand-green/40' : 'border border-gray-200 dark:border-gray-800' }} relative">
-                @if($branch->type === 'hq')
-                <span class="absolute top-4 right-4 text-xs bg-brand-green/20 text-brand-green px-2.5 py-0.5 rounded-full font-bold">សำนักงานใหญ่</span>
-                @endif
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-lg {{ $branch->type === 'hq' ? 'bg-brand-green text-white' : ($loop->even ? 'bg-brand-orange/20 text-brand-orange' : 'bg-brand-green/20 text-brand-green') }} flex items-center justify-center font-bold">
-                        <i class="{{ $branch->type === 'hq' ? 'fa-solid fa-building-user' : 'fa-solid fa-map-pin' }}"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-base font-bold text-adaptive-main">{{ $branch->getName() }}</h4>
-                        <p class="text-xs text-adaptive-muted">{{ $branch->getProvince() }}</p>
-                    </div>
-                </div>
-                @if($branch->address_km)
-                <p class="text-xs text-adaptive-main mt-2">
-                    <i class="fa-solid fa-location-dot text-brand-orange mr-1.5"></i>{{ $branch->getAddress() }}
-                </p>
-                @endif
-                @if($branch->phone)
-                <p class="text-xs text-adaptive-main mt-1">
-                    <i class="fa-solid fa-phone text-brand-green mr-1.5"></i>{{ $branch->phone }}
-                </p>
-                @endif
-                @if($branch->type !== 'hq')
-                <p class="text-xs text-brand-green mt-1 font-medium">
-                    <i class="fa-solid fa-circle-check mr-1"></i>
-                    {{ __('app.fiber_active') }}
-                </p>
-                @endif
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-<!-- Service Coverage Checker Section -->
-<section class="py-16 px-4 sm:px-6 lg:px-8 font-sans text-slate-100">
-    <div class="max-w-7xl mx-auto space-y-8" x-data="coverageChecker()">
+<div class="text-center space-y-1 max-w-2xl mx-auto pt-8">
+    <h2 class="sm:text-3xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
+        {{__('app.coverage.available')}}
+    </h2>
+    <p class="text-slate-400 text-sm sm:text-base">
+        {{__('app.coverage.label')}}
+    </p>
+</div>
 
+<!-- Service Coverage Checker Section -->
+<section id="coverage" class="py-16 px-4 sm:px-6 lg:px-8 font-sans text-slate-100 ">
+    <div class="max-w-7xl mx-auto space-y-8" x-data="coverageChecker()">
         <!-- Section Header -->
-        <div class="text-center space-y-3 max-w-2xl mx-auto">
-            <h2 class="text-3xl font-bold tracking-tight text-[#8FC74A] sm:text-4xl">
-                Check Service Availability
-            </h2>
-            <p class="text-slate-400 text-sm sm:text-base">
-                Enter your city or postal code to verify high-speed service coverage in your area.
-            </p>
-        </div>
 
         <!-- Search & Control Card -->
         <div class="bg-white backdrop-blur-md border border-orange-300 rounded-xl p-4 sm:p-6 shadow-md">
@@ -221,7 +181,7 @@
                     <button
                         type="button"
                         @click="selectRegion(region)"
-                        class="px-2.5 py-1 bg-[#F79633]  transition transform hover:-translate-y-0.5 hover:bg-[#8FC74A] rounded-md shadow-md text-white transition-colors"
+                        class="px-2.5 py-1 bg-gray-500  transition transform hover:-translate-y-0.5 hover:bg-[#8FC74A] rounded-md shadow-md text-white transition-colors"
                         x-text="region.name"></button>
                 </template>
             </div>

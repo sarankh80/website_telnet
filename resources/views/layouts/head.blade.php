@@ -5,12 +5,13 @@
 <title>{{ $title ?? \App\Models\Setting::get('seo_title_km', 'TELNET CO., LTD. - អ្នកផ្តល់សេវាអ៉ីនធឺណិត (ISP)') }}</title>
 
 <!-- Google Fonts: Inter & Kantumruy Pro -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
+<link href="{{asset('css/filament/font/kontumruy.css')}}" rel="stylesheet">
 
 @php
-    $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+$manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
 @endphp
 <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
 <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>

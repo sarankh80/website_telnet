@@ -65,7 +65,7 @@
             <div class="lg:hidden flex items-center space-x-2">
                 <a href="{{ route('locale.switch', $currentLocale === 'km' ? 'en' : 'km') }}"
                     class="lang-switch-btn px-2.5 py-1.5 rounded-lg text-adaptive-main text-xs font-bold flex items-center gap-1.5">
-                    <span>{{ $currentLocale === 'km' ? '🇰🇭' : '🇺🇸' }}</span>
+                    <span>{{ $currentLocale === 'km' ? 'KH' : 'US' }}</span>
                     <span class="text-[11px] font-extrabold {{ $currentLocale === 'km' ? 'text-brand-green' : 'text-brand-orange' }}">{{ strtoupper($currentLocale) }}</span>
                 </a>
                 <button onclick="toggleTheme()" class="p-2 rounded-lg text-amber-400 dark:text-amber-300 bg-slate-800/50">

@@ -22,14 +22,13 @@ return [
     'hero' => [
         'title' => 'High-Speed Internet Service & Digital Solutions',
         'highlight' => 'You Can Trust',
-        'desc' => 'TELNET CO., LTD provides state-of-the-art optical fiber infrastructure (FTTH, FTTB, FTTX, FTTR) and ICT network solutions.',
-        'desc1' => 'We have TRUSTED BY THOUSANDS of Delivering Reliable Connectivity to Homes and Businesses. TELNET proudly serves more than
-5,000 residential subscribers and over 100 corporate clients, delivering secure, high-speed internet and ICT solutions.
-Our expanding customer base reflects our dedication to reliability, innovation, and exceptional customer service.',
+        'desc' => "TELNET CO., LTD is a trusted provider of advanced optical fiber infrastructure and ICT solutions, delivering reliable, secure, and high-performance connectivity for homes, businesses, and enterprises. Our comprehensive services include FTTH, FTTB, FTTX, FTTR, enterprise networking, data connectivity, and digital infrastructure designed to meet today's demands and support tomorrow's growth.",
+        'desc1' => "With the confidence of more than 5,000 residential subscribers and 100+ corporate clients, TELNET has built a reputation for delivering fast, stable, and secure internet services backed by professional technical support. As our network continues to expand across Cambodia, we remain committed to innovation, service excellence, and creating dependable digital experiences that empower individuals, businesses, and communities to thrive.",
         'cta_primary' => 'Subscribe Internet',
         'cta_secondary' => 'Explore Services',
         'difference' => 'WHAT MAKE US DIFFERENCE ?',
         'core-product' => 'EMPOWERING YOUR BUSINESS WITH INNOVATIVE SOLUTIONS THROUGH OUR CORE PRODUCTS',
+        'readmore' => 'read more',
     ],
     'about' => [
         'label' => '01. COMPANY PROFILE & HISTORY',
@@ -62,6 +61,7 @@ Our expanding customer base reflects our dedication to reliability, innovation, 
     'coverage' => [
         'label' => '03. SERVICE COVERAGE & BRANCHES',
         'title' => 'Network Covering 12 PoPs in 20 Cities/Districts',
+        'available' => 'Check Service Availability',
     ],
     'bss_oss' => [
         'label' => '04. BSS/OSS MANAGEMENT SYSTEM & COMPLIANCE',
