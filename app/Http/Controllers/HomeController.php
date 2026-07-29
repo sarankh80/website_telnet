@@ -6,7 +6,7 @@ use App\Models\Branch;
 use App\Models\Service;
 use App\Models\Slugs;
 use App\Models\Team;
-
+use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index()
@@ -56,5 +56,41 @@ class HomeController extends Controller
     public function career()
     {
         return view('pages.career');
+    }
+    // app/Http/Controllers/CoverageController.php
+public function data(Request $request)
+{
+    $search = $request->input('query'); // explicit accessor, not $request->query
+
+    $zones = Branch::query()
+        ->when($search, function ($q) use ($search) {
+            $q->where('name_en', 'like', "%{$search}%")
+              ->orWhere('name_km', 'like', "%{$search}%");
+        })
+        ->get(['id', 'name_en', 'name_km', 'lat', 'lng', 'status']);
+
+    return response()->json([
+        'data'  => $zones,
+        'total' => Branch::count(),
+    ]);
+}
+
+    public function check(Request $request)
+    {
+        $zone = Branch::where('name', 'like', "%{$request->keyword}%")->first();
+
+        if (!$zone) {
+            return response()->json([
+                'name'   => $request->keyword,
+                'status' => 'unavailable',
+            ]);
+        }
+
+        return response()->json([
+            'name'   => $zone->name,
+            'status' => $zone->status,
+            'lat'    => $zone->lat,
+            'lng'    => $zone->lng,
+        ]);
     }
 }
