@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\Career;
+use App\Models\CareerApplication;
 use App\Models\Service;
 use App\Models\Slugs;
 use App\Models\Team;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -55,6 +59,27 @@ class HomeController extends Controller
     }
     public function career()
     {
-        return view('pages.career');
+        $careers = Career::active()->get();
+        return view('pages.career', compact('careers'));
+    }
+
+    public function careerApply(Request $request)
+    {
+        $data = $request->validate([
+            'career_id'    => ['nullable', 'exists:careers,id'],
+            'full_name'    => ['required', 'string', 'max:150'],
+            'email'        => ['required', 'email', 'max:150'],
+            'phone'        => ['nullable', 'string', 'max:50'],
+            'position'     => ['nullable', 'string', 'max:200'],
+            'cover_letter' => ['nullable', 'string', 'max:2000'],
+            'cv'           => ['required', 'file', 'mimes:pdf,doc,docx', 'max:5120'],
+        ]);
+
+        $data['cv_path'] = $request->file('cv')->store('career-applications', 'public');
+        unset($data['cv']);
+
+        CareerApplication::create($data);
+
+        return back()->with('apply_success', true);
     }
 }

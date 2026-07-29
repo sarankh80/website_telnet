@@ -8,6 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- Apply saved theme before paint to avoid flash --}}
+    <script>
+        (function(){
+            var t = localStorage.getItem('admin-theme') || 'dark';
+            document.documentElement.classList.toggle('admin-light', t === 'light');
+        })();
+    </script>
 </head>
 <body class="h-full bg-slate-950 text-slate-100 font-sans antialiased" style="font-family:'Inter',sans-serif; background-image:none !important;">
 
@@ -37,8 +44,13 @@
             @php
                 $navItems = [
                     ['route' => 'admin.dashboard',              'icon' => 'fa-gauge',              'label' => 'Dashboard'],
-                    ['route' => 'admin.services.index',         'icon' => 'fa-bolt',               'label' => 'Services'],
-                    ['route' => 'admin.branches.index',         'icon' => 'fa-map-pin',            'label' => 'Branches'],
+                    ['route' => 'admin.slugs.index',            'icon' => 'fa-layer-group',        'label' => 'Slug Categories'],
+                    ['route' => 'admin.service-types.index',    'icon' => 'fa-tags',               'label' => 'Service Types'],
+                    ['route' => 'admin.services.index',                'icon' => 'fa-bolt',               'label' => 'Services'],
+                    ['route' => 'admin.corporate-subscribers.index',   'icon' => 'fa-building-user',      'label' => 'Corporate Subscribers'],
+                    ['route' => 'admin.careers.index',                 'icon' => 'fa-briefcase',          'label' => 'Careers'],
+                    ['route' => 'admin.career-applications.index',     'icon' => 'fa-file-lines',         'label' => 'CV Applications',       'badge' => \App\Models\CareerApplication::where('status','new')->count()],
+                    ['route' => 'admin.branches.index',                'icon' => 'fa-map-pin',            'label' => 'Branches'],
                     ['route' => 'admin.teams.index',            'icon' => 'fa-users',              'label' => 'Team'],
                     ['route' => 'admin.service-requests.index', 'icon' => 'fa-inbox',              'label' => 'Service Requests',  'badge' => \App\Models\ServiceRequest::where("status","new")->count()],
                     ['route' => 'admin.contact-messages.index', 'icon' => 'fa-envelope',           'label' => 'Messages',          'badge' => \App\Models\ContactMessage::where("is_read",false)->count()],
@@ -86,6 +98,15 @@
                 <i class="fa-solid fa-bars text-lg"></i>
             </button>
             <h1 class="text-base font-bold text-slate-100 flex-1">@yield('title', 'Dashboard')</h1>
+            {{-- Theme toggle --}}
+            <button id="admin-theme-toggle" type="button" title="Toggle light / dark"
+                    class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
+                           text-slate-400 hover:text-slate-100 bg-slate-800 hover:bg-slate-700
+                           border border-slate-700 transition flex-shrink-0">
+                <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+                <span id="theme-label" class="hidden sm:inline">Dark</span>
+            </button>
+
             <a href="{{ route('home') }}" target="_blank"
                class="text-xs text-slate-400 hover:text-brand-green transition flex items-center gap-1.5 flex-shrink-0">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -115,5 +136,35 @@
     </div>
 </div>
 
+@stack('scripts')
+<script>
+(function () {
+    var btn   = document.getElementById('admin-theme-toggle');
+    var icon  = document.getElementById('theme-icon');
+    var label = document.getElementById('theme-label');
+    var html  = document.documentElement;
+
+    function applyTheme(t) {
+        var isLight = (t === 'light');
+        html.classList.toggle('admin-light', isLight);
+        if (icon)  { icon.className  = 'fa-solid ' + (isLight ? 'fa-sun' : 'fa-moon') + ' text-sm'; }
+        if (label) { label.textContent = isLight ? 'Light' : 'Dark'; }
+        if (btn) {
+            btn.style.color = isLight ? '#f58220' : '';
+        }
+        localStorage.setItem('admin-theme', t);
+    }
+
+    // Sync button state on load
+    applyTheme(localStorage.getItem('admin-theme') || 'dark');
+
+    if (btn) {
+        btn.addEventListener('click', function () {
+            var current = html.classList.contains('admin-light') ? 'light' : 'dark';
+            applyTheme(current === 'light' ? 'dark' : 'light');
+        });
+    }
+})();
+</script>
 </body>
 </html>

@@ -25,6 +25,7 @@ Route::get('/career', [HomeController::class, 'career'])->name('career');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::post('/service-request', [ContactController::class, 'serviceRequest'])->name('service.request');
+Route::post('/career/apply', [HomeController::class, 'careerApply'])->name('career.apply');
 
 // ─── Admin Auth ────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -37,6 +38,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [Admin\DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('services', Admin\ServiceController::class);
+        Route::resource('slugs', Admin\SlugController::class);
+        Route::resource('service-types', Admin\ServiceTypeController::class);
+        Route::resource('corporate-subscribers', Admin\CorporateSubscriberController::class);
+        Route::resource('careers', Admin\CareerController::class);
+        Route::get('career-applications', [Admin\CareerApplicationController::class, 'index'])->name('career-applications.index');
+        Route::get('career-applications/{careerApplication}', [Admin\CareerApplicationController::class, 'show'])->name('career-applications.show');
+        Route::patch('career-applications/{careerApplication}/status', [Admin\CareerApplicationController::class, 'updateStatus'])->name('career-applications.status');
+        Route::delete('career-applications/{careerApplication}', [Admin\CareerApplicationController::class, 'destroy'])->name('career-applications.destroy');
         Route::resource('branches', Admin\BranchController::class);
         Route::resource('teams', Admin\TeamController::class);
 
