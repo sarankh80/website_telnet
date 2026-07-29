@@ -18,6 +18,7 @@
                 <th class="px-5 py-3.5 text-left w-8">#</th>
                 <th class="px-5 py-3.5 text-left">Service</th>
                 <th class="px-5 py-3.5 text-left hidden md:table-cell">Badge</th>
+                <th class="px-5 py-3.5 text-left hidden lg:table-cell">Slug / Type</th>
                 <th class="px-5 py-3.5 text-center">Active</th>
                 <th class="px-5 py-3.5 text-center">Order</th>
                 <th class="px-5 py-3.5 text-right">Actions</th>
@@ -29,9 +30,14 @@
                     <td class="px-5 py-4 text-slate-500">{{ $loop->iteration }}</td>
                     <td class="px-5 py-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-brand-green flex-shrink-0">
-                                <i class="fa-solid {{ $service->icon }} text-sm"></i>
-                            </div>
+                            @if($service->image)
+                                <img src="{{ Storage::url($service->image) }}" alt=""
+                                     class="w-9 h-9 rounded-lg object-cover flex-shrink-0 border border-slate-700">
+                            @else
+                                <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-brand-green flex-shrink-0">
+                                    <i class="fa-solid {{ $service->icon }} text-sm"></i>
+                                </div>
+                            @endif
                             <div>
                                 <p class="font-medium text-slate-200">{{ $service->name_en }}</p>
                                 <p class="text-xs text-slate-500">{{ $service->name_km }}</p>
@@ -40,6 +46,19 @@
                     </td>
                     <td class="px-5 py-4 hidden md:table-cell">
                         <span class="px-2 py-0.5 text-xs rounded-full bg-brand-green/15 text-brand-green">{{ $service->badge_en }}</span>
+                    </td>
+                    <td class="px-5 py-4 hidden lg:table-cell">
+                        <div class="flex flex-col gap-1">
+                            @if($service->slug)
+                                <span class="px-2 py-0.5 text-[10px] rounded-full bg-sky-400/10 text-sky-400 w-fit">{{ $service->slug->name }}</span>
+                            @endif
+                            @if($service->type)
+                                <span class="px-2 py-0.5 text-[10px] rounded-full bg-violet-400/10 text-violet-400 w-fit">{{ $service->type->name }}</span>
+                            @endif
+                            @if(!$service->slug && !$service->type)
+                                <span class="text-slate-600 text-xs">—</span>
+                            @endif
+                        </div>
                     </td>
                     <td class="px-5 py-4 text-center">
                         @if($service->is_active)
@@ -66,7 +85,7 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="6" class="px-5 py-10 text-center text-slate-500">No services found.</td></tr>
+                <tr><td colspan="7" class="px-5 py-10 text-center text-slate-500">No services found.</td></tr>
             @endforelse
         </tbody>
     </table>

@@ -2,7 +2,7 @@
 @section('title', $role->exists ? 'Edit Role' : 'Add Role')
 
 @section('content')
-<div class="max-w-2xl">
+<div class="max-w-7xl">
     <a href="{{ route('admin.roles.index') }}" class="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 transition mb-6">
         <i class="fa-solid fa-arrow-left text-xs"></i> Back to Roles
     </a>

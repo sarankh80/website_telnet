@@ -18,6 +18,8 @@ class Service extends Model
         'image',
         'is_active',
         'sort_order',
+        'service_type',
+        'slug_id',
     ];
 
     protected $casts = ['is_active' => 'boolean'];
@@ -38,5 +40,15 @@ class Service extends Model
     public function getBadge(): ?string
     {
         return app()->getLocale() === 'km' ? $this->badge_km : $this->badge_en;
+    }
+
+    public function slug()
+    {
+        return $this->belongsTo(Slugs::class, 'slug_id');
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(ServiceType::class, 'service_type');
     }
 }

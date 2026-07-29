@@ -2,7 +2,7 @@
 @section('title', $branch->exists ? 'Edit Branch' : 'Add Branch')
 
 @section('content')
-<div class="max-w-2xl">
+<div class="max-w-7xl">
     <a href="{{ route('admin.branches.index') }}" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 mb-6 transition">
         <i class="fa-solid fa-arrow-left text-xs"></i> Back to Branches
     </a>

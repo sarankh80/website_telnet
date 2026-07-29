@@ -267,4 +267,219 @@
     </div>
 </section>
 
+{{-- ── Job Openings ─────────────────────────────────────────────────── --}}
+<section class="py-16 section-bg-primary" id="jobs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-extrabold text-transparent bg-clip-text gradient-brand">
+                {{ app()->getLocale() === 'km' ? 'ឱកាសការងារ' : 'Job Openings' }}
+            </h2>
+            <img class="w-48 mx-auto mt-1" src="{{ asset('images/line.png') }}" alt="">
+        </div>
+
+        @if($careers->isEmpty())
+            <div class="text-center py-12 text-adaptive-muted">
+                <i class="fa-solid fa-briefcase text-4xl mb-4 text-brand-green/40 block"></i>
+                <p class="text-lg">{{ app()->getLocale() === 'km' ? 'មិនមានតំណែងបើកចំហរពេលនេះ' : 'No open positions at the moment.' }}</p>
+                <p class="text-sm mt-2">{{ app()->getLocale() === 'km' ? 'ផ្ញើ CV របស់អ្នកខាងក្រោម' : 'Send us your CV below and we\'ll be in touch.' }}</p>
+            </div>
+        @else
+            <div class="grid gap-4 lg:grid-cols-2 mb-12">
+                @foreach($careers as $job)
+                    @php
+                        $isKm = app()->getLocale() === 'km';
+                        $typeColor = match($job->type) {
+                            'full-time'  => 'bg-brand-green/10 text-brand-green border-brand-green/20',
+                            'part-time'  => 'bg-sky-500/10 text-sky-600 border-sky-200',
+                            'contract'   => 'bg-orange-400/10 text-brand-orange border-brand-orange/20',
+                            'internship' => 'bg-violet-500/10 text-violet-600 border-violet-200',
+                            default      => 'bg-gray-100 text-gray-600 border-gray-200',
+                        };
+                        $typeLabel = match($job->type) {
+                            'full-time'  => $isKm ? 'ពេញម៉ោង' : 'Full-Time',
+                            'part-time'  => $isKm ? 'កន្លះម៉ោង' : 'Part-Time',
+                            'contract'   => $isKm ? 'កិច្ចសន្យា' : 'Contract',
+                            'internship' => $isKm ? 'ហាត់ការ' : 'Internship',
+                            default      => $job->type,
+                        };
+                    @endphp
+                    <div class="glass-card rounded-2xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition-all duration-300 hover:border-brand-green/40"
+                         x-data="{ open: false }">
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-lg font-bold text-adaptive-main">
+                                    {{ $isKm ? $job->title_km : $job->title }}
+                                </h3>
+                                @if($isKm ? $job->department_km : $job->department)
+                                    <p class="text-sm text-adaptive-muted mt-0.5">
+                                        {{ $isKm ? $job->department_km : $job->department }}
+                                    </p>
+                                @endif
+                            </div>
+                            <span class="flex-shrink-0 px-2.5 py-1 text-xs font-semibold rounded-full border {{ $typeColor }}">
+                                {{ $typeLabel }}
+                            </span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4 text-xs text-adaptive-muted mb-4">
+                            @if($isKm ? $job->location_km : $job->location)
+                                <span class="flex items-center gap-1">
+                                    <i class="fa-solid fa-location-dot text-brand-orange"></i>
+                                    {{ $isKm ? $job->location_km : $job->location }}
+                                </span>
+                            @endif
+                            @if($job->deadline)
+                                <span class="flex items-center gap-1">
+                                    <i class="fa-solid fa-calendar text-brand-green"></i>
+                                    {{ $isKm ? 'ថ្ងៃផុតកំណត់' : 'Deadline' }}: {{ $job->deadline->format('d M Y') }}
+                                </span>
+                            @endif
+                        </div>
+
+                        @if($isKm ? $job->description_km : $job->description)
+                            <div x-show="open" x-collapse class="prose prose-sm max-w-none text-adaptive-muted mb-4 text-sm leading-relaxed">
+                                {!! $isKm ? $job->description_km : $job->description !!}
+                            </div>
+                            @if($isKm ? $job->requirements_km : $job->requirements)
+                                <div x-show="open" x-collapse class="prose prose-sm max-w-none text-adaptive-muted mb-4 text-sm leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-3 mt-3">
+                                    <p class="font-semibold text-adaptive-main text-xs uppercase tracking-wide mb-2">
+                                        {{ $isKm ? 'លក្ខខណ្ឌ' : 'Requirements' }}
+                                    </p>
+                                    {!! $isKm ? $job->requirements_km : $job->requirements !!}
+                                </div>
+                            @endif
+                        @endif
+
+                        <div class="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-800">
+                            @if($isKm ? $job->description_km : $job->description)
+                                <button @click="open = !open"
+                                        class="text-xs text-brand-green hover:text-[#7ab534] font-medium flex items-center gap-1 transition">
+                                    <span x-text="open ? '{{ $isKm ? 'បិទ' : 'Show less' }}' : '{{ $isKm ? 'មើលលម្អិត' : 'View details' }}'"></span>
+                                    <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200" :class="open ? 'rotate-180' : ''"></i>
+                                </button>
+                            @else
+                                <span></span>
+                            @endif
+                            <a href="#apply?job={{ $job->id }}"
+                               onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'}); document.getElementById('career_id').value='{{ $job->id }}'"
+                               class="px-4 py-2 gradient-brand text-white text-xs font-semibold rounded-lg shadow transition hover:-translate-y-0.5">
+                                {{ $isKm ? 'ដាក់ពាក្យ' : 'Apply Now' }}
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+
+        {{-- Application Form --}}
+        <div id="apply" class="max-w-2xl mx-auto">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-adaptive-main">
+                    {{ app()->getLocale() === 'km' ? 'ដាក់ពាក្យ / បញ្ជូន CV' : 'Apply / Send Your CV' }}
+                </h3>
+                <p class="text-sm text-adaptive-muted mt-1">
+                    {{ app()->getLocale() === 'km' ? 'បំពេញព័ត៌មានខាងក្រោម ហើយបណ្ណូបសំព័ន្ធ CV (PDF/DOC)' : 'Fill in your details and attach your CV (PDF or DOC).' }}
+                </p>
+            </div>
+
+            @if(session('apply_success'))
+                <div class="mb-6 flex items-start gap-3 p-4 bg-brand-green/10 border border-brand-green/30 rounded-xl text-brand-green">
+                    <i class="fa-solid fa-circle-check text-xl flex-shrink-0 mt-0.5"></i>
+                    <div>
+                        <p class="font-semibold">{{ app()->getLocale() === 'km' ? 'សំណើរត្រូវបានផ្ញើ!' : 'Application submitted!' }}</p>
+                        <p class="text-sm mt-0.5 text-brand-green/80">{{ app()->getLocale() === 'km' ? 'យើងនឹងទំនាក់ទំនងមកអ្នក។' : 'We\'ll review it and get back to you.' }}</p>
+                    </div>
+                </div>
+            @endif
+
+            @if($errors->any())
+                <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm space-y-1">
+                    @foreach($errors->all() as $e)<p>• {{ $e }}</p>@endforeach
+                </div>
+            @endif
+
+            <form method="POST" action="{{ route('career.apply') }}" enctype="multipart/form-data"
+                  class="glass-card rounded-2xl border border-gray-200 dark:border-gray-700 p-6 sm:p-8 space-y-5 shadow-lg">
+                @csrf
+
+                <input type="hidden" name="career_id" id="career_id" value="{{ old('career_id') }}">
+
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-medium text-adaptive-main mb-1.5">
+                            {{ app()->getLocale() === 'km' ? 'ឈ្មោះពេញ *' : 'Full Name *' }}
+                        </label>
+                        <input type="text" name="full_name" value="{{ old('full_name') }}" required
+                               class="w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-card
+                                      px-4 py-2.5 text-sm text-adaptive-main focus:outline-none focus:ring-2 focus:ring-brand-green/40 focus:border-brand-green transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-adaptive-main mb-1.5">
+                            {{ app()->getLocale() === 'km' ? 'អ៊ីម៉ែល *' : 'Email *' }}
+                        </label>
+                        <input type="email" name="email" value="{{ old('email') }}" required
+                               class="w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-card
+                                      px-4 py-2.5 text-sm text-adaptive-main focus:outline-none focus:ring-2 focus:ring-brand-green/40 focus:border-brand-green transition">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-medium text-adaptive-main mb-1.5">
+                            {{ app()->getLocale() === 'km' ? 'លេខទូរស័ព្ទ' : 'Phone' }}
+                        </label>
+                        <input type="text" name="phone" value="{{ old('phone') }}" placeholder="+855 ..."
+                               class="w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-card
+                                      px-4 py-2.5 text-sm text-adaptive-main focus:outline-none focus:ring-2 focus:ring-brand-green/40 focus:border-brand-green transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-adaptive-main mb-1.5">
+                            {{ app()->getLocale() === 'km' ? 'តំណែងដែលចង់បាន' : 'Position Applied For' }}
+                        </label>
+                        <input type="text" name="position" value="{{ old('position') }}"
+                               placeholder="{{ app()->getLocale() === 'km' ? 'ឧ. វិស្វករបណ្តាញ' : 'e.g. Network Engineer' }}"
+                               class="w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-card
+                                      px-4 py-2.5 text-sm text-adaptive-main focus:outline-none focus:ring-2 focus:ring-brand-green/40 focus:border-brand-green transition">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-adaptive-main mb-1.5">
+                        {{ app()->getLocale() === 'km' ? 'សំណេរបន្ថែម' : 'Cover Letter' }}
+                    </label>
+                    <textarea name="cover_letter" rows="4"
+                              placeholder="{{ app()->getLocale() === 'km' ? 'ពណ៌នាខ្លួនឯង...' : 'Tell us about yourself and why you\'re a great fit...' }}"
+                              class="w-full rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-card
+                                     px-4 py-2.5 text-sm text-adaptive-main focus:outline-none focus:ring-2 focus:ring-brand-green/40 focus:border-brand-green transition resize-none">{{ old('cover_letter') }}</textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-adaptive-main mb-1.5">
+                        {{ app()->getLocale() === 'km' ? 'ឯកសារ CV *' : 'CV / Resume *' }}
+                    </label>
+                    <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 dark:border-gray-600
+                                  rounded-xl cursor-pointer hover:border-brand-green/60 bg-gray-50 dark:bg-dark-card transition-colors">
+                        <div class="flex flex-col items-center gap-2 pointer-events-none" id="cv-label">
+                            <i class="fa-solid fa-cloud-arrow-up text-2xl text-brand-green/60"></i>
+                            <p class="text-sm text-adaptive-muted">
+                                {{ app()->getLocale() === 'km' ? 'ចុចដើម្បីជ្រើសរើសឯកសារ' : 'Click to upload' }}
+                                <span class="text-xs">(PDF, DOC, DOCX — max 5 MB)</span>
+                            </p>
+                        </div>
+                        <input type="file" name="cv" accept=".pdf,.doc,.docx" required class="hidden"
+                               onchange="document.getElementById('cv-label').innerHTML='<i class=\'fa-solid fa-file-check text-2xl text-brand-green\'></i><p class=\'text-sm font-medium text-brand-green mt-1\'>' + this.files[0].name + '</p>'">
+                    </label>
+                </div>
+
+                <button type="submit"
+                        class="w-full gradient-brand text-white font-bold py-3.5 rounded-xl shadow-lg text-sm transition hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    {{ app()->getLocale() === 'km' ? 'ផ្ញើពាក្យសុំ' : 'Submit Application' }}
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
 @endsection
