@@ -150,12 +150,12 @@
                         type="text"
                         x-model="searchQuery"
                         placeholder="Enter City, District, Zip Code, or Lat,Lng..."
-                        class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#8FC74A] focus:border-transparent transition-all text-sm" />
+                        class="w-full pl-10 pr-4 py-1 border border-gray-200 rounded-lg text-black placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#8FC74A] focus:border-transparent transition-all text-sm" />
                 </div>
 
                 <button
                     type="submit"
-                    class="bg-[#8FC74A] hover:bg-[#7db53d] text-white font-bold px-6 py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm shrink-0"
+                    class="bg-[#8FC74A] hover:bg-[#7db53d] text-white  px-6 py-1 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm shrink-0"
                     :disabled="isLoading">
                     <template x-if="!isLoading">
                         <div class="flex items-center gap-2">
@@ -168,7 +168,7 @@
                     <button
                         type="button"
                         @click="resetMap()"
-                        class="bg-slate-600 hover:bg-slate-700 text-white font-bold px-5 py-3 rounded-lg transition text-sm">
+                        class="bg-slate-600 hover:bg-slate-700 text-white  px-5 py-1 rounded-lg transition text-sm">
                         RESET
                     </button>
                     <template x-if="isLoading">
@@ -203,7 +203,7 @@
                     <button
                         type="button"
                         @click="selectRegion(branch)"
-                        class="px-2.5 py-1 bg-gray-500 hover:bg-[#8FC74A] rounded-md shadow-md text-white transition transform hover:-translate-y-0.5"
+                        class="px-2.5 py-2 bg-gray-500 hover:bg-[#8FC74A] rounded shadow-md text-white text-md transition transform hover:-translate-y-0.5"
                         x-text="branch.name_en"></button>
                 </template>
             </div>

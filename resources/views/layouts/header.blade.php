@@ -27,7 +27,7 @@
                 ['route' => 'team', 'label' => __('app.nav.support'), ],
                 ['route' => 'about', 'label' => __('app.nav.about'), ],
                 ['route' => 'career', 'label' => __('app.nav.careers'), ],
-                ['route' => 'portal', 'label' => __('app.nav.portal'),],
+                ['route' => 'admin.login', 'label' => __('app.nav.portal'),],
                 ];
                 @endphp
                 @foreach($navLinks as $link)
