@@ -100,7 +100,7 @@
                     <p class="text-gray-500 text-justify text-sm font-semibold mb-1 line-clamp-3 max-w-prose">
                         {{ $currentLocale==="en"?$slug->desc:$slug->desc_km}}
                     </p>
-                    <a href="#" class="text-blue-600 underline hover:font-bold text-sm transition-colors">{{__('app.hero.readmore')}} &gt;&gt;</a>
+                    <a href="#" class="text-[#F79633] underline hover:font-bold text-sm transition-colors">{{__('app.hero.readmore')}} &gt;&gt;</a>
                 </div>
             </div>
 
@@ -129,9 +129,6 @@
     <h2 class="sm:text-3xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
         {{__('app.coverage.available')}}
     </h2>
-    <!-- <p class="text-slate-400 text-sm sm:text-base">
-        {{__('app.coverage.label')}}
-    </p> -->
 </div>
 
 <section id="coverage" class="py-16 px-4 sm:px-6 lg:px-8 font-sans text-slate-100">
@@ -176,30 +173,15 @@
                     </template>
                 </button>
             </form>
-            <div
-                x-show="distance !== null"
-                x-cloak
-                class="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm">
+            <div x-show="distance !== null" x-cloak class="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm">
                 <div class="flex justify-between items-center">
-                    <span class="text-slate-500">
-                        Distance to nearest branch
-                    </span>
-
-                    <strong
-                        class="text-[#8FC74A]"
-                        x-text="distance != null ? distance.toFixed(2) + ' km' : ''"></strong>
+                    <span class="text-slate-500">Distance to nearest branch</span>
+                    <strong class="text-[#8FC74A]" x-text="distance != null ? distance.toFixed(2) + ' km' : ''"></strong>
                 </div>
             </div>
-            <div
-                class="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-400"
-                x-show="presetRegions.length > 0">
-                <span class="text-lg font-bold text-[#8FC74A]">
-                    Popular regions:
-                </span>
-
-                <template
-                    x-for="branch in presetRegions"
-                    :key="branch.id || branch.name_en">
+            <div class="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-400" x-show="presetRegions.length > 0">
+                <span class="text-lg font-bold text-[#8FC74A]">Popular regions:</span>
+                <template x-for="branch in presetRegions" :key="branch.id || branch.name_en">
                     <button
                         type="button"
                         @click="selectRegion(branch)"
@@ -273,11 +255,11 @@
                     <ul class="space-y-3 text-xs text-slate-300">
                         <li class="flex justify-between pb-2 border-b border-slate-700/50">
                             <span class="text-gray-400 font-bold">Avg. Latency</span>
-                            <span class="font-semibold text-[#8FC74A]">---</span>
+                            <span class="font-semibold text-[#8FC74A]" x-text="avgLatency">---</span>
                         </li>
                         <li class="flex justify-between pb-2 border-b border-slate-700/50">
                             <span class="text-gray-400 font-bold">Network Uptime</span>
-                            <span class="font-semibold text-[#8FC74A]">---</span>
+                            <span class="font-semibold text-[#8FC74A]" x-text="networkUptime">---</span>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-400 font-bold">Total Covered Zones</span>
@@ -301,9 +283,7 @@
     function coverageChecker() {
         return {
 
-            /* =========================================================
-             * STATE
-             * ========================================================= */
+            /* ================= STATE ================= */
 
             searchQuery: '',
             searchedLocation: '',
@@ -314,1998 +294,1066 @@
             nearestBranch: null,
 
             totalZones: '---',
+            avgLatency: '---',
+            networkUptime: '---',
 
             presetRegions: [],
 
             map: null,
             markers: null,
             branchZones: null,
-
             searchMarker: null,
-
             allMarkers: [],
-
             layerControl: null,
-
             searchIcon: null,
 
             defaultCenter: [12.5657, 104.9910],
             defaultZoom: 7,
 
-            /*
-             * Coverage radius
-             * 40 KM from branch
-             */
+            /* Coverage radius: 40 KM from branch */
             coverageKm: 40,
 
 
-            /* =========================================================
-             * INITIALIZE
-             * ========================================================= */
+            /* ================= INITIALIZE ================= */
 
             init() {
-
-                this.$nextTick(() => {
-                    this.initMap();
-                });
-
-                this.$el.addEventListener(
-                    'alpine:destroy',
-                    () => this.destroyMap()
-                );
+                this.$nextTick(() => this.initMap());
+                this.$el.addEventListener('alpine:destroy', () => this.destroyMap());
             },
 
 
-            /* =========================================================
-             * INITIALIZE MAP
-             * ========================================================= */
+            /* ================= INITIALIZE MAP ================= */
 
             initMap() {
-
                 const el = this.$refs.mapEl;
-
                 if (!el) return;
 
-
-                /*
-                 * Remove previous map
-                 */
+                /* Remove previous map */
                 if (this.map) {
-
                     this.map.remove();
-
                     this.map = null;
                 }
 
-
-                /*
-                 * Prevent Leaflet duplicate initialization
-                 */
+                /* Prevent Leaflet duplicate initialization */
                 if (el._leaflet_id) {
-
                     el._leaflet_id = null;
-
                     el.innerHTML = '';
                 }
 
-
                 /*
                  * Create map
-                 *
-                 * scrollWheelZoom: true
-                 * allows mouse wheel zoom
+                 * scrollWheelZoom: 'center' keeps zoom anchored to the map
+                 * center instead of the cursor, so scrolling near a marker
+                 * or popup no longer makes the map jump/conflict with it.
+                 * zoomSnap/zoomDelta/wheelPxPerZoomLevel soften each
+                 * scroll step so zooming feels smoother and less abrupt.
                  */
                 this.map = L.map(el, {
-
-                    scrollWheelZoom: true,
-
+                    scrollWheelZoom: 'center',
+                    zoomSnap: 0.5,
+                    zoomDelta: 0.5,
+                    wheelPxPerZoomLevel: 100,
                     zoomControl: true,
-
                     doubleClickZoom: true,
-
                     dragging: true,
-
                     touchZoom: true
-
-                }).setView(
-                    this.defaultCenter,
-                    this.defaultZoom
-                );
+                }).setView(this.defaultCenter, this.defaultZoom);
 
 
-                /* =====================================================
-                 * SEARCH ICON
-                 * ===================================================== */
-
+                /* SEARCH ICON */
                 this.searchIcon = L.icon({
-
                     iconUrl: '{{ asset("images/MAP.png") }}',
-
                     shadowUrl: '{{ asset("images/marker-shadow.png") }}',
-
                     iconSize: [30, 50],
-
                     iconAnchor: [15, 50],
-
                     popupAnchor: [0, -50]
-
                 });
 
 
-                /* =====================================================
-                 * BASE MAPS
-                 * ===================================================== */
+                /* BASE MAPS */
+                const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; OpenStreetMap contributors'
+                });
 
-                const osm = L.tileLayer(
+                const googleStreet = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+                    maxZoom: 20,
+                    attribution: '&copy; Google'
+                });
 
-                    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                const googleSatellite = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+                    maxZoom: 20,
+                    attribution: '&copy; Google'
+                });
 
-                    {
-                        maxZoom: 19,
+                const googleHybrid = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+                    maxZoom: 20,
+                    attribution: '&copy; Google'
+                });
 
-                        attribution: '&copy; OpenStreetMap contributors'
-                    }
-
-                );
-
-
-                const googleStreet = L.tileLayer(
-
-                    'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
-
-                    {
-                        maxZoom: 20,
-
-                        attribution: '&copy; Google'
-                    }
-
-                );
-
-
-                const googleSatellite = L.tileLayer(
-
-                    'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-
-                    {
-                        maxZoom: 20,
-
-                        attribution: '&copy; Google'
-                    }
-
-                );
-
-
-                const googleHybrid = L.tileLayer(
-
-                    'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
-
-                    {
-                        maxZoom: 20,
-
-                        attribution: '&copy; Google'
-                    }
-
-                );
-
-
-                /*
-                 * Default map
-                 */
+                /* Default map */
                 osm.addTo(this.map);
 
 
-                /* =====================================================
-                 * COVERAGE MARKERS
-                 * ===================================================== */
-
-                this.markers =
-                    L.markerClusterGroup();
+                /* COVERAGE MARKERS */
+                this.markers = L.markerClusterGroup();
+                this.map.addLayer(this.markers);
 
 
-                this.map.addLayer(
-                    this.markers
-                );
+                /* COVERAGE ZONES */
+                this.branchZones = L.layerGroup();
+                this.map.addLayer(this.branchZones);
 
 
-                /* =====================================================
-                 * COVERAGE ZONES
-                 * ===================================================== */
-
-                this.branchZones =
-                    L.layerGroup();
-
-
-                this.map.addLayer(
-                    this.branchZones
-                );
-
-
-                /* =====================================================
-                 * LAYER CONTROL
-                 * ===================================================== */
-
-                this.layerControl =
-                    L.control.layers(
-
-                        {
-
-                            'OpenStreetMap': osm,
-
-                            'Google Streets': googleStreet,
-
-                            'Google Satellite': googleSatellite,
-
-                            'Google Hybrid': googleHybrid
-
-                        },
-
-                        {
-
-                            'Coverage Markers': this.markers,
-
-                            '40 KM Coverage Zones': this.branchZones
-
-                        },
-
-                        {
-
-                            collapsed: true,
-
-                            position: 'topright'
-
-                        }
-
-                    ).addTo(this.map);
+                /* LAYER CONTROL */
+                this.layerControl = L.control.layers({
+                    'OpenStreetMap': osm,
+                    'Google Streets': googleStreet,
+                    'Google Satellite': googleSatellite,
+                    'Google Hybrid': googleHybrid
+                }, {
+                    'Coverage Markers': this.markers,
+                    '40 KM Coverage Zones': this.branchZones
+                }, {
+                    collapsed: true,
+                    position: 'topright'
+                }).addTo(this.map);
 
 
-                /* =====================================================
-                 * LOAD DATA
-                 * ===================================================== */
-
+                /* LOAD DATA */
                 this.loadMarkers();
             },
 
 
-            /* =========================================================
-             * DESTROY MAP
-             * ========================================================= */
+            /* ================= DESTROY MAP ================= */
 
             destroyMap() {
-
-                if (this.map) {
-
-                    this.map.remove();
-                }
-
+                if (this.map) this.map.remove();
                 this.map = null;
-
                 this.markers = null;
-
                 this.branchZones = null;
-
                 this.searchMarker = null;
-
                 this.layerControl = null;
-
                 this.allMarkers = [];
-
             },
 
 
-            /* =========================================================
-             * BRANCH POPUP
-             * ========================================================= */
+            /* ================= BRANCH POPUP ================= */
 
             createBranchPopup(item) {
-
-                const name =
-                    item.name_en ||
-                    item.name ||
-                    'Unknown Location';
-
-
-                const status =
-                    item.status ||
-                    'Unknown';
-
-
-                const isAvailable =
-                    status.toLowerCase() ===
-                    'available';
-
-
-                const lat =
-                    parseFloat(item.lat);
-
-
-                const lng =
-                    parseFloat(item.lng);
-
+                const name = item.name_en || item.name || 'Unknown Location';
+                const status = item.status || 'Unknown';
+                const isAvailable = status.toLowerCase() === 'available';
+                const lat = parseFloat(item.lat);
+                const lng = parseFloat(item.lng);
 
                 return `
-
                 <div class="coverage-popup">
-
-                    <!-- HEADER -->
-
                     <div class="coverage-popup-header">
-
-                        <div class="coverage-popup-title">
-
-                            ${name}
-
-                        </div>
-
-
-                        <div class="
-                            coverage-status
-                            ${isAvailable
-                                ? 'available'
-                                : 'unavailable'}
-                        ">
-
-                            <span
-                                class="coverage-status-dot"
-                            ></span>
-
+                        <div class="coverage-popup-title">${name}</div>
+                        <div class="coverage-status ${isAvailable ? 'available' : 'unavailable'}">
+                            <span class="coverage-status-dot"></span>
                             ${status}
-
                         </div>
-
                     </div>
-
-
-                    <!-- BODY -->
-
                     <div class="coverage-popup-body">
-
                         <div class="coverage-info-row">
-
-                            <span
-                                class="coverage-info-label"
-                            >
-                                Latitude
-                            </span>
-
-                            <span
-                                class="coverage-info-value"
-                            >
-                                ${
-                                    lat != null && !isNaN(lat)
-                                        ? lat.toFixed(6)
-                                        : '-'
-                                }
-                            </span>
-
+                            <span class="coverage-info-label">Latitude</span>
+                            <span class="coverage-info-value">${lat != null && !isNaN(lat) ? lat.toFixed(6) : '-'}</span>
                         </div>
-
-
                         <div class="coverage-info-row">
-
-                            <span
-                                class="coverage-info-label"
-                            >
-                                Longitude
-                            </span>
-
-                            <span
-                                class="coverage-info-value"
-                            >
-                                ${
-                                    lng != null && !isNaN(lng)
-                                        ? lng.toFixed(6)
-                                        : '-'
-                                }
-                            </span>
-
+                            <span class="coverage-info-label">Longitude</span>
+                            <span class="coverage-info-value">${lng != null && !isNaN(lng) ? lng.toFixed(6) : '-'}</span>
                         </div>
-
                     </div>
-
-
-                    <!-- FOOTER -->
-
                     <div class="coverage-popup-footer">
-
                         <div class="coverage-radius">
-
-                            <div
-                                class="coverage-radius-icon"
-                            >
-                                ◉
-                            </div>
-
-
+                            <div class="coverage-radius-icon">◉</div>
                             <div>
-
-                                <div
-                                    style="
-                                        font-weight:600;
-                                        color:#334155;
-                                    "
-                                >
-                                    Coverage Zone
-                                </div>
-
-                                <div>
-                                    ${this.coverageKm}
-                                    km radius
-                                </div>
-
+                                <div style="font-weight:600;color:#334155;">Coverage Zone</div>
+                                <div>${this.coverageKm} km radius</div>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             `;
             },
 
 
-            /* =========================================================
-             * COVERAGE ZONE POPUP
-             * ========================================================= */
+            /* ================= COVERAGE ZONE POPUP ================= */
 
             createZonePopup(branch) {
-
                 return `
-
                 <div class="coverage-popup">
-
-                    <!-- HEADER -->
-
                     <div class="coverage-popup-header">
-
-                        <div class="coverage-popup-title">
-
-                            ${branch.name_en}
-
-                        </div>
-
-
-                        <div
-                            class="
-                                coverage-status
-                                available
-                            "
-                        >
-
-                            <span
-                                class="
-                                    coverage-status-dot
-                                "
-                            ></span>
-
+                        <div class="coverage-popup-title">${branch.name_en}</div>
+                        <div class="coverage-status available">
+                            <span class="coverage-status-dot"></span>
                             Coverage
-
                         </div>
-
                     </div>
-
-
-                    <!-- BODY -->
-
                     <div class="coverage-popup-body">
-
                         <div class="coverage-info-row">
-
-                            <span
-                                class="coverage-info-label"
-                            >
-                                Coverage Radius
-                            </span>
-
-                            <span
-                                class="coverage-info-value"
-                            >
-                                ${this.coverageKm} km
-                            </span>
-
+                            <span class="coverage-info-label">Coverage Radius</span>
+                            <span class="coverage-info-value">${this.coverageKm} km</span>
                         </div>
-
-
                         <div class="coverage-info-row">
-
-                            <span
-                                class="coverage-info-label"
-                            >
-                                Coverage Area
-                            </span>
-
-                            <span
-                                class="coverage-info-value"
-                            >
-                                ${this.coverageKm * 2}
-                                ×
-                                ${this.coverageKm * 2}
-                                km
-                            </span>
-
+                            <span class="coverage-info-label">Coverage Area</span>
+                            <span class="coverage-info-value">${this.coverageKm * 2} × ${this.coverageKm * 2} km</span>
                         </div>
-
-
                         <div class="coverage-info-row">
-
-                            <span
-                                class="coverage-info-label"
-                            >
-                                Branch Latitude
-                            </span>
-
-                            <span
-                                class="coverage-info-value"
-                            >
-                                ${branch.lat != null ? branch.lat.toFixed(6) : '-'}
-                            </span>
-
+                            <span class="coverage-info-label">Branch Latitude</span>
+                            <span class="coverage-info-value">${branch.lat != null ? branch.lat.toFixed(6) : '-'}</span>
                         </div>
-
-
                         <div class="coverage-info-row">
-
-                            <span
-                                class="coverage-info-label"
-                            >
-                                Branch Longitude
-                            </span>
-
-                            <span
-                                class="coverage-info-value"
-                            >
-                                ${branch.lng != null ? branch.lng.toFixed(6) : '-'}
-                            </span>
-
+                            <span class="coverage-info-label">Branch Longitude</span>
+                            <span class="coverage-info-value">${branch.lng != null ? branch.lng.toFixed(6) : '-'}</span>
                         </div>
-
                     </div>
-
-
-                    <!-- FOOTER -->
-
                     <div class="coverage-popup-footer">
-
                         <div class="coverage-radius">
-
-                            <div
-                                class="coverage-radius-icon"
-                            >
-                                ◉
-                            </div>
-
-
+                            <div class="coverage-radius-icon">◉</div>
                             <div>
-
-                                <div
-                                    style="
-                                        font-weight:600;
-                                        color:#334155;
-                                    "
-                                >
-                                    TELNET Coverage Zone
-                                </div>
-
-                                <div>
-                                    Service coverage
-                                    around this branch
-                                </div>
-
+                                <div style="font-weight:600;color:#334155;">TELNET Coverage Zone</div>
+                                <div>Service coverage around this branch</div>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             `;
             },
 
 
-            /* =========================================================
-             * SEARCH RESULT POPUP
-             * ========================================================= */
+            /* ================= SEARCH RESULT POPUP ================= */
 
-            createSearchPopup(
-                lat,
-                lng,
-                name,
-                nearest
-            ) {
-
-                const insideCoverage =
-                    nearest &&
-                    nearest.distance <=
-                    this.coverageKm;
-
+            createSearchPopup(lat, lng, name, nearest) {
+                const insideCoverage = nearest && nearest.distance <= this.coverageKm;
 
                 return `
-
                 <div class="coverage-popup">
-
-                    <!-- HEADER -->
-
                     <div class="coverage-popup-header">
-
-                        <div class="coverage-popup-title">
-
-                            ${name || 'Selected Location'}
-
+                        <div class="coverage-popup-title">${name || 'Selected Location'}</div>
+                        <div class="coverage-status ${insideCoverage ? 'available' : 'unavailable'}">
+                            <span class="coverage-status-dot"></span>
+                            ${insideCoverage ? 'Covered' : 'Not Covered'}
                         </div>
-
-
-                        <div class="
-                            coverage-status
-                            ${
-                                insideCoverage
-                                    ? 'available'
-                                    : 'unavailable'
-                            }
-                        ">
-
-                            <span
-                                class="
-                                    coverage-status-dot
-                                "
-                            ></span>
-
-                            ${
-                                insideCoverage
-                                    ? 'Covered'
-                                    : 'Not Covered'
-                            }
-
-                        </div>
-
                     </div>
-
-
-                    <!-- LOCATION -->
-
                     <div class="coverage-popup-body">
-
                         <div class="coverage-info-row">
-
-                            <span
-                                class="coverage-info-label"
-                            >
-                                Latitude
-                            </span>
-
-                            <span
-                                class="coverage-info-value"
-                            >
-                                ${lat != null && !isNaN(lat) ? lat.toFixed(6) : '-'}
-                            </span>
-
+                            <span class="coverage-info-label">Latitude</span>
+                            <span class="coverage-info-value">${lat != null && !isNaN(lat) ? lat.toFixed(6) : '-'}</span>
                         </div>
-
-
                         <div class="coverage-info-row">
-
-                            <span
-                                class="coverage-info-label"
-                            >
-                                Longitude
-                            </span>
-
-                            <span
-                                class="coverage-info-value"
-                            >
-                                ${lng != null && !isNaN(lng) ? lng.toFixed(6) : '-'}
-                            </span>
-
+                            <span class="coverage-info-label">Longitude</span>
+                            <span class="coverage-info-value">${lng != null && !isNaN(lng) ? lng.toFixed(6) : '-'}</span>
                         </div>
-
-
-                        ${
-                            nearest
-                                ? `
-
-                                    <div
-                                        class="
-                                            coverage-info-row
-                                        "
-                                    >
-
-                                        <span
-                                            class="
-                                                coverage-info-label
-                                            "
-                                        >
-                                            Nearest Branch
-                                        </span>
-
-                                        <span
-                                            class="
-                                                coverage-info-value
-                                            "
-                                        >
-                                            ${nearest.name_en}
-                                        </span>
-
-                                    </div>
-
-
-                                    <div
-                                        class="
-                                            coverage-info-row
-                                        "
-                                    >
-
-                                        <span
-                                            class="
-                                                coverage-info-label
-                                            "
-                                        >
-                                            Distance
-                                        </span>
-
-                                        <span
-                                            class="
-                                                coverage-info-value
-                                                ${
-                                                    insideCoverage
-                                                        ? 'distance-good'
-                                                        : 'distance-bad'
-                                                }
-                                            "
-                                        >
-                                            ${nearest.distance != null ? nearest.distance.toFixed(2) : '-'}
-                                            km
-                                        </span>
-
-                                    </div>
-
-                                `
-                                : ''
-                        }
-
+                        ${nearest ? `
+                            <div class="coverage-info-row">
+                                <span class="coverage-info-label">Nearest Branch</span>
+                                <span class="coverage-info-value">${nearest.name_en}</span>
+                            </div>
+                            <div class="coverage-info-row">
+                                <span class="coverage-info-label">Distance</span>
+                                <span class="coverage-info-value ${insideCoverage ? 'distance-good' : 'distance-bad'}">
+                                    ${nearest.distance != null ? nearest.distance.toFixed(2) : '-'} km
+                                </span>
+                            </div>
+                        ` : ''}
                     </div>
-
-
-                    <!-- COVERAGE RESULT -->
-
-                    <div
-                        class="
-                            coverage-result
-                            ${
-                                insideCoverage
-                                    ? 'coverage-result-good'
-                                    : 'coverage-result-bad'
-                            }
-                        "
-                    >
-
-                        <div
-                            class="
-                                coverage-result-icon
-                            "
-                        >
-                            ${
-                                insideCoverage
-                                    ? '✓'
-                                    : '!'
-                            }
-                        </div>
-
-
+                    <div class="coverage-result ${insideCoverage ? 'coverage-result-good' : 'coverage-result-bad'}">
+                        <div class="coverage-result-icon">${insideCoverage ? '✓' : '!'}</div>
                         <div>
-
-                            <div
-                                class="
-                                    coverage-result-title
-                                "
-                            >
-                                ${
-                                    insideCoverage
-                                        ? 'Service Available'
-                                        : 'Outside Coverage'
-                                }
+                            <div class="coverage-result-title">${insideCoverage ? 'Service Available' : 'Outside Coverage'}</div>
+                            <div class="coverage-result-text">
+                                ${insideCoverage
+                                    ? `This location is within the ${this.coverageKm} km coverage zone.`
+                                    : `This location is outside the nearest ${this.coverageKm} km coverage zone.`}
                             </div>
-
-
-                            <div
-                                class="
-                                    coverage-result-text
-                                "
-                            >
-                                ${
-                                    insideCoverage
-                                        ? `
-                                            This location is
-                                            within the
-                                            ${this.coverageKm} km
-                                            coverage zone.
-                                        `
-                                        : `
-                                            This location is
-                                            outside the nearest
-                                            ${this.coverageKm} km
-                                            coverage zone.
-                                        `
-                                }
-                            </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             `;
             },
 
 
-            /* =========================================================
-             * LOAD MARKERS
-             * ========================================================= */
+            /* ================= LOAD MARKERS ================= */
 
             loadMarkers() {
+                $('#spinner').removeClass('hidden');
 
-                $('#spinner')
-                    .removeClass('hidden');
-
-
-                $.get(
-                        '{{ route("coverage.data") }}'
-                    )
+                $.get('{{ route("coverage.data") }}')
 
                     .done(response => {
+                        if (!this.map) return;
 
-                        if (!this.map)
-                            return;
-
-
-                        /*
-                         * Clear old data
-                         */
-
-                        this.markers
-                            .clearLayers();
-
-
-                        this.branchZones
-                            .clearLayers();
-
-
+                        /* Clear old data */
+                        this.markers.clearLayers();
+                        this.branchZones.clearLayers();
                         this.allMarkers = [];
 
+                        /* Branch data */
+                        const branches = response.branches || response.data || [];
 
-                        /*
-                         * Branch data
-                         */
-
-                        const branches =
-                            response.branches ||
-                            response.data || [];
-
-
-                        /*
-                         * Popular regions
-                         */
-
-                        this.presetRegions =
-                            branches
-
-                            .filter(item =>
-                                item.lat != null &&
-                                item.lng != null
-                            )
-
+                        /* Popular regions (now also carries avg_latency / uptime) */
+                        this.presetRegions = branches
+                            .filter(item => item.lat != null && item.lng != null)
                             .map(item => ({
-
                                 id: item.id,
-
-                                name_en: item.name_en ||
-                                    item.name ||
-                                    '',
-
-                                name_km: item.name_km ||
-                                    '',
-
-                                lat: parseFloat(
-                                    item.lat
-                                ),
-
-                                lng: parseFloat(
-                                    item.lng
-                                ),
-
-                                status: item.status ||
-                                    null
-
+                                name_en: item.name_en || item.name || '',
+                                name_km: item.name_km || '',
+                                lat: parseFloat(item.lat),
+                                lng: parseFloat(item.lng),
+                                status: item.status || null,
+                                avg_latency: item.avg_latency ?? null,
+                                uptime: item.uptime ?? null
                             }))
-
-                            .filter(item =>
-                                !isNaN(item.lat) &&
-                                !isNaN(item.lng)
-                            );
-
-
-                        /* =================================================
-                         * ICONS
-                         * ================================================= */
-
-                        const activeIcon =
-                            L.icon({
-
-                                iconUrl: '{{ asset("images/MAP.png") }}',
-
-                                shadowUrl: '{{ asset("images/marker-shadow.png") }}',
-
-                                iconSize: [30, 50],
-
-                                iconAnchor: [15, 50],
-
-                                popupAnchor: [0, -50]
-
-                            });
-
-
-                        const inactiveIcon =
-                            L.icon({
-
-                                iconUrl: '{{ asset("images/MAP_INACTIVE.png") }}',
-
-                                shadowUrl: '{{ asset("images/marker-shadow.png") }}',
-
-                                iconSize: [30, 50],
-
-                                iconAnchor: [15, 50],
-
-                                popupAnchor: [0, -50]
-
-                            });
-
-
-                        /* =================================================
-                         * COVERAGE DATA
-                         * ================================================= */
-
-                        const coverageData =
-                            response.data || [];
-
-
-                        coverageData.forEach(item => {
-
-                            const lat =
-                                parseFloat(
-                                    item.lat
-                                );
-
-
-                            const lng =
-                                parseFloat(
-                                    item.lng
-                                );
-
-
-                            if (
-                                isNaN(lat) ||
-                                isNaN(lng)
-                            ) {
-                                return;
-                            }
-
-
-                            const name =
-                                item.name_en ||
-                                item.name ||
-                                '';
-
-
-                            const status =
-                                item.status ||
-                                'Unknown';
-
-
-                            /*
-                             * Marker
-                             */
-
-                            const marker =
-                                L.marker(
-
-                                    [lat, lng],
-
-                                    {
-
-                                        icon: status ===
-                                            'Available'
-
-                                            ?
-                                            activeIcon
-
-                                            :
-                                            inactiveIcon
-
-                                    }
-
-                                );
-
-
-                            marker.regionName =
-                                name;
-
-
-                            marker.regionStatus =
-                                status;
-
-
-                            /*
-                             * Popup
-                             */
-
-                            marker.bindPopup(
-
-                                this.createBranchPopup(
-                                    item
-                                ),
-
-                                {
-
-                                    className: 'coverage-popup-container',
-
-                                    maxWidth: 340,
-
-                                    minWidth: 260,
-
-                                    closeButton: true,
-
-                                    autoPan: true
-
-                                }
-
-                            );
-
-
-                            /*
-                             * Add marker
-                             */
-
-                            this.markers
-                                .addLayer(
-                                    marker
-                                );
-
-
-                            this.allMarkers
-                                .push(
-                                    marker
-                                );
-
+                            .filter(item => !isNaN(item.lat) && !isNaN(item.lng));
+
+
+                        /* ICONS */
+                        const activeIcon = L.icon({
+                            iconUrl: '{{ asset("images/MAP.png") }}',
+                            shadowUrl: '{{ asset("images/marker-shadow.png") }}',
+                            iconSize: [30, 50],
+                            iconAnchor: [15, 50],
+                            popupAnchor: [0, -50]
+                        });
+
+                        const inactiveIcon = L.icon({
+                            iconUrl: '{{ asset("images/MAP_INACTIVE.png") }}',
+                            shadowUrl: '{{ asset("images/marker-shadow.png") }}',
+                            iconSize: [30, 50],
+                            iconAnchor: [15, 50],
+                            popupAnchor: [0, -50]
                         });
 
 
-                        /*
-                         * Create branch zones
-                         */
+                        /* COVERAGE DATA */
+                        const coverageData = response.data || [];
 
+                        coverageData.forEach(item => {
+                            const lat = parseFloat(item.lat);
+                            const lng = parseFloat(item.lng);
+                            if (isNaN(lat) || isNaN(lng)) return;
+
+                            const name = item.name_en || item.name || '';
+                            const status = item.status || 'Unknown';
+
+                            /* Marker */
+                            const marker = L.marker([lat, lng], {
+                                icon: status === 'Available' ? activeIcon : inactiveIcon
+                            });
+
+                            marker.regionName = name;
+                            marker.regionStatus = status;
+
+                            /* Popup */
+                            marker.bindPopup(this.createBranchPopup(item), {
+                                className: 'coverage-popup-container',
+                                maxWidth: 340,
+                                minWidth: 260,
+                                closeButton: true,
+                                autoPan: true
+                            });
+
+                            /* Add marker */
+                            this.markers.addLayer(marker);
+                            this.allMarkers.push(marker);
+                        });
+
+                        /* Create branch zones */
                         this.createBranchZones();
 
-
-                        /*
-                         * Total
-                         */
-
-                        if (
-                            response.total != null
-                        ) {
-
-                            this.totalZones =
-                                response.total;
-
+                        /* Total */
+                        if (response.total != null) {
+                            this.totalZones = response.total;
                         }
-
                     })
 
                     .fail(xhr => {
-
-                        console.error(
-                            'Coverage data error:',
-                            xhr.responseJSON ||
-                            xhr
-                        );
-
+                        console.error('Coverage data error:', xhr.responseJSON || xhr);
                     })
 
                     .always(() => {
-
-                        $('#spinner')
-                            .addClass('hidden');
-
+                        $('#spinner').addClass('hidden');
                     });
-
             },
 
 
-            /* =========================================================
-             * CREATE 40 KM COVERAGE ZONES
-             * ========================================================= */
+            /* ================= CREATE 40 KM COVERAGE ZONES ================= */
 
             createBranchZones() {
+                if (!this.branchZones) return;
 
-                if (!this.branchZones)
-                    return;
+                this.branchZones.clearLayers();
 
+                const km = this.coverageKm;
 
-                this.branchZones
-                    .clearLayers();
+                this.presetRegions.forEach(branch => {
+                    const lat = branch.lat;
+                    const lng = branch.lng;
 
+                    /* Latitude / Longitude offsets */
+                    const latOffset = km / 111;
+                    const lngOffset = km / (111 * Math.cos(lat * Math.PI / 180));
 
-                const km =
-                    this.coverageKm;
+                    /* Square bounds */
+                    const bounds = [
+                        [lat - latOffset, lng - lngOffset],
+                        [lat + latOffset, lng + lngOffset]
+                    ];
 
-
-                this.presetRegions
-                    .forEach(branch => {
-
-                        const lat =
-                            branch.lat;
-
-
-                        const lng =
-                            branch.lng;
-
-
-                        /*
-                         * Latitude
-                         */
-
-                        const latOffset =
-                            km / 111;
-
-
-                        /*
-                         * Longitude
-                         */
-
-                        const lngOffset =
-                            km /
-                            (
-                                111 *
-                                Math.cos(
-                                    lat *
-                                    Math.PI /
-                                    180
-                                )
-                            );
-
-
-                        /*
-                         * Square bounds
-                         */
-
-                        const bounds = [
-
-                            [
-
-                                lat -
-                                latOffset,
-
-                                lng -
-                                lngOffset
-
-                            ],
-
-                            [
-
-                                lat +
-                                latOffset,
-
-                                lng +
-                                lngOffset
-
-                            ]
-
-                        ];
-
-
-                        /*
-                         * Draw square
-                         */
-
-                        const zone =
-                            L.rectangle(
-
-                                bounds,
-
-                                {
-
-                                    color: '#8FC74A',
-
-                                    weight: 2,
-
-                                    opacity: 0.7,
-
-                                    fillColor: '#8FC74A',
-
-                                    fillOpacity: 0.08,
-
-                                    dashArray: '8, 6'
-
-                                }
-
-                            );
-
-
-                        /*
-                         * Zone popup
-                         */
-
-                        zone.bindPopup(
-
-                            this.createZonePopup(
-                                branch
-                            ),
-
-                            {
-
-                                className: 'coverage-popup-container',
-
-                                maxWidth: 340,
-
-                                minWidth: 260
-
-                            }
-
-                        );
-
-
-                        this.branchZones
-                            .addLayer(
-                                zone
-                            );
-
+                    /* Draw square */
+                    const zone = L.rectangle(bounds, {
+                        color: '#8FC74A',
+                        weight: 2,
+                        opacity: 0.7,
+                        fillColor: '#8FC74A',
+                        fillOpacity: 0.08,
+                        dashArray: '8, 6'
                     });
 
+                    /* Zone popup */
+                    zone.bindPopup(this.createZonePopup(branch), {
+                        className: 'coverage-popup-container',
+                        maxWidth: 340,
+                        minWidth: 260
+                    });
+
+                    this.branchZones.addLayer(zone);
+                });
             },
 
 
-            /* =========================================================
-             * PARSE LAT / LNG
-             * ========================================================= */
+            /* ================= PARSE LAT / LNG ================= */
 
             parseLatLng(value) {
+                const match = value.trim().match(/^(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)$/);
+                if (!match) return null;
 
-                const match =
-                    value
-                    .trim()
-                    .match(
-                        /^(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)$/
-                    );
+                const lat = parseFloat(match[1]);
+                const lng = parseFloat(match[2]);
 
-
-                if (!match)
+                if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
                     return null;
-
-
-                const lat =
-                    parseFloat(
-                        match[1]
-                    );
-
-
-                const lng =
-                    parseFloat(
-                        match[2]
-                    );
-
-
-                if (
-
-                    isNaN(lat) ||
-
-                    isNaN(lng) ||
-
-                    lat < -90 ||
-
-                    lat > 90 ||
-
-                    lng < -180 ||
-
-                    lng > 180
-
-                ) {
-
-                    return null;
-
                 }
-
 
                 return {
                     lat,
                     lng
                 };
-
             },
 
 
-            /* =========================================================
-             * DISTANCE
-             * ========================================================= */
+            /* ================= DISTANCE ================= */
 
-            calculateDistance(
-                lat1,
-                lng1,
-                lat2,
-                lng2
-            ) {
-
-                const R =
-                    6371;
-
-
-                const dLat =
-                    (
-                        lat2 -
-                        lat1
-                    ) *
-                    Math.PI /
-                    180;
-
-
-                const dLng =
-                    (
-                        lng2 -
-                        lng1
-                    ) *
-                    Math.PI /
-                    180;
-
+            calculateDistance(lat1, lng1, lat2, lng2) {
+                const R = 6371;
+                const dLat = (lat2 - lat1) * Math.PI / 180;
+                const dLng = (lng2 - lng1) * Math.PI / 180;
 
                 const a =
+                    Math.sin(dLat / 2) ** 2 +
+                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
 
-                    Math.sin(
-                        dLat / 2
-                    ) ** 2
-
-                    +
-
-                    Math.cos(
-                        lat1 *
-                        Math.PI /
-                        180
-                    )
-
-                    *
-
-                    Math.cos(
-                        lat2 *
-                        Math.PI /
-                        180
-                    )
-
-                    *
-
-                    Math.sin(
-                        dLng / 2
-                    ) ** 2;
-
-
-                return (
-
-                    R *
-
-                    2 *
-
-                    Math.atan2(
-
-                        Math.sqrt(a),
-
-                        Math.sqrt(
-                            1 - a
-                        )
-
-                    )
-
-                );
-
+                return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             },
 
 
-            /* =========================================================
-             * FIND NEAREST BRANCH
-             * ========================================================= */
+            /* ================= FIND NEAREST BRANCH ================= */
 
-            findNearestBranch(
-                lat,
-                lng
-            ) {
+            findNearestBranch(lat, lng) {
+                if (!this.presetRegions.length) return null;
 
-                if (
-                    !this.presetRegions.length
-                ) {
+                let nearest = null;
+                let shortest = Infinity;
 
-                    return null;
+                this.presetRegions.forEach(branch => {
+                    const distance = this.calculateDistance(lat, lng, branch.lat, branch.lng);
 
-                }
-
-
-                let nearest =
-                    null;
-
-
-                let shortest =
-                    Infinity;
-
-
-                this.presetRegions
-                    .forEach(branch => {
-
-                        const distance =
-                            this.calculateDistance(
-
-                                lat,
-
-                                lng,
-
-                                branch.lat,
-
-                                branch.lng
-
-                            );
-
-
-                        if (
-                            distance <
-                            shortest
-                        ) {
-
-                            shortest =
-                                distance;
-
-
-                            nearest = {
-
-                                ...branch,
-
-                                distance
-
-                            };
-
-                        }
-
-                    });
-
+                    if (distance < shortest) {
+                        shortest = distance;
+                        nearest = {
+                            ...branch,
+                            distance
+                        };
+                    }
+                });
 
                 return nearest;
-
             },
 
 
-            /* =========================================================
-             * MOVE TO COORDINATES
-             * ========================================================= */
+            /* ================= MOVE TO COORDINATES ================= */
 
-            flyToCoordinates(
-                lat,
-                lng,
-                name = null,
-                status = null
-            ) {
+            flyToCoordinates(lat, lng, name = null, status = null) {
+                if (!this.map) return;
 
-                if (!this.map)
-                    return;
+                lat = parseFloat(lat);
+                lng = parseFloat(lng);
+                if (isNaN(lat) || isNaN(lng)) return;
 
+                /* Zoom to location */
+                this.map.flyTo([lat, lng], 12, {
+                    duration: 0.75
+                });
 
-                lat =
-                    parseFloat(lat);
+                this.searchedLocation = name || `${lat}, ${lng}`;
+                this.status = status || null;
 
+                /* Find nearest branch */
+                const nearest = this.findNearestBranch(lat, lng);
+                this.nearestBranch = nearest;
+                this.distance = nearest ? nearest.distance : null;
 
-                lng =
-                    parseFloat(lng);
+                /* Update Network Highlights from nearest branch model data */
+                this.avgLatency = nearest?.avg_latency != null ? `${nearest.avg_latency} ms` : '---';
+                this.networkUptime = nearest?.uptime != null ? `${nearest.uptime}%` : '---';
 
-
-                if (
-
-                    isNaN(lat) ||
-
-                    isNaN(lng)
-
-                ) {
-
-                    return;
-
+                /* Remove previous search pointer */
+                if (this.searchMarker) {
+                    this.map.removeLayer(this.searchMarker);
+                    this.searchMarker = null;
                 }
 
+                /* Create new pointer */
+                this.searchMarker = L.marker([lat, lng], {
+                    icon: this.searchIcon,
+                    zIndexOffset: 1000
+                }).addTo(this.map);
 
-                /*
-                 * Zoom to location
-                 */
-
-                this.map.flyTo(
-
-                    [lat, lng],
-
-                    12,
-
-                    {
-
-                        duration: 0.75
-
-                    }
-
-                );
-
-
-                this.searchedLocation =
-                    name ||
-                    `${lat}, ${lng}`;
-
-
-                this.status =
-                    status ||
-                    null;
-
-
-                /*
-                 * Find nearest branch
-                 */
-
-                const nearest =
-                    this.findNearestBranch(
-                        lat,
-                        lng
-                    );
-
-
-                this.nearestBranch =
-                    nearest;
-
-
-                this.distance =
-                    nearest ?
-                    nearest.distance :
-                    null;
-
-
-                /*
-                 * Remove previous
-                 * search pointer
-                 */
-
-                if (
-                    this.searchMarker
-                ) {
-
-                    this.map.removeLayer(
-                        this.searchMarker
-                    );
-
-
-                    this.searchMarker =
-                        null;
-
-                }
-
-
-                /*
-                 * Create new pointer
-                 */
-
-                this.searchMarker =
-                    L.marker(
-
-                        [lat, lng],
-
-                        {
-
-                            icon: this.searchIcon,
-
-                            zIndexOffset: 1000
-
-                        }
-
-                    )
-
-
-                    .addTo(
-                        this.map
-                    );
-
-
-                /*
-                 * Search popup
-                 */
-
+                /* Search popup */
                 this.searchMarker
-                    .bindPopup(
-
-                        this.createSearchPopup(
-
-                            lat,
-
-                            lng,
-
-                            name,
-
-                            nearest
-
-                        ),
-
-                        {
-
-                            className: 'coverage-popup-container',
-
-                            maxWidth: 360,
-
-                            minWidth: 280,
-
-                            closeButton: true,
-
-                            autoPan: true
-
-                        }
-
-                    )
-
+                    .bindPopup(this.createSearchPopup(lat, lng, name, nearest), {
+                        className: 'coverage-popup-container',
+                        maxWidth: 360,
+                        minWidth: 280,
+                        closeButton: true,
+                        autoPan: true
+                    })
                     .openPopup();
-
             },
 
 
-            /* =========================================================
-             * SELECT POPULAR BRANCH
-             * ========================================================= */
+            /* ================= SELECT POPULAR BRANCH ================= */
 
             selectRegion(branch) {
+                if (!branch) return;
 
-                if (!branch)
-                    return;
-
-
-                this.searchQuery =
-                    branch.name_en;
-
-
-                this.flyToCoordinates(
-
-                    branch.lat,
-
-                    branch.lng,
-
-                    branch.name_en,
-
-                    branch.status
-
-                );
-
+                this.searchQuery = branch.name_en;
+                this.flyToCoordinates(branch.lat, branch.lng, branch.name_en, branch.status);
             },
 
 
-            /* =========================================================
-             * SEARCH EXISTING MARKER
-             * ========================================================= */
+            /* ================= SEARCH EXISTING MARKER ================= */
 
             flyToRegionByName(name) {
+                if (!name) return;
 
-                if (!name)
-                    return;
-
-
-                const marker =
-                    this.allMarkers.find(
-
-                        marker =>
-
-                        marker.regionName &&
-
-                        marker.regionName
-                        .toLowerCase() ===
-
-                        name.toLowerCase()
-
-                    );
-
+                const marker = this.allMarkers.find(
+                    marker => marker.regionName && marker.regionName.toLowerCase() === name.toLowerCase()
+                );
 
                 if (marker) {
-
-                    const position =
-                        marker.getLatLng();
-
-
-                    this.flyToCoordinates(
-
-                        position.lat,
-
-                        position.lng,
-
-                        marker.regionName,
-
-                        marker.regionStatus
-
-                    );
-
+                    const position = marker.getLatLng();
+                    this.flyToCoordinates(position.lat, position.lng, marker.regionName, marker.regionStatus);
                 } else {
-
-                    this.checkCoverage(
-                        name
-                    );
-
+                    this.checkCoverage(name);
                 }
-
             },
 
 
-            /* =========================================================
-             * MAIN SEARCH
-             * ========================================================= */
+            /* ================= MAIN SEARCH ================= */
 
-            checkCoverage(
-                query = null
-            ) {
+            checkCoverage(query = null) {
+                const term = (query || this.searchQuery || '').trim();
+                if (!term) return;
 
-                const term = (
-
-                    query ||
-
-                    this.searchQuery ||
-
-                    ''
-
-                ).trim();
-
-
-                if (!term)
-                    return;
-
-
-                /*
-                 * Search lat,lng first
-                 */
-
-                const coords =
-                    this.parseLatLng(
-                        term
-                    );
-
+                /* Search lat,lng first */
+                const coords = this.parseLatLng(term);
 
                 if (coords) {
+                    this.isLoading = true;
+                    this.status = null;
 
-                    this.isLoading =
-                        true;
+                    this.flyToCoordinates(coords.lat, coords.lng, `${coords.lat}, ${coords.lng}`);
 
-
-                    this.status =
-                        null;
-
-
-                    this.flyToCoordinates(
-
-                        coords.lat,
-
-                        coords.lng,
-
-                        `${coords.lat}, ${coords.lng}`
-
-                    );
-
-
-                    this.isLoading =
-                        false;
-
-
+                    this.isLoading = false;
                     return;
-
                 }
 
+                /* Search location */
+                this.isLoading = true;
+                this.status = null;
 
-                /*
-                 * Search location
-                 */
-
-                this.isLoading =
-                    true;
-
-
-                this.status =
-                    null;
-
-
-                $.get(
-
-                        '{{ route("coverage.check") }}',
-
-                        {
-
-                            keyword: term
-
-                        }
-
-                    )
+                $.get('{{ route("coverage.check") }}', {
+                        keyword: term
+                    })
 
                     .done(response => {
+                        this.searchedLocation = response.name || term;
+                        this.status = response.status || null;
 
-                        this.searchedLocation =
-                            response.name ||
-                            term;
+                        /* Update Network Highlights directly from the search response */
+                        this.avgLatency = response.avg_latency != null ? `${response.avg_latency} ms` : '---';
+                        this.networkUptime = response.uptime != null ? `${response.uptime}%` : '---';
 
-
-                        this.status =
-                            response.status ||
-                            null;
-
-
-                        if (
-
-                            response.lat !=
-                            null &&
-
-                            response.lng !=
-                            null
-
-                        ) {
-
-                            this.flyToCoordinates(
-
-                                response.lat,
-
-                                response.lng,
-
-                                response.name ||
-                                term,
-
-                                response.status
-
-                            );
-
+                        if (response.lat != null && response.lng != null) {
+                            this.flyToCoordinates(response.lat, response.lng, response.name || term, response.status);
                         }
-
                     })
 
                     .fail(xhr => {
-
-                        alert(
-
-                            xhr.responseJSON?.message ||
-
-                            'An unexpected error occurred.'
-
-                        );
-
+                        alert(xhr.responseJSON?.message || 'An unexpected error occurred.');
                     })
 
                     .always(() => {
-
-                        this.isLoading =
-                            false;
-
+                        this.isLoading = false;
                     });
-
             },
 
 
-            /* =========================================================
-             * RESET
-             * ========================================================= */
+            /* ================= RESET ================= */
 
             resetMap() {
+                this.searchQuery = '';
+                this.searchedLocation = '';
+                this.status = null;
+                this.distance = null;
+                this.nearestBranch = null;
+                this.avgLatency = '---';
+                this.networkUptime = '---';
 
-                this.searchQuery =
-                    '';
-
-
-                this.searchedLocation =
-                    '';
-
-
-                this.status =
-                    null;
-
-
-                this.distance =
-                    null;
-
-
-                this.nearestBranch =
-                    null;
-
-
-                /*
-                 * Remove search marker
-                 */
-
-                if (
-                    this.searchMarker
-                ) {
-
-                    this.map.removeLayer(
-
-                        this.searchMarker
-
-                    );
-
-
-                    this.searchMarker =
-                        null;
-
+                /* Remove search marker */
+                if (this.searchMarker) {
+                    this.map.removeLayer(this.searchMarker);
+                    this.searchMarker = null;
                 }
 
-
-                /*
-                 * Close popup
-                 */
-
+                /* Close popup */
                 this.map.closePopup();
 
-
-                /*
-                 * Return to Cambodia
-                 */
-
-                this.map.flyTo(
-
-                    this.defaultCenter,
-
-                    this.defaultZoom,
-
-                    {
-
-                        duration: 0.75
-
-                    }
-
-                );
-
+                /* Return to Cambodia */
+                this.map.flyTo(this.defaultCenter, this.defaultZoom, {
+                    duration: 0.75
+                });
             }
 
         };
     }
 </script>
-<section id="support" class="py-16 section-bg-primary hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <x-section-title label="06. ការគាំទ្រ និងប្រព័ន្ធ ២៤/៧" title="កម្រិតការឡើងនៃបញ្ហា (Escalation Level Matrix)" subtitle="ក្រុមការងារជំនាញត្រៀមខ្លួនដោះស្រាយបញ្ហារហ័ស ២៤ ម៉ោង" labelColor="text-brand-green" />
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            @php
-            $isKm = app()->getLocale() === 'km';
-            $levels = [
-            ['color'=>'green','level'=>'Level 1','tk'=>'ក្រុមការងារ NOC 24/7','te'=>'NOC Team 24/7','dk'=>'ទទួលសំបុត្រ (Ticket) វិភាគ និងដោះស្រាយពីចម្ងាយ','de'=>'Receive tickets, analyze, and resolve remotely','phone'=>'097 513 5135','email'=>'noc@telnet.com.kh'],
-            ['color'=>'orange','level'=>'Level 2','tk'=>'ប្រធានផ្នែក NOC','te'=>'NOC Department Head','dk'=>'លោក នី សាវណ្ណ (Mr. Ny Savann)','de'=>'Mr. Ny Savann','phone'=>'088 891 6667','email'=>'ny.savann@telnet.com.kh'],
-            ['color'=>'green','level'=>'Level 3','tk'=>'ប្រតិបត្តិការ និងនាយក','te'=>'Operations & Director','dk'=>'លោក ណេត សុគន្ធធារិទ្ធ (Mr. Neth Sokunthearith)','de'=>'Mr. Neth Sokunthearith','phone'=>'081 687 697','email'=>'neth.sokunthearith@telnet.com.kh'],
-            ]; @endphp
-            @foreach($levels as $i => $lvl)
-            <div class="glass-card p-6 rounded-2xl border-t-4 {{ $lvl['color']==='green' ? 'border-t-brand-green' : 'border-t-brand-orange' }} relative">
-                <span class="text-xs font-bold {{ $lvl['color']==='green' ? 'text-brand-green bg-brand-green/10' : 'text-brand-orange bg-brand-orange/10' }} px-2.5 py-1 rounded">
-                    កម្រិតទ{{ ['ី១','ី២','ី៣'][$i] }} ({{ $lvl['level'] }})
-                </span>
-                <h3 class="text-lg font-bold text-adaptive-main mt-3">{{ $isKm ? $lvl['tk'] : $lvl['te'] }}</h3>
-                <p class="text-xs text-adaptive-muted mt-1">{{ $isKm ? $lvl['dk'] : $lvl['de'] }}</p>
-                <div class="mt-6 space-y-3 text-xs">
-                    <a href="tel:{{ preg_replace('/\s+/','',$lvl['phone']) }}" class="flex items-center gap-3 p-3 bg-slate-100 dark:bg-slate-900 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition">
-                        <i class="fa-solid fa-phone text-{{ $lvl['color']==='green' ? 'brand-green' : 'brand-orange' }} text-base"></i>
-                        <div><span class="text-adaptive-muted block text-[10px]">លេខទូរស័ព្ទ:</span><span class="font-bold text-adaptive-main text-sm">{{ $lvl['phone'] }}</span></div>
-                    </a>
-                    <a href="mailto:{{ $lvl['email'] }}" class="flex items-center gap-3 p-3 bg-slate-100 dark:bg-slate-900 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800 transition">
-                        <i class="fa-solid fa-envelope text-{{ $lvl['color']==='green' ? 'brand-green' : 'brand-orange' }} text-base"></i>
-                        <div><span class="text-adaptive-muted block text-[10px]">អ៊ីមែល:</span><span class="font-bold text-adaptive-main text-xs">{{ $lvl['email'] }}</span></div>
-                    </a>
+
+<section class="py-8 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <h2 class="text-2xl sm:text-4xl font-extrabold  text-transparent bg-clip-text gradient-brand">
+            {{ __('app.support.title') }}
+        </h2>
+        <p class="text-adaptive-muted text-sm max-w-2xl mx-auto">
+            {{ __('app.support.desc') }}
+        </p>
+    </div>
+</section>
+
+<section id="support" class="relative overflow-hidden py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-2">
+
+            {{-- =====================================================
+                 LEFT : SUPPORT INFORMATION
+            ====================================================== --}}
+            <div class="space-y-5">
+
+                {{-- Customer Service --}}
+                <div class="group rounded-2xl border border-slate-200 bg-white  p-6
+                            shadow-sm transition duration-300
+                            hover:-translate-y-1 hover:shadow-lg">
+
+                    <div class="flex items-start gap-5">
+
+                        <div class="flex h-14 w-14 shrink-0 items-center justify-center
+                                    rounded-xl bg-green-50 text-green-600
+                                    transition group-hover:bg-green-600 group-hover:text-white">
+
+                            <svg class="h-7 w-7"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.8"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                            </svg>
+                        </div>
+
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-slate-900">
+                                {{ __('app.support.service') }}
+                            </h3>
+
+                            <p class="mt-1 text-sm leading-6 text-slate-500">
+                                {{ __('For general inquiries, billing, and customer assistance.') }}
+                            </p>
+
+                            <div class="mt-4 space-y-2">
+
+                                <a href="tel:+85512345678"
+                                    class="flex items-center gap-2 text-sm font-semibold
+                                          text-green-600 transition hover:text-green-700">
+                                    <svg class="h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                                    </svg>
+                                    012 345 678
+                                </a>
+
+                                <a href="mailto:support@telnet.com.kh"
+                                    class="flex items-center gap-2 text-sm text-slate-500
+                                          transition hover:text-green-600">
+                                    <svg class="h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                    support@telnet.com.kh
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
+                {{-- NOC --}}
+                <div class="group rounded-2xl border border-slate-200 bg-white p-6
+                            shadow-sm transition duration-300
+                            hover:-translate-y-1 hover:shadow-lg">
+
+                    <div class="flex items-start gap-5">
+
+                        <div class="flex h-14 w-14 shrink-0 items-center justify-center
+                                    rounded-xl bg-orange-50 text-orange-500
+                                    transition group-hover:bg-orange-500 group-hover:text-white">
+
+                            <svg class="h-7 w-7"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.8"
+                                    d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 5h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2z" />
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.8"
+                                    d="M9 9h6v6H9V9z" />
+                            </svg>
+                        </div>
+
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-slate-900">
+                                {{ __('app.support.noc') }}
+                            </h3>
+
+                            <p class="mt-1 text-sm leading-6 text-slate-500">
+                                {{ __('For network incidents, connectivity issues, and technical support.') }}
+                            </p>
+
+                            <div class="mt-4 space-y-2">
+
+                                <a href="tel:+85512345678"
+                                    class="flex items-center gap-2 text-sm font-semibold
+                                          text-orange-500 transition hover:text-orange-600">
+                                    <svg class="h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                                    </svg>
+                                    012 345 678
+                                </a>
+
+                                <a href="mailto:noc@telnet.com.kh"
+                                    class="flex items-center gap-2 text-sm text-slate-500
+                                          transition hover:text-orange-500">
+                                    <svg class="h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                    noc@telnet.com.kh
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="group rounded-2xl border border-slate-200 bg-white  p-6
+                            shadow-sm transition duration-300
+                            hover:-translate-y-1 hover:shadow-lg">
+
+                    <div class="flex items-start gap-5">
+
+                        <div class="flex h-14 w-14 shrink-0 items-center justify-center
+                                    rounded-xl bg-slate-100 text-slate-700
+                                    transition group-hover:bg-slate-800 group-hover:text-white">
+
+                            <svg class="h-7 w-7"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.8"
+                                    d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z" />
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.8"
+                                    d="M8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3z" />
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.8"
+                                    d="M2 19c0-2.21 2.69-4 6-4s6 1.79 6 4M14 15c.62-.64 1.53-1 2.5-1 2.49 0 4.5 1.34 4.5 3" />
+                            </svg>
+                        </div>
+
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-slate-900">
+                                {{ __('app.support.sale') }}
+                            </h3>
+
+                            <p class="mt-1 text-sm leading-6 text-slate-500">
+                                {{ __('For new services, business solutions, and partnership inquiries.') }}
+                            </p>
+
+                            <div class="mt-4 space-y-2">
+
+                                <a href="tel:+85512345678"
+                                    class="flex items-center gap-2 text-sm font-semibold
+                                          text-slate-700 transition hover:text-green-600">
+                                    <svg class="h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                                    </svg>
+                                    012 345 678
+                                </a>
+
+                                <a href="mailto:sales@telnet.com.kh"
+                                    class="flex items-center gap-2 text-sm text-slate-500
+                                          transition hover:text-green-600">
+                                    <svg class="h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                    sales@telnet.com.kh
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            @endforeach
+
+
+            {{-- =====================================================
+                 RIGHT : CONTACT FORM
+            ====================================================== --}}
+            <div class="rounded-3xl border border-slate-200 bg-white p-6
+                        shadow-xl sm:p-8 ">
+
+                <div class="mb-8">
+                    <h3 class="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
+                        {{ __('app.support.send') }}
+                    </h3>
+
+                    <p class="mt-3 text-sm leading-6 text-slate-500">
+                        {{ __('Have a question or need assistance? Send us your information and our team will get back to you.') }}
+                    </p>
+                </div>
+
+
+                <form action="{{ route('contact.store') }}"
+                    method="POST"
+                    class="space-y-5">
+
+                    @csrf
+
+                    {{-- Full Name --}}
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-slate-700">
+                            {{ __('app.support.fullname') }}
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            value="{{ old('name') }}"
+                            required
+                            placeholder="{{ __('app.support.fullname_holder') }}"
+                            class="w-full rounded-xl border border-slate-200 bg-slate-50
+                                   px-4 py-3 text-sm text-slate-900
+                                   placeholder-slate-400 outline-none transition
+                                   focus:border-green-500 focus:bg-white
+                                   focus:ring-2 focus:ring-green-500/20">
+                    </div>
+
+
+                    {{-- Email + Phone --}}
+                    <div class="grid gap-5 sm:grid-cols-2">
+
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-slate-700">
+                                {{ __('app.support.email') }}
+                            </label>
+
+                            <input
+                                type="email"
+                                name="email"
+                                value="{{ old('email') }}"
+                                required
+                                placeholder="{{__('app.support.email_holder')}}"
+                                class="w-full rounded-xl border border-slate-200 bg-slate-50
+                                       px-4 py-3 text-sm text-slate-900
+                                       placeholder-slate-400 outline-none transition
+                                       focus:border-green-500 focus:bg-white
+                                       focus:ring-2 focus:ring-green-500/20">
+                        </div>
+
+
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-slate-700">
+                                {{ __('app.support.phone') }}
+                            </label>
+
+                            <input
+                                type="text"
+                                name="phone"
+                                value="{{ old('phone') }}"
+                                placeholder="  {{ __('app.support.phone_holder') }}"
+                                class="w-full rounded-xl border border-slate-200 bg-slate-50
+                                       px-4 py-3 text-sm text-slate-900
+                                       placeholder-slate-400 outline-none transition
+                                       focus:border-green-500 focus:bg-white
+                                       focus:ring-2 focus:ring-green-500/20">
+                        </div>
+
+                    </div>
+
+
+                    {{-- Support Type --}}
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-slate-700">
+                            {{ __('app.support.tikect_type') }}
+                        </label>
+
+                        <select
+                            name="type"
+                            required
+                            class="w-full rounded-xl border border-slate-200 bg-slate-50
+                                   px-4 py-3 text-sm text-slate-900 outline-none transition
+                                   focus:border-green-500 focus:bg-white
+                                   focus:ring-2 focus:ring-green-500/20">
+
+                            <option value="">
+                                {{ __('app.support.select') }}
+                            </option>
+
+                            <option value="customer_service">
+                                {{ __('app.support.t_care') }}
+                            </option>
+
+                            <option value="noc">
+                                {{ __('app.support.t_noc') }}
+                            </option>
+
+                            <option value="sales">
+                                {{ __('app.support.t_sale') }}
+                            </option>
+                            <option value="sales">
+                                {{ __('app.support.t_bill') }}
+                            </option>
+
+                        </select>
+                    </div>
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-slate-700">
+                            {{ __('app.support.t_desc') }}
+                        </label>
+
+                        <textarea
+                            name="message"
+                            rows="5"
+                            required
+                            placeholder="{{ __('app.support.t_desc_holder') }}"
+                            class="w-full resize-none rounded-xl border border-slate-200
+                                   bg-slate-50 px-4 py-3 text-sm text-slate-900
+                                   placeholder-slate-400 outline-none transition
+                                   focus:border-green-500 focus:bg-white
+                                   focus:ring-2 focus:ring-green-500/20">{{ old('message') }}</textarea>
+                    </div>
+
+
+                    {{-- Submit --}}
+                    <button
+                        type="submit"
+                        class="group flex w-full items-center justify-center gap-3
+                               rounded-xl bg-gradient-to-r from-green-500 to-green-600
+                               px-5 py-3.5 text-sm font-bold text-white
+                               shadow-lg shadow-green-600/20
+                               transition duration-300
+                               hover:-translate-y-0.5
+                               hover:from-green-600 hover:to-green-700
+                               hover:shadow-green-600/30">
+
+                        {{ __('app.support.send') }}
+
+                        <svg class="h-5 w-5 transition-transform duration-300
+                                    group-hover:translate-x-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+
+                    </button>
+
+                </form>
+
+            </div>
+
         </div>
     </div>
 </section>
 
-{{-- ===== CTA SECTION — visible ===== --}}
-<section class="py-16 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-adaptive-main">
-            {{ __('app.cta.title') }}
-        </h2>
-        <p class="text-adaptive-muted text-sm max-w-2xl mx-auto">
-            {{ __('app.cta.desc') }}
-        </p>
-        <div class="flex justify-center gap-4 flex-wrap">
-            <button onclick="openModal('serviceModal')"
-                class="gradient-brand hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand-green/20 text-sm transition">
-                <i class="fa-solid fa-paper-plane mr-2"></i>
-                {{ __('app.cta.btn') }}
-            </button>
-        </div>
-    </div>
-</section>
+
 
 @endsection
