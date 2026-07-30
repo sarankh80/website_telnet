@@ -32,7 +32,7 @@ $latlong="11.54732899907136,104.9089653152003";
     </div>
 
     <!-- Full Viewport Width Outer Container (Infinite Width) -->
-    <div class="relative z-10 w-screen  overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)]">
+    <div class="relative z-10 w-full  overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)]">
 
         <!-- Animated Flex Belt (Seamless Infinite Scroll) -->
         <div class="animate-marquee gap-6">

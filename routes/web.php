@@ -25,6 +25,9 @@ Route::get('/career', [HomeController::class, 'career'])->name('career');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::post('/service-request', [ContactController::class, 'serviceRequest'])->name('service.request');
+// routes/web.php
+Route::get('/coverage/data', [HomeController::class, 'data'])->name('coverage.data');
+Route::get('/coverage/check', [HomeController::class, 'check'])->name('coverage.check');
 Route::post('/career/apply', [HomeController::class, 'careerApply'])->name('career.apply');
 
 // ─── Admin Auth ────────────────────────────────────────────

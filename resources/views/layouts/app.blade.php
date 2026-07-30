@@ -6,6 +6,13 @@
     <link rel="icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
     <script src="{{asset('js/filament/tailwind.js')}}"></script>
     <script src="{{asset('js/filament/additional/coreProduct.pagination.js')}}"></script>
+    <link href="{{asset('css/filament/custome.css')}}" rel="stylesheet">
+    <link href="{{asset('css/filament/map/ActivityMap.css')}}" rel="stylesheet">
+    <link href="{{asset('css/filament/map/ActivityMapMarker.css')}}" rel="stylesheet">
+    <script src="{{asset('js/filament/map/leaflet.js')}}"></script>
+    <script src="{{asset('js/filament/map/leaflet.markercluster.js')}}"></script>
+    <script src="{{asset('js/filament/map/loadingMap.js')}}"></script>
+    <script src="{{asset('js/filament/jquery.min.js')}}"></script>
     <style>
         .gradient-brand {
             background: linear-gradient(to right, #8FC74A, #F79633);

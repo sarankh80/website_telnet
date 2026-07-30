@@ -11,10 +11,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // RoleSeeder::class,
             // ServiceSeeder::class,
-            // BranchSeeder::class,
+            BranchSeeder::class,
             // TeamSeeder::class,
             // SettingSeeder::class,
-            SlugSeeder::class,
+            // SlugSeeder::class,
         ]);
     }
 }
