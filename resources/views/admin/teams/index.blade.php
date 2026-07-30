@@ -1,12 +1,12 @@
 @extends('admin.layouts.app')
-@section('title', 'Team Members')
+@section('title', __('admin.teams.title'))
 
 @section('content')
 <div class="flex items-center justify-between mb-6">
-    <p class="text-sm text-slate-400">{{ $members->total() }} members total</p>
+    <p class="text-sm text-slate-400">{{ $members->total() }} {{ __('admin.teams.title') }}</p>
     <a href="{{ route('admin.teams.create') }}"
        class="px-4 py-2 bg-brand-green hover:bg-[#7ab534] text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
-        <i class="fa-solid fa-plus"></i> Add Member
+        <i class="fa-solid fa-plus"></i> {{ __('admin.teams.add') }}
     </a>
 </div>
 
@@ -15,12 +15,12 @@
     <table class="w-full text-sm min-w-[560px]">
         <thead>
             <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
-                <th class="px-5 py-3.5 text-left">Member</th>
-                <th class="px-5 py-3.5 text-left hidden md:table-cell">Position</th>
-                <th class="px-5 py-3.5 text-center">CEO</th>
-                <th class="px-5 py-3.5 text-center">Active</th>
-                <th class="px-5 py-3.5 text-center">Order</th>
-                <th class="px-5 py-3.5 text-right">Actions</th>
+                <th class="px-5 py-3.5 text-left">{{ __('admin.teams.member') }}</th>
+                <th class="px-5 py-3.5 text-left hidden md:table-cell">{{ __('admin.teams.position') }}</th>
+                <th class="px-5 py-3.5 text-center">{{ __('admin.teams.is_ceo') }}</th>
+                <th class="px-5 py-3.5 text-center">{{ __('admin.field.is_active') }}</th>
+                <th class="px-5 py-3.5 text-center">{{ __('admin.field.order') }}</th>
+                <th class="px-5 py-3.5 text-right">{{ __('admin.field.actions') }}</th>
             </tr>
         </thead>
         <tbody class="divide-y divide-slate-800">
@@ -45,7 +45,7 @@
                     <td class="px-5 py-4 hidden md:table-cell text-slate-400">{{ $member->position_en }}</td>
                     <td class="px-5 py-4 text-center">
                         @if($member->is_ceo)
-                            <span class="px-2 py-0.5 text-[10px] font-bold bg-brand-orange/15 text-brand-orange rounded-full">CEO</span>
+                            <span class="px-2 py-0.5 text-[10px] font-bold bg-brand-orange/15 text-brand-orange rounded-full">{{ __('admin.teams.is_ceo') }}</span>
                         @else
                             <span class="text-slate-600">—</span>
                         @endif
@@ -62,20 +62,20 @@
                         <div class="flex items-center justify-end gap-2">
                             <a href="{{ route('admin.teams.edit', $member) }}"
                                class="px-3 py-1.5 text-xs bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg transition">
-                                Edit
+                                {{ __('admin.btn.edit') }}
                             </a>
                             <form method="POST" action="{{ route('admin.teams.destroy', $member) }}"
-                                  onsubmit="return confirm('Delete this member?')">
+                                  onsubmit="return confirm('{{ __('admin.btn.delete') }}?')">
                                 @csrf @method('DELETE')
                                 <button class="px-3 py-1.5 text-xs bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg transition">
-                                    Delete
+                                    {{ __('admin.btn.delete') }}
                                 </button>
                             </form>
                         </div>
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="6" class="px-5 py-10 text-center text-slate-500">No members found.</td></tr>
+                <tr><td colspan="6" class="px-5 py-10 text-center text-slate-500">{{ __('admin.teams.no_members') }}</td></tr>
             @endforelse
         </tbody>
     </table>

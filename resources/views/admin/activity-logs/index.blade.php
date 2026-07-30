@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Activity Logs')
+@section('title', __('admin.activity_logs.title'))
 
 @section('content')
 
@@ -7,14 +7,14 @@
 <form method="GET" class="flex flex-wrap gap-3 mb-6">
     <select name="user_id"
             class="bg-slate-900 border border-slate-700 text-slate-100 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-brand-green transition">
-        <option value="">All Users</option>
+        <option value="">{{ __('admin.activity_logs.all_users') }}</option>
         @foreach($users as $id => $name)
             <option value="{{ $id }}" {{ request('user_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
         @endforeach
     </select>
     <select name="action"
             class="bg-slate-900 border border-slate-700 text-slate-100 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-brand-green transition">
-        <option value="">All Actions</option>
+        <option value="">{{ __('admin.activity_logs.all_actions') }}</option>
         @foreach($actions as $action)
             <option value="{{ $action }}" {{ request('action') === $action ? 'selected' : '' }}>{{ ucfirst($action) }}</option>
         @endforeach
@@ -22,20 +22,20 @@
     <input type="date" name="date" value="{{ request('date') }}"
            class="bg-slate-900 border border-slate-700 text-slate-100 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-brand-green transition">
     <button type="submit" class="px-4 py-2 bg-brand-green hover:bg-[#7ab534] text-white text-sm font-semibold rounded-lg transition">
-        Filter
+        {{ __('admin.btn.filter') }}
     </button>
     @if(request()->hasAny(['user_id','action','date']))
-        <a href="{{ route('admin.activity-logs.index') }}" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 text-sm rounded-lg transition">Clear</a>
+        <a href="{{ route('admin.activity-logs.index') }}" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 text-sm rounded-lg transition">{{ __('admin.btn.clear') }}</a>
     @endif
 
     {{-- Clear old logs --}}
     <form method="POST" action="{{ route('admin.activity-logs.clear') }}" class="ml-auto"
-          onsubmit="return confirm('Delete logs older than 30 days?')">
+          onsubmit="return confirm('{{ __('admin.activity_logs.clear_old') }}?')">
         @csrf @method('DELETE')
         <button type="submit"
                 class="px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm rounded-lg transition flex items-center gap-1.5">
             <i class="fa-solid fa-trash-can text-xs"></i>
-            Clear Old Logs
+            {{ __('admin.activity_logs.clear_old') }}
         </button>
     </form>
 </form>
@@ -45,12 +45,12 @@
     <table class="w-full text-sm min-w-[640px]">
         <thead>
             <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
-                <th class="px-5 py-3.5 text-left">User</th>
-                <th class="px-5 py-3.5 text-center">Action</th>
-                <th class="px-5 py-3.5 text-left">Description</th>
-                <th class="px-5 py-3.5 text-left hidden lg:table-cell">Subject</th>
-                <th class="px-5 py-3.5 text-right hidden md:table-cell">IP</th>
-                <th class="px-5 py-3.5 text-right">Time</th>
+                <th class="px-5 py-3.5 text-left">{{ __('admin.field.user') }}</th>
+                <th class="px-5 py-3.5 text-center">{{ __('admin.activity_logs.action') }}</th>
+                <th class="px-5 py-3.5 text-left">{{ __('admin.field.description') }}</th>
+                <th class="px-5 py-3.5 text-left hidden lg:table-cell">{{ __('admin.activity_logs.subject') }}</th>
+                <th class="px-5 py-3.5 text-right hidden md:table-cell">{{ __('admin.activity_logs.ip') }}</th>
+                <th class="px-5 py-3.5 text-right">{{ __('admin.activity_logs.time') }}</th>
             </tr>
         </thead>
         <tbody class="divide-y divide-slate-800">
@@ -93,7 +93,7 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="6" class="px-5 py-10 text-center text-slate-500">No activity logs found.</td></tr>
+                <tr><td colspan="6" class="px-5 py-10 text-center text-slate-500">{{ __('admin.activity_logs.no_logs') }}</td></tr>
             @endforelse
         </tbody>
     </table>

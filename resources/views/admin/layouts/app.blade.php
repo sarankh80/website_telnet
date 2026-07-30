@@ -11,7 +11,7 @@
     {{-- Apply saved theme before paint to avoid flash --}}
     <script>
         (function(){
-            var t = localStorage.getItem('admin-theme') || 'dark';
+            var t = localStorage.getItem('admin-theme') || 'light';
             document.documentElement.classList.toggle('admin-light', t === 'light');
         })();
     </script>
@@ -207,7 +207,7 @@ window.adminTranslate = async function (el, tab) {
     }
 
     // Sync button state on load
-    applyTheme(localStorage.getItem('admin-theme') || 'dark');
+    applyTheme(localStorage.getItem('admin-theme') || 'light');
 
     if (btn) {
         btn.addEventListener('click', function () {
