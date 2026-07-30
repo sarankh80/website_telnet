@@ -1,22 +1,22 @@
 @extends('admin.layouts.app')
-@section('title', 'CV Applications')
+@section('title', __('admin.applications.title'))
 
 @section('content')
-{{-- Filters --}}
-<form method="GET" class="flex flex-wrap gap-3 mb-6">
+<form method="GET" class="flex gap-3 mb-6">
     <select name="career_id" class="admin-input w-auto text-sm" onchange="this.form.submit()">
-        <option value="">All Positions</option>
+        <option value="">{{ __('admin.applications.all_positions') }}</option>
         @foreach($careers as $c)
             <option value="{{ $c->id }}" {{ request('career_id') == $c->id ? 'selected' : '' }}>{{ $c->title }}</option>
         @endforeach
     </select>
     <select name="status" class="admin-input w-auto text-sm" onchange="this.form.submit()">
-        <option value="">All Status</option>
-        @foreach(['new' => 'New', 'reviewing' => 'Reviewing', 'shortlisted' => 'Shortlisted', 'rejected' => 'Rejected', 'hired' => 'Hired'] as $val => $lbl)
-            <option value="{{ $val }}" {{ request('status') === $val ? 'selected' : '' }}>{{ $lbl }}</option>
+        <option value="">{{ __('admin.applications.all_status') }}</option>
+        @foreach(['new', 'reviewing', 'shortlisted', 'rejected', 'hired'] as $val)
+            <option value="{{ $val }}" {{ request('status') === $val ? 'selected' : '' }}>
+                {{ __('admin.applications.status.' . $val) }}
+            </option>
         @endforeach
     </select>
-    <p class="ml-auto text-sm text-slate-400 self-center">{{ $applications->total() }} applications</p>
 </form>
 
 <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
@@ -25,11 +25,11 @@
         <thead>
             <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
                 <th class="px-5 py-3.5 text-left w-8">#</th>
-                <th class="px-5 py-3.5 text-left">Applicant</th>
-                <th class="px-5 py-3.5 text-left hidden md:table-cell">Position</th>
-                <th class="px-5 py-3.5 text-left hidden lg:table-cell">Applied</th>
-                <th class="px-5 py-3.5 text-center">Status</th>
-                <th class="px-5 py-3.5 text-right">Actions</th>
+                <th class="px-5 py-3.5 text-left">{{ __('admin.careers.applicant') }}</th>
+                <th class="px-5 py-3.5 text-left hidden md:table-cell">{{ __('admin.careers.position') }}</th>
+                <th class="px-5 py-3.5 text-left hidden lg:table-cell">{{ __('admin.field.created_at') }}</th>
+                <th class="px-5 py-3.5 text-center">{{ __('admin.field.status') }}</th>
+                <th class="px-5 py-3.5 text-right">{{ __('admin.field.actions') }}</th>
             </tr>
         </thead>
         <tbody class="divide-y divide-slate-800">
@@ -67,17 +67,17 @@
                     </td>
                     <td class="px-5 py-4 text-center">
                         <span class="px-2 py-0.5 text-[10px] font-semibold rounded-full {{ $sc }}">
-                            {{ ucfirst($app->status) }}
+                            {{ __('admin.applications.status.' . $app->status) }}
                         </span>
                     </td>
                     <td class="px-5 py-4 text-right">
                         <div class="flex items-center justify-end gap-2">
                             <a href="{{ route('admin.career-applications.show', $app) }}"
-                               class="px-3 py-1.5 text-xs bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg transition">View</a>
+                               class="px-3 py-1.5 text-xs bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg transition">{{ __('admin.btn.view') }}</a>
                             <form method="POST" action="{{ route('admin.career-applications.destroy', $app) }}"
                                   onsubmit="return confirm('Delete this application?')">
                                 @csrf @method('DELETE')
-                                <button class="px-3 py-1.5 text-xs bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg transition">Delete</button>
+                                <button class="px-3 py-1.5 text-xs bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg transition">{{ __('admin.btn.delete') }}</button>
                             </form>
                         </div>
                     </td>
@@ -86,7 +86,7 @@
                 <tr>
                     <td colspan="6" class="px-5 py-12 text-center text-slate-500">
                         <i class="fa-solid fa-file-lines text-3xl mb-3 block text-slate-700"></i>
-                        No applications yet.
+                        {{ __('admin.applications.no_apps') }}
                     </td>
                 </tr>
             @endforelse

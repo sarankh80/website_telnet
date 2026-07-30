@@ -1,0 +1,157 @@
+<?php
+
+return [
+    'panel'    => 'បន្ទះគ្រប់គ្រង',
+    'view_site'=> 'មើលគេហទំព័រ',
+    'logout'   => 'ចេញ',
+
+    // Sidebar
+    'nav' => [
+        'dashboard'            => 'ផ្ទាំងព័ត៌មាន',
+        'slug_categories'      => 'ប្រភេទ Slug',
+        'service_types'        => 'ប្រភេទសេវាកម្ម',
+        'services'             => 'សេវាកម្ម',
+        'corporate_subscribers'=> 'អតិថិជនសហស្ថាប័ន',
+        'careers'              => 'ការងារ',
+        'cv_applications'      => 'ពាក្យសុំ CV',
+        'branches'             => 'សាខា',
+        'team'                 => 'ក្រុមការងារ',
+        'service_requests'     => 'ការស្នើសុំសេវា',
+        'messages'             => 'សារ',
+        'settings'             => 'ការកំណត់',
+        'users'                => 'អ្នកប្រើប្រាស់',
+        'roles'                => 'តួនាទី',
+        'permissions'          => 'សិទ្ធិ',
+        'activity_logs'        => 'កំណត់ហេតុ',
+    ],
+
+    // Common buttons & labels
+    'btn' => [
+        'save'        => 'រក្សាទុក',
+        'create'      => 'បង្កើត',
+        'update'      => 'ធ្វើបច្ចុប្បន្នភាព',
+        'cancel'      => 'បោះបង់',
+        'delete'      => 'លុប',
+        'edit'        => 'កែសម្រួល',
+        'add'         => 'បន្ថែម',
+        'view'        => 'មើល',
+        'back'        => 'ត្រឡប់ក្រោយ',
+        'download'    => 'ទាញយក',
+        'upload'      => 'បញ្ចូល',
+        'save_status' => 'រក្សាទុកស្ថានភាព',
+    ],
+
+    // Common field labels
+    'field' => [
+        'name_en'     => 'ឈ្មោះ (អង់គ្លេស)',
+        'name_km'     => 'ឈ្មោះ (ខ្មែរ)',
+        'description' => 'ការពណ៌នា',
+        'image'       => 'រូបភាព',
+        'logo'        => 'និមិត្តសញ្ញា',
+        'website'     => 'URL គេហទំព័រ',
+        'sort_order'  => 'លំដាប់',
+        'is_active'   => 'សកម្ម',
+        'status'      => 'ស្ថានភាព',
+        'notes'       => 'កំណត់ចំណាំ',
+        'created_at'  => 'ដាក់ជូននៅ',
+        'actions'     => 'សកម្មភាព',
+        'order'       => 'លំដាប់',
+    ],
+
+    // Flash messages
+    'flash' => [
+        'created' => 'បានបង្កើតដោយជោគជ័យ។',
+        'updated' => 'បានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ។',
+        'deleted' => 'បានលុប។',
+    ],
+
+    // Pages
+    'careers' => [
+        'title'          => 'ការងារ',
+        'add'            => 'បន្ថែមការងារ',
+        'edit'           => 'កែការងារ',
+        'create'         => 'បន្ថែមការងារ',
+        'title_en'       => 'ឈ្មោះតំណែង (អង់គ្លេស)',
+        'title_km'       => 'ឈ្មោះតំណែង (ខ្មែរ)',
+        'department_en'  => 'នាយកដ្ឋាន (អង់គ្លេស)',
+        'department_km'  => 'នាយកដ្ឋាន (ខ្មែរ)',
+        'location_en'    => 'ទីតាំង (អង់គ្លេស)',
+        'location_km'    => 'ទីតាំង (ខ្មែរ)',
+        'type'           => 'ប្រភេទការងារ',
+        'deadline'       => 'ថ្ងៃផុតកំណត់',
+        'description'    => 'ការពណ៌នាការងារ',
+        'requirements'   => 'លក្ខខណ្ឌ',
+        'position'       => 'តំណែង',
+        'applied'        => 'ដាក់ពាក្យ',
+        'applicant'      => 'អ្នកដាក់ពាក្យ',
+        'apps'           => 'ពាក្យ',
+        'types'          => [
+            'full-time'  => 'ពេញម៉ោង',
+            'part-time'  => 'កន្លះម៉ោង',
+            'contract'   => 'កិច្ចសន្យា',
+            'internship' => 'ហាត់ការ',
+        ],
+        'no_jobs'        => 'មិនទាន់មានការងារ។',
+    ],
+
+    'applications' => [
+        'title'        => 'ពាក្យសុំ CV',
+        'all_positions'=> 'តំណែងទាំងអស់',
+        'all_status'   => 'ស្ថានភាពទាំងអស់',
+        'cv'           => 'ប្រវត្តិរូប (CV)',
+        'cover_letter' => 'លិខិតណែនាំ',
+        'update_status'=> 'ធ្វើបច្ចុប្បន្នភាពស្ថានភាព',
+        'admin_notes'  => 'កំណត់ចំណាំអ្នកគ្រប់គ្រង',
+        'no_apps'      => 'មិនទាន់មានពាក្យសុំ។',
+        'status'       => [
+            'new'         => 'ថ្មី',
+            'reviewing'   => 'កំពុងពិនិត្យ',
+            'shortlisted' => 'ជ្រើសរើស',
+            'rejected'    => 'បដិសេធ',
+            'hired'       => 'ជ្រើសបាន',
+        ],
+    ],
+
+    'services' => [
+        'title'         => 'សេវាកម្ម',
+        'add'           => 'បន្ថែមសេវាកម្ម',
+        'badge'         => 'បដិ',
+        'slug_type'     => 'Slug / ប្រភេទ',
+        'icon'          => 'រូបតំណាង (FontAwesome)',
+        'badge_en'      => 'បដិ (EN)',
+        'badge_km'      => 'បដិ (KM)',
+        'color'         => 'ពណ៌',
+        'service_image' => 'រូបភាពសេវាកម្ម',
+        'slug_cat'      => 'ប្រភេទ Slug',
+        'service_type'  => 'ប្រភេទសេវា',
+    ],
+
+    'corporate' => [
+        'title'          => 'អតិថិជនសហស្ថាប័ន',
+        'add'            => 'បន្ថែមអតិថិជន',
+        'edit'           => 'កែព័ត៌មានអតិថិជន',
+        'company_en'     => 'ឈ្មោះក្រុមហ៊ុន (អង់គ្លេស)',
+        'company_km'     => 'ឈ្មោះក្រុមហ៊ុន (ខ្មែរ)',
+        'industry_en'    => 'វិស័យ (អង់គ្លេស)',
+        'industry_km'    => 'វិស័យ (ខ្មែរ)',
+        'contact_person' => 'នាមអ្នកទំនាក់ទំនង',
+        'contact_email'  => 'អ៊ីម៉ែល',
+        'phone'          => 'លេខទូរស័ព្ទ',
+        'no_subs'        => 'មិនទាន់មានអតិថិជន។',
+    ],
+
+    'slugs' => [
+        'title'    => 'ប្រភេទ Slug',
+        'add'      => 'បន្ថែមប្រភេទ',
+        'edit'     => 'កែប្រភេទ',
+        'category' => 'ប្រភេទ',
+        'types'    => 'ប្រភេទ',
+    ],
+
+    'service_types' => [
+        'title'    => 'ប្រភេទសេវាកម្ម',
+        'add'      => 'បន្ថែមប្រភេទ',
+        'slug_cat' => 'ប្រភេទ Slug *',
+        'no_slugs' => 'មិនទាន់មានប្រភេទ Slug — សូមបង្កើតជាមុន។',
+    ],
+];

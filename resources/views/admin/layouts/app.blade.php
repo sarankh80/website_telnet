@@ -35,7 +35,7 @@
                 <text x="215" y="62" font-family="Inter" font-weight="900" font-size="52" fill="#F58220">NET</text>
             </svg>
             <div>
-                <p class="text-[11px] text-slate-400 leading-none mt-0.5">Admin Panel</p>
+                <p class="text-[11px] text-slate-400 leading-none mt-0.5">{{ __('admin.panel') }}</p>
             </div>
         </div>
 
@@ -43,22 +43,22 @@
         <nav class="flex-1 px-3 py-4 space-y-0.5 text-sm">
             @php
                 $navItems = [
-                    ['route' => 'admin.dashboard',              'icon' => 'fa-gauge',              'label' => 'Dashboard'],
-                    ['route' => 'admin.slugs.index',            'icon' => 'fa-layer-group',        'label' => 'Slug Categories'],
-                    ['route' => 'admin.service-types.index',    'icon' => 'fa-tags',               'label' => 'Service Types'],
-                    ['route' => 'admin.services.index',                'icon' => 'fa-bolt',               'label' => 'Services'],
-                    ['route' => 'admin.corporate-subscribers.index',   'icon' => 'fa-building-user',      'label' => 'Corporate Subscribers'],
-                    ['route' => 'admin.careers.index',                 'icon' => 'fa-briefcase',          'label' => 'Careers'],
-                    ['route' => 'admin.career-applications.index',     'icon' => 'fa-file-lines',         'label' => 'CV Applications',       'badge' => \App\Models\CareerApplication::where('status','new')->count()],
-                    ['route' => 'admin.branches.index',                'icon' => 'fa-map-pin',            'label' => 'Branches'],
-                    ['route' => 'admin.teams.index',            'icon' => 'fa-users',              'label' => 'Team'],
-                    ['route' => 'admin.service-requests.index', 'icon' => 'fa-inbox',              'label' => 'Service Requests',  'badge' => \App\Models\ServiceRequest::where("status","new")->count()],
-                    ['route' => 'admin.contact-messages.index', 'icon' => 'fa-envelope',           'label' => 'Messages',          'badge' => \App\Models\ContactMessage::where("is_read",false)->count()],
-                    ['route' => 'admin.settings.index',         'icon' => 'fa-gear',               'label' => 'Settings'],
-                    ['route' => 'admin.users.index',            'icon' => 'fa-user-shield',        'label' => 'Users'],
-                    ['route' => 'admin.roles.index',            'icon' => 'fa-key',                'label' => 'Roles'],
-                    ['route' => 'admin.permissions.index',      'icon' => 'fa-shield-halved',      'label' => 'Permissions'],
-                    ['route' => 'admin.activity-logs.index',    'icon' => 'fa-clock-rotate-left',  'label' => 'Activity Logs'],
+                    ['route' => 'admin.dashboard',                   'icon' => 'fa-gauge',             'label' => __('admin.nav.dashboard')],
+                    ['route' => 'admin.slugs.index',                 'icon' => 'fa-layer-group',       'label' => __('admin.nav.slug_categories')],
+                    ['route' => 'admin.service-types.index',         'icon' => 'fa-tags',              'label' => __('admin.nav.service_types')],
+                    ['route' => 'admin.services.index',              'icon' => 'fa-bolt',              'label' => __('admin.nav.services')],
+                    ['route' => 'admin.corporate-subscribers.index', 'icon' => 'fa-building-user',     'label' => __('admin.nav.corporate_subscribers')],
+                    ['route' => 'admin.careers.index',               'icon' => 'fa-briefcase',         'label' => __('admin.nav.careers')],
+                    ['route' => 'admin.career-applications.index',   'icon' => 'fa-file-lines',        'label' => __('admin.nav.cv_applications'), 'badge' => \App\Models\CareerApplication::where('status','new')->count()],
+                    ['route' => 'admin.branches.index',              'icon' => 'fa-map-pin',           'label' => __('admin.nav.branches')],
+                    ['route' => 'admin.teams.index',                 'icon' => 'fa-users',             'label' => __('admin.nav.team')],
+                    ['route' => 'admin.service-requests.index',      'icon' => 'fa-inbox',             'label' => __('admin.nav.service_requests'), 'badge' => \App\Models\ServiceRequest::where("status","new")->count()],
+                    ['route' => 'admin.contact-messages.index',      'icon' => 'fa-envelope',          'label' => __('admin.nav.messages'),         'badge' => \App\Models\ContactMessage::where("is_read",false)->count()],
+                    ['route' => 'admin.settings.index',              'icon' => 'fa-gear',              'label' => __('admin.nav.settings')],
+                    ['route' => 'admin.users.index',                 'icon' => 'fa-user-shield',       'label' => __('admin.nav.users')],
+                    ['route' => 'admin.roles.index',                 'icon' => 'fa-key',               'label' => __('admin.nav.roles')],
+                    ['route' => 'admin.permissions.index',           'icon' => 'fa-shield-halved',     'label' => __('admin.nav.permissions')],
+                    ['route' => 'admin.activity-logs.index',         'icon' => 'fa-clock-rotate-left', 'label' => __('admin.nav.activity_logs')],
                 ];
             @endphp
 
@@ -82,7 +82,7 @@
             <form method="POST" action="{{ route('admin.logout') }}" class="mt-2">
                 @csrf
                 <button type="submit" class="flex items-center gap-1.5 text-red-400 hover:text-red-300 transition text-xs">
-                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    <i class="fa-solid fa-right-from-bracket"></i> {{ __('admin.logout') }}
                 </button>
             </form>
         </div>
@@ -98,6 +98,20 @@
                 <i class="fa-solid fa-bars text-lg"></i>
             </button>
             <h1 class="text-base font-bold text-slate-100 flex-1">@yield('title', 'Dashboard')</h1>
+            {{-- Language switcher --}}
+            <div class="flex rounded-lg overflow-hidden border border-slate-700 text-xs flex-shrink-0">
+                <a href="{{ route('locale.switch', 'en') }}"
+                   class="px-3 py-1.5 font-semibold transition
+                          {{ app()->getLocale() === 'en' ? 'bg-brand-green text-white' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-700' }}">
+                    EN
+                </a>
+                <a href="{{ route('locale.switch', 'km') }}"
+                   class="px-3 py-1.5 font-semibold transition border-l border-slate-700
+                          {{ app()->getLocale() === 'km' ? 'bg-brand-green text-white' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-700' }}">
+                    ខ្មែរ
+                </a>
+            </div>
+
             {{-- Theme toggle --}}
             <button id="admin-theme-toggle" type="button" title="Toggle light / dark"
                     class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
@@ -110,7 +124,7 @@
             <a href="{{ route('home') }}" target="_blank"
                class="text-xs text-slate-400 hover:text-brand-green transition flex items-center gap-1.5 flex-shrink-0">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                <span class="hidden sm:inline">View Site</span>
+                <span class="hidden sm:inline">{{ __('admin.view_site') }}</span>
             </a>
         </header>
         {{-- Mobile overlay --}}
@@ -137,6 +151,43 @@
 </div>
 
 @stack('scripts')
+<script>
+/* ── Global admin translate helper ──────────────────────────────────────────
+   Called from Alpine.js tab wrappers.
+   el  = root element of the x-data component (this.$el)
+   tab = current active tab ('en' or 'km')
+   Returns the new active tab on success, or null.
+─────────────────────────────────────────────────────────────────────────── */
+window.adminTranslate = async function (el, tab) {
+    var toLang  = tab === 'en' ? 'km' : 'en';
+    var fromEl  = el.querySelector('[data-lang="' + tab + '"] .quill-editor');
+    var toEl    = el.querySelector('[data-lang="' + toLang + '"] .quill-editor');
+    if (!fromEl || !toEl) return null;
+
+    var fromQ = window._quillMap[fromEl.id];
+    var toQ   = window._quillMap[toEl.id];
+    if (!fromQ || !toQ) return null;
+
+    var html = fromQ.root.innerHTML;
+    if (!html || html === '<p><br></p>' || html === '<p></p>') return null;
+
+    var csrf = document.querySelector('meta[name="csrf-token"]')?.content ?? '';
+    var resp = await fetch('{{ route("admin.translate") }}', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrf },
+        body:    JSON.stringify({ html: html, from: tab, to: toLang })
+    }).catch(function () { return null; });
+
+    if (!resp || !resp.ok) return null;
+
+    var data = await resp.json().catch(function () { return null; });
+    if (data && data.translation) {
+        toQ.clipboard.dangerouslyPasteHTML(data.translation);
+        return toLang;
+    }
+    return null;
+};
+</script>
 <script>
 (function () {
     var btn   = document.getElementById('admin-theme-toggle');

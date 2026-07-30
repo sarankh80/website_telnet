@@ -1,12 +1,12 @@
 @extends('admin.layouts.app')
-@section('title', 'Careers')
+@section('title', __('admin.careers.title'))
 
 @section('content')
 <div class="flex items-center justify-between mb-6">
-    <p class="text-sm text-slate-400">{{ $careers->total() }} job postings</p>
+    <p class="text-sm text-slate-400">{{ $careers->total() }} {{ __('admin.careers.title') }}</p>
     <a href="{{ route('admin.careers.create') }}"
        class="px-4 py-2 bg-brand-green hover:bg-[#7ab534] text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
-        <i class="fa-solid fa-plus"></i> Add Job
+        <i class="fa-solid fa-plus"></i> {{ __('admin.careers.add') }}
     </a>
 </div>
 
@@ -16,12 +16,12 @@
         <thead>
             <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
                 <th class="px-5 py-3.5 text-left w-8">#</th>
-                <th class="px-5 py-3.5 text-left">Position</th>
-                <th class="px-5 py-3.5 text-left hidden md:table-cell">Type</th>
-                <th class="px-5 py-3.5 text-left hidden lg:table-cell">Deadline</th>
-                <th class="px-5 py-3.5 text-center hidden sm:table-cell">Apps</th>
-                <th class="px-5 py-3.5 text-center">Active</th>
-                <th class="px-5 py-3.5 text-right">Actions</th>
+                <th class="px-5 py-3.5 text-left">{{ __('admin.careers.position') }}</th>
+                <th class="px-5 py-3.5 text-left hidden md:table-cell">{{ __('admin.careers.type') }}</th>
+                <th class="px-5 py-3.5 text-left hidden lg:table-cell">{{ __('admin.careers.deadline') }}</th>
+                <th class="px-5 py-3.5 text-center hidden sm:table-cell">{{ __('admin.careers.apps') }}</th>
+                <th class="px-5 py-3.5 text-center">{{ __('admin.field.is_active') }}</th>
+                <th class="px-5 py-3.5 text-right">{{ __('admin.field.actions') }}</th>
             </tr>
         </thead>
         <tbody class="divide-y divide-slate-800">
@@ -46,7 +46,7 @@
                             };
                         @endphp
                         <span class="px-2 py-0.5 text-[10px] font-semibold rounded-full {{ $typeColor }}">
-                            {{ $career->type_label }}
+                            {{ __('admin.careers.types.' . $career->type) }}
                         </span>
                         @if($career->location)
                             <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-location-dot text-[10px] mr-1"></i>{{ $career->location }}</p>
@@ -85,11 +85,11 @@
                     <td class="px-5 py-4 text-right">
                         <div class="flex items-center justify-end gap-2">
                             <a href="{{ route('admin.careers.edit', $career) }}"
-                               class="px-3 py-1.5 text-xs bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg transition">Edit</a>
+                               class="px-3 py-1.5 text-xs bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg transition">{{ __('admin.btn.edit') }}</a>
                             <form method="POST" action="{{ route('admin.careers.destroy', $career) }}"
                                   onsubmit="return confirm('Delete this job posting?')">
                                 @csrf @method('DELETE')
-                                <button class="px-3 py-1.5 text-xs bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg transition">Delete</button>
+                                <button class="px-3 py-1.5 text-xs bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg transition">{{ __('admin.btn.delete') }}</button>
                             </form>
                         </div>
                     </td>
@@ -98,8 +98,8 @@
                 <tr>
                     <td colspan="7" class="px-5 py-12 text-center text-slate-500">
                         <i class="fa-solid fa-briefcase text-3xl mb-3 block text-slate-700"></i>
-                        No job postings yet.
-                        <a href="{{ route('admin.careers.create') }}" class="text-brand-green hover:underline ml-1">Add one</a>
+                        {{ __('admin.careers.no_jobs') }}
+                        <a href="{{ route('admin.careers.create') }}" class="text-brand-green hover:underline ml-1">{{ __('admin.btn.add') }}</a>
                     </td>
                 </tr>
             @endforelse

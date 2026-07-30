@@ -9,6 +9,8 @@
         const nextBtn = document.getElementById('next-btn');
         const pageNumbersContainer = document.getElementById('pagination-numbers');
 
+        if (!prevBtn || !nextBtn || !pageNumbersContainer) return;
+
         function renderPagination() {
             // Hide all cards first
             cards.forEach(card => card.classList.add('hidden'));

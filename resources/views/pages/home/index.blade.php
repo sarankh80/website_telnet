@@ -187,7 +187,7 @@
 
                     <strong
                         class="text-[#8FC74A]"
-                        x-text="distance.toFixed(2) + ' km'"></strong>
+                        x-text="distance != null ? distance.toFixed(2) + ' km' : ''"></strong>
                 </div>
             </div>
             <div
@@ -671,7 +671,7 @@
                                 class="coverage-info-value"
                             >
                                 ${
-                                    !isNaN(lat)
+                                    lat != null && !isNaN(lat)
                                         ? lat.toFixed(6)
                                         : '-'
                                 }
@@ -692,7 +692,7 @@
                                 class="coverage-info-value"
                             >
                                 ${
-                                    !isNaN(lng)
+                                    lng != null && !isNaN(lng)
                                         ? lng.toFixed(6)
                                         : '-'
                                 }
@@ -837,7 +837,7 @@
                             <span
                                 class="coverage-info-value"
                             >
-                                ${branch.lat.toFixed(6)}
+                                ${branch.lat != null ? branch.lat.toFixed(6) : '-'}
                             </span>
 
                         </div>
@@ -854,7 +854,7 @@
                             <span
                                 class="coverage-info-value"
                             >
-                                ${branch.lng.toFixed(6)}
+                                ${branch.lng != null ? branch.lng.toFixed(6) : '-'}
                             </span>
 
                         </div>
@@ -976,7 +976,7 @@
                             <span
                                 class="coverage-info-value"
                             >
-                                ${lat.toFixed(6)}
+                                ${lat != null && !isNaN(lat) ? lat.toFixed(6) : '-'}
                             </span>
 
                         </div>
@@ -993,7 +993,7 @@
                             <span
                                 class="coverage-info-value"
                             >
-                                ${lng.toFixed(6)}
+                                ${lng != null && !isNaN(lng) ? lng.toFixed(6) : '-'}
                             </span>
 
                         </div>
@@ -1052,7 +1052,7 @@
                                                 }
                                             "
                                         >
-                                            ${nearest.distance.toFixed(2)}
+                                            ${nearest.distance != null ? nearest.distance.toFixed(2) : '-'}
                                             km
                                         </span>
 

@@ -45,6 +45,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('service-types', Admin\ServiceTypeController::class);
         Route::resource('corporate-subscribers', Admin\CorporateSubscriberController::class);
         Route::resource('careers', Admin\CareerController::class);
+        Route::post('translate', [Admin\TranslateController::class, 'translate'])->name('translate');
         Route::get('career-applications', [Admin\CareerApplicationController::class, 'index'])->name('career-applications.index');
         Route::get('career-applications/{careerApplication}', [Admin\CareerApplicationController::class, 'show'])->name('career-applications.show');
         Route::patch('career-applications/{careerApplication}/status', [Admin\CareerApplicationController::class, 'updateStatus'])->name('career-applications.status');
