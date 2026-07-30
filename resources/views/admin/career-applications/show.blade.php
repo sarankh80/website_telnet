@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
-@section('title', 'Application — ' . $app->full_name)
+@section('title', __('admin.applications.title') . ' — ' . $app->full_name)
 
 @section('content')
 <div class="max-w-3xl">
     <a href="{{ route('admin.career-applications.index') }}"
        class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 mb-6 transition">
-        <i class="fa-solid fa-arrow-left text-xs"></i> Back to Applications
+        <i class="fa-solid fa-arrow-left text-xs"></i> {{ __('admin.btn.back') }}
     </a>
 
     <div class="space-y-5">
@@ -17,7 +17,7 @@
                 @if($app->phone)
                     <p class="text-sm text-slate-400"><i class="fa-solid fa-phone text-xs mr-1"></i>{{ $app->phone }}</p>
                 @endif
-                <p class="text-xs text-slate-600 pt-1">Submitted {{ $app->created_at->format('d M Y, H:i') }}</p>
+                <p class="text-xs text-slate-600 pt-1">{{ __('admin.field.created_at') }}: {{ $app->created_at->format('d M Y, H:i') }}</p>
             </div>
             <div class="text-right space-y-2">
                 @if($app->career)
@@ -35,7 +35,9 @@
                     ];
                     $sc = $statusStyles[$app->status] ?? 'bg-slate-700 text-slate-300 border-slate-600';
                 @endphp
-                <span class="px-3 py-1 text-xs font-semibold rounded-full border {{ $sc }}">{{ ucfirst($app->status) }}</span>
+                <span class="px-3 py-1 text-xs font-semibold rounded-full border {{ $sc }}">
+                    {{ __('admin.applications.status.' . $app->status) }}
+                </span>
             </div>
         </div>
 
@@ -45,46 +47,48 @@
                 <i class="fa-solid fa-file-pdf text-xl"></i>
             </div>
             <div class="flex-1">
-                <p class="font-medium text-slate-200">Curriculum Vitae</p>
+                <p class="font-medium text-slate-200">{{ __('admin.applications.cv') }}</p>
                 <p class="text-xs text-slate-500">{{ basename($app->cv_path) }}</p>
             </div>
             <a href="{{ Storage::url($app->cv_path) }}" target="_blank"
                class="px-4 py-2 bg-brand-green hover:bg-[#7ab534] text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
-                <i class="fa-solid fa-download text-xs"></i> Download
+                <i class="fa-solid fa-download text-xs"></i> {{ __('admin.btn.download') }}
             </a>
         </div>
 
         {{-- Cover letter --}}
         @if($app->cover_letter)
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-            <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Cover Letter</h3>
+            <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">{{ __('admin.applications.cover_letter') }}</h3>
             <p class="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">{{ $app->cover_letter }}</p>
         </div>
         @endif
 
         {{-- Update status --}}
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-            <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">Update Status</h3>
+            <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">{{ __('admin.applications.update_status') }}</h3>
             <form method="POST" action="{{ route('admin.career-applications.status', $app) }}" class="space-y-4">
                 @csrf @method('PATCH')
                 <div class="grid sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-medium text-slate-400 mb-1.5">Status</label>
+                        <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.field.status') }}</label>
                         <select name="status" class="admin-input">
-                            @foreach(['new' => 'New', 'reviewing' => 'Reviewing', 'shortlisted' => 'Shortlisted', 'rejected' => 'Rejected', 'hired' => 'Hired'] as $val => $lbl)
-                                <option value="{{ $val }}" {{ $app->status === $val ? 'selected' : '' }}>{{ $lbl }}</option>
+                            @foreach(['new', 'reviewing', 'shortlisted', 'rejected', 'hired'] as $val)
+                                <option value="{{ $val }}" {{ $app->status === $val ? 'selected' : '' }}>
+                                    {{ __('admin.applications.status.' . $val) }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Admin Notes</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.applications.admin_notes') }}</label>
                     <textarea name="admin_notes" rows="3" class="admin-input resize-none" placeholder="Internal notes…">{{ $app->admin_notes }}</textarea>
                 </div>
                 <div class="flex justify-end">
                     <button type="submit"
                             class="px-5 py-2.5 bg-brand-green hover:bg-[#7ab534] text-white text-sm font-semibold rounded-lg transition">
-                        Save Status
+                        {{ __('admin.btn.save_status') }}
                     </button>
                 </div>
             </form>

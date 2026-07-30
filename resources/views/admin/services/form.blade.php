@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
-@section('title', $service->exists ? 'Edit Service' : 'Add Service')
+@section('title', $service->exists ? __('admin.btn.edit') : __('admin.services.add'))
 
 @section('content')
 <div class="max-w-7xl">
     <a href="{{ route('admin.services.index') }}" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 mb-6 transition">
-        <i class="fa-solid fa-arrow-left text-xs"></i> Back to Services
+        <i class="fa-solid fa-arrow-left text-xs"></i> {{ __('admin.btn.back') }}
     </a>
 
     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
@@ -23,42 +23,31 @@
 
             <div class="grid md:grid-cols-2 gap-5">
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Name (English) *</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.field.name_en') }} *</label>
                     <input type="text" name="name_en" value="{{ old('name_en', $service->name_en ?? '') }}" required
                            class="admin-input">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Name (Khmer) *</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.field.name_km') }} *</label>
                     <input type="text" name="name_km" value="{{ old('name_km', $service->name_km ?? '') }}" required
                            class="admin-input">
                 </div>
             </div>
 
-            <div x-data="{ tab: 'en' }" class="border border-slate-800 rounded-xl overflow-hidden">
-                <div class="flex items-center justify-between bg-slate-800/50 px-4 py-2.5 border-b border-slate-800">
-                    <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-align-left text-brand-green"></i> Description
-                    </span>
-                    <div class="flex rounded-lg overflow-hidden border border-slate-700 text-xs">
-                        <button type="button" @click="tab='en'" :class="tab==='en' ? 'bg-brand-green text-white' : 'text-slate-400 hover:text-slate-200'" class="px-3 py-1.5 font-medium transition">EN</button>
-                        <button type="button" @click="tab='km'" :class="tab==='km' ? 'bg-brand-green text-white' : 'text-slate-400 hover:text-slate-200'" class="px-3 py-1.5 font-medium transition border-l border-slate-700">KM</button>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div x-show="tab==='en'">
-                        <div id="editor-description_en" class="quill-editor"></div>
-                        <textarea name="description_en" id="input-description_en" class="hidden">{{ old('description_en', $service->description_en ?? '') }}</textarea>
-                    </div>
-                    <div x-show="tab==='km'">
-                        <div id="editor-description_km" class="quill-editor"></div>
-                        <textarea name="description_km" id="input-description_km" class="hidden">{{ old('description_km', $service->description_km ?? '') }}</textarea>
-                    </div>
-                </div>
-            </div>
+            @include('admin.partials.editor-tab-group', [
+                'label'      => __('admin.field.description'),
+                'icon'       => 'fa-align-left',
+                'iconColor'  => 'text-brand-green',
+                'enEditorId' => 'editor-description_en',
+                'enInputId'  => 'description_en',
+                'enValue'    => old('description_en', $service->description_en ?? ''),
+                'kmEditorId' => 'editor-description_km',
+                'kmInputId'  => 'description_km',
+                'kmValue'    => old('description_km', $service->description_km ?? ''),
+            ])
 
-            {{-- Image upload --}}
             <div>
-                <label class="block text-xs font-medium text-slate-400 mb-1.5">Service Image</label>
+                <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.services.service_image') }}</label>
                 @if($service->exists && $service->image)
                     <div class="mb-2 flex items-center gap-3">
                         <img src="{{ Storage::url($service->image) }}" alt="Current image"
@@ -75,24 +64,23 @@
 
             <div class="grid md:grid-cols-3 gap-5">
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Icon (FontAwesome class)</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.services.icon') }}</label>
                     <input type="text" name="icon" value="{{ old('icon', $service->icon ?? 'fa-wifi') }}"
                            placeholder="fa-wifi" class="admin-input">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Badge (EN)</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.services.badge_en') }}</label>
                     <input type="text" name="badge_en" value="{{ old('badge_en', $service->badge_en ?? '') }}" class="admin-input">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Badge (KM)</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.services.badge_km') }}</label>
                     <input type="text" name="badge_km" value="{{ old('badge_km', $service->badge_km ?? '') }}" class="admin-input">
                 </div>
             </div>
 
-            {{-- Slug + Service Type --}}
             <div class="grid md:grid-cols-2 gap-5">
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Slug Category</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.services.slug_cat') }}</label>
                     <select name="slug_id" class="admin-input">
                         <option value="">— None —</option>
                         @foreach($slugs as $s)
@@ -104,7 +92,7 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Service Type</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.services.service_type') }}</label>
                     <select name="service_type" class="admin-input">
                         <option value="">— None —</option>
                         @foreach($serviceTypes as $type)
@@ -119,14 +107,14 @@
 
             <div class="grid md:grid-cols-3 gap-5">
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Accent Color</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.services.color') }}</label>
                     <select name="color" class="admin-input">
                         <option value="green"  {{ old('color', $service->color ?? 'green') === 'green'  ? 'selected' : '' }}>Green</option>
                         <option value="orange" {{ old('color', $service->color ?? 'green') === 'orange' ? 'selected' : '' }}>Orange</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Sort Order</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.field.sort_order') }}</label>
                     <input type="number" name="sort_order" value="{{ old('sort_order', $service->sort_order ?? 0) }}" class="admin-input">
                 </div>
                 <div class="flex items-end pb-1">
@@ -134,7 +122,7 @@
                         <input type="checkbox" name="is_active" value="1"
                                {{ old('is_active', $service->is_active ?? true) ? 'checked' : '' }}
                                class="w-4 h-4 rounded border-slate-600 bg-slate-800 text-brand-green focus:ring-brand-green">
-                        <span class="text-sm text-slate-300">Active</span>
+                        <span class="text-sm text-slate-300">{{ __('admin.field.is_active') }}</span>
                     </label>
                 </div>
             </div>
@@ -142,11 +130,11 @@
             <div class="flex justify-end gap-3 pt-2">
                 <a href="{{ route('admin.services.index') }}"
                    class="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 text-sm font-medium rounded-lg transition">
-                    Cancel
+                    {{ __('admin.btn.cancel') }}
                 </a>
                 <button type="submit"
                         class="px-5 py-2.5 bg-brand-green hover:bg-[#7ab534] text-white text-sm font-semibold rounded-lg transition">
-                    {{ $service->exists ? 'Update Service' : 'Create Service' }}
+                    {{ $service->exists ? __('admin.btn.update') : __('admin.btn.create') }}
                 </button>
             </div>
         </form>
@@ -158,8 +146,8 @@
 @include('admin.partials.quill-editor', [
     'formId'  => 'service-form',
     'editors' => [
-        ['editorId' => 'editor-description_en', 'inputId' => 'input-description_en'],
-        ['editorId' => 'editor-description_km', 'inputId' => 'input-description_km'],
+        ['editorId' => 'editor-description_en', 'inputId' => 'description_en'],
+        ['editorId' => 'editor-description_km', 'inputId' => 'description_km'],
     ],
 ])
 @endpush

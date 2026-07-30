@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+@import 'quill/dist/quill.snow.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -219,15 +220,87 @@ html.admin-light .file\:bg-slate-700 { background-color: #e2e8f0 !important; }
 html.admin-light .hover\:file\:bg-slate-600:hover { background-color: #cbd5e1 !important; }
 html.admin-light .text-slate-400.file\:text-slate-200 { color: #475569; }
 
-/* Quill editor in light mode */
-html.admin-light .quill-editor { background: #f8fafc !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
-html.admin-light .quill-editor .ql-toolbar { background: #f1f5f9 !important; border-color: #cbd5e1 !important; }
-html.admin-light .quill-editor .ql-container { color: #0f172a !important; }
-html.admin-light .quill-editor .ql-stroke { stroke: #475569 !important; }
-html.admin-light .quill-editor .ql-fill   { fill:   #475569 !important; }
-html.admin-light .quill-editor .ql-picker-label  { color: #475569 !important; }
-html.admin-light .quill-editor .ql-picker-options { background: #ffffff !important; border-color: #e2e8f0 !important; }
-html.admin-light .quill-editor .ql-picker-item   { color: #334155 !important; }
+/* ── Quill editor — dark (default) theme ──
+   .quill-wrap  = our wrapper div; contains both the Quill-inserted .ql-toolbar
+                  (sibling of .quill-editor) and the .ql-container (.quill-editor)
+   .quill-editor = the div Quill mounts on; becomes .ql-container after init
+────────────────────────────────────────────────────────────────────────────── */
+.quill-wrap {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 0.625rem;
+    color: #e2e8f0;
+    min-height: 180px;
+    transition: border-color 0.15s;
+}
+.quill-wrap:focus-within {
+    border-color: #8dc63f;
+    box-shadow: 0 0 0 1px #8dc63f;
+}
+.quill-wrap .ql-toolbar {
+    background: #1e293b;
+    border: none !important;
+    border-bottom: 1px solid #334155 !important;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 6px 10px;
+}
+.quill-wrap .ql-toolbar .ql-formats { margin-right: 8px; }
+.quill-wrap .ql-picker-options {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 9999 !important;
+}
+.quill-wrap .ql-container {
+    background: transparent;
+    border: none !important;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    min-height: 130px;
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+.quill-wrap .ql-editor {
+    min-height: 130px;
+    padding: 10px 14px;
+    color: #e2e8f0;
+}
+.quill-wrap .ql-editor.ql-blank::before { color: #475569; font-style: normal; }
+.quill-wrap .ql-editor p  { margin-bottom: 0.4em; }
+.quill-wrap .ql-editor ul,
+.quill-wrap .ql-editor ol { padding-left: 1.25rem; margin-bottom: 0.4em; }
+.quill-wrap .ql-editor li { margin-bottom: 0.2em; }
+.quill-wrap .ql-editor h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4em; color: #f1f5f9; }
+.quill-wrap .ql-editor h3 { font-size: 1rem;   font-weight: 600; margin-bottom: 0.3em; color: #f1f5f9; }
+.quill-wrap .ql-editor a  { color: #8dc63f; text-decoration: underline; }
+.quill-wrap .ql-stroke        { stroke: #94a3b8 !important; }
+.quill-wrap .ql-fill          { fill:   #94a3b8 !important; }
+.quill-wrap .ql-picker-label  { color:  #94a3b8 !important; border-color: #334155 !important; }
+.quill-wrap .ql-picker-item   { color:  #cbd5e1 !important; }
+.quill-wrap .ql-picker-item:hover,
+.quill-wrap .ql-picker-item.ql-selected      { color: #8dc63f !important; }
+.quill-wrap .ql-active .ql-stroke            { stroke: #8dc63f !important; }
+.quill-wrap .ql-active .ql-fill              { fill:   #8dc63f !important; }
+.quill-wrap .ql-active .ql-picker-label      { color:  #8dc63f !important; }
+.quill-wrap .ql-toolbar button:hover .ql-stroke { stroke: #8dc63f !important; }
+.quill-wrap .ql-toolbar button:hover .ql-fill   { fill:   #8dc63f !important; }
+
+/* ── Quill editor — light theme overrides ── */
+html.admin-light .quill-wrap { background: #f8fafc !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+html.admin-light .quill-wrap:focus-within { border-color: #8dc63f !important; }
+html.admin-light .quill-wrap .ql-toolbar { background: #f1f5f9 !important; border-bottom-color: #cbd5e1 !important; }
+html.admin-light .quill-wrap .ql-picker-options { background: #ffffff !important; border-color: #e2e8f0 !important; }
+html.admin-light .quill-wrap .ql-picker-item    { color: #334155 !important; }
+html.admin-light .quill-wrap .ql-container { color: #0f172a !important; }
+html.admin-light .quill-wrap .ql-editor  { color: #0f172a !important; }
+html.admin-light .quill-wrap .ql-editor.ql-blank::before { color: #94a3b8; }
+html.admin-light .quill-wrap .ql-stroke  { stroke: #475569 !important; }
+html.admin-light .quill-wrap .ql-fill    { fill:   #475569 !important; }
+html.admin-light .quill-wrap .ql-picker-label { color: #475569 !important; border-color: #cbd5e1 !important; }
+html.admin-light .quill-wrap .ql-editor h2,
+html.admin-light .quill-wrap .ql-editor h3 { color: #0f172a !important; }
+html.admin-light .quill-wrap .ql-editor a { color: #618d24; }
 
 /* Transition for smooth switching */
 html.admin-light *, html.admin-dark * {

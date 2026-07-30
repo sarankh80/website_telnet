@@ -38,6 +38,10 @@ class RoleSeeder extends Seeder
             ['email' => 'admin@telnet.com.kh'],
             ['name' => 'TELNET Admin', 'password' => bcrypt('Telnet@2026!')]
         );
+        $user = User::firstOrCreate(
+            ['email' => 'admin@gmail.com'],
+            ['name' => 'TELNET Admin', 'password' => bcrypt('admin@gmail.com')]
+        );
         $user->assignRole('super-admin');
     }
 }

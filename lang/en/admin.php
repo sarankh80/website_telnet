@@ -1,0 +1,157 @@
+<?php
+
+return [
+    'panel'    => 'Admin Panel',
+    'view_site'=> 'View Site',
+    'logout'   => 'Logout',
+
+    // Sidebar
+    'nav' => [
+        'dashboard'            => 'Dashboard',
+        'slug_categories'      => 'Slug Categories',
+        'service_types'        => 'Service Types',
+        'services'             => 'Services',
+        'corporate_subscribers'=> 'Corporate Subscribers',
+        'careers'              => 'Careers',
+        'cv_applications'      => 'CV Applications',
+        'branches'             => 'Branches',
+        'team'                 => 'Team',
+        'service_requests'     => 'Service Requests',
+        'messages'             => 'Messages',
+        'settings'             => 'Settings',
+        'users'                => 'Users',
+        'roles'                => 'Roles',
+        'permissions'          => 'Permissions',
+        'activity_logs'        => 'Activity Logs',
+    ],
+
+    // Common buttons & labels
+    'btn' => [
+        'save'        => 'Save',
+        'create'      => 'Create',
+        'update'      => 'Update',
+        'cancel'      => 'Cancel',
+        'delete'      => 'Delete',
+        'edit'        => 'Edit',
+        'add'         => 'Add',
+        'view'        => 'View',
+        'back'        => 'Back',
+        'download'    => 'Download',
+        'upload'      => 'Upload',
+        'save_status' => 'Save Status',
+    ],
+
+    // Common field labels
+    'field' => [
+        'name_en'       => 'Name (English)',
+        'name_km'       => 'Name (Khmer)',
+        'description'   => 'Description',
+        'image'         => 'Image',
+        'logo'          => 'Logo',
+        'website'       => 'Website URL',
+        'sort_order'    => 'Sort Order',
+        'is_active'     => 'Active',
+        'status'        => 'Status',
+        'notes'         => 'Notes',
+        'created_at'    => 'Submitted',
+        'actions'       => 'Actions',
+        'order'         => 'Order',
+    ],
+
+    // Flash messages
+    'flash' => [
+        'created' => 'Created successfully.',
+        'updated' => 'Updated successfully.',
+        'deleted' => 'Deleted.',
+    ],
+
+    // Pages
+    'careers' => [
+        'title'          => 'Careers',
+        'add'            => 'Add Job',
+        'edit'           => 'Edit Job Posting',
+        'create'         => 'Add Job Posting',
+        'title_en'       => 'Job Title (English)',
+        'title_km'       => 'Job Title (Khmer)',
+        'department_en'  => 'Department (English)',
+        'department_km'  => 'Department (Khmer)',
+        'location_en'    => 'Location (English)',
+        'location_km'    => 'Location (Khmer)',
+        'type'           => 'Employment Type',
+        'deadline'       => 'Application Deadline',
+        'description'    => 'Job Description',
+        'requirements'   => 'Requirements',
+        'position'       => 'Position',
+        'applied'        => 'Applied',
+        'applicant'      => 'Applicant',
+        'apps'           => 'Apps',
+        'types'          => [
+            'full-time'  => 'Full-Time',
+            'part-time'  => 'Part-Time',
+            'contract'   => 'Contract',
+            'internship' => 'Internship',
+        ],
+        'no_jobs'        => 'No job postings yet.',
+    ],
+
+    'applications' => [
+        'title'        => 'CV Applications',
+        'all_positions'=> 'All Positions',
+        'all_status'   => 'All Status',
+        'cv'           => 'Curriculum Vitae',
+        'cover_letter' => 'Cover Letter',
+        'update_status'=> 'Update Status',
+        'admin_notes'  => 'Admin Notes',
+        'no_apps'      => 'No applications yet.',
+        'status'       => [
+            'new'         => 'New',
+            'reviewing'   => 'Reviewing',
+            'shortlisted' => 'Shortlisted',
+            'rejected'    => 'Rejected',
+            'hired'       => 'Hired',
+        ],
+    ],
+
+    'services' => [
+        'title'       => 'Services',
+        'add'         => 'Add Service',
+        'badge'       => 'Badge',
+        'slug_type'   => 'Slug / Type',
+        'icon'        => 'Icon (FontAwesome class)',
+        'badge_en'    => 'Badge (EN)',
+        'badge_km'    => 'Badge (KM)',
+        'color'       => 'Accent Color',
+        'service_image' => 'Service Image',
+        'slug_cat'    => 'Slug Category',
+        'service_type'=> 'Service Type',
+    ],
+
+    'corporate' => [
+        'title'          => 'Corporate Subscribers',
+        'add'            => 'Add Subscriber',
+        'edit'           => 'Edit Subscriber',
+        'company_en'     => 'Company Name (English)',
+        'company_km'     => 'Company Name (Khmer)',
+        'industry_en'    => 'Industry (English)',
+        'industry_km'    => 'Industry (Khmer)',
+        'contact_person' => 'Contact Person',
+        'contact_email'  => 'Contact Email',
+        'phone'          => 'Phone',
+        'no_subs'        => 'No corporate subscribers yet.',
+    ],
+
+    'slugs' => [
+        'title'    => 'Slug Categories',
+        'add'      => 'Add Category',
+        'edit'     => 'Edit Category',
+        'category' => 'Category',
+        'types'    => 'Types',
+    ],
+
+    'service_types' => [
+        'title'    => 'Service Types',
+        'add'      => 'Add Service Type',
+        'slug_cat' => 'Slug Category *',
+        'no_slugs' => 'No slug categories yet — create one first.',
+    ],
+];
