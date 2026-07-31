@@ -93,7 +93,7 @@
                 <div>
                     <div class="flex items-center space-x-1 mb-2">
                         <div class="flex-shrink-0">
-                            <img src="{{ asset('images/'.$slug->image) }}" alt="IP Transit Icon" class="w-10 h-10 object-contain" />
+                            <img src="{{ Storage::url($slug->image) }}" alt="IP Transit Icon" class="w-10 h-10 object-contain" />
                         </div>
                         <h3 class="text-xl tracking-wide text-[#8fc74a] font-bold bg-brand-green/10 px-2.5 py-1/2 rounded">{{$currentLocale==="en"?$slug->name:$slug->name_km}} </h3>
                     </div>

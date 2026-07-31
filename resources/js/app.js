@@ -160,3 +160,11 @@ if (document.readyState === 'loading') {
     initApp();
 }
 
+// resources/js/app.js
+
+import $ from 'jquery';
+import DataTable from 'datatables.net';
+
+window.$ = $;
+window.jQuery = $;
+window.DataTable = DataTable;
