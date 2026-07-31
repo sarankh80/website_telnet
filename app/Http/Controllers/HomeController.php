@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Branch;
 use App\Models\Career;
 use App\Models\CareerApplication;
+use App\Models\CorporateSubscriber;
 use App\Models\Service;
 use App\Models\Slugs;
 use App\Models\Team;
@@ -51,6 +52,13 @@ class HomeController extends Controller
         $teamMembers = Team::active()->get();
         $ceo         = Team::active()->ceo()->first();
         return view('pages.team', compact('teamMembers', 'ceo'));
+    }
+
+    public function business()
+    {
+        $services   = Service::active()->get();
+        $corporates = CorporateSubscriber::active()->get();
+        return view('pages.business', compact('services', 'corporates'));
     }
 
     public function portal()

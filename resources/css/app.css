@@ -22,7 +22,7 @@
     --color-dark-border: #1e293b;
 }
 
-body.dark {
+html.dark body {
     background-color: #1f2937;
     background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), url('/images/bg_dark.png');
     background-attachment: fixed;

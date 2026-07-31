@@ -4,7 +4,7 @@
 
             <!-- Logo -->
             <a href="{{ route('home') }}" class="flex items-center space-x-3 flex-shrink-0 group">
-                <img src="http://103.115.172.243:8009/images/logo_home.png"
+                <img src="{{asset('/images/logo.png')}}"
                     alt="TELNET CO., LTD Logo"
                     class="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
@@ -23,7 +23,7 @@
                 $navLinks = [
                 ['route' => 'home', 'label' => __('app.nav.home'), ],
                 ['route' => 'services', 'label' => __('app.nav.internet_service'),],
-                ['route' => 'services', 'label' => __('app.nav.business'), ],
+                ['route' => 'business', 'label' => __('app.nav.business'), ],
                 ['route' => 'team', 'label' => __('app.nav.support'), ],
                 ['route' => 'about', 'label' => __('app.nav.about'), ],
                 ['route' => 'career', 'label' => __('app.nav.careers'), ],
@@ -52,12 +52,12 @@
                             <span class="px-1.5 py-0.5 rounded text-[10px] font-bold transition {{ $currentLocale === 'en' ? 'bg-brand-orange text-white font-extrabold shadow-sm' : 'text-adaptive-muted' }}">EN</span>
                         </div>
                     </a>
-                    <!-- <span onclick="toggleTheme()"
+                    <span onclick="toggleTheme()"
                         class="text-amber-500 dark:text-amber-300 transition-all duration-300 flex items-center justify-center cursor-pointer"
                         title="ប្តូរ Dark / Light Mode">
                         <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-base hidden"></i>
                         <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-base"></i>
-                    </span> -->
+                    </span> 
                 </div>
             </div>
 
@@ -68,9 +68,9 @@
                     <span>{{ $currentLocale === 'km' ? 'KH' : 'US' }}</span>
                     <span class="text-[11px] font-extrabold {{ $currentLocale === 'km' ? 'text-brand-green' : 'text-brand-orange' }}">{{ strtoupper($currentLocale) }}</span>
                 </a>
-                <!-- <button onclick="toggleTheme()" class="p-2 rounded-lg text-amber-400 dark:text-amber-300 bg-slate-800/50">
+                <button onclick="toggleTheme()" class="p-2 rounded-lg text-amber-400 dark:text-amber-300 bg-slate-800/50">
                     <i id="mobile-theme-icon" class="fa-solid fa-sun text-lg"></i>
-                </button> -->
+                </button>
                 <button id="mobile-menu-btn" class="text-adaptive-main p-2 rounded-lg hover:bg-slate-800/40 transition">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
@@ -84,7 +84,7 @@
         $mobileLinks = [
         ['href' => route('home'), 'label' => __('app.nav.home'), 'icon' => 'fa-house', 'color' => 'text-brand-green'],
         ['href' => route('services'), 'label' => __('app.nav.internet_service'), 'icon' => 'fa-bolt', 'color' => 'text-brand-orange'],
-        ['href' => "", 'label' => __('app.nav.business'), 'icon' => 'fa-briefcase', 'color' => 'text-brand-green'],
+        ['href' => route('business'), 'label' => __('app.nav.business'), 'icon' => 'fa-briefcase', 'color' => 'text-brand-green'],
         ['href' => route('kpi'), 'label' => __('app.nav.kpi'), 'icon' => 'fa-chart-line', 'color' => 'text-brand-green'],
         ['href' => route('about'), 'label' => __('app.nav.about'), 'icon' => 'fa-building', 'color' => 'text-brand-green'],
         ['href' => route('team'), 'label' => __('app.nav.team'), 'icon' => 'fa-users', 'color' => 'text-brand-green'],

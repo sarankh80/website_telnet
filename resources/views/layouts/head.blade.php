@@ -1,4 +1,12 @@
 <meta charset="UTF-8">
+<script>
+    (function(){
+        var t = localStorage.getItem('theme');
+        var isLight = t === 'light';
+        document.documentElement.classList.toggle('dark', !isLight);
+        document.documentElement.classList.toggle('light', isLight);
+    })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="description" content="{{ $metaDescription ?? \App\Models\Setting::get('seo_description_en', 'TELNET CO., LTD - High-speed fiber internet & ICT solutions in Cambodia.') }}">
