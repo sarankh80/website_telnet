@@ -11,7 +11,7 @@ class SlugController extends Controller
 {
     public function index()
     {
-        $slugs = Slugs::withCount('serviceTypes', 'services')->orderBy('id')->paginate(20);
+        $slugs = Slugs::withCount('serviceTypes', 'services')->orderBy('id')->get();
         return view('admin.slugs.index', compact('slugs'));
     }
 

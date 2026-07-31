@@ -25,8 +25,7 @@
 </form>
 
 <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-    <div class="overflow-x-auto">
-    <table class="w-full text-sm min-w-[560px]">
+    <table class="w-full text-sm admin-datatable" style="min-width:560px">
         <thead>
             <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
                 <th class="px-5 py-3.5 text-left">{{ __('admin.contact_messages.sender') }}</th>
@@ -82,9 +81,5 @@
             @endforelse
         </tbody>
     </table>
-    </div>{{-- /overflow-x-auto --}}
-    @if($messages->hasPages())
-        <div class="px-5 py-4 border-t border-slate-800">{{ $messages->links() }}</div>
-    @endif
 </div>
 @endsection

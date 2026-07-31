@@ -16,8 +16,7 @@ class ActivityLogController extends Controller
             ->when($request->action, fn($q) => $q->where('action', $request->action))
             ->when($request->date, fn($q) => $q->whereDate('created_at', $request->date))
             ->latest('created_at')
-            ->paginate(25)
-            ->withQueryString();
+            ->get();
 
         $users   = User::orderBy('name')->pluck('name', 'id');
         $actions = ['login', 'logout', 'create', 'update', 'delete', 'view'];

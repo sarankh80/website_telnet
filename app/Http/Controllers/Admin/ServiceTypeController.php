@@ -11,7 +11,7 @@ class ServiceTypeController extends Controller
 {
     public function index()
     {
-        $serviceTypes = ServiceType::with('slug')->withCount('services')->orderBy('slug_id')->orderBy('id')->paginate(20);
+        $serviceTypes = ServiceType::with('slug')->withCount('services')->orderBy('slug_id')->orderBy('id')->get();
         return view('admin.service-types.index', compact('serviceTypes'));
     }
 

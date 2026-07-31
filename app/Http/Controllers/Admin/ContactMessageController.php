@@ -23,7 +23,7 @@ class ContactMessageController extends Controller
             $query->where('is_read', $request->is_read);
         }
 
-        $messages = $query->paginate(20)->withQueryString();
+        $messages = $query->get();
         return view('admin.contact-messages.index', compact('messages'));
     }
 

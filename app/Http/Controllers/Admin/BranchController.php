@@ -10,7 +10,7 @@ class BranchController extends Controller
 {
     public function index()
     {
-        $branches = Branch::orderBy('sort_order')->paginate(15);
+        $branches = Branch::orderBy('sort_order')->get();
         return view('admin.branches.index', compact('branches'));
     }
 

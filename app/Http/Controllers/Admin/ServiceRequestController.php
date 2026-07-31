@@ -23,7 +23,7 @@ class ServiceRequestController extends Controller
             });
         }
 
-        $requests = $query->paginate(20)->withQueryString();
+        $requests = $query->get();
         return view('admin.service-requests.index', compact('requests'));
     }
 

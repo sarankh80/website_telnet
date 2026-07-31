@@ -225,4 +225,13 @@ return [
         'clear_old'   => 'Clear Old Logs',
         'no_logs'     => 'No activity logs found.',
     ],
+
+    'datatable' => [
+        'search'        => 'Search…',
+        'per_page'      => '{select}',
+        'no_rows'       => 'No records found',
+        'no_results'    => 'No matching records',
+        'info'          => 'Showing {start} to {end} of {rows} entries',
+        'info_filtered' => 'Showing {start} to {end} of {rows} filtered entries',
+    ],
 ];

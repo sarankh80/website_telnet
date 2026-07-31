@@ -10,7 +10,7 @@ class CareerController extends Controller
 {
     public function index()
     {
-        $careers = Career::withCount('applications')->orderBy('sort_order')->orderByDesc('created_at')->paginate(20);
+        $careers = Career::withCount('applications')->orderBy('sort_order')->orderByDesc('created_at')->get();
         return view('admin.careers.index', compact('careers'));
     }
 

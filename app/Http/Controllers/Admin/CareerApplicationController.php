@@ -20,7 +20,7 @@ class CareerApplicationController extends Controller
             $query->where('career_id', $request->career_id);
         }
 
-        $applications = $query->paginate(20)->withQueryString();
+        $applications = $query->get();
         $careers = \App\Models\Career::orderBy('title')->get();
         return view('admin.career-applications.index', compact('applications', 'careers'));
     }

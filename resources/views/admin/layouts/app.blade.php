@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@9/dist/style.css">
     {{-- Apply saved theme before paint to avoid flash --}}
     <script>
         (function(){
@@ -27,15 +28,9 @@
            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'">
         {{-- Brand --}}
         <div class="flex items-center gap-3 px-5 py-5 border-b border-slate-800">
-            <svg class="h-8 w-auto" viewBox="0 0 380 90" fill="none">
-                <circle cx="45" cy="45" r="42" fill="#8DC63F"/>
-                <path d="M 12 70 C 15 38 42 16 80 14 C 70 17 56 28 46 50 C 36 68 20 76 12 70 Z" fill="#F58220"/>
-                <path d="M 22 78 C 25 48 52 26 88 22 C 77 26 63 38 53 60 C 43 78 28 82 22 78 Z" fill="#F58220"/>
-                <text x="100" y="62" font-family="Inter" font-weight="900" font-size="52" fill="#8DC63F">TEL</text>
-                <text x="215" y="62" font-family="Inter" font-weight="900" font-size="52" fill="#F58220">NET</text>
-            </svg>
+            <img src="{{asset('images/logo.png')}}" alt="">
             <div>
-                <p class="text-[11px] text-slate-400 leading-none mt-0.5">{{ __('admin.panel') }}</p>
+                {{-- <p class="text-[11px] text-slate-400 leading-none mt-0.5">{{ __('admin.panel') }}</p> --}}
             </div>
         </div>
 
@@ -151,6 +146,36 @@
 </div>
 
 @stack('scripts')
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@9/dist/umd/simple-datatables.js"></script>
+<script>
+(function () {
+    function initDatatables() {
+        if (typeof simpleDatatables === 'undefined') return;
+        document.querySelectorAll('table.admin-datatable').forEach(function (table) {
+            new simpleDatatables.DataTable(table, {
+                searchable: true,
+                fixedHeight: false,
+                paging: true,
+                perPage: 10,
+                perPageSelect: [10, 15, 25, 50, 100],
+                labels: {
+                    placeholder: '{{ __("admin.datatable.search") }}',
+                    perPage: '{{ __("admin.datatable.per_page") }}',
+                    noRows: '{{ __("admin.datatable.no_rows") }}',
+                    noResults: '{{ __("admin.datatable.no_results") }}',
+                    info: '{{ __("admin.datatable.info") }}',
+                    infoFiltered: '{{ __("admin.datatable.info_filtered") }}',
+                },
+            });
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDatatables);
+    } else {
+        initDatatables();
+    }
+})();
+</script>
 <script>
 /* ── Global admin translate helper ──────────────────────────────────────────
    Called from Alpine.js tab wrappers.

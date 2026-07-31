@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="flex items-center justify-between mb-6">
-    <p class="text-sm text-slate-400">{{ $services->total() }} {{ __('admin.services.title') }}</p>
+    <div></div>
     <a href="{{ route('admin.services.create') }}"
        class="px-4 py-2 bg-brand-green hover:bg-[#7ab534] text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
         <i class="fa-solid fa-plus"></i> {{ __('admin.services.add') }}
@@ -11,8 +11,7 @@
 </div>
 
 <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-    <div class="overflow-x-auto">
-    <table class="w-full text-sm min-w-[600px]">
+    <table class="w-full text-sm admin-datatable" style="min-width:600px">
         <thead>
             <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
                 <th class="px-5 py-3.5 text-left w-8">#</th>
@@ -89,9 +88,5 @@
             @endforelse
         </tbody>
     </table>
-    </div>{{-- /overflow-x-auto --}}
-    @if($services->hasPages())
-        <div class="px-5 py-4 border-t border-slate-800">{{ $services->links() }}</div>
-    @endif
 </div>
 @endsection

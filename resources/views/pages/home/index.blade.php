@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="relative overflow-hidden py-4 lg:py-6 section-bg-primary">
+<section class="relative overflow-hidden py-12 lg:py-20 section-bg-primary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
@@ -12,19 +12,23 @@
                     <span class="text-transparent bg-clip-text gradient-brand">{{ __('app.hero.highlight') }}</span>
                 </h1>
 
-                <p class="text-adaptive-muted text-justify !text-gray-500 text-base sm:text-lg max-w-3xl font-semibold font-bold !dark:text-[#8fc74a] ">
-                    {{ __('app.hero.desc') }}
-                </p>
-                <br>
-                <p class="text-adaptive-muted text-justify !text-gray-500 text-base sm:text-lg max-w-3xl font-semibold font-bold !dark:text-[#8fc74a]"> {{ __('app.hero.desc1') }}</p>
+                <div class="space-y-3">
+                    <p class="text-gray-500 dark:text-gray-400 text-justify text-base sm:text-lg max-w-3xl font-semibold">
+                        {{ __('app.hero.desc') }}
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-400 text-justify text-base sm:text-lg max-w-3xl font-semibold">
+                        {{ __('app.hero.desc1') }}
+                    </p>
+                </div>
+
                 <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
                     <button onclick="openModal('serviceModal')"
-                        class="gradient-brand hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-brand-green/20 transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                        class="gradient-brand hover:from-brand-green-hover hover:to-brand-orange-hover text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-brand-green/20 transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2">
                         <span>{{ __('app.hero.cta_primary') }}</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                     <a href="{{route('services')}}"
-                        class="glass-card hover:-translate-y-0.5 transition text-adaptive-main font-semibold px-6 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 transition flex items-center gap-2">
+                        class="glass-card text-adaptive-main font-semibold px-6 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2">
                         <i class="fa-solid fa-list-check text-brand-orange"></i>
                         <span>{{ __('app.hero.cta_secondary') }}</span>
                     </a>
@@ -34,10 +38,11 @@
         </div>
     </div>
 </section>
-<div class="text-center max-w-3xl mx-auto mb-4">
-    <H2 class=" sm:text-3xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
+
+<div class="text-center max-w-3xl mx-auto py-8">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
         {{ __('app.hero.difference') }}
-    </H2>
+    </h2>
 </div>
 {{-- ===== SERVICES SECTION — visible, image-based cards ===== --}}
 <section id="services" class="py-8 section-bg-primary">
@@ -73,12 +78,12 @@
         </div>
     </div>
 </section>
-<div class="text-center w-full max-w-3xl mx-auto mb-12">
-    <H2 class="w-full sm:text-3xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
+<div class="text-center w-full max-w-3xl mx-auto py-8">
+    <h2 class="w-full text-2xl sm:text-3xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
         {{ __('app.hero.core-product') }}
-    </H2>
+    </h2>
 </div>
-<section id="core-product" class="py-8 section-bg-primary relative text-white overflow-hidden">
+<section id="core-product" class="py-8 section-bg-primary relative overflow-hidden">
 
     <!-- Subtle Background Tech Glow -->
     <div class="absolute inset-0 bg-radial from-blue-900/30 via-transparent to-transparent pointer-events-none"></div>
@@ -112,7 +117,7 @@
         <!-- Custom Pagination Controls -->
         <div class="mt-12 flex items-center justify-center space-x-2">
             <button id="prev-btn" class="px-4 py-1 rounded-lg bg-gray-500 text-white font-medium hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
-                &laquo; Previoes
+                &laquo; Previous
             </button>
 
             <!-- Dynamic Page Numbers Container -->

@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="flex items-center justify-between mb-6">
-    <p class="text-sm text-slate-400">{{ $branches->total() }} {{ __('admin.branches.title') }}</p>
+    <div></div>
     <a href="{{ route('admin.branches.create') }}"
        class="px-4 py-2 bg-brand-green hover:bg-[#7ab534] text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
         <i class="fa-solid fa-plus"></i> {{ __('admin.branches.add') }}
@@ -11,8 +11,7 @@
 </div>
 
 <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-    <div class="overflow-x-auto">
-    <table class="w-full text-sm min-w-[580px]">
+    <table class="w-full text-sm admin-datatable" style="min-width:580px">
         <thead>
             <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
                 <th class="px-5 py-3.5 text-left">{{ __('admin.branches.branch') }}</th>
@@ -66,9 +65,5 @@
             @endforelse
         </tbody>
     </table>
-    </div>{{-- /overflow-x-auto --}}
-    @if($branches->hasPages())
-        <div class="px-5 py-4 border-t border-slate-800">{{ $branches->links() }}</div>
-    @endif
 </div>
 @endsection

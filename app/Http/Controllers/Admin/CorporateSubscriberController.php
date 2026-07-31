@@ -11,7 +11,7 @@ class CorporateSubscriberController extends Controller
 {
     public function index()
     {
-        $subscribers = CorporateSubscriber::orderBy('sort_order')->orderBy('company_name')->paginate(20);
+        $subscribers = CorporateSubscriber::orderBy('sort_order')->orderBy('company_name')->get();
         return view('admin.corporate-subscribers.index', compact('subscribers'));
     }
 
