@@ -52,12 +52,12 @@
                             <span class="px-1.5 py-0.5 rounded text-[10px] font-bold transition {{ $currentLocale === 'en' ? 'bg-brand-orange text-white font-extrabold shadow-sm' : 'text-adaptive-muted' }}">EN</span>
                         </div>
                     </a>
-                    <span onclick="toggleTheme()"
+                    <!-- <span onclick="toggleTheme()"
                         class="text-amber-500 dark:text-amber-300 transition-all duration-300 flex items-center justify-center cursor-pointer"
                         title="ប្តូរ Dark / Light Mode">
                         <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-base hidden"></i>
                         <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-base"></i>
-                    </span>
+                    </span> -->
                 </div>
             </div>
 
@@ -68,9 +68,9 @@
                     <span>{{ $currentLocale === 'km' ? 'KH' : 'US' }}</span>
                     <span class="text-[11px] font-extrabold {{ $currentLocale === 'km' ? 'text-brand-green' : 'text-brand-orange' }}">{{ strtoupper($currentLocale) }}</span>
                 </a>
-                <button onclick="toggleTheme()" class="p-2 rounded-lg text-amber-400 dark:text-amber-300 bg-slate-800/50">
+                <!-- <button onclick="toggleTheme()" class="p-2 rounded-lg text-amber-400 dark:text-amber-300 bg-slate-800/50">
                     <i id="mobile-theme-icon" class="fa-solid fa-sun text-lg"></i>
-                </button>
+                </button> -->
                 <button id="mobile-menu-btn" class="text-adaptive-main p-2 rounded-lg hover:bg-slate-800/40 transition">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>

@@ -140,7 +140,7 @@ window.handleFormSubmit = function (event) {
 // Initialize on DOM ready (guard covers both module and classic script timing)
 function initApp() {
     const savedTheme = localStorage.getItem('theme');
-    applyTheme(savedTheme !== 'light');
+    applyTheme(savedTheme === 'light');
 
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -160,3 +160,11 @@ if (document.readyState === 'loading') {
     initApp();
 }
 
+// resources/js/app.js
+
+import $ from 'jquery';
+import DataTable from 'datatables.net';
+
+window.$ = $;
+window.jQuery = $;
+window.DataTable = DataTable;

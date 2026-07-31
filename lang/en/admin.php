@@ -2,20 +2,28 @@
 
 return [
     'panel'    => 'Admin Panel',
-    'view_site'=> 'View Site',
+    'view_site' => 'View Site',
     'logout'   => 'Logout',
 
     // Sidebar
     'nav' => [
+        'catalogs' => [
+            'biz' => "Business",
+            'system' => "Administration",
+            'service' => "Internet Services",
+            'career' => "Careers",
+            'support' => "Supports",
+        ],
         'dashboard'            => 'Dashboard',
-        'slug_categories'      => 'Slug Categories',
+        'service_slug'      => 'Service Slugs',
         'service_types'        => 'Service Types',
         'services'             => 'Services',
-        'corporate_subscribers'=> 'Corporate Subscribers',
+        'corporate_subscribers' => 'Corporate Subscribers',
         'careers'              => 'Careers',
         'cv_applications'      => 'CV Applications',
         'branches'             => 'Branches',
         'team'                 => 'Team',
+        'contact'                 => 'Contacts',
         'service_requests'     => 'Service Requests',
         'messages'             => 'Messages',
         'settings'             => 'Settings',
@@ -103,11 +111,11 @@ return [
 
     'applications' => [
         'title'        => 'CV Applications',
-        'all_positions'=> 'All Positions',
+        'all_positions' => 'All Positions',
         'all_status'   => 'All Status',
         'cv'           => 'Curriculum Vitae',
         'cover_letter' => 'Cover Letter',
-        'update_status'=> 'Update Status',
+        'update_status' => 'Update Status',
         'admin_notes'  => 'Admin Notes',
         'no_apps'      => 'No applications yet.',
         'status'       => [
