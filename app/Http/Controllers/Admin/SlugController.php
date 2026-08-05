@@ -12,7 +12,8 @@ class SlugController extends Controller
     public function index()
     {
         $slugs = Slugs::withCount('serviceTypes', 'services')->orderBy('id')->get();
-        return view('admin.slugs.index', compact('slugs'));
+        $search=true;
+        return view('admin.slugs.index', compact('slugs', 'search'));
     }
 
     public function create()

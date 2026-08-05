@@ -7,7 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Dashboard') — TELNET Admin</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@9/dist/style.css">
+    <script src="{{asset('js/filament/datatable/dataTables.min.js')}}"></script>
+    <link href="{{asset('css/filament/font/kontumruy.css')}}" rel="stylesheet">
     {{-- Apply saved theme before paint to avoid flash --}}
     <script>
         (function() {
@@ -15,9 +16,35 @@
             document.documentElement.classList.toggle('admin-light', t === 'light');
         })();
     </script>
+    @if(App::getLocale() == 'km')
+    <style>
+        a,
+        p,
+        span,
+        button,
+        label,
+        legend,
+        th,
+        table,
+        tbody,
+        thead,
+        div,
+        input {
+            font-family: Kantumruy Pro !important;
+            font-weight: normal !important;
+            font-size: 16px !important;
+        }
+
+        legend {
+            font-size: 16px !important;
+            font-weight: bold !important;
+            color: #333 !important;
+        }
+    </style>
+    @endif
 </head>
 
-<body class="h-full bg-slate-950 text-slate-100 font-sans antialiased" style="font-family:'Inter',sans-serif; background-image:none !important;">
+<body class="h-full bg-slate-950 text-slate-100 font-sans antialiased">
 
     <div class="flex h-screen overflow-hidden" x-data="{ sidebarOpen: false }">
 
@@ -124,101 +151,140 @@
                 </form>
             </div>
         </aside>
-        {{-- ── Main ── --}}
-        <div class="flex-1 flex flex-col overflow-hidden">
 
-            {{-- Top bar --}}
-            <header class="flex items-center gap-4 px-4 lg:px-6 py-4 bg-slate-900/80 border-b border-slate-800 backdrop-blur flex-shrink-0">
-                {{-- Mobile hamburger --}}
-                <button class="lg:hidden text-slate-400 hover:text-slate-100 transition p-1 -ml-1" @click.stop="sidebarOpen = !sidebarOpen">
-                    <i class="fa-solid fa-bars text-lg"></i>
-                </button>
-                <h1 class="text-base font-bold text-slate-100 flex-1">@yield('title', 'Dashboard')</h1>
-                {{-- Language switcher --}}
-                <div class="flex rounded-lg overflow-hidden border border-slate-700 text-xs flex-shrink-0">
-                    <a href="{{ route('locale.switch', 'en') }}"
-                        class="px-3 py-1.5 font-semibold transition
-                          {{ app()->getLocale() === 'en' ? 'bg-brand-green text-white' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-700' }}">
-                        EN
-                    </a>
-                    <a href="{{ route('locale.switch', 'km') }}"
-                        class="px-3 py-1.5 font-semibold transition border-l border-slate-700
-                          {{ app()->getLocale() === 'km' ? 'bg-brand-green text-white' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-700' }}">
-                        ខ្មែរ
-                    </a>
+        {{-- ── Main ── --}}
+        <main id="main-content" class="flex-1 flex flex-col overflow-hidden bg-slate-950 transition-all duration-300 w-full">
+
+            {{-- Top bar / page header (old-layout style: title + subtitle + canAdd button) --}}
+            <header class="h-16 flex items-center justify-between gap-4 px-4 lg:px-8 bg-slate-900/80 border-b border-slate-800 backdrop-blur sticky top-0 z-10 flex-shrink-0">
+                <div class="flex items-center gap-3 min-w-0">
+                    {{-- Mobile hamburger --}}
+                    <button class="lg:hidden text-slate-400 hover:text-slate-100 transition p-1 -ml-1" @click.stop="sidebarOpen = !sidebarOpen">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                    <h1 class="text-xl sm:text-2xl font-semibold truncate">
+                        @yield('title', 'Dashboard')
+                    </h1>
                 </div>
 
-                {{-- Theme toggle --}}
-                <button id="admin-theme-toggle" type="button" title="Toggle light / dark"
-                    class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
-                           text-slate-400 hover:text-slate-100 bg-slate-800 hover:bg-slate-700
-                           border border-slate-700 transition flex-shrink-0">
-                    <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
-                    <span id="theme-label" class="hidden sm:inline">Dark</span>
-                </button>
+                <div class="flex items-center gap-3 flex-shrink-0">
+                    {{-- Language switcher --}}
+                    <div class="hidden sm:flex rounded-lg overflow-hidden border border-slate-700 text-xs">
+                        <a href="{{ route('locale.switch', 'en') }}"
+                            class="px-3 py-1.5 font-semibold transition
+                              {{ app()->getLocale() === 'en' ? 'bg-brand-green text-white' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-700' }}">
+                            EN
+                        </a>
+                        <a href="{{ route('locale.switch', 'km') }}"
+                            class="px-3 py-1.5 font-semibold transition border-l border-slate-700
+                              {{ app()->getLocale() === 'km' ? 'bg-brand-green text-white' : 'text-slate-400 hover:text-slate-100 hover:bg-slate-700' }}">
+                            ខ្មែរ
+                        </a>
+                    </div>
 
-                <a href="{{ route('home') }}" target="_blank"
-                    class="text-xs text-slate-400 hover:text-brand-green transition flex items-center gap-1.5 flex-shrink-0">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    <span class="hidden sm:inline">{{ __('admin.view_site') }}</span>
-                </a>
+                    {{-- Theme toggle --}}
+                    <button id="admin-theme-toggle" type="button" title="Toggle light / dark"
+                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
+                               text-slate-400 hover:text-slate-100 bg-slate-800 hover:bg-slate-700
+                               border border-slate-700 transition">
+                        <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+                        <span id="theme-label" class="hidden sm:inline">Dark</span>
+                    </button>
+
+                    {{-- Notification bell --}}
+                    <button class="p-2 text-slate-400 hover:text-brand-green transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                    </button>
+
+                    <a href="{{ route('home') }}" target="_blank"
+                        class="hidden sm:flex text-xs text-slate-400 hover:text-brand-green transition items-center gap-1.5">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>{{ __('admin.view_site') }}</span>
+                    </a>
+
+                    @if(isset($canAdd) && $canAdd)
+                    <div class="h-8 w-px bg-slate-700"></div>
+                    <button onclick="window.location.href=`{{ $canAdd['route'] ?? $routeForAdd ?? '#' }}`"
+                        class="px-4 py-2 bg-brand-green hover:bg-brand-green/90 text-white text-sm font-medium rounded-lg transition-all shadow-md">
+                        {{ $canAdd['title'] }}
+                    </button>
+                    @endif
+                </div>
             </header>
+
             {{-- Mobile overlay --}}
             <div class="lg:hidden fixed inset-0 bg-black/60 z-30" x-show="sidebarOpen" @click="sidebarOpen = false" style="display:none"></div>
 
-            {{-- Content --}}
-            <main class="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-6">
+            {{-- Scrollable content area --}}
+            <div class="flex-1 overflow-y-auto">
+                <div class="p-3 sm:px-8 sm:py-4 w-full mx-auto">
 
-                {{-- Flash --}}
-                @if(session('success'))
-                <div class="mb-5 flex items-center gap-2 px-4 py-3 bg-green-500/15 border border-green-500/30 text-green-400 rounded-xl text-sm">
-                    <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
-                </div>
-                @endif
-                @if(session('error'))
-                <div class="mb-5 flex items-center gap-2 px-4 py-3 bg-red-500/15 border border-red-500/30 text-red-400 rounded-xl text-sm">
-                    <i class="fa-solid fa-circle-xmark"></i> {{ session('error') }}
-                </div>
-                @endif
+                    {{-- Flash Notifications --}}
+                    @if(session('success'))
+                    <div class="mb-5 flex items-center gap-2 px-4 py-3 bg-green-500/15 border border-green-500/30 text-green-400 rounded-xl text-sm">
+                        <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
+                    </div>
+                    @endif
 
-                @yield('content')
-            </main>
-        </div>
+                    @if(session('error'))
+                    <div class="mb-5 flex items-center gap-2 px-4 py-3 bg-red-500/15 border border-red-500/30 text-red-400 rounded-xl text-sm">
+                        <i class="fa-solid fa-circle-xmark"></i> {{ session('error') }}
+                    </div>
+                    @endif
+
+                    {{-- Breadcrumb / brucher --}}
+                    @includeIf('admin.layouts.brucher')
+
+                    {{-- Search (only shown when the calling view opts in) --}}
+                    @if(isset($search) && $search)
+                    @include('admin.layouts.search')
+                    @endif
+
+                    {{-- Page content --}}
+                    <div class="pb-10 p-4">
+                        @yield('content')
+                    </div>
+
+                </div>
+            </div>
+        </main>
     </div>
 
-@stack('scripts')
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@9/dist/umd/simple-datatables.js"></script>
-<script>
-(function () {
-    function initDatatables() {
-        if (typeof simpleDatatables === 'undefined') return;
-        document.querySelectorAll('table.admin-datatable').forEach(function (table) {
-            new simpleDatatables.DataTable(table, {
-                searchable: true,
-                fixedHeight: false,
-                paging: true,
-                perPage: 10,
-                perPageSelect: [10, 15, 25, 50, 100],
-                labels: {
-                    placeholder: '{{ __("admin.datatable.search") }}',
-                    perPage: '{{ __("admin.datatable.per_page") }}',
-                    noRows: '{{ __("admin.datatable.no_rows") }}',
-                    noResults: '{{ __("admin.datatable.no_results") }}',
-                    info: '{{ __("admin.datatable.info") }}',
-                    infoFiltered: '{{ __("admin.datatable.info_filtered") }}',
-                },
-            });
-        });
-    }
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initDatatables);
-    } else {
-        initDatatables();
-    }
-})();
-</script>
-<script>
-/* ── Global admin translate helper ──────────────────────────────────────────
+    @stack('scripts')
+    <!-- <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9/dist/umd/simple-datatables.js"></script> -->
+    <script>
+        (function() {
+            function initDatatables() {
+                if (typeof simpleDatatables === 'undefined') return;
+                document.querySelectorAll('table.admin-datatable').forEach(function(table) {
+                    new simpleDatatables.DataTable(table, {
+                        searchable: false,
+                        fixedHeight: false,
+                        paging: true,
+                        perPage: 10,
+                        perPageSelect: [10, 15, 25, 50, 100],
+                        labels: {
+                            placeholder: '{{ __("admin.datatable.search") }}',
+                            perPage: '{{ __("admin.datatable.per_page") }}',
+                            noRows: '{{ __("admin.datatable.no_rows") }}',
+                            noResults: '{{ __("admin.datatable.no_results") }}',
+                            info: '{{ __("admin.datatable.info") }}',
+                            infoFiltered: '{{ __("admin.datatable.info_filtered") }}',
+                        },
+                    });
+                });
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initDatatables);
+            } else {
+                initDatatables();
+            }
+        })();
+    </script>
+    <script>
+        /* ── Global admin translate helper ──────────────────────────────────────────
    Called from Alpine.js tab wrappers.
    el  = root element of the x-data component (this.$el)
    tab = current active tab ('en' or 'km')

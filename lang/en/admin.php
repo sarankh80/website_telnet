@@ -4,7 +4,15 @@ return [
     'panel'    => 'Admin Panel',
     'view_site' => 'View Site',
     'logout'   => 'Logout',
-
+    'search' => [
+        'keyword' => 'Keyword',
+        '__enterKeyword' => 'Enter keyword...',
+        'search' => 'Search',
+        'reset' => 'Reset',
+        '_all' => '-- All --',
+        'start_date' => 'Start Date',
+        'end_date' => 'End Date',
+    ],
     // Sidebar
     'nav' => [
         'catalogs' => [

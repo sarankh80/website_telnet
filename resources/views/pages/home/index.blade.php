@@ -367,8 +367,8 @@
 
                 /* SEARCH ICON */
                 this.searchIcon = L.icon({
-                    iconUrl: '{{ asset("images/MAP.png") }}',
-                    shadowUrl: '{{ asset("images/marker-shadow.png") }}',
+                    iconUrl: '{{ asset("images/map/MAP.png") }}',
+                    shadowUrl: '{{ asset("images/map/marker-shadow.png") }}',
                     iconSize: [30, 50],
                     iconAnchor: [15, 50],
                     popupAnchor: [0, -50]
@@ -617,16 +617,16 @@
 
                         /* ICONS */
                         const activeIcon = L.icon({
-                            iconUrl: '{{ asset("images/MAP.png") }}',
-                            shadowUrl: '{{ asset("images/marker-shadow.png") }}',
+                            iconUrl: '{{ asset("images/map/MAP.png") }}',
+                            shadowUrl: '{{ asset("images/map/marker-shadow.png") }}',
                             iconSize: [30, 50],
                             iconAnchor: [15, 50],
                             popupAnchor: [0, -50]
                         });
 
                         const inactiveIcon = L.icon({
-                            iconUrl: '{{ asset("images/MAP_INACTIVE.png") }}',
-                            shadowUrl: '{{ asset("images/marker-shadow.png") }}',
+                            iconUrl: '{{ asset("images/map/MAP_INACTIVE.png") }}',
+                            shadowUrl: '{{ asset("images/map/marker-shadow.png") }}',
                             iconSize: [30, 50],
                             iconAnchor: [15, 50],
                             popupAnchor: [0, -50]
