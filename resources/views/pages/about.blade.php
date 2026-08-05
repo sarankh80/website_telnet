@@ -3,118 +3,171 @@
 
 @section('content')
 {{-- Company Overview --}}
-<section class="relative overflow-hidden py-8 lg:py-16 section-bg-primary">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-2 lg:grid-cols-12 gap-12 items-top">
-            <div class="lg:col-span-4 min-h-36 w-full border border-[#F79633] shadow-lg rounded rounded-xl">
-                <img src="" alt="">
-            </div>
-            <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
-                <h1 class="text-3xl font-bold bg-clip-text gradient-brand sm:text-5xl leading-tight tracking-normal text-adaptive-main lg:leading-snug">
-                    <span class="text-transparent bg-clip-text gradient-brand">{{ __('app.about.ceo_message') }}</span>
-                </h1>
-                <p class="text-adaptive-muted !text-[#777] text-base sm:text-lg max-w-2xl leading-relaxed">
-                    {{ __('app.hero.desc') }}
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
 <section class="py-16 section-bg-secondary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <fieldset class="shadow-xl relative bg-white w-full mx-auto mb-12 rounded-2xl border border-gray-200  backdrop-blur-md p-6 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-md hover:border-[#F79633] dark:hover:border-[#F79633]">
-            <!-- Styled Legend / Badge -->
-            <legend class="px-4 py-1 mx-auto rounded-full border border-gray-200 bg-[#8fc74a] shadow-xs">
-                <p class="text-xl sm:text-2xl font-extrabold text-center text-transparent bg-clip-text text-white tracking-wide">
-                    {{ __('app.about.company_background') }}
-                </p>
-            </legend>
+        <!-- Styled Legend / Badge -->
+        <h1 class="text-xl sm:text-5xl font-extrabold  text-transparent bg-clip-text gradient-brand mb-4">
+            {{ __('app.about.company_background') }}
+        </h1>
+        <div class="!justify-left flex flex-col">
+            <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.desc_1') }}</p>
+            <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.desc_2') }}</p>
+            <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.desc_3') }}</p>
+            <p class="font-bold text-[#444] !text-left sm:text-lg leading-[1.5] my-2">{{ __('app.about.company_strategy') }}</p>
+            <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.strategy_overview') }}</p>
+            <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.strategy_overview_1') }}</p>
 
-            <div class="text-left flex flex-col items-center">
-                <p class="text-[#F79633] text-base sm:text-lg leading-relaxed mt-2">{{ __('app.about.desc_1') }}</p><br>
-                <p class="text-[#F79633] text-base sm:text-lg leading-relaxed mt-2">{{ __('app.about.desc_2') }}</p><br>
-                <p class="text-[#F79633] text-base sm:text-lg leading-relaxed mt-2">{{ __('app.about.desc_3') }}</p>
-            </div>
-        </fieldset>
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <p class="text-3xl sm:text-3xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
-                {{ __('app.about.company_profile') }}
-            </p>
-            <img class="w-full" src="{{asset('images/line.png')}}" alt="">
         </div>
-
-        <div class="flex flex-col lg:flex-row gap-6">
-
-            {{-- LEFT COLUMN: Vision + Mission stacked --}}
-            <div class="w-full lg:w-1/2 flex flex-col gap-6">
-
-                {{-- Vision --}}
-                <div class="relative [clip-path:polygon(5rem_0,100%_0,100%_100%,calc(100%-8rem)_100%,0_100%,0_5rem)] bg-[#8fc74a] dark:bg-[#8fc74a] p-[1px]">
-                    <div class="glass-card shadow-lg p-6 relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-top gap-5 sm:gap-4 [clip-path:polygon(5rem_0,100%_0,100%_100%,calc(100%-8rem)_100%,0_100%,0_5rem)] h-full">
-                        <!-- Left Element: White Background Container with Image -->
-                        <div class="shrink-0 w-16 h-16 sm:w-64 sm:h-64 rounded-2xl flex items-center justify-center">
-                            <img src="{{ asset('images/OUR VISION.png') }}" alt="Vision" class="w-full h-full object-contain">
-                        </div>
-
-                        <!-- Right Element: Content -->
-                        <div class="flex-1 min-w-0">
-                            <div class="mb-2">
-                                <h3 class="text-2xl text-[#8fc74a] font-bold">{{ __('app.about.vision_title') }}</h3>
-                                <p class="text-md text-[#F79633] font-bold mt-0.5">{{ __('app.about.vision_subtitle') }}</p>
-                            </div>
-                            <p class="text-adaptive-muted text-md leading-relaxed text-justify">{{ __('app.about.vision_desc') }}</p>
-                        </div>
-                    </div>
+        <h1 class="text-xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text gradient-brand my-8">
+            {{ __('app.about.company_profile') }}
+        </h1>
+        <div class="flex flex-col gap-8 max-w-7xl mx-auto items-center">
+            <!-- SECTION 1: VISION -->
+            <div class="max-w-4xl items-center flex flex-col md:flex-row gap-6 md:gap-12">
+                <!-- Left Element: Image -->
+                <div class="shrink-0 w-24 h-24 sm:w-72 sm:h-72 rounded-2xl flex items-center justify-center p-1">
+                    <img src="{{ asset('images/OUR VISION.png') }}" alt="Vision" class="w-full h-full object-contain">
                 </div>
-
-                {{-- Mission --}}
-                <div class="relative [clip-path:polygon(0_0,100%_0,100%_7rem,100%_100%,5rem_100%,0_calc(100%-5rem))] bg-[#8fc74a] dark:bg-[#8fc74a] p-[1px]">
-                    <div class="glass-card shadow-2xl p-6 relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6 [clip-path:polygon(0_0,100%_0,100%_7rem,100%_100%,5rem_100%,0_calc(100%-5rem))] h-full">
-                        <!-- Left Image Container with Sub Icon on the Bottom Right -->
-                        <div class="relative shrink-0 w-16 h-16 sm:w-64 sm:h-64 rounded-2xl flex items-center justify-center p-3">
-                            <!-- Main Image -->
-                            <img src="{{ asset('images/Mission.png') }}" alt="Mission" class="w-full h-full object-contain">
-                        </div>
-
-                        <!-- Right Element: Content & List -->
-                        <div class="flex-1 min-w-0">
-                            <div class="mb-3">
-                                <h3 class="text-xl font-bold text-[#8fc74a]">{{ __('app.about.mission_title') }}</h3>
-                                <p class="text-xs text-[#F79633] font-bold mt-0.5">{{ __('app.about.mission_subtitle') }}</p>
-                            </div>
-
-                            <ul class="text-adaptive-muted text-md space-y-2.5">
-                                @foreach([
-                                __('app.about.mission_item_1'),
-                                __('app.about.mission_item_2'),
-                                __('app.about.mission_item_3'),
-                                __('app.about.mission_item_4'),
-                                ] as $item)
-                                <li class="flex items-start gap-2">
-                                    <i class="fa-solid fa-circle-check text-brand-orange mt-1 flex-shrink-0 text-xs"></i>
-                                    <span>{{ $item }}</span>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                <!-- Right Element: Content -->
+                <div class="flex-1 min-w-0">
+                    <div class="mb-3">
+                        <h3 class="text-2xl sm:text-3xl text-[#8fc74a] font-bold">{{ __('app.about.vision_title') }}</h3>
                     </div>
+                    <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.vision_desc') }}</p>
                 </div>
             </div>
 
-            {{-- RIGHT COLUMN: Core Values --}}
-            <div class="w-full lg:w-1/2 relative [clip-path:polygon(0_0,calc(100%-5rem)_0,100%_5rem,100%_calc(100%-5rem),calc(100%-5rem)_100%,0_100%)] bg-[#8fc74a] dark:bg-[#8fc74a] p-[1px]">
-                <div class="glass-card justify-center shadow-2xl p-6 relative overflow-hidden [clip-path:polygon(0_0,calc(100%-5rem)_0,100%_5rem,100%_calc(100%-5rem),calc(100%-5rem)_100%,0_100%)] h-full w-full flex flex-col md:flex-row items-center gap-6 md:gap-12">
+
+            <div class="w-full max-w-7xl mx-auto rounded-lg overflow-hidden flex flex-col">
+                <!-- Row 1: 4 Columns (1/4 | 1/4 | 1/4 | 1/4) -->
+                <div class="flex flex-col md:flex-row w-full">
+                    <!-- Col 3: Empty (1/4) -->
+                    <div class="hidden md:flex md:w-1/4 p-6 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
+                    </div>
+                    <!-- Col 1: High Speed -->
+                    <div class="w-full md:w-2/4 p-6 text-center font-medium flex flex-col items-center justify-center">
+                        <div class="w-20 h-20 mb-4 flex items-center justify-center">
+                            <img src="{{ asset('images/High_Speed.png') }}" alt="High Speed" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                            {{ __('app.about.mission_highspeed') }}
+                        </strong>
+                        <p class="text-[#666] text-sm">
+                            {{ __('app.about.mission_highspeed_desc') }}
+                        </p>
+                    </div>
+
+                    <!-- Col 2: Scalable -->
+                    <div class="w-full md:w-2/4 p-6 text-center font-medium flex flex-col items-center justify-center md">
+                        <div class="w-20 h-20 mb-4 flex items-center justify-center">
+                            <img src="{{ asset('images/Scalable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                            {{ __('app.about.mission_scalable') }}
+                        </strong>
+                        <p class="text-[#666] text-sm">
+                            {{ __('app.about.mission_scalable_desc') }}
+                        </p>
+                    </div>
+                    <!-- Col 4: Empty (1/4) -->
+                    <div class="hidden md:flex md:w-1/4 p-6 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
+                    </div>
+                </div>
+
+                <!-- Row 2: 3 Columns (1/4 | 2/4 | 1/4) -->
+                <div class="flex flex-col md:flex-row w-full">
+                    <!-- Col 1: Hot Service (1/4) -->
+                    <div class="w-full md:w-1/4 p-6 text-center font-medium flex flex-col items-center justify-center md">
+                        <div class="w-20 h-20 mb-4 flex items-center justify-center">
+                            <img src="{{ asset('images/Hot_Service.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                            {{ __('app.about.mission_hotservice') }}
+                        </strong>
+                        <p class="text-[#666] text-sm">
+                            {{ __('app.about.mission_hotservice_desc') }}
+                        </p>
+                    </div>
+
+                    <!-- Col 2: CENTER IMAGE CONTAINER (2/4 = 50% width) -->
+                    <div class="w-full md:w-2/4 p-8 text-center font-medium flex flex-col items-center justify-center bg-gray-50/50 ">
+                        <!-- Image Wrapper -->
+                        <div class="w-48 h-48 md:w-64 md:h-64 mb-4 flex items-center justify-center">
+                            <img src="{{ asset('images/Mission.png') }}" alt="Mission Center" class="max-w-full max-h-full object-contain drop-shadow-md">
+                        </div>
+
+                        <!-- Title Outside the Image Wrapper -->
+                        <strong class="block text-transparent bg-clip-text gradient-brand text-2xl md:text-3xl font-bold w-full mb-1">
+                            {{ __('app.about.mission_title') }}
+                        </strong>
+                    </div>
+
+                    <!-- Col 3: Quality (1/4) -->
+                    <div class="w-full md:w-1/4 p-6 text-center font-medium flex flex-col items-center justify-center">
+                        <div class="w-20 h-20 mb-4 flex items-center justify-center">
+                            <img src="{{ asset('images/Quality.png') }}" alt="Quality" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                            {{ __('app.about.mission_quality') }}
+                        </strong>
+                        <p class="text-[#666] text-sm">
+                            {{ __('app.about.mission_quality_desc') }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Row 3: 4 Columns (1/4 | 1/4 | 1/4 | 1/4) -->
+                <div class="flex flex-col md:flex-row w-full">
+                    <!-- Col 1: Empty (1/4) -->
+                    <div class="hidden md:flex md:w-1/4 p-6 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
+                    </div>
+                    <!-- Col 3: Contribute (1/4) -->
+                    <div class="w-full md:w-2/4 p-6 text-center font-medium flex flex-col items-center justify-center md">
+                        <div class="w-20 h-20 mb-4 flex items-center justify-center">
+                            <img src="{{ asset('images/Contribute.png') }}" alt="Contribute" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                            {{ __('app.about.mission_contribute') }}
+                        </strong>
+                        <p class="text-[#666] text-sm">
+                            {{ __('app.about.mission_contribute_desc') }}
+                        </p>
+                    </div>
+
+                    <!-- Col 4: Reliable (1/4) -->
+                    <div class="w-full md:w-2/4 p-6 text-center font-medium flex flex-col items-center justify-center">
+                        <div class="w-20 h-20 mb-4 flex items-center justify-center">
+                            <img src="{{ asset('images/Reliable.png') }}" alt="Reliable" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                            {{ __('app.about.mission_reliable') }}
+                        </strong>
+                        <p class="text-[#666] text-sm">
+                            {{ __('app.about.mission_reliable_desc') }}
+                        </p>
+                    </div>
+                    <!-- Col 2: Empty (1/4) -->
+                    <div class="hidden md:flex md:w-1/4 p-6 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- SECTION 3: CORE VALUES -->
+            <div class="w-full relative [clip-path:polygon(0_0,calc(100%-5rem)_0,100%_5rem,100%_calc(100%-5rem),calc(100%-5rem)_100%,0_100%)] bg-[#8fc74a] dark:bg-[#8fc74a] p-[1px]">
+                <div class="glass-card justify-center shadow-2xl p-6 md:p-8 relative overflow-hidden [clip-path:polygon(0_0,calc(100%-5rem)_0,100%_5rem,100%_calc(100%-5rem),calc(100%-5rem)_100%,0_100%)] h-full w-full flex flex-col md:flex-row items-center gap-8 md:gap-12">
 
                     <!-- Left Central Badge: "CORE VALUE" -->
-                    <div class="relative z-10 flex-shrink-0 w-36 h-36 md:w-44 md:h-44 rounded-full border-4 border-[#8fc74a] bg-white flex flex-col items-center justify-center p-4 text-center shadow-lg">
-                        <span class="text-[#8fc74a] font-black text-xl md:text-2xl uppercase tracking-wider leading-tight">Core</span>
-                        <span class="text-[#F79633] font-black text-xl md:text-2xl uppercase tracking-wider leading-tight">Value</span>
+                    <div class="relative z-10 flex-shrink-0 w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-[#8fc74a] bg-white flex flex-col items-center justify-center p-4 text-center shadow-lg">
+                        <span class="text-[#8fc74a] font-black text-xl md:text-3xl uppercase tracking-wider leading-tight">Core</span>
+                        <span class="text-[#F79633] font-black text-xl md:text-3xl uppercase tracking-wider leading-tight">Value</span>
                     </div>
 
-                    <!-- Right Side Items Container with Connecting Lines overlay -->
-                    <div class="relative flex-1 flex flex-col gap-3 w-full">
+                    <!-- Right Side Items Container -->
+                    <div class="relative flex-1 flex flex-col gap-3.5 w-full">
 
-                        <!-- Dynamic Connecting Lines SVG Overlay (visible on desktop md+) -->
+                        <!-- Dynamic Connecting Lines SVG Overlay -->
                         <svg class="hidden md:block absolute -left-12 top-0 w-12 h-full pointer-events-none z-0"
                             preserveAspectRatio="none"
                             viewBox="0 0 48 400"
@@ -123,109 +176,101 @@
                             stroke-width="2"
                             stroke-linecap="round"
                             stroke-linejoin="round">
-                            <!-- Branch 1 (Top) -->
                             <path d="M 0 200 L 16 200 L 32 25 L 48 25" />
-                            <!-- Branch 2 -->
                             <path d="M 0 200 L 16 200 L 32 75 L 48 75" />
-                            <!-- Branch 3 -->
                             <path d="M 0 200 L 16 200 L 32 125 L 48 125" />
-                            <!-- Branch 4 -->
                             <path d="M 0 200 L 16 200 L 32 175 L 48 175" />
-                            <!-- Branch 5 -->
                             <path d="M 0 200 L 16 200 L 32 225 L 48 225" />
-                            <!-- Branch 6 -->
                             <path d="M 0 200 L 16 200 L 32 275 L 48 275" />
-                            <!-- Branch 7 -->
                             <path d="M 0 200 L 16 200 L 32 325 L 48 325" />
-                            <!-- Branch 8 (Bottom) -->
                             <path d="M 0 200 L 16 200 L 32 375 L 48 375" />
                         </svg>
 
                         <!-- Item 1 -->
-                        <div class="relative z-10 flex items-center bg-white dark:bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
-                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 dark:bg-white flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
+                        <div class="relative z-10 flex items-center bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
+                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
                                 </svg>
                             </div>
-                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-base">Deliver Reliable Connectivity</span>
+                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-sm">Deliver Reliable Connectivity</span>
                         </div>
 
                         <!-- Item 2 -->
-                        <div class="relative z-10 flex items-center bg-white dark:bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
-                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 dark:bg-white flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
+                        <div class="relative z-10 flex items-center bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
+                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                 </svg>
                             </div>
-                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-base">Customer-First Commitment</span>
+                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-sm">Customer-First Commitment</span>
                         </div>
 
                         <!-- Item 3 -->
-                        <div class="relative z-10 flex items-center bg-white dark:bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
-                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 dark:bg-white flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
+                        <div class="relative z-10 flex items-center bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
+                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                                 </svg>
                             </div>
-                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-base">Operational & Technical Excellence</span>
+                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-sm">Operational & Technical Excellence</span>
                         </div>
 
                         <!-- Item 4 -->
-                        <div class="relative z-10 flex items-center bg-white dark:bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
-                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 dark:bg-white flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
+                        <div class="relative z-10 flex items-center bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
+                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                 </svg>
                             </div>
-                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-base">Innovation & Technology Leadership</span>
+                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-sm">Innovation & Technology Leadership</span>
                         </div>
 
                         <!-- Item 5 -->
-                        <div class="relative z-10 flex items-center bg-white dark:bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
-                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 dark:bg-white flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
+                        <div class="relative z-10 flex items-center bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
+                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                                 </svg>
                             </div>
-                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-base">Professional The Right Team</span>
+                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-sm">Professional The Right Team</span>
                         </div>
 
                         <!-- Item 6 -->
-                        <div class="relative z-10 flex items-center bg-white dark:bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
-                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 dark:bg-white flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
+                        <div class="relative z-10 flex items-center bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
+                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
-                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-base">Integrity & Positive Attitude</span>
+                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-sm">Integrity & Positive Attitude</span>
                         </div>
 
                         <!-- Item 7 -->
-                        <div class="relative z-10 flex items-center bg-white dark:bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
-                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 dark:bg-white flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
+                        <div class="relative z-10 flex items-center bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
+                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                                 </svg>
                             </div>
-                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-base">Lifelong Learning</span>
+                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-sm">Lifelong Learning</span>
                         </div>
 
                         <!-- Item 8 -->
-                        <div class="relative z-10 flex items-center bg-white dark:bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
-                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 dark:bg-white flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
+                        <div class="relative z-10 flex items-center bg-white border border-[#F79633] rounded-r-2xl rounded-l-full shadow-md pr-4 py-1.5 transition-transform hover:translate-x-1">
+                            <div class="w-12 h-12 rounded-full border border-[#F79633] bg-emerald-50 flex items-center justify-center flex-shrink-0 -ml-1 text-[#8fc74a]">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
                                 </svg>
                             </div>
-                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-base">Community & National Development</span>
+                            <span class="ml-3 font-bold text-[#8fc74a] text-sm md:text-sm">Community & National Development</span>
                         </div>
 
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
 
         {{-- Core Values --}}
         <div>
