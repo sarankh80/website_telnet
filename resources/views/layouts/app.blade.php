@@ -95,7 +95,7 @@
     </style>
 </head>
 
-<body class="text-adaptive-main antialiased selection:bg-brand-green selection:text-white">
+<body class="light text-adaptive-main antialiased selection:bg-brand-green selection:text-white">
 
     @include('layouts.header')
     @yield('content')
