@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="relative overflow-hidden py-12 lg:py-20 section-bg-primary">
+<section class="relative overflow-hidden pt-12 lg:pt-12 section-bg-primary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
@@ -13,10 +13,10 @@
                 </h1>
 
                 <div class="space-y-3">
-                    <p class="text-gray-500 dark:text-gray-400 text-justify text-base sm:text-lg max-w-3xl font-semibold">
+                    <p class="text-[#444] dark:text-[#444] text-justify text-md leading-[1.5] max-w-3xl">
                         {{ __('app.hero.desc') }}
                     </p>
-                    <p class="text-gray-500 dark:text-gray-400 text-justify text-base sm:text-lg max-w-3xl font-semibold">
+                    <p class="text-[#444] dark:text-[#444] text-justify text-md leading-[1.5] max-w-3xl">
                         {{ __('app.hero.desc1') }}
                     </p>
                 </div>
@@ -67,11 +67,11 @@
                 </div>
                 <div class="w-full flex justify-center">
                     <span class="text-md text-center font-bold text-brand-green bg-brand-green/10 px-2.5 py-1 rounded-md">
-                        {{ $isKm ? $card['badge_km'] : $card['badge'] }}
+                        {!! $isKm ? $card['badge_km'] : $card['badge'] !!}
                     </span>
                 </div>
                 <h3 class="text-md text-center font-semibold text-[#777] mt-2">
-                    {{ $isKm ? $card['desc_km'] : $card['desc_en'] }}
+                    {!! $isKm ? $card['desc_km'] : $card['desc_en'] !!}
                 </h3>
             </div>
             @endforeach
@@ -102,9 +102,9 @@
                         </div>
                         <h3 class="text-xl tracking-wide text-[#8fc74a] font-bold bg-brand-green/10 px-2.5 py-1/2 rounded">{{$currentLocale==="en"?$slug->name:$slug->name_km}} </h3>
                     </div>
-                    <p class="text-gray-500 text-justify text-sm font-semibold mb-1 line-clamp-3 max-w-prose">
-                        {{ $currentLocale==="en"?$slug->desc:$slug->desc_km}}
-                    </p>
+                    <div class="text-[#444] text-justify text-sm  mb-1 line-clamp-4 max-w-prose">
+                        {!! $currentLocale==="en"?$slug->desc:$slug->desc_km !!}
+                    </div>
                     <a href="#" class="text-[#F79633] underline hover:font-bold text-sm transition-colors">{{__('app.hero.readmore')}} &gt;&gt;</a>
                 </div>
             </div>
@@ -1359,6 +1359,6 @@
     </div>
 </section>
 
-
+@include('layouts.scrollBar')
 
 @endsection

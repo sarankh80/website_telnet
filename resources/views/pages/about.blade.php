@@ -6,22 +6,22 @@
 <section class="py-16 section-bg-secondary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Styled Legend / Badge -->
-        <h1 class="text-xl sm:text-5xl font-extrabold  text-transparent bg-clip-text gradient-brand mb-4">
-            {{ __('app.about.company_background') }}
-        </h1>
-        <div class="!justify-left flex flex-col">
-            <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.desc_1') }}</p>
-            <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.desc_2') }}</p>
-            <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.desc_3') }}</p>
-            <p class="font-bold text-[#444] !text-left sm:text-lg leading-[1.5] my-2">{{ __('app.about.company_strategy') }}</p>
-            <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.strategy_overview') }}</p>
-            <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.strategy_overview_1') }}</p>
-
-        </div>
-        <h1 class="text-xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text gradient-brand my-8">
+        <h1 class="text-xl sm:text-3xl font-extrabold  text-transparent bg-clip-text gradient-brand mb-4">
             {{ __('app.about.company_profile') }}
         </h1>
-        <div class="flex flex-col gap-8 max-w-7xl mx-auto items-center">
+        <div class="!justify-left flex flex-col">
+            <p class="text-[#444] text-justify sm:text-md leading-[1.5] mb-2">{{ __('app.about.desc_1') }}</p>
+            <p class="text-[#444] text-justify sm:text-md leading-[1.5] mb-2">{{ __('app.about.desc_2') }}</p>
+            <p class="text-[#444] text-justify sm:text-md leading-[1.5] mb-2">{{ __('app.about.desc_3') }}</p>
+            <p class="font-bold text-[#8fc74a] !text-left sm:text-2xl leading-[1.5] my-2">{{ __('app.about.company_strategy') }}</p>
+            <p class="text-[#444] text-justify sm:text-md leading-[1.5] mb-2">{{ __('app.about.strategy_overview') }}</p>
+            <p class="text-[#444] text-justify sm:text-md leading-[1.5] mb-2">{{ __('app.about.strategy_overview_1') }}</p>
+
+        </div>
+        <!-- <h1 class="text-xl sm:text-5xl font-extrabold text-center text-transparent bg-clip-text gradient-brand my-8">
+            {{ __('app.about.company_profile') }}
+        </h1> -->
+        <div class="flex flex-col gap-8 max-w-7xl mx-auto items-start">
             <!-- SECTION 1: VISION -->
             <div class="max-w-4xl items-center flex flex-col md:flex-row gap-6 md:gap-12">
                 <!-- Left Element: Image -->
@@ -29,11 +29,11 @@
                     <img src="{{ asset('images/OUR VISION.png') }}" alt="Vision" class="w-full h-full object-contain">
                 </div>
                 <!-- Right Element: Content -->
-                <div class="flex-1 min-w-0">
+                <div class="flex-1 min-w-0 mb-8">
                     <div class="mb-3">
                         <h3 class="text-2xl sm:text-3xl text-[#8fc74a] font-bold">{{ __('app.about.vision_title') }}</h3>
                     </div>
-                    <p class="text-[#444] text-justify sm:text-lg leading-[1.5] mb-2">{{ __('app.about.vision_desc') }}</p>
+                    <p class="text-[#444] text-justify sm:text-md leading-[1.5] mb-2">{{ __('app.about.vision_desc') }}</p>
                 </div>
             </div>
 
@@ -42,75 +42,75 @@
                 <!-- Row 1: 4 Columns (1/4 | 1/4 | 1/4 | 1/4) -->
                 <div class="flex flex-col md:flex-row w-full">
                     <!-- Col 3: Empty (1/4) -->
-                    <div class="hidden md:flex md:w-1/4 p-6 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
+                    <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
                     </div>
                     <!-- Col 1: High Speed -->
-                    <div class="w-full md:w-2/4 p-6 text-center font-medium flex flex-col items-center justify-center">
+                    <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center ">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
-                            <img src="{{ asset('images/High_Speed.png') }}" alt="High Speed" class="max-w-full max-h-full object-contain">
+                            <img src="{{asset('images/High_Speed.png') }}" alt="High Speed" class="max-w-full max-h-full object-contain">
                         </div>
-                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                        <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
                             {{ __('app.about.mission_highspeed') }}
                         </strong>
-                        <p class="text-[#666] text-sm">
+                        <p class="text-[#666] text-xs text-justify">
                             {{ __('app.about.mission_highspeed_desc') }}
                         </p>
                     </div>
 
                     <!-- Col 2: Scalable -->
-                    <div class="w-full md:w-2/4 p-6 text-center font-medium flex flex-col items-center justify-center md">
+                    <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center md">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
                             <img src="{{ asset('images/Scalable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
                         </div>
-                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                        <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
                             {{ __('app.about.mission_scalable') }}
                         </strong>
-                        <p class="text-[#666] text-sm">
+                        <p class="text-[#666] text-xs text-justify">
                             {{ __('app.about.mission_scalable_desc') }}
                         </p>
                     </div>
                     <!-- Col 4: Empty (1/4) -->
-                    <div class="hidden md:flex md:w-1/4 p-6 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
+                    <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
                     </div>
                 </div>
 
                 <!-- Row 2: 3 Columns (1/4 | 2/4 | 1/4) -->
                 <div class="flex flex-col md:flex-row w-full">
                     <!-- Col 1: Hot Service (1/4) -->
-                    <div class="w-full md:w-1/4 p-6 text-center font-medium flex flex-col items-center justify-center md">
+                    <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center ">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
                             <img src="{{ asset('images/Hot_Service.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
                         </div>
-                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                        <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1  uppercase">
                             {{ __('app.about.mission_hotservice') }}
                         </strong>
-                        <p class="text-[#666] text-sm">
+                        <p class="text-[#666] text-xs text-justify">
                             {{ __('app.about.mission_hotservice_desc') }}
                         </p>
                     </div>
 
                     <!-- Col 2: CENTER IMAGE CONTAINER (2/4 = 50% width) -->
-                    <div class="w-full md:w-2/4 p-8 text-center font-medium flex flex-col items-center justify-center bg-gray-50/50 ">
+                    <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center">
                         <!-- Image Wrapper -->
                         <div class="w-48 h-48 md:w-64 md:h-64 mb-4 flex items-center justify-center">
                             <img src="{{ asset('images/Mission.png') }}" alt="Mission Center" class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
 
                         <!-- Title Outside the Image Wrapper -->
-                        <strong class="block text-transparent bg-clip-text gradient-brand text-2xl md:text-3xl font-bold w-full mb-1">
+                        <strong class="block text-transparent bg-clip-text gradient-brand text-3xl md:text-3xl font-bold w-full mb-1">
                             {{ __('app.about.mission_title') }}
                         </strong>
                     </div>
 
                     <!-- Col 3: Quality (1/4) -->
-                    <div class="w-full md:w-1/4 p-6 text-center font-medium flex flex-col items-center justify-center">
+                    <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
                             <img src="{{ asset('images/Quality.png') }}" alt="Quality" class="max-w-full max-h-full object-contain">
                         </div>
-                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                        <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1  uppercase">
                             {{ __('app.about.mission_quality') }}
                         </strong>
-                        <p class="text-[#666] text-sm">
+                        <p class="text-[#666] text-xs text-justify">
                             {{ __('app.about.mission_quality_desc') }}
                         </p>
                     </div>
@@ -119,35 +119,36 @@
                 <!-- Row 3: 4 Columns (1/4 | 1/4 | 1/4 | 1/4) -->
                 <div class="flex flex-col md:flex-row w-full">
                     <!-- Col 1: Empty (1/4) -->
-                    <div class="hidden md:flex md:w-1/4 p-6 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
-                    </div>
-                    <!-- Col 3: Contribute (1/4) -->
-                    <div class="w-full md:w-2/4 p-6 text-center font-medium flex flex-col items-center justify-center md">
-                        <div class="w-20 h-20 mb-4 flex items-center justify-center">
-                            <img src="{{ asset('images/Contribute.png') }}" alt="Contribute" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
-                            {{ __('app.about.mission_contribute') }}
-                        </strong>
-                        <p class="text-[#666] text-sm">
-                            {{ __('app.about.mission_contribute_desc') }}
-                        </p>
+                    <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
                     </div>
 
+
                     <!-- Col 4: Reliable (1/4) -->
-                    <div class="w-full md:w-2/4 p-6 text-center font-medium flex flex-col items-center justify-center">
+                    <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
                             <img src="{{ asset('images/Reliable.png') }}" alt="Reliable" class="max-w-full max-h-full object-contain">
                         </div>
-                        <strong class="block text-[#444] font-bold w-full text-base mb-1">
+                        <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
                             {{ __('app.about.mission_reliable') }}
                         </strong>
-                        <p class="text-[#666] text-sm">
+                        <p class="text-[#666] text-xs text-justify">
                             {{ __('app.about.mission_reliable_desc') }}
                         </p>
                     </div>
+                    <!-- Col 3: Contribute (1/4) -->
+                    <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center md">
+                        <div class="w-20 h-20 mb-4 flex items-center justify-center">
+                            <img src="{{ asset('images/Contribute.png') }}" alt="Contribute" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1  uppercase">
+                            {{ __('app.about.mission_contribute') }}
+                        </strong>
+                        <p class="text-[#666] text-xs text-justify">
+                            {{ __('app.about.mission_contribute_desc') }}
+                        </p>
+                    </div>
                     <!-- Col 2: Empty (1/4) -->
-                    <div class="hidden md:flex md:w-1/4 p-6 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
+                    <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]">
                     </div>
                 </div>
 
@@ -156,7 +157,7 @@
 
             <!-- SECTION 3: CORE VALUES -->
             <div class="w-full relative [clip-path:polygon(0_0,calc(100%-5rem)_0,100%_5rem,100%_calc(100%-5rem),calc(100%-5rem)_100%,0_100%)] bg-[#8fc74a] dark:bg-[#8fc74a] p-[1px]">
-                <div class="glass-card justify-center shadow-2xl p-6 md:p-8 relative overflow-hidden [clip-path:polygon(0_0,calc(100%-5rem)_0,100%_5rem,100%_calc(100%-5rem),calc(100%-5rem)_100%,0_100%)] h-full w-full flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="glass-card justify-center shadow-2xl p-2 md:p-8 relative overflow-hidden [clip-path:polygon(0_0,calc(100%-5rem)_0,100%_5rem,100%_calc(100%-5rem),calc(100%-5rem)_100%,0_100%)] h-full w-full flex flex-col md:flex-row items-center gap-8 md:gap-12">
 
                     <!-- Left Central Badge: "CORE VALUE" -->
                     <div class="relative z-10 flex-shrink-0 w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-[#8fc74a] bg-white flex flex-col items-center justify-center p-4 text-center shadow-lg">
@@ -273,7 +274,7 @@
         </div>
 
         {{-- Core Values --}}
-        <div>
+        <div class="hidden">
             <h3 class="text-center text-lg font-bold text-adaptive-main mb-8">{{ __('app.about.values_title') }}</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 @php
@@ -301,7 +302,7 @@
 </section>
 
 {{-- CTA --}}
-<section class="py-14 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20 ">
+<section class="py-14 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20 hidden">
     <div class="max-w-4xl mx-auto px-4 text-center space-y-5">
         <h2 class="text-2xl font-extrabold text-adaptive-main">{{ __('app.about.connect_cta') }}</h2>
         <button onclick="openModal('serviceModal')"
