@@ -1,4 +1,3 @@
-
 [x-cloak] {
     display: none !important;
 }
@@ -16,7 +15,6 @@
 #coverage-map:fullscreen .leaflet-control {
     z-index: 1000;
 }
-
 
 /* =========================================================
    COVERAGE POPUP
@@ -38,14 +36,11 @@
     color: #1e293b;
 }
 
-
 /* =========================================================
    LEAFLET POPUP
 ========================================================= */
 
-.coverage-popup-container
-.leaflet-popup-content-wrapper {
-
+.coverage-popup-container .leaflet-popup-content-wrapper {
     padding: 0 !important;
 
     border-radius: 16px !important;
@@ -53,36 +48,21 @@
     overflow: hidden;
 
     box-shadow:
-        0 15px 35px
-        rgba(15, 23, 42, 0.15),
-
-        0 5px 12px
-        rgba(15, 23, 42, 0.08);
+        0 15px 35px rgba(15, 23, 42, 0.15),
+        0 5px 12px rgba(15, 23, 42, 0.08);
 }
 
-
-.coverage-popup-container
-.leaflet-popup-content {
-
+.coverage-popup-container .leaflet-popup-content {
     margin: 0 !important;
 
     width: auto !important;
 }
 
-
-.coverage-popup-container
-.leaflet-popup-tip {
-
-    box-shadow:
-        2px 2px 5px
-        rgba(15, 23, 42, 0.08);
-
+.coverage-popup-container .leaflet-popup-tip {
+    box-shadow: 2px 2px 5px rgba(15, 23, 42, 0.08);
 }
 
-
-.coverage-popup-container
-.leaflet-popup-close-button {
-
+.coverage-popup-container .leaflet-popup-close-button {
     top: 8px !important;
 
     right: 8px !important;
@@ -100,26 +80,19 @@
     line-height: 26px !important;
 
     z-index: 10;
-
 }
 
-
-.coverage-popup-container
-.leaflet-popup-close-button:hover {
-
+.coverage-popup-container .leaflet-popup-close-button:hover {
     color: #0f172a !important;
 
     background: #f1f5f9;
-
 }
-
 
 /* =========================================================
    HEADER
 ========================================================= */
 
 .coverage-popup-header {
-
     display: flex;
 
     align-items: flex-start;
@@ -130,21 +103,12 @@
 
     padding: 16px 40px 14px 16px;
 
-    border-bottom:
-        1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
 
-    background:
-        linear-gradient(
-            to bottom,
-            #ffffff,
-            #f8fafc
-        );
-
+    background: linear-gradient(to bottom, #ffffff, #f8fafc);
 }
 
-
 .coverage-popup-title {
-
     font-size: 15px;
 
     font-weight: 700;
@@ -152,16 +116,13 @@
     line-height: 1.4;
 
     color: #0f172a;
-
 }
-
 
 /* =========================================================
    STATUS
 ========================================================= */
 
 .coverage-status {
-
     display: inline-flex;
 
     align-items: center;
@@ -177,30 +138,21 @@
     font-weight: 700;
 
     white-space: nowrap;
-
 }
 
-
 .coverage-status.available {
-
     color: #15803d;
 
     background: #dcfce7;
-
 }
 
-
 .coverage-status.unavailable {
-
     color: #dc2626;
 
     background: #fee2e2;
-
 }
 
-
 .coverage-status-dot {
-
     width: 6px;
 
     height: 6px;
@@ -210,23 +162,17 @@
     border-radius: 50%;
 
     background: currentColor;
-
 }
-
 
 /* =========================================================
    BODY
 ========================================================= */
 
 .coverage-popup-body {
-
     padding: 10px 16px;
-
 }
 
-
 .coverage-info-row {
-
     display: flex;
 
     align-items: center;
@@ -236,21 +182,15 @@
     gap: 15px;
 
     padding: 7px 0;
-
 }
 
-
 .coverage-info-label {
-
     color: #64748b;
 
     font-size: 12px;
-
 }
 
-
 .coverage-info-value {
-
     max-width: 180px;
 
     overflow: hidden;
@@ -266,42 +206,29 @@
     font-weight: 600;
 
     text-align: right;
-
 }
-
 
 .distance-good {
-
     color: #16a34a !important;
-
 }
-
 
 .distance-bad {
-
     color: #dc2626 !important;
-
 }
-
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
 .coverage-popup-footer {
-
     margin: 0 16px 16px;
 
     padding-top: 12px;
 
-    border-top:
-        1px solid #e2e8f0;
-
+    border-top: 1px solid #e2e8f0;
 }
 
-
 .coverage-radius {
-
     display: flex;
 
     align-items: center;
@@ -311,12 +238,9 @@
     color: #64748b;
 
     font-size: 11px;
-
 }
 
-
 .coverage-radius-icon {
-
     width: 32px;
 
     height: 32px;
@@ -336,16 +260,13 @@
     background: #f0fdf4;
 
     font-size: 15px;
-
 }
-
 
 /* =========================================================
    SEARCH RESULT
 ========================================================= */
 
 .coverage-result {
-
     display: flex;
 
     align-items: flex-start;
@@ -357,36 +278,25 @@
     padding: 11px;
 
     border-radius: 10px;
-
 }
 
-
 .coverage-result-good {
-
     color: #166534;
 
     background: #f0fdf4;
 
-    border:
-        1px solid #bbf7d0;
-
+    border: 1px solid #bbf7d0;
 }
 
-
 .coverage-result-bad {
-
     color: #991b1b;
 
     background: #fef2f2;
 
-    border:
-        1px solid #fecaca;
-
+    border: 1px solid #fecaca;
 }
 
-
 .coverage-result-icon {
-
     width: 28px;
 
     height: 28px;
@@ -406,80 +316,84 @@
     font-size: 13px;
 
     font-weight: 700;
-
 }
 
-
-.coverage-result-good
-.coverage-result-icon {
-
+.coverage-result-good .coverage-result-icon {
     background: #22c55e;
-
 }
 
-
-.coverage-result-bad
-.coverage-result-icon {
-
+.coverage-result-bad .coverage-result-icon {
     background: #ef4444;
-
 }
-
 
 .coverage-result-title {
-
     font-size: 12px;
 
     font-weight: 700;
 
     margin-bottom: 2px;
-
 }
 
-
 .coverage-result-text {
-
     font-size: 10px;
 
     line-height: 1.5;
 
     opacity: 0.8;
-
 }
-
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
 @media (max-width: 640px) {
-
     .coverage-popup {
-
         min-width: 220px;
-
     }
-
 
     .coverage-popup-header {
-
         padding-right: 35px;
-
     }
-
 
     .coverage-popup-title {
-
         font-size: 14px;
-
     }
-
 
     .coverage-info-value {
-
         max-width: 130px;
+    }
+}
+
+.hero-slide {
+    opacity: 0;
+
+    transition: opacity 2s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+    #hero-bg {
+
+        animation: heroZoom 20s linear infinite;
+
+        transform-origin: center;
 
     }
 
-}
+    @keyframes heroZoom {
 
+        0% {
+
+            transform: scale(1);
+
+        }
+
+        100% {
+
+            transform: scale(1.08);
+
+        }
+
+    }

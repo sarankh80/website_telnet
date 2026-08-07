@@ -1,6 +1,6 @@
 
     document.addEventListener('DOMContentLoaded', () => {
-        const itemsPerPage = 9;
+        const itemsPerPage = 4;
         const cards = Array.from(document.querySelectorAll('.product-card'));
         const totalPages = Math.ceil(cards.length / itemsPerPage);
         let currentPage = 1;

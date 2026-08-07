@@ -1,31 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="w-full border h-[400px] lg:h-screen relative overflow-hidden">
-    <!-- Background Image -->
-    <img src="{{asset('images/home/bgImage/BgImage1.png')}}" alt="Hero Image" class="w-full h-full object-cover" />
 
-    <!-- Content Container -->
-    <div class="absolute inset-0 flex flex-col justify-start items-center text-center px-4 z-10 mt-24">
-        <h1 class="flex flex-col gap-2 max-w-4xl">
-            <!-- Line 1: Primary Color (#8fc74a) -->
-            <span class="text-2xl sm:text-4xl md:text-5xl font-semibold uppercase tracking-wider text-[#8fc74a]">
-                {{ __('app.hero.title') }}
-            </span>
-
-            <!-- Line 2: Secondary Color (#F79633) -->
-            <span class="text-4xl sm:text-6xl md:text-7xl font-black text-[#F79633] leading-tight">
-                {{ __('app.hero.highlight') }}
-            </span>
-        </h1>
-    </div>
-</section>
 <section class="relative overflow-hidden pt-12 lg:pt-12 section-bg-primary">
-
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
-
 
                 <h1 class="text-3xl sm:text-5xl font-black leading-tight tracking-normal text-adaptive-main lg:leading-snug">
                     <span>{{ __('app.hero.title') }}</span>
@@ -70,53 +50,31 @@
         @php
         $isKm = app()->getLocale() === 'km';
         $serviceCards = [
-        ['image' => '/images/home/mission/High_Speed.png', 'badge' => 'High Speed', 'badge_km' => 'ល្បឿនលឿន', 'desc_en' => 'Experience lightning-fast internet connectivity designed for seamless streaming, business productivity, and everyday digital experiences with stable speeds, advanced technology, and reliable performance that keeps you connected anytime, anywhere.', 'desc_km' => 'ទទួលបានបទពិសោធន៍នៃការតភ្ជាប់អ៊ីនធឺណិតដែលមានល្បឿនលឿនបំផុត ដែលត្រូវបានរចនាឡើងសម្រាប់ការផ្សាយវីដេអូ (streaming) ប្រកបដោយភាពរលូន ការបង្កើនផលិតភាពការងារ និងសកម្មភាពឌីជីថលប្រចាំថ្ងៃ។ ជាមួយនឹងល្បឿនដ៏នឹងនរ បច្ចេកវិទ្យាទំនើប និងដំណើរការប្រកបដោយគុណភាពខ្ពស់ សេវាកម្មនេះធានាថាអ្នកអាចរក្សាការតភ្ជាប់បានគ្រប់ពេលវេលា និងគ្រប់ទីកន្លែង។'],
-        ['image' => '/images/home/mission/Scalable.png', 'badge' => 'Scalable', 'badge_km' => 'មានសក្តានុពលក្នុងការពង្រីក', 'desc_en' => 'Building a future-ready network infrastructure that grows with your needs, providing flexible, secure, and high-performance solutions to support businesses, organizations, and communities with reliable connectivity and innovation.', 'desc_km' => 'ការកសាងហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញដែលត្រៀមខ្លួនរួចជាស្រេចសម្រាប់អនាគត និងអាចពង្រីកបានស្របតាមតម្រូវការរបស់អ្នក ព្រមទាំងផ្តល់ជូននូវដំណោះស្រាយដែលមានភាពបត់បែន សុវត្ថិភាព និងប្រសិទ្ធភាពខ្ពស់ ដើម្បីគាំទ្រដល់អាជីវកម្ម អង្គភាព និងសហគមន៍ តាមរយៈការតភ្ជាប់ប្រកបដោយទំនុកចិត្ត និងនវានុវត្តន៍'],
-        ['image' => '/images/home/mission/Experience.png', 'badge' => 'Best Experience', 'badge_km' => 'បទពិសោធន៍ល្អបំផុតសម្រាប់អតិថិជន', 'desc_en' => 'Our dedicated hotline service and professional customer support team are always ready to assist, ensuring quick solutions, friendly guidance, and a smooth experience whenever you need help.', 'desc_km' => 'សេវាកម្មទូរស័ព្ទបន្ទាន់ (Hotline) និងក្រុមការងារជំនាញផ្នែកសេវាបម្រើអតិថិជនរបស់យើង តែងតែត្រៀមខ្លួនជានិច្ចដើម្បីផ្តល់ជំនួយ ដោយធានាបាននូវដំណោះស្រាយរហ័ស ការណែនាំប្រកបដោយភាពរួសរាយរាក់ទាក់ និងបទពិសោធន៍ដ៏រលូន នៅពេលណាដែលលោកអ្នកត្រូវការជំនួយ។'],
-        ['image' => '/images/home/mission/Reliable.png', 'badge' => 'Reliable', 'badge_km' => 'ផ្តល់ឲ្យអតថិជននូវទំនុកចិត្តខ្ពស់', 'desc_en' => 'Delivering dependable network operations through advanced monitoring, proactive maintenance, and modern technology to ensure continuous availability, strong performance, and uninterrupted connectivity for every customer.', 'desc_km' => 'ផ្តល់ជូននូវប្រតិបត្តិការបណ្តាញប្រកបដោយភាពជឿជាក់ តាមរយៈការត្រួតពិនិត្យកម្រិតខ្ពស់ ការថែទាំបែបបង្ការ និងបច្ចេកវិទ្យាទំនើប ដើម្បីធានាបាននូវលទ្ធភាពប្រើប្រាស់ជាប្រចាំ សមត្ថភាពដំណើរការដ៏រឹងមាំ និងការតភ្ជាប់ដែលមិនមានការរំខានសម្រាប់អតិថិជនគ្រប់រូប។'],
-        ['image' => '/images/home/mission/QualityAndSave.png', 'badge' => 'Quality & Saving', 'badge_km' => 'គុណភាពល្អនិង​ សន្សំសំចៃ', 'desc_en' => 'Providing exceptional customer service through trust, dedication, and personalized solutions, ensuring every customer receives professional support, reliable assistance, and a satisfying experience throughout their digital journey.', 'desc_km' => 'ផ្តល់សេវាកម្មអតិថិជនដ៏ល្អឥតខ្ចោះតាមរយៈការកសាងទំនុកចិត្ត ការយកចិត្តទុកដាក់ខ្ពស់ និងដំណោះស្រាយដែលត្រូវបានរៀបចំឡើងស្របតាមតម្រូវការជាក់លាក់របស់អតិថិជនម្នាក់ៗ ដោយធានាថាអតិថិជនទាំងអស់ទទួលបានការគាំទ្រប្រកបដោយវិជ្ជាជីវៈ ការជួយជ្រោមជ្រែងដែលអាចទុកចិត្តបាន និងបទពិសោធន៍ដ៏ពេញចិត្តពេញមួយដំណើរការនៃការប្រើប្រាស់សេវាកម្មឌីជីថលរបស់ពួកគេ។'],
-        ['image' => '/images/home/mission/Contribute.png', 'badge' => 'Contribute', 'badge_km' => 'រួមចំណែកសំខាន់ក្នុងការអភិវឌ្ឍន៍សង្គម', 'desc_en' => "Committed to creating a better-connected society by supporting communities, promoting digital access, and using technology to empower people, businesses, and organizations for a brighter and smarter future.", 'desc_km' => 'ប្តេជ្ញាចិត្តក្នុងការកសាងសង្គមដែលមានការតភ្ជាប់កាន់តែប្រសើរឡើង តាមរយៈការគាំទ្រសហគមន៍ ការលើកកម្ពស់លទ្ធភាពទទួលបានសេវាឌីជីថល និងការប្រើប្រាស់បច្ចេកវិទ្យាដើម្បីពង្រឹងសមត្ថភាពប្រជាជន អាជីវកម្ម និងស្ថាប័ននានា ឆ្ពោះទៅរកអនាគតដ៏ភ្លឺស្វាង និងឆ្លាតវៃ។'],
+        ['image' => '/images/High_Speed.png', 'badge' => 'High Speed', 'badge_km' => 'ល្បឿនលឿន', 'desc_en' => 'Provide high-speed, reliable and stable internet connectivity.', 'desc_km' => 'ផ្តល់ការតភ្ជាប់អ៊ីនធឺណិតល្បឿនលឿន ជឿជាក់ និងស្ថិតស្ថេរ។'],
+        ['image' => '/images/Scalable.png', 'badge' => 'Scalable', 'badge_km' => 'មានសក្តានុពលក្នុងការពង្រីក', 'desc_en' => 'Build scalable and secure network infrastructure across Cambodia.', 'desc_km' => 'សាងសង់ហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញអាចពង្រីក និងមានសុវត្ថិភាពទូទាំងកម្ពុជា។'],
+        ['image' => '/images/Hot_Service.png', 'badge' => 'Best Experience', 'badge_km' => 'បទពិសោធន៍ល្អបំផុតសម្រាប់អតិថិជន', 'desc_en' => 'Deliver excellent customer experience and innovative ICT.', 'desc_km' => 'ផ្តល់បទពិសោធន៍អតិថិជនដ៏ល្អ និង ICT ប្រកបដោយភាពច្នៃប្រឌិត។'],
+        ['image' => '/images/Reliable.png', 'badge' => 'Reliable', 'badge_km' => 'ផ្តល់ឲ្យអតថិជននូវទំនុកចិត្តខ្ពស់', 'desc_en' => 'Maintain high standards of customer support and service reliability.', 'desc_km' => 'រក្សាស្តង់ដារខ្ពស់នៃការគាំទ្រអតិថិជន និងការជឿជាក់លើសេវាកម្ម។'],
+        ['image' => '/images/Quality.png', 'badge' => 'Quality & Saving', 'badge_km' => 'គុណភាពល្អនិង​ សន្សំសំចៃ', 'desc_en' => 'Offering high quality, prompt service and selling what you need.', 'desc_km' => 'ផ្តល់ការេវាកម្មគុណភាពខ្ពស់ ឆ្លើយតបរហ័ស និងលក់តែអ្វីដែលអ្នកត្រូវការ។'],
+        ['image' => '/images/Contribute.png', 'badge' => 'Contribute', 'badge_km' => 'រួមចំណែកសំខាន់ក្នុងការអភិវឌ្ឍន៍សង្គម', 'desc_en' => "Contribute to Cambodia's digital transformation.", 'desc_km' => 'រួមចំណែកក្នុងការផ្លាស់ប្តូរឌីជីថលរបស់ប្រទេសកម្ពុជា។'],
         ];
         @endphp
 
-        <div class="max-w-7xl mx-auto px-4 py-8">
-            <!-- 3-Column Grid Container -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                @foreach($serviceCards as $re)
-                <div class="flex flex-col rounded-xl overflow-hidden shadow-sm border border-slate-200/100 bg-white hover:shadow transition group">
-                    <!-- 1. Top Image Banner -->
-                    <div class="w-full h-32 sm:h-56 overflow-hidden bg-slate-100 relative ">
-                        <a href="">
-                            <img loading="lazy"
-                                src="{{asset($re['image'])}}"
-                                alt=""
-                                class="w-full shrink-0 h-full object-cover group-hover:scale-105 transition duration-300" />
-                        </a>
-                    </div>
-                    <a
-                        href=""
-                        class="p-4 relative flex flex-col justify-between flex-1 cursor-pointer transition ">
-
-                        <div>
-                            <div class="flex items-start justify-between gap-3">
-                                <div class="flex items-start space-x-3 min-w-0">
-                                    <div class="min-w-0">
-                                        <div class="font-bold text-xl text-[#8fc74a] group-hover:text-[#8fc74a] transition truncate uppercase ">
-                                            {{ $isKm ? $re['badge_km'] : $re['badge'] }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-2 flex items-center  flex-wrap">
-                                <span class="text-sm  rounded-md  text-justify !leading-relaxed ">
-                                    {{ $isKm ? $re['desc_km'] : $re['desc_en'] }}
-                                </span>
-                            </div>
-                        </div>
-                    </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach($serviceCards as $card)
+            <div class="glass-card glass-card-hover p-6 rounded-2xl relative">
+                <div class="w-full h-24 rounded-xl flex items-center justify-center mb-4">
+                    <img src="{{ $card['image'] }}" alt="{{ $card['badge'] }}" class="h-24 w-auto object-contain">
                 </div>
-                @endforeach
+                <div class="w-full flex justify-center">
+                    <span class="text-md text-center font-bold text-brand-green bg-brand-green/10 px-2.5 py-1 rounded-md">
+                        {!! $isKm ? $card['badge_km'] : $card['badge'] !!}
+                    </span>
+                </div>
+                <h3 class="text-md text-center font-semibold text-[#777] mt-2">
+                    {!! $isKm ? $card['desc_km'] : $card['desc_en'] !!}
+                </h3>
             </div>
+            @endforeach
         </div>
     </div>
 </section>
