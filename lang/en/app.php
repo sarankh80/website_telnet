@@ -27,7 +27,7 @@ return [
         'cta_primary' => 'Subscribe Internet',
         'cta_secondary' => 'Explore Services',
         'difference' => 'What make us different ?',
-        'core-product' => 'EMPOWERING YOUR BUSINESS WITH INNOVATIVE SOLUTIONS THROUGH OUR CORE PRODUCTS',
+        'core-product' => 'Empowering your business with innovative Solutions through our core products and services as ',
         'readmore' => 'read more',
     ],
     'about' => [
