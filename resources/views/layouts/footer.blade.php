@@ -21,7 +21,7 @@ $latlong="11.54732899907136,104.9089653152003";
 @endphp
 
 <!-- Standard Keyframe snippet (Put in your main <style> tag or CSS file) -->
-<footer class="gradient-brand  py-12 text-white text-sm">
+<footer class="gradient-brand  py-12 text-white text-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
 
@@ -29,7 +29,7 @@ $latlong="11.54732899907136,104.9089653152003";
 
             {{-- Quick Links --}}
             <div class="space-y-2">
-                <h4 class="text-sm font-bold text-white mb-3">{{ __('app.footer.quick_links') }}</h4>
+                <h3 class="text-md font-bold text-white mb-3">{{ __('app.footer.quick_links') }}</h3>
                 @foreach([
 
                 ['href'=>route('home'), 'label'=> __('app.footer.home')],
@@ -46,7 +46,7 @@ $latlong="11.54732899907136,104.9089653152003";
 
             {{-- Contact --}}
             <div class="space-y-2">
-                <h4 class="text-sm font-bold text-white mb-3">{{ __('app.footer.contact') }}</h4>
+                <h4 class="text-md font-bold text-white mb-3">{{ __('app.footer.contact') }}</h4>
                 <!-- <p><i class="fa-solid fa-phone text-white mr-1.5"></i>
                     <a href="tel:{{ preg_replace('/\s+/','',$phone_main) }}" class="hover:text-white transition">{{ $phone_main }}</a>
                 </p> -->
@@ -60,7 +60,7 @@ $latlong="11.54732899907136,104.9089653152003";
 
             {{-- Address --}}
             <div class="space-y-2">
-                <h4 class="text-sm font-bold text-white mb-3">{{ __('app.footer.address') }}</h4>
+                <h4 class="text-md font-bold text-white mb-3">{{ __('app.footer.address') }}</h4>
                 <p>{{ __('app.footer.address_text') }}</p>
             </div>
             <div style="width:100%;height:100%;">

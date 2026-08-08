@@ -1,6 +1,12 @@
 <?php
 
 return [
+    "controls" => [
+        "buttons" => [
+            "learn_more" => "Learn More",
+            "connect_us" => "Get in touch",
+        ]
+    ],
     'site_name' => 'TELNET CO., LTD.',
     'tagline' => 'Internet Service Provider (ISP)',
     'nav' => [
@@ -20,8 +26,8 @@ return [
         'request_btn' => 'Request Service',
     ],
     'hero' => [
-        "next"=>"Next",
-        "prv"=> "Previous",
+        "next" => "Next",
+        "prv" => "Previous",
         'title' => 'Internet Service and Digital Solutions ',
         'highlight' => 'You Can Trust',
         'slogan' => "Advanced Fiber Solutions for a Connected Tomorrow",
@@ -36,7 +42,8 @@ return [
         'cta_primary' => 'Subscribe Internet',
         'cta_secondary' => 'Explore Services',
         'difference' => 'Why Thousands Choose TELNET ?',
-        'core-product' => 'Empowering Digital Transformation Through Reliable Technology Solutions as ',
+        'core-product' => 'Powering Digital Transformation with Smarter Technology Solutions as ',
+        'core-product_desc' => 'Powering businesses forward with next-generation ICT, optical fiber, enterprise networking, and data connectivity solutions—built to connect, accelerate, and transform your business for a smarter, faster, and more connected future.',
         'readmore' => 'read more',
     ],
     'about' => [
@@ -112,8 +119,11 @@ return [
         "tikect_type" => "Ticket Support Type",
         "select" => "Please Select your Ticket Type",
         "t_noc" => "NOC Issues/Support",
+        "t_noc_desc" => "For network incidents, connectivity issues, and technical support.",
         "t_sale" => "Sales & Marketing Issues/Support",
+        "t_sale_desc" => "For new services, business solutions, and partnership inquiries.",
         "t_care" => "Customer Service",
+        "t_care_desc" => "For general inquiries, billing, and customer assistance.",
         "t_bill" => "Billing & Finance Issues/Support",
         "t_desc" => "Ticket Description",
         "t_desc_holder" => "Tell Us the Detail Informations how can We help you ?",

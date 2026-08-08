@@ -1,66 +1,111 @@
+
 document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll(".slide");
+    const slides = document.querySelectorAll("#slider .slide");
+    const prevBtn = document.getElementById("prevSlide");
+    const nextBtn = document.getElementById("nextSlide");
     const dotsContainer = document.getElementById("dots");
 
-    let current = 0;
+    if (!slides.length) return;
 
-    slides.forEach((_, i) => {
+    let currentIndex = 0;
+    let autoSlideInterval;
+
+    // Build Dots
+    slides.forEach((_, idx) => {
         const dot = document.createElement("button");
-
-        dot.className = "w-3 h-3 rounded-full bg-white/50";
-
-        dot.addEventListener("click", () => {
-            showSlide(i);
-        });
-
+        dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${
+            idx === 0 ? "bg-white w-8" : "bg-white/50 hover:bg-white/80"
+        }`;
+        dot.addEventListener("click", () => goToSlide(idx));
         dotsContainer.appendChild(dot);
     });
 
     const dots = dotsContainer.querySelectorAll("button");
 
-    function showSlide(index) {
-        slides.forEach((slide) => {
-            slide.classList.remove("opacity-100");
-            slide.classList.add("opacity-0");
-        });
+    function updateZoomEffect(slideElement, index) {
+        const img = slideElement.querySelector(".slide-img");
+        if (!img) return;
 
-        dots.forEach((dot) => {
-            dot.classList.remove("bg-[#F79633]");
-            dot.classList.add("bg-white/50");
-        });
+        // Reset scaling classes
+        img.classList.remove("scale-100", "scale-125", "scale-110");
 
-        slides[index].classList.remove("opacity-0");
-        slides[index].classList.add("opacity-100");
-
-        dots[index].classList.remove("bg-white/50");
-        dots[index].classList.add("bg-[#F79633]");
-
-        current = index;
+        // Alternate zoom-in and zoom-out dynamically on odd vs even slides
+        if (index % 2 === 0) {
+            // Zoom-In setup: Start standard, scale up smoothly
+            img.style.transform = "scale(1)";
+            setTimeout(() => {
+                img.style.transform = "scale(1.18)";
+            }, 50);
+        } else {
+            // Zoom-Out setup: Start enlarged, scale down smoothly
+            img.style.transform = "scale(1.2)";
+            setTimeout(() => {
+                img.style.transform = "scale(1)";
+            }, 50);
+        }
     }
 
-    document.getElementById("nextSlide").addEventListener("click", () => {
-        current++;
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.classList.remove("opacity-0", "pointer-events-none");
+                slide.classList.add("opacity-100", "active");
+                updateZoomEffect(slide, i);
+            } else {
+                slide.classList.remove("opacity-100", "active");
+                slide.classList.add("opacity-0", "pointer-events-none");
+            }
+        });
 
-        if (current >= slides.length) current = 0;
+        dots.forEach((dot, i) => {
+            if (i === index) {
+                dot.classList.add("bg-white", "w-8");
+                dot.classList.remove("bg-white/50");
+            } else {
+                dot.classList.remove("bg-white", "w-8");
+                dot.classList.add("bg-white/50");
+            }
+        });
 
-        showSlide(current);
+        currentIndex = index;
+    }
+
+    function goToSlide(index) {
+        showSlide(index);
+        resetAutoplay();
+    }
+
+    function nextSlide() {
+        const next = (currentIndex + 1) % slides.length;
+        showSlide(next);
+    }
+
+    function prevSlide() {
+        const prev = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(prev);
+    }
+
+    function startAutoplay() {
+        autoSlideInterval = setInterval(nextSlide, 6000);
+    }
+
+    function resetAutoplay() {
+        clearInterval(autoSlideInterval);
+        startAutoplay();
+    }
+
+    // Event Listeners
+    nextBtn?.addEventListener("click", () => {
+        nextSlide();
+        resetAutoplay();
     });
 
-    document.getElementById("prevSlide").addEventListener("click", () => {
-        current--;
-
-        if (current < 0) current = slides.length - 1;
-
-        showSlide(current);
+    prevBtn?.addEventListener("click", () => {
+        prevSlide();
+        resetAutoplay();
     });
 
+    // Initialize initial slide & timer
     showSlide(0);
-
-    setInterval(() => {
-        current++;
-
-        if (current >= slides.length) current = 0;
-
-        showSlide(current);
-    }, 5000);
+    startAutoplay();
 });

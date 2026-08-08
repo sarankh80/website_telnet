@@ -107,7 +107,7 @@
     </style>
 </head>
 
-<body class="light text-adaptive-main antialiased selection:bg-brand-green selection:text-white">
+<body class="light text-adaptive-main antialiased selection:bg-brand-green selection:text-white bg-gradient-to-br from-brand-green/10 via-transparent to-brand-orange/10">
 
     @include('layouts.header')
     @yield('content')

@@ -171,7 +171,7 @@
         </div>
     </div>
 </section>
-<section id="core-product" class="py-8 section-bg-primary relative overflow-hidden hidden">
+<section id="core-product" class="py-8 bg-gradient-to-br from-brand-green/10 via-transparent to-brand-orange/10 section-bg-primary relative overflow-hidden hidden">
     <!-- Container using Tailwind Grid -->
     <div class="max-w-8xl  px-4 ">
         <div class="grid grid-cols-1 md:grid-cols-10 items-start gap-6 bg-[#8fc74a]/5 rounded-2xl">
@@ -237,78 +237,60 @@
 </section>
 
 <section class="p-10 bg-[#8fc74a]/5">
-    <div class=" max-w-8xl mx-auto px-6">
-        <div class="grid lg:grid-cols-10 gap-8 items-start">
+    <div class="max-w-8xl mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
             <!-- LEFT : 30% -->
-            <div class="lg:col-span-3">
-                <h2 class="text-4xl font-bold mt-4 text-gray-800">
+            <div class="lg:col-span-4">
+                <h2 class="text-4xl font-bold mt-4 text-gray-800 ">
                     {{ __('app.hero.core-product') }}
                 </h2>
-                <p class="mt-6 text-gray-600 leading-relaxed">
-                    Empowering businesses with innovative ICT, Fiber Optical,
-                    Enterprise Network and Data Connectivity solutions.
+                <p class="mt-6 text-gray-600 leading-relaxed text-justify">
+                    {{__('app.hero.core-product_desc')}}
                 </p>
+                <a href="{{route('business')}}"
+                    class="inline-block font-semibold mr-2 text-lg mt-8 bg-[#F79633] text-white px-6 py-2 rounded-xl shadow-xl hover:scale-105 hover:bg-[#F79633]">
+                    {{__('app.controls.buttons.learn_more')}}
+                </a>
                 <a href="#"
-                    class="inline-block mt-8 bg-[#8fc74a] text-white px-6 py-3 rounded-xl hover:bg-[#79b039]">
-                    Learn More
+                    class="inline-block  font-semibold text-lg mt-8 bg-[#8fc74a] text-white px-6 py-2 rounded-xl shadow-xl hover:scale-105 hover:bg-[#8fc74a]">
+                    {{__('app.controls.buttons.connect_us')}}
                 </a>
             </div>
 
             <!-- RIGHT : 70% -->
-            <div class="lg:col-span-7">
+            <div class="lg:col-span-8">
                 <div id="slider"
                     class="relative h-[600px] rounded-xl overflow-hidden shadow-2xl">
                     @foreach($servicesSlugs as $index => $slug)
                     <div class="slide absolute inset-0 transition-opacity duration-1000
-                        {{ $index == 0 ? 'opacity-100' : 'opacity-0' }}">
-                        <!-- Background -->
-                        <img
-                            src="{{ Storage::url($slug->image) }}"
-                            class="w-full h-full object-cover">
+                        {{ $index == 0 ? 'opacity-100 active' : 'opacity-0 pointer-events-none' }}">
+
+                        <!-- Background with Dynamic Zoom Class Container -->
+                        <div class="w-full h-full overflow-hidden">
+                            <img
+                                src="{{ Storage::url($slug->image) }}"
+                                class="slide-img w-full h-full object-cover transform transition-transform duration-[7000ms] ease-out scale-100">
+                        </div>
 
                         <!-- Overlay -->
                         <div class="absolute inset-0 bg-black/30"></div>
 
                         <!-- Content -->
-                        <div class="absolute bottom-0 left-0 p-10 text-white w-full text-justify">
+                        <div class="absolute bottom-0 left-0 p-10 text-white w-full text-justify z-10">
                             <h3 class="text-4xl font-bold mb-4">
-                                {{ $currentLocale=="en"
-                                    ? $slug->name
-                                    : $slug->name_km }}
+                                {{ $currentLocale=="en" ? $slug->name : $slug->name_km }}
                             </h3>
                             <div class="line-clamp-4 text-gray-200">
-
-                                {!! $currentLocale=="en"
-                                ? $slug->desc
-                                : $slug->desc_km !!}
-
+                                {!! $currentLocale=="en" ? $slug->desc : $slug->desc_km !!}
                             </div>
-                            <!-- 
-                            <a href="#"
-                                class="inline-block mt-6 text-[#F79633] font-semibold">
-                                {{ __('app.hero.readmore') }}
-                            </a> -->
-
                         </div>
-
                     </div>
-
                     @endforeach
 
-                    <!-- Prev -->
-                    <button id="prevSlide"
-                        class="absolute left-5 top-1/2 -translate-y-1/2
-                        bg-white/20 backdrop-blur text-white
-                        w-12 h-12 rounded-full">❮</button>
-                    <!-- Next -->
-                    <button id="nextSlide"
-                        class="absolute right-5 top-1/2 -translate-y-1/2
-                        bg-white/20 backdrop-blur text-white
-                        w-12 h-12 rounded-full">❯</button>
-                    <!-- Dots -->
-                    <div id="dots"
-                        class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
-                    </div>
+                    <!-- Controls -->
+                    <button id="prevSlide" class="absolute left-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-white w-12 h-12 rounded-full z-20">❮</button>
+                    <button id="nextSlide" class="absolute right-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-white w-12 h-12 rounded-full z-20">❯</button>
+                    <div id="dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
                 </div>
             </div>
         </div>
@@ -1133,7 +1115,7 @@
     }
 </script>
 
-<section class="py-8 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
+<section class=" bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
         <h2 class="text-2xl sm:text-4xl font-extrabold  text-transparent bg-clip-text gradient-brand">
             {{ __('app.support.title') }}
@@ -1147,41 +1129,29 @@
 <section id="support" class="relative overflow-hidden py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-8 lg:grid-cols-2">
-
-            {{-- =====================================================
-                 LEFT : SUPPORT INFORMATION
-            ====================================================== --}}
             <div class="space-y-5">
-
-                {{-- Customer Service --}}
                 <div class="group rounded-2xl border border-slate-200 bg-white  p-6
                             shadow-sm transition duration-300
                             hover:-translate-y-1 hover:shadow-lg">
 
-                    <div class="flex items-start gap-5">
+                    <div class="flex items-center gap-5">
 
-                        <div class="flex h-14 w-14 shrink-0 items-center justify-center
+                        <div class="flex h-24 w-24 shrink-0 items-center justify-center
                                     rounded-xl bg-green-50 text-green-600
                                     transition group-hover:bg-green-600 group-hover:text-white">
 
-                            <svg class="h-7 w-7"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="1.8"
-                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
-                            </svg>
+                            <img src="{{asset('images/home/support/customerCare.png')}}"
+                                alt=" {{ __('app.support.service') }}"
+                                class="object-contain w-full">
                         </div>
 
                         <div class="flex-1">
-                            <h3 class="text-lg font-bold text-slate-900">
+                            <h3 class="!text-xl font-bold text-[#8fc74a]">
                                 {{ __('app.support.service') }}
                             </h3>
 
                             <p class="mt-1 text-sm leading-6 text-slate-500">
-                                {{ __('For general inquiries, billing, and customer assistance.') }}
+                                {{ __('app.support.t_care_desc') }}
                             </p>
 
                             <div class="mt-4 space-y-2">
@@ -1220,41 +1190,28 @@
                         </div>
                     </div>
                 </div>
-
-
-                {{-- NOC --}}
                 <div class="group rounded-2xl border border-slate-200 bg-white p-6
                             shadow-sm transition duration-300
                             hover:-translate-y-1 hover:shadow-lg">
 
-                    <div class="flex items-start gap-5">
+                    <div class="flex items-center gap-5">
 
-                        <div class="flex h-14 w-14 shrink-0 items-center justify-center
+                        <div class="flex h-24 w-24 shrink-0 items-center justify-center
                                     rounded-xl bg-orange-50 text-orange-500
                                     transition group-hover:bg-orange-500 group-hover:text-white">
 
-                            <svg class="h-7 w-7"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="1.8"
-                                    d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 5h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2z" />
-                                <path stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="1.8"
-                                    d="M9 9h6v6H9V9z" />
-                            </svg>
+                            <img src="{{asset('images/home/support/nocSupport.png')}}"
+                                alt=" {{ __('app.support.service') }}"
+                                class="object-contain w-full">
                         </div>
 
                         <div class="flex-1">
-                            <h3 class="text-lg font-bold text-slate-900">
+                            <h3 class="text-lg font-bold text-[#8fc74a]">
                                 {{ __('app.support.noc') }}
                             </h3>
 
                             <p class="mt-1 text-sm leading-6 text-slate-500">
-                                {{ __('For network incidents, connectivity issues, and technical support.') }}
+                                {{ __('app.support.t_noc_desc') }}
                             </p>
 
                             <div class="mt-4 space-y-2">
@@ -1271,7 +1228,7 @@
                                             stroke-width="2"
                                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
                                     </svg>
-                                    012 345 678
+                                    +855 97 513 5135
                                 </a>
 
                                 <a href="mailto:noc@telnet.com.kh"
@@ -1328,7 +1285,7 @@
                             </h3>
 
                             <p class="mt-1 text-sm leading-6 text-slate-500">
-                                {{ __('For new services, business solutions, and partnership inquiries.') }}
+                                {{ __('app.support.t_sale_desc') }}
                             </p>
 
                             <div class="mt-4 space-y-2">
@@ -1513,8 +1470,8 @@
                     <button
                         type="submit"
                         class="group flex w-full items-center justify-center gap-3
-                               rounded-xl bg-gradient-to-r from-green-500 to-green-600
-                               px-5 py-3.5 text-sm font-bold text-white
+                               rounded-xl bg-[#8fc74a]
+                               px-5 py-3.5 text-md font-bold text-white
                                shadow-lg shadow-green-600/20
                                transition duration-300
                                hover:-translate-y-0.5
