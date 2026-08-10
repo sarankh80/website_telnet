@@ -4,7 +4,7 @@
 
             <!-- Logo -->
             <a href="{{ route('home') }}" class="flex items-center space-x-3 flex-shrink-0 group">
-                <img src="{{asset('/images/logo.png')}}"
+                <img src="{{asset('storage/logo.png')}}"
                     alt="TELNET CO., LTD Logo"
                     class="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">

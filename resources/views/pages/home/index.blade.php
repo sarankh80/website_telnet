@@ -2,7 +2,7 @@
 @section('content')
 <section class="w-full border h-[400px] lg:h-[60vh] relative overflow-hidden">
     <!-- Background Image -->
-    <img src="{{asset('images/home/bgImage/BgImage1.png')}}" alt="Hero Image" class="w-full h-full object-cover opacity-90" />
+    <img src="{{asset('storage/home/bgImage/BgImage1.png')}}" alt="Hero Image" class="w-full h-full object-cover wallpaper-infinite opacity-90" />
 
     <!-- Content Container -->
     <div class="absolute inset-0 flex flex-col justify-start items-center text-center px-4 z-10 mt-24">
@@ -57,7 +57,7 @@
                     <!-- img1 (Top - 50% height minus gap) -->
                     <div class="relative overflow-hidden shadow-md flex-1 min-h-0 rounded-tl-2xl group">
                         <img loading="lazy"
-                            src="{{ asset('images/home/heroImage/HomeInternet.png') }}"
+                            src="{{ asset('storage/home/heroImage/HomeInternet.png') }}"
                             alt="Home Internet"
                             class="w-full h-full object-cover group-hover:scale-105 opacity-90 transition-transform duration-300" />
                         <!-- Gradient Overlay for readability -->
@@ -74,7 +74,7 @@
                     <!-- img2 (Bottom - 50% height minus gap) -->
                     <div class="relative overflow-hidden shadow-md flex-1 min-h-0 rounded-bl-2xl group">
                         <img loading="lazy"
-                            src="{{ asset('images/home/heroImage/BusinessInternet.png') }}"
+                            src="{{ asset('storage/home/heroImage/BusinessInternet.png') }}"
                             alt="Business Internet"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                         <!-- Gradient Overlay for readability -->
@@ -92,7 +92,7 @@
                 <!-- Right sub-column: Full Height Image -->
                 <div class="relative overflow-hidden shadow-md h-full min-h-0 rounded-tr-xl rounded-br-2xl group">
                     <img loading="lazy"
-                        src="{{ asset('images/home/heroImage/DedicatedInternet.png') }}"
+                        src="{{ asset('storage/home/heroImage/DedicatedInternet.png') }}"
                         alt="Dedicated Internet"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                     <!-- Gradient Overlay for readability -->
@@ -121,12 +121,12 @@
         @php
         $isKm = app()->getLocale() === 'km';
         $serviceCards = [
-        ['image' => '/images/home/mission/High_Speed.png', 'badge' => 'High Speed', 'badge_km' => 'ល្បឿនលឿន', 'desc_en' => 'Experience lightning-fast internet connectivity designed for seamless streaming, business productivity, and everyday digital experiences with stable speeds, advanced technology, and reliable performance that keeps you connected anytime, anywhere.', 'desc_km' => 'ទទួលបានបទពិសោធន៍នៃការតភ្ជាប់អ៊ីនធឺណិតដែលមានល្បឿនលឿនបំផុត ដែលត្រូវបានរចនាឡើងសម្រាប់ការផ្សាយវីដេអូ (streaming) ប្រកបដោយភាពរលូន ការបង្កើនផលិតភាពការងារ និងសកម្មភាពឌីជីថលប្រចាំថ្ងៃ។ ជាមួយនឹងល្បឿនដ៏នឹងនរ បច្ចេកវិទ្យាទំនើប និងដំណើរការប្រកបដោយគុណភាពខ្ពស់ សេវាកម្មនេះធានាថាអ្នកអាចរក្សាការតភ្ជាប់បានគ្រប់ពេលវេលា និងគ្រប់ទីកន្លែង។'],
-        ['image' => '/images/home/mission/Scalable.png', 'badge' => 'Scalable', 'badge_km' => 'មានសក្តានុពលក្នុងការពង្រីក', 'desc_en' => 'Building a future-ready network infrastructure that grows with your needs, providing flexible, secure, and high-performance solutions to support businesses, organizations, and communities with reliable connectivity and innovation.', 'desc_km' => 'ការកសាងហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញដែលត្រៀមខ្លួនរួចជាស្រេចសម្រាប់អនាគត និងអាចពង្រីកបានស្របតាមតម្រូវការរបស់អ្នក ព្រមទាំងផ្តល់ជូននូវដំណោះស្រាយដែលមានភាពបត់បែន សុវត្ថិភាព និងប្រសិទ្ធភាពខ្ពស់ ដើម្បីគាំទ្រដល់អាជីវកម្ម អង្គភាព និងសហគមន៍ តាមរយៈការតភ្ជាប់ប្រកបដោយទំនុកចិត្ត និងនវានុវត្តន៍'],
-        ['image' => '/images/home/mission/Experience.png', 'badge' => 'Best Experience', 'badge_km' => 'បទពិសោធន៍ល្អបំផុតសម្រាប់អតិថិជន', 'desc_en' => 'Our dedicated hotline service and professional customer support team are always ready to assist, ensuring quick solutions, friendly guidance, and a smooth experience whenever you need help.', 'desc_km' => 'សេវាកម្មទូរស័ព្ទបន្ទាន់ (Hotline) និងក្រុមការងារជំនាញផ្នែកសេវាបម្រើអតិថិជនរបស់យើង តែងតែត្រៀមខ្លួនជានិច្ចដើម្បីផ្តល់ជំនួយ ដោយធានាបាននូវដំណោះស្រាយរហ័ស ការណែនាំប្រកបដោយភាពរួសរាយរាក់ទាក់ និងបទពិសោធន៍ដ៏រលូន នៅពេលណាដែលលោកអ្នកត្រូវការជំនួយ។'],
-        ['image' => '/images/home/mission/Reliable.png', 'badge' => 'Reliable', 'badge_km' => 'ផ្តល់ឲ្យអតថិជននូវទំនុកចិត្តខ្ពស់', 'desc_en' => 'Delivering dependable network operations through advanced monitoring, proactive maintenance, and modern technology to ensure continuous availability, strong performance, and uninterrupted connectivity for every customer.', 'desc_km' => 'ផ្តល់ជូននូវប្រតិបត្តិការបណ្តាញប្រកបដោយភាពជឿជាក់ តាមរយៈការត្រួតពិនិត្យកម្រិតខ្ពស់ ការថែទាំបែបបង្ការ និងបច្ចេកវិទ្យាទំនើប ដើម្បីធានាបាននូវលទ្ធភាពប្រើប្រាស់ជាប្រចាំ សមត្ថភាពដំណើរការដ៏រឹងមាំ និងការតភ្ជាប់ដែលមិនមានការរំខានសម្រាប់អតិថិជនគ្រប់រូប។'],
-        ['image' => '/images/home/mission/QualityAndSave.png', 'badge' => 'Quality & Saving', 'badge_km' => 'គុណភាពល្អនិង​ សន្សំសំចៃ', 'desc_en' => 'Providing exceptional customer service through trust, dedication, and personalized solutions, ensuring every customer receives professional support, reliable assistance, and a satisfying experience throughout their digital journey.', 'desc_km' => 'ផ្តល់សេវាកម្មអតិថិជនដ៏ល្អឥតខ្ចោះតាមរយៈការកសាងទំនុកចិត្ត ការយកចិត្តទុកដាក់ខ្ពស់ និងដំណោះស្រាយដែលត្រូវបានរៀបចំឡើងស្របតាមតម្រូវការជាក់លាក់របស់អតិថិជនម្នាក់ៗ ដោយធានាថាអតិថិជនទាំងអស់ទទួលបានការគាំទ្រប្រកបដោយវិជ្ជាជីវៈ ការជួយជ្រោមជ្រែងដែលអាចទុកចិត្តបាន និងបទពិសោធន៍ដ៏ពេញចិត្តពេញមួយដំណើរការនៃការប្រើប្រាស់សេវាកម្មឌីជីថលរបស់ពួកគេ។'],
-        ['image' => '/images/home/mission/Contribute.png', 'badge' => 'Contribute', 'badge_km' => 'រួមចំណែកសំខាន់ក្នុងការអភិវឌ្ឍន៍សង្គម', 'desc_en' => "Committed to creating a better-connected society by supporting communities, promoting digital access, and using technology to empower people, businesses, and organizations for a brighter and smarter future.", 'desc_km' => 'ប្តេជ្ញាចិត្តក្នុងការកសាងសង្គមដែលមានការតភ្ជាប់កាន់តែប្រសើរឡើង តាមរយៈការគាំទ្រសហគមន៍ ការលើកកម្ពស់លទ្ធភាពទទួលបានសេវាឌីជីថល និងការប្រើប្រាស់បច្ចេកវិទ្យាដើម្បីពង្រឹងសមត្ថភាពប្រជាជន អាជីវកម្ម និងស្ថាប័ននានា ឆ្ពោះទៅរកអនាគតដ៏ភ្លឺស្វាង និងឆ្លាតវៃ។'],
+        ['image' => asset('storage/home/mission/High_Speed.png'), 'badge' => 'High Speed', 'badge_km' => 'ល្បឿនលឿន', 'desc_en' => 'Experience lightning-fast internet connectivity designed for seamless streaming, business productivity, and everyday digital experiences with stable speeds, advanced technology, and reliable performance that keeps you connected anytime, anywhere.', 'desc_km' => 'ទទួលបានបទពិសោធន៍នៃការតភ្ជាប់អ៊ីនធឺណិតដែលមានល្បឿនលឿនបំផុត ដែលត្រូវបានរចនាឡើងសម្រាប់ការផ្សាយវីដេអូ (streaming) ប្រកបដោយភាពរលូន ការបង្កើនផលិតភាពការងារ និងសកម្មភាពឌីជីថលប្រចាំថ្ងៃ។ ជាមួយនឹងល្បឿនដ៏នឹងនរ បច្ចេកវិទ្យាទំនើប និងដំណើរការប្រកបដោយគុណភាពខ្ពស់ សេវាកម្មនេះធានាថាអ្នកអាចរក្សាការតភ្ជាប់បានគ្រប់ពេលវេលា និងគ្រប់ទីកន្លែង។'],
+        ['image' => asset('storage/home/mission/Scalable.png'), 'badge' => 'Scalable', 'badge_km' => 'មានសក្តានុពលក្នុងការពង្រីក', 'desc_en' => 'Building a future-ready network infrastructure that grows with your needs, providing flexible, secure, and high-performance solutions to support businesses, organizations, and communities with reliable connectivity and innovation.', 'desc_km' => 'ការកសាងហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញដែលត្រៀមខ្លួនរួចជាស្រេចសម្រាប់អនាគត និងអាចពង្រីកបានស្របតាមតម្រូវការរបស់អ្នក ព្រមទាំងផ្តល់ជូននូវដំណោះស្រាយដែលមានភាពបត់បែន សុវត្ថិភាព និងប្រសិទ្ធភាពខ្ពស់ ដើម្បីគាំទ្រដល់អាជីវកម្ម អង្គភាព និងសហគមន៍ តាមរយៈការតភ្ជាប់ប្រកបដោយទំនុកចិត្ត និងនវានុវត្តន៍'],
+        ['image' => asset('storage/home/mission/Experience.png'), 'badge' => 'Best Experience', 'badge_km' => 'បទពិសោធន៍ល្អបំផុតសម្រាប់អតិថិជន', 'desc_en' => 'Our dedicated hotline service and professional customer support team are always ready to assist, ensuring quick solutions, friendly guidance, and a smooth experience whenever you need help.', 'desc_km' => 'សេវាកម្មទូរស័ព្ទបន្ទាន់ (Hotline) និងក្រុមការងារជំនាញផ្នែកសេវាបម្រើអតិថិជនរបស់យើង តែងតែត្រៀមខ្លួនជានិច្ចដើម្បីផ្តល់ជំនួយ ដោយធានាបាននូវដំណោះស្រាយរហ័ស ការណែនាំប្រកបដោយភាពរួសរាយរាក់ទាក់ និងបទពិសោធន៍ដ៏រលូន នៅពេលណាដែលលោកអ្នកត្រូវការជំនួយ។'],
+        ['image' => asset('storage/home/mission/Reliable.png'), 'badge' => 'Reliable', 'badge_km' => 'ផ្តល់ឲ្យអតថិជននូវទំនុកចិត្តខ្ពស់', 'desc_en' => 'Delivering dependable network operations through advanced monitoring, proactive maintenance, and modern technology to ensure continuous availability, strong performance, and uninterrupted connectivity for every customer.', 'desc_km' => 'ផ្តល់ជូននូវប្រតិបត្តិការបណ្តាញប្រកបដោយភាពជឿជាក់ តាមរយៈការត្រួតពិនិត្យកម្រិតខ្ពស់ ការថែទាំបែបបង្ការ និងបច្ចេកវិទ្យាទំនើប ដើម្បីធានាបាននូវលទ្ធភាពប្រើប្រាស់ជាប្រចាំ សមត្ថភាពដំណើរការដ៏រឹងមាំ និងការតភ្ជាប់ដែលមិនមានការរំខានសម្រាប់អតិថិជនគ្រប់រូប។'],
+        ['image' => asset('storage/home/mission/QualityAndSave.png'), 'badge' => 'Quality & Saving', 'badge_km' => 'គុណភាពល្អនិង​ សន្សំសំចៃ', 'desc_en' => 'Providing exceptional customer service through trust, dedication, and personalized solutions, ensuring every customer receives professional support, reliable assistance, and a satisfying experience throughout their digital journey.', 'desc_km' => 'ផ្តល់សេវាកម្មអតិថិជនដ៏ល្អឥតខ្ចោះតាមរយៈការកសាងទំនុកចិត្ត ការយកចិត្តទុកដាក់ខ្ពស់ និងដំណោះស្រាយដែលត្រូវបានរៀបចំឡើងស្របតាមតម្រូវការជាក់លាក់របស់អតិថិជនម្នាក់ៗ ដោយធានាថាអតិថិជនទាំងអស់ទទួលបានការគាំទ្រប្រកបដោយវិជ្ជាជីវៈ ការជួយជ្រោមជ្រែងដែលអាចទុកចិត្តបាន និងបទពិសោធន៍ដ៏ពេញចិត្តពេញមួយដំណើរការនៃការប្រើប្រាស់សេវាកម្មឌីជីថលរបស់ពួកគេ។'],
+        ['image' => asset('storage/home/mission/Contribute.png'), 'badge' => 'Contribute', 'badge_km' => 'រួមចំណែកសំខាន់ក្នុងការអភិវឌ្ឍន៍សង្គម', 'desc_en' => "Committed to creating a better-connected society by supporting communities, promoting digital access, and using technology to empower people, businesses, and organizations for a brighter and smarter future.", 'desc_km' => 'ប្តេជ្ញាចិត្តក្នុងការកសាងសង្គមដែលមានការតភ្ជាប់កាន់តែប្រសើរឡើង តាមរយៈការគាំទ្រសហគមន៍ ការលើកកម្ពស់លទ្ធភាពទទួលបានសេវាឌីជីថល និងការប្រើប្រាស់បច្ចេកវិទ្យាដើម្បីពង្រឹងសមត្ថភាពប្រជាជន អាជីវកម្ម និងស្ថាប័ននានា ឆ្ពោះទៅរកអនាគតដ៏ភ្លឺស្វាង និងឆ្លាតវៃ។'],
         ];
         @endphp
 
@@ -180,7 +180,7 @@
             <div class="md:col-span-4 text-center md:text-left relative h-[700px] flex flex-col justify-end p-6 overflow-hidden rounded-lg">
 
                 <!-- Change 2: Absolute positioning, object-fit for background behavior, and z-index to place it behind -->
-                <img src="{{asset('images/home/heroImage/NetworkSolution.png')}}" alt=""
+                <img src="{{asset('storage/home/heroImage/NetworkSolution.png')}}" alt=""
                     class="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105">
 
                 <!-- Change 3: Added z-index to keep text above the image and adjust text colors for contrast -->
@@ -235,13 +235,12 @@
         </div>
     </div>
 </section>
-
 <section class="p-10 bg-[#8fc74a]/5">
     <div class="max-w-8xl mx-auto px-6">
         <div class="grid lg:grid-cols-12 gap-8 items-start">
             <!-- LEFT : 30% -->
             <div class="lg:col-span-4">
-                <h2 class="text-4xl font-bold mt-4 text-gray-800 ">
+                <h2 class="text-4xl font-bold mt-4 text-[#F79633]">
                     {{ __('app.hero.core-product') }}
                 </h2>
                 <p class="mt-6 text-gray-600 leading-relaxed text-justify">
@@ -296,15 +295,13 @@
         </div>
     </div>
 </section>
-
 <div class="text-center space-y-1 max-w-2xl mx-auto pt-8">
-    <h2 class="sm:text-3xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
+    <h2 class="sm:text-4xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
         {{__('app.coverage.available')}}
     </h2>
 </div>
-
-<section id="coverage" class="py-16 px-4 sm:px-6 lg:px-8 font-sans text-slate-100">
-    <div class="max-w-7xl mx-auto space-y-8 " x-data="coverageChecker()" x-init="init()">
+<section id="coverage" class="py-16 px-4 sm:px-6 lg:px-8 font-sans text-slate-100 ">
+    <div class="max-w-7xl mx-auto space-y-8 border-b border-[#8fc74a]/20 pb-10" x-data="coverageChecker()" x-init="init()">
         <!-- Search & Control Card -->
         <div class="bg-white backdrop-blur-md border border-orange-300 rounded-xl p-4 sm:p-6 shadow-md">
             <form @submit.prevent="checkCoverage()" class="flex flex-col sm:flex-row gap-3">
@@ -1114,393 +1111,686 @@
         };
     }
 </script>
+@php
+$reviewInfos = [
+[
+"title" => "",
+"review_types" => "Customer Service",
+"desc" => "The customer support response time was under 3 minutes when we hit a deadline issue. They did not just answer with a macro—they actually looked into our logs and provided a custom code patch directly.",
+"fullname" => "Sarah Jenkins",
+"posts" => "Head of Operations at TechFlow",
+"industry_type" => "ICT/Solution Software",
+"industry_name" => "រោងពុម្ព នាគរាជ",
+"image" => asset('storage/partner/Neakreach.jpg'),
+"review_rated" => 4,
+"pin"=>1,
+"created_at" => now(),
+],
+[
+"title" => "",
+"review_types" => "Service Quality",
+"desc" => "Their team completely redesigned our enterprise network infrastructure and improved both reliability and performance. The implementation was smooth, professional, and completed with minimal disruption to our daily operations.",
+"fullname" => "Michael Anderson",
+"posts" => "IT Director at GlobalCore",
+"industry_type" => "Enterprise & Technology",
+"industry_name" => "GLOBALCORE",
+"image" => asset('storage/partner/TRC.png'),
+"review_rated" => 5,
+"pin"=>1,
+"created_at" => now(),
+],
+[
+"title" => "",
+"review_types" => "Service Quality",
+"desc" => "We needed a reliable fiber connection between multiple business locations, and their solution delivered exactly what we needed. The connection has been stable, fast, and significantly improved communication between our offices.",
+"fullname" => "David Wilson",
+"posts" => "Network Manager at MetroLink",
+"industry_type" => "Telecommunications",
+"industry_name" => "METROLINK",
+"review_rated" => 5,
+"pin"=>0,
+"created_at" => now(),
+],
+[
+"title" => "",
+"review_types" => "Service Quality",
+"desc" => "The software solution helped us replace several manual processes with a centralized system. Our team can now manage operations, reporting, and customer information much faster and with far fewer errors.",
+"fullname" => "Emily Carter",
+"posts" => "Operations Manager at PrimeWorks",
+"industry_type" => "Business Services",
+"industry_name" => "PRIMEWORKS",
+"review_rated" => 5,
+"pin"=>0,
+"created_at" => now(),
+],
+[
+"title" => "",
+"review_types" => "Service Quality",
+"desc" => "Reliable connectivity is critical for our business, and their team understood that from day one. The service has been consistent, and whenever we have questions, their technical team responds quickly and professionally.",
+"fullname" => "James Mitchell",
+"posts" => "Technology Manager at SmartTrade",
+"industry_type" => "Retail & Distribution",
+"industry_name" => "SMARTTRADE",
+"image" => asset('storage/partner/EZEPROMO.png'),
+"review_rated" => 4,
+"pin"=>1,
+"created_at" => now(),
+],
+[
+"title" => "",
+"review_types" => "Operation Workflow",
+"desc" => "From planning to deployment, the entire ICT infrastructure project was handled professionally. They took the time to understand our requirements and delivered a solution that gives us room to scale as the business grows.",
+"fullname" => "Daniel Thompson",
+"posts" => "Chief Technology Officer at NextVision",
+"industry_type" => "Technology & Innovation",
+"industry_name" => "NEXTVISION",
+"review_rated" => 5,
+"pin"=>0,
+"created_at" => now(),
+],
+[
+"title" => "",
+"review_types" => "Customer Service",
+"desc" => "What impressed us most was how quickly their technical team identified the root cause of our issue. They explained the solution clearly, fixed the problem efficiently, and followed up afterward to make sure everything was working properly.",
+"fullname" => "Olivia Bennett",
+"posts" => "IT Administrator at BrightPath",
+"industry_type" => "Education & Services",
+"industry_name" => "BRIGHTPATH",
+"review_rated" => 5,
+"pin"=>0,
+"created_at" => now(),
+],
+];
+usort($reviewInfos, function ($a, $b) {
+return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
+    @endphp
+    <section class="max-w-8xl pb-16 mx-auto space-y-10 sm:space-y-12 px-4 sm:px-6 md:px-10 lg:px-24 xl:px-40 2xl:px-56">
 
-<section class=" bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-        <h2 class="text-2xl sm:text-4xl font-extrabold  text-transparent bg-clip-text gradient-brand">
-            {{ __('app.support.title') }}
-        </h2>
-        <p class="text-adaptive-muted text-sm max-w-2xl mx-auto">
-            {{ __('app.support.desc') }}
-        </p>
-    </div>
-</section>
+        <!-- 1. Header & Aggregate Metrics -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 border-b border-[#8fc74a]/20 pb-8 sm:pb-10">
+            <div class="max-w-3xl space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8fc74a]/10 border border-[#8fc74a]/30 text-xs font-medium text-[#8fc74a]">
+                    <span class="w-2 h-2 rounded-full bg-[#8fc74a] animate-pulse"></span>
+                    {{__('app.review.slogan')}}
+                </div>
 
-<section id="support" class="relative overflow-hidden py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid gap-8 lg:grid-cols-2">
-            <div class="space-y-5">
-                <div class="group rounded-2xl border border-slate-200 bg-white  p-6
-                            shadow-sm transition duration-300
-                            hover:-translate-y-1 hover:shadow-lg">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#F79633]">
+                    {{__('app.review.title')}}
+                </h2>
 
-                    <div class="flex items-center gap-5">
+                <p class="text-gray-600 text-sm sm:text-base md:text-lg">
+                    {{__('app.review.desc')}}
+                </p>
+            </div>
 
-                        <div class="flex h-24 w-24 shrink-0 items-center justify-center
-                                    rounded-xl bg-green-50 text-green-600
-                                    transition group-hover:bg-green-600 group-hover:text-white">
+            <!-- Rating Overview Card -->
+            <div class="w-full lg:w-auto bg-white border border-[#8fc74a]/30 rounded-2xl p-4 sm:p-5 flex items-center flex-wrap sm:flex-nowrap gap-4 sm:gap-6 shadow-xl shadow-[#8fc74a]/10 shrink-0">
+                <div class="text-center">
+                    <span class="text-3xl sm:text-4xl font-black text-[#8fc74a]">4.9</span>
 
-                            <img src="{{asset('images/home/support/customerCare.png')}}"
-                                alt=" {{ __('app.support.service') }}"
-                                class="object-contain w-full">
+                    <div class="flex text-[#F79633] text-sm mt-1 justify-center">
+                        ★ ★ ★ ★ ★
+                    </div>
+
+                    <p class="text-xs text-gray-500 mt-1">
+                        Out of 5 Stars
+                    </p>
+                </div>
+
+                <div class="h-12 w-px bg-[#8fc74a]/20 hidden sm:block"></div>
+
+                <div class="space-y-1 min-w-0">
+                    <p class="text-sm font-semibold text-[#F79633]">
+                        99.4% Satisfaction Rate
+                    </p>
+
+                    <p class="text-xs text-gray-500">
+                        Based on 1,280+ verified reviews
+                    </p>
+
+                    <div class="flex items-center gap-2 sm:gap-3 text-xs text-gray-500 pt-1 flex-wrap">
+                        <span>Trustpilot</span>
+                        •
+                        <span>G2 Crowd</span>
+                        •
+                        <span>Capterra</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Dynamic Category Filter Tabs -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+
+            <div
+                class="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none"
+                id="filter-container">
+
+                <button
+                    onclick="filterFeedback('all')"
+                    data-filter="all"
+                    class="filter-btn active shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-[#8fc74a] text-white shadow-lg shadow-[#8fc74a]/20 hover:bg-[#8fc74a]/90">
+                    {{__('app.review.all')}}
+                </button>
+
+                <button
+                    onclick="filterFeedback('support')"
+                    data-filter="support"
+                    class="filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all bg-white text-[#8fc74a] hover:bg-[#8fc74a]/10 border border-[#8fc74a]/30">
+                    {{__('app.review.services')}}
+                </button>
+
+                <button
+                    onclick="filterFeedback('performance')"
+                    data-filter="performance"
+                    class="filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all bg-white text-[#F79633] hover:bg-[#F79633]/10 border border-[#F79633]/30">
+                    {{__('app.review.care')}}
+                </button>
+
+                <button
+                    onclick="filterFeedback('features')"
+                    data-filter="features"
+                    class="filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all bg-white text-[#8fc74a] hover:bg-[#8fc74a]/10 border border-[#8fc74a]/30">
+                    {{__('app.review.operation')}}
+                </button>
+            </div>
+
+            <!-- Action Button -->
+            <button
+                class="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold bg-[#F79633] hover:bg-[#F79633]/90 rounded-xl transition-all shadow-lg shadow-[#F79633]/20">
+                <svg
+                    class="w-4 h-4 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.5"
+                        d="M12 4v16m8-8H4"></path>
+                </svg>
+
+                <span class="text-white font-bold">
+                    {{__('app.review.write')}}
+                </span>
+            </button>
+        </div>
+
+        <!-- 3. Dynamic Feedback Grid -->
+        <div
+            id="feedback-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 border-b border-[#8fc74a]/20 pb-16 sm:pb-20">
+            @foreach ($reviewInfos as $review)
+            <div class="{{ ($review['pin'] ?? 0) == 1 ? 'sm:col-span-2' : 'col-span-1' }} hover:scale-[0.98] bg-white border border-[#8fc74a]/40 hover:border-[#8fc74a] rounded-2xl p-4 sm:p-6 shadow-xl hover:shadow-[#8fc74a]/15 transition-all duration-300 flex flex-col justify-between">
+                @if($review['pin']==1)
+                <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-6 p-2 sm:p-6 rounded-2xl transition-all duration-300 hover:shadow-md">
+                    <!-- Left: Image / Avatar Block -->
+                    <div class="shrink-0">
+                        <div class="relative w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-40">
+                            <div class="absolute inset-0 rounded-full bg-[#8fc74a]/20 scale-110"></div>
+                            <img src="{{ $review['image'] ?? 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=120' }}" alt="{{ $review['fullname'] }}" class="relative w-full h-full rounded-full object-cover ring-4 ring-white shadow-md group-hover:ring-[#8fc74a]/30 transition-all duration-300" />
+
+                        </div>
+                    </div>
+
+                    <!-- Right: Text & Meta Content Block -->
+                    <div class="flex-1 min-w-0 pt-1 w-full">
+                        <!-- Tag & Rating Stars Row -->
+                        <div class="flex items-center justify-center sm:justify-between gap-2 mb-2 flex-wrap">
+                            <div class="flex items-center gap-0.5 text-[#F79633] text-sm">
+                                @for ($i = 0; $i < ($review['rating'] ?? 5); $i++)
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" /></svg>
+                                    @endfor
+                            </div>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-[#8fc74a]/15 text-[#8fc74a] border border-[#8fc74a]/30">
+                                {{ $review['review_types'] }}
+                            </span>
                         </div>
 
-                        <div class="flex-1">
-                            <h3 class="!text-xl font-bold text-[#8fc74a]">
-                                {{ __('app.support.service') }}
-                            </h3>
+                        <!-- Review Body -->
+                        <p class="text-gray-700 text-sm sm:text-base md:text-sm leading-relaxed font-medium mb-4 break-words">
+                            "{{ $review['desc'] }}"
+                        </p>
 
-                            <p class="mt-1 text-sm leading-6 text-slate-500">
-                                {{ __('app.support.t_care_desc') }}
-                            </p>
+                        <!-- Divider -->
+                        <div class="h-px w-full bg-gray-100 mb-3"></div>
 
-                            <div class="mt-4 space-y-2">
-
-                                <a href="tel:+85512345678"
-                                    class="flex items-center gap-2 text-sm font-semibold
-                                          text-green-600 transition hover:text-green-700">
-                                    <svg class="h-4 w-4"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
-                                    </svg>
-                                    012 345 678
-                                </a>
-
-                                <a href="mailto:support@telnet.com.kh"
-                                    class="flex items-center gap-2 text-sm text-slate-500
-                                          transition hover:text-green-600">
-                                    <svg class="h-4 w-4"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                    </svg>
-                                    support@telnet.com.kh
-                                </a>
-
+                        <!-- User Information Footer -->
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
+                            <div>
+                                <h4 class="text-[#F79633] text-base sm:text-lg font-bold leading-tight">
+                                    {{ $review['fullname'] ?? 'Jane Doe' }}
+                                </h4>
+                                <p class="text-gray-500 text-sm sm:text-md mt-0.5">
+                                    {{ $review['posts'] ?? 'Verified Customer' }}
+                                </p>
                             </div>
+
+                            <!-- Optional Verification Badge / Date -->
+                            <span class="inline-flex items-center justify-center sm:justify-start gap-1 text-[11px] font-semibold text-[#8fc74a]">
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Verified Purchase
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div class="group rounded-2xl border border-slate-200 bg-white p-6
+                @else
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center gap-1 text-[#F79633] text-sm">
+                        @for ($i = 1; $i <= 5; $i++)
+                            <span class="{{ $i <= ($review['review_rated'] ?? 0) ? 'text-[#F79633]' : 'text-gray-300' }}">
+                            ★
+                            </span>
+                            @endfor
+                    </div>
+
+                    <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-[#8fc74a]/15 text-[#8fc74a] border border-[#8fc74a]/30">
+                        {{ $review['review_types'] }}
+                    </span>
+                </div>
+
+                <p class="text-gray-700 {{ ($review['pin'] ?? 0) == 1 ? 'text-md' : 'text-sm sm:text-xs' }} leading-relaxed font-medium mt-4 break-words">
+                    "{{ $review['desc'] }}"
+                </p>
+
+                <div class="mt-6 pt-6 border-t border-[#8fc74a]/20 flex flex-col items-start justify-between gap-3">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <img
+                            src="{{ $review['image'] ?? 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=120' }}"
+                            alt="{{ $review['fullname'] }}"
+                            class="w-11 h-11 rounded-full object-cover ring-2 ring-[#8fc74a] shrink-0" />
+
+                        <div class="min-w-0">
+                            <h4 class="text-sm font-semibold text-[#F79633] truncate">
+                                {{ $review['fullname'] }}
+                            </h4>
+
+                            <p class="text-xs text-gray-500 truncate">
+                                {{ $review['posts'] }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <span class="text-xs text-gray-400">
+                        {{ \Carbon\Carbon::parse($review['created_at'])->diffForHumans() }}
+                    </span>
+                </div>
+                @endif
+            </div>
+            @endforeach
+
+        </div>
+    </section>
+    <section class="space-y-12 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <h2 class="text-2xl sm:text-4xl font-extrabold  text-transparent bg-clip-text gradient-brand">
+                {{ __('app.support.title') }}
+            </h2>
+            <p class="text-adaptive-muted text-sm max-w-2xl mx-auto">
+                {{ __('app.support.desc') }}
+            </p>
+        </div>
+    </section>
+    <section id="support" class="relative overflow-hidden m-4 sm:m-6 md:m-8 p-4 sm:p-6 md:p-8 py-10 sm:py-12 md:py-14 rounded-xl bg-[#8fc74a]/5">
+        <div class="mx-auto max-w-7xl backdrop-blur-md">
+            <div class="grid gap-6 sm:gap-8 lg:grid-cols-2">
+                <div class="space-y-4 sm:space-y-5">
+                    <div class="group rounded-2xl border border-slate-200 bg-white p-4 sm:p-6
                             shadow-sm transition duration-300
                             hover:-translate-y-1 hover:shadow-lg">
 
-                    <div class="flex items-center gap-5">
+                        <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-5 text-center sm:text-left">
 
-                        <div class="flex h-24 w-24 shrink-0 items-center justify-center
-                                    rounded-xl bg-orange-50 text-orange-500
-                                    transition group-hover:bg-orange-500 group-hover:text-white">
+                            <div class="flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 shrink-0 items-center justify-center
+                                    rounded-xl bg-[#8fc74a]/10 text-[#F79633]
+                                    transition group-hover:bg-[#8fc74a] group-hover:text-white">
 
-                            <img src="{{asset('images/home/support/nocSupport.png')}}"
-                                alt=" {{ __('app.support.service') }}"
-                                class="object-contain w-full">
-                        </div>
+                                <img src="{{asset('storage/home/support/customerCare.png')}}"
+                                    alt=" {{ __('app.support.service') }}"
+                                    class="object-contain w-full">
+                            </div>
 
-                        <div class="flex-1">
-                            <h3 class="text-lg font-bold text-[#8fc74a]">
-                                {{ __('app.support.noc') }}
-                            </h3>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="!text-xl font-bold text-[#8fc74a]">
+                                    {{ __('app.support.service') }}
+                                </h3>
 
-                            <p class="mt-1 text-sm leading-6 text-slate-500">
-                                {{ __('app.support.t_noc_desc') }}
-                            </p>
+                                <p class="mt-1 text-sm leading-6 text-slate-500">
+                                    {{ __('app.support.t_care_desc') }}
+                                </p>
 
-                            <div class="mt-4 space-y-2">
+                                <div class="mt-4 space-y-2 flex flex-col items-center sm:items-start">
 
-                                <a href="tel:+85512345678"
-                                    class="flex items-center gap-2 text-sm font-semibold
-                                          text-orange-500 transition hover:text-orange-600">
-                                    <svg class="h-4 w-4"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
-                                    </svg>
-                                    +855 97 513 5135
-                                </a>
+                                    <a href="tel:+85512345678"
+                                        class="flex items-center gap-2 text-sm font-semibold
+                                          text-[#F79633] transition hover:text-[#8fc74a]">
+                                        <svg class="h-4 w-4 shrink-0"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                                        </svg>
+                                        +855 97 513 5135
+                                    </a>
 
-                                <a href="mailto:noc@telnet.com.kh"
-                                    class="flex items-center gap-2 text-sm text-slate-500
-                                          transition hover:text-orange-500">
-                                    <svg class="h-4 w-4"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                    </svg>
-                                    noc@telnet.com.kh
-                                </a>
+                                    <a href="mailto:support@telnet.com.kh"
+                                        class="flex items-center gap-2 text-sm text-slate-500
+                                          transition hover:text-[#8fc74a] break-all">
+                                        <svg class="h-4 w-4 shrink-0"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                        support@telnet.com.kh
+                                    </a>
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="group rounded-2xl border border-slate-200 bg-white  p-6
+                    <div class="group rounded-2xl border border-slate-200 bg-white p-4 sm:p-6
+                            shadow-sm transition duration-300
+                            hover:-translate-y-1 hover:shadow-lg">
+                        <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-5 text-center sm:text-left">
+                            <div class="flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 shrink-0 items-center justify-center
+                                    rounded-xl bg-[#F79633]/10 text-[#F79633]
+                                    transition group-hover:bg-[#F79633] group-hover:text-white">
+
+                                <img src="{{asset('storage/home/support/nocSupport.png')}}"
+                                    alt=" {{ __('app.support.service') }}"
+                                    class="object-contain w-full">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-lg font-bold text-[#8fc74a]">
+                                    {{ __('app.support.noc') }}
+                                </h3>
+
+                                <p class="mt-1 text-sm leading-6 text-slate-500">
+                                    {{ __('app.support.t_noc_desc') }}
+                                </p>
+
+                                <div class="mt-4 space-y-2 flex flex-col items-center sm:items-start">
+
+                                    <a href="tel:+85512345678"
+                                        class="flex items-center gap-2 text-sm font-semibold
+                                          text-[#F79633] transition hover:text-[#8fc74a]">
+                                        <svg class="h-4 w-4 shrink-0"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                                        </svg>
+                                        +855 97 513 5135
+                                    </a>
+
+                                    <a href="mailto:noc@telnet.com.kh"
+                                        class="flex items-center gap-2 text-sm text-slate-500
+                                          transition hover:text-[#8fc74a] break-all">
+                                        <svg class="h-4 w-4 shrink-0"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                        noc@telnet.com.kh
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group rounded-2xl border border-slate-200 bg-white p-4 sm:p-6
                             shadow-sm transition duration-300
                             hover:-translate-y-1 hover:shadow-lg">
 
-                    <div class="flex items-start gap-5">
+                        <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-5 text-center sm:text-left">
 
-                        <div class="flex h-14 w-14 shrink-0 items-center justify-center
-                                    rounded-xl bg-slate-100 text-slate-700
-                                    transition group-hover:bg-slate-800 group-hover:text-white">
+                            <div class="flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 shrink-0 items-center justify-center
+                                    rounded-xl bg-[#F79633]/10 text-[#F79633]
+                                    transition group-hover:bg-[#F79633] group-hover:text-white">
 
-                            <svg class="h-7 w-7"
+                                <img src="{{asset('storage/home/support/salesSupport.png')}}"
+                                    alt=" {{ __('app.support.service') }}"
+                                    class="object-contain w-full">
+                            </div>
+
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-lg font-bold text-[#8fc74a]">
+                                    {{ __('app.support.sale') }}
+                                </h3>
+
+                                <p class="mt-1 text-sm leading-6 text-slate-500">
+                                    {{ __('app.support.t_sale_desc') }}
+                                </p>
+
+                                <div class="mt-4 space-y-2 flex flex-col items-center sm:items-start">
+
+                                    <a href="tel:+85512345678"
+                                        class="flex items-center gap-2 text-sm font-semibold
+                                          text-[#F79633] transition hover:text-[#8fc74a]">
+                                        <svg class="h-4 w-4 shrink-0"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                                        </svg>
+                                        +855 97 513 5135
+                                    </a>
+
+                                    <a href="mailto:noc@telnet.com.kh"
+                                        class="flex items-center gap-2 text-sm text-slate-500
+                                          transition hover:text-[#8fc74a] break-all">
+                                        <svg class="h-4 w-4 shrink-0"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                        noc@telnet.com.kh
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                {{-- =====================================================
+                 RIGHT : CONTACT FORM
+            ====================================================== --}}
+                <div class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-6 md:p-8
+                        shadow-xl">
+
+                    <div class="mb-6 sm:mb-8">
+                        <h3 class="mt-2 text-xl sm:text-2xl font-bold text-slate-900 md:text-3xl">
+                            {{ __('app.support.send') }}
+                        </h3>
+
+                        <p class="mt-3 text-sm leading-6 text-slate-500">
+                            {{ __('Have a question or need assistance? Send us your information and our team will get back to you.') }}
+                        </p>
+                    </div>
+
+
+                    <form action="{{ route('contact.store') }}"
+                        method="POST"
+                        class="space-y-5">
+
+                        @csrf
+
+                        {{-- Full Name --}}
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-slate-700">
+                                {{ __('app.support.fullname') }}
+                            </label>
+
+                            <input
+                                type="text"
+                                name="name"
+                                value="{{ old('name') }}"
+                                required
+                                placeholder="{{ __('app.support.fullname_holder') }}"
+                                class="w-full rounded-xl border border-slate-200 bg-slate-50
+                                   px-4 py-3 text-sm text-slate-900
+                                   placeholder-slate-400 outline-none transition
+                                   focus:border-[#8fc74a] focus:bg-white
+                                   focus:ring-2 focus:ring-[#8fc74a]/20">
+                        </div>
+
+
+                        {{-- Email + Phone --}}
+                        <div class="grid gap-5 grid-cols-1 sm:grid-cols-2">
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-slate-700">
+                                    {{ __('app.support.email') }}
+                                </label>
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value="{{ old('email') }}"
+                                    required
+                                    placeholder="{{__('app.support.email_holder')}}"
+                                    class="w-full rounded-xl border border-slate-200 bg-slate-50
+                                       px-4 py-3 text-sm text-slate-900
+                                       placeholder-slate-400 outline-none transition
+                                       focus:border-[#8fc74a] focus:bg-white
+                                       focus:ring-2 focus:ring-[#8fc74a]/20">
+                            </div>
+
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-slate-700">
+                                    {{ __('app.support.phone') }}
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="phone"
+                                    value="{{ old('phone') }}"
+                                    placeholder="  {{ __('app.support.phone_holder') }}"
+                                    class="w-full rounded-xl border border-slate-200 bg-slate-50
+                                       px-4 py-3 text-sm text-slate-900
+                                       placeholder-slate-400 outline-none transition
+                                       focus:border-[#8fc74a] focus:bg-white
+                                       focus:ring-2 focus:ring-[#8fc74a]/20">
+                            </div>
+
+                        </div>
+
+
+                        {{-- Support Type --}}
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-slate-700">
+                                {{ __('app.support.tikect_type') }}
+                            </label>
+
+                            <select
+                                name="type"
+                                required
+                                class="w-full rounded-xl border border-slate-200 bg-slate-50
+                                   px-4 py-3 text-sm text-slate-900 outline-none transition
+                                   focus:border-[#8fc74a] focus:bg-white
+                                   focus:ring-2 focus:ring-[#8fc74a]/20">
+
+                                <option value="">
+                                    {{ __('app.support.select') }}
+                                </option>
+
+                                <option value="customer_service">
+                                    {{ __('app.support.t_care') }}
+                                </option>
+
+                                <option value="noc">
+                                    {{ __('app.support.t_noc') }}
+                                </option>
+
+                                <option value="sales">
+                                    {{ __('app.support.t_sale') }}
+                                </option>
+                                <option value="sales">
+                                    {{ __('app.support.t_bill') }}
+                                </option>
+
+                            </select>
+                        </div>
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-slate-700">
+                                {{ __('app.support.t_desc') }}
+                            </label>
+
+                            <textarea
+                                name="message"
+                                rows="5"
+                                required
+                                placeholder="{{ __('app.support.t_desc_holder') }}"
+                                class="w-full resize-none rounded-xl border border-slate-200
+                                   bg-slate-50 px-4 py-3 text-sm text-slate-900
+                                   placeholder-slate-400 outline-none transition
+                                   focus:border-[#8fc74a] focus:bg-white
+                                   focus:ring-2 focus:ring-[#8fc74a]/20">{{ old('message') }}</textarea>
+                        </div>
+
+
+                        {{-- Submit --}}
+                        <button
+                            type="submit"
+                            class="group flex w-full items-center justify-center gap-3
+                               rounded-xl bg-[#8fc74a]
+                               px-5 py-3.5 text-sm sm:text-md font-bold text-white
+                               shadow-lg shadow-[#8fc74a]/20
+                               transition duration-300
+                               hover:-translate-y-0.5
+                               hover:bg-[#8fc74a]/90
+                               hover:shadow-[#8fc74a]/30">
+
+                            {{ __('app.support.send') }}
+
+                            <svg class="h-5 w-5 transition-transform duration-300
+                                    group-hover:translate-x-1"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round"
                                     stroke-linejoin="round"
-                                    stroke-width="1.8"
-                                    d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z" />
-                                <path stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="1.8"
-                                    d="M8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3z" />
-                                <path stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="1.8"
-                                    d="M2 19c0-2.21 2.69-4 6-4s6 1.79 6 4M14 15c.62-.64 1.53-1 2.5-1 2.49 0 4.5 1.34 4.5 3" />
+                                    stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
-                        </div>
 
-                        <div class="flex-1">
-                            <h3 class="text-lg font-bold text-slate-900">
-                                {{ __('app.support.sale') }}
-                            </h3>
+                        </button>
 
-                            <p class="mt-1 text-sm leading-6 text-slate-500">
-                                {{ __('app.support.t_sale_desc') }}
-                            </p>
+                    </form>
 
-                            <div class="mt-4 space-y-2">
-
-                                <a href="tel:+85512345678"
-                                    class="flex items-center gap-2 text-sm font-semibold
-                                          text-slate-700 transition hover:text-green-600">
-                                    <svg class="h-4 w-4"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
-                                    </svg>
-                                    012 345 678
-                                </a>
-
-                                <a href="mailto:sales@telnet.com.kh"
-                                    class="flex items-center gap-2 text-sm text-slate-500
-                                          transition hover:text-green-600">
-                                    <svg class="h-4 w-4"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                    </svg>
-                                    sales@telnet.com.kh
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
-
-
-            {{-- =====================================================
-                 RIGHT : CONTACT FORM
-            ====================================================== --}}
-            <div class="rounded-3xl border border-slate-200 bg-white p-6
-                        shadow-xl sm:p-8 ">
-
-                <div class="mb-8">
-                    <h3 class="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-                        {{ __('app.support.send') }}
-                    </h3>
-
-                    <p class="mt-3 text-sm leading-6 text-slate-500">
-                        {{ __('Have a question or need assistance? Send us your information and our team will get back to you.') }}
-                    </p>
-                </div>
-
-
-                <form action="{{ route('contact.store') }}"
-                    method="POST"
-                    class="space-y-5">
-
-                    @csrf
-
-                    {{-- Full Name --}}
-                    <div>
-                        <label class="mb-2 block text-sm font-medium text-slate-700">
-                            {{ __('app.support.fullname') }}
-                        </label>
-
-                        <input
-                            type="text"
-                            name="name"
-                            value="{{ old('name') }}"
-                            required
-                            placeholder="{{ __('app.support.fullname_holder') }}"
-                            class="w-full rounded-xl border border-slate-200 bg-slate-50
-                                   px-4 py-3 text-sm text-slate-900
-                                   placeholder-slate-400 outline-none transition
-                                   focus:border-green-500 focus:bg-white
-                                   focus:ring-2 focus:ring-green-500/20">
-                    </div>
-
-
-                    {{-- Email + Phone --}}
-                    <div class="grid gap-5 sm:grid-cols-2">
-
-                        <div>
-                            <label class="mb-2 block text-sm font-medium text-slate-700">
-                                {{ __('app.support.email') }}
-                            </label>
-
-                            <input
-                                type="email"
-                                name="email"
-                                value="{{ old('email') }}"
-                                required
-                                placeholder="{{__('app.support.email_holder')}}"
-                                class="w-full rounded-xl border border-slate-200 bg-slate-50
-                                       px-4 py-3 text-sm text-slate-900
-                                       placeholder-slate-400 outline-none transition
-                                       focus:border-green-500 focus:bg-white
-                                       focus:ring-2 focus:ring-green-500/20">
-                        </div>
-
-
-                        <div>
-                            <label class="mb-2 block text-sm font-medium text-slate-700">
-                                {{ __('app.support.phone') }}
-                            </label>
-
-                            <input
-                                type="text"
-                                name="phone"
-                                value="{{ old('phone') }}"
-                                placeholder="  {{ __('app.support.phone_holder') }}"
-                                class="w-full rounded-xl border border-slate-200 bg-slate-50
-                                       px-4 py-3 text-sm text-slate-900
-                                       placeholder-slate-400 outline-none transition
-                                       focus:border-green-500 focus:bg-white
-                                       focus:ring-2 focus:ring-green-500/20">
-                        </div>
-
-                    </div>
-
-
-                    {{-- Support Type --}}
-                    <div>
-                        <label class="mb-2 block text-sm font-medium text-slate-700">
-                            {{ __('app.support.tikect_type') }}
-                        </label>
-
-                        <select
-                            name="type"
-                            required
-                            class="w-full rounded-xl border border-slate-200 bg-slate-50
-                                   px-4 py-3 text-sm text-slate-900 outline-none transition
-                                   focus:border-green-500 focus:bg-white
-                                   focus:ring-2 focus:ring-green-500/20">
-
-                            <option value="">
-                                {{ __('app.support.select') }}
-                            </option>
-
-                            <option value="customer_service">
-                                {{ __('app.support.t_care') }}
-                            </option>
-
-                            <option value="noc">
-                                {{ __('app.support.t_noc') }}
-                            </option>
-
-                            <option value="sales">
-                                {{ __('app.support.t_sale') }}
-                            </option>
-                            <option value="sales">
-                                {{ __('app.support.t_bill') }}
-                            </option>
-
-                        </select>
-                    </div>
-                    <div>
-                        <label class="mb-2 block text-sm font-medium text-slate-700">
-                            {{ __('app.support.t_desc') }}
-                        </label>
-
-                        <textarea
-                            name="message"
-                            rows="5"
-                            required
-                            placeholder="{{ __('app.support.t_desc_holder') }}"
-                            class="w-full resize-none rounded-xl border border-slate-200
-                                   bg-slate-50 px-4 py-3 text-sm text-slate-900
-                                   placeholder-slate-400 outline-none transition
-                                   focus:border-green-500 focus:bg-white
-                                   focus:ring-2 focus:ring-green-500/20">{{ old('message') }}</textarea>
-                    </div>
-
-
-                    {{-- Submit --}}
-                    <button
-                        type="submit"
-                        class="group flex w-full items-center justify-center gap-3
-                               rounded-xl bg-[#8fc74a]
-                               px-5 py-3.5 text-md font-bold text-white
-                               shadow-lg shadow-green-600/20
-                               transition duration-300
-                               hover:-translate-y-0.5
-                               hover:from-green-600 hover:to-green-700
-                               hover:shadow-green-600/30">
-
-                        {{ __('app.support.send') }}
-
-                        <svg class="h-5 w-5 transition-transform duration-300
-                                    group-hover:translate-x-1"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-
-                    </button>
-
-                </form>
-
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-@include('layouts.scrollBar')
-
-@endsection
+    @include('layouts.scrollBar')
+    @endsection

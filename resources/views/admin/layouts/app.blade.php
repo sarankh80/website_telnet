@@ -9,6 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{asset('js/filament/datatable/dataTables.min.js')}}"></script>
     <link href="{{asset('css/filament/font/kontumruy.css')}}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{asset('storage/favicon.ico')}}">
     {{-- Apply saved theme before paint to avoid flash --}}
     <script>
         (function() {
@@ -55,7 +56,7 @@
 
             {{-- Brand --}}
             <div class="flex items-center gap-3 px-5 py-5 border-b border-slate-800">
-                <img src="{{asset('images/logo.png')}}" alt="Logo">
+                <img src="{{asset('storage/logo.png')}}" alt="Logo">
             </div>
 
             {{-- Nav --}}

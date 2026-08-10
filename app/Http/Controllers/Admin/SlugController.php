@@ -31,7 +31,7 @@ class SlugController extends Controller
             'image'   => ['nullable', 'image', 'max:2048'],
         ]);
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('slugs', 'public');
+            $data['image'] = $request->file('image')->store('home/SlugsService/', 'public');
         } else {
             $data['image'] = '';
         }
@@ -55,7 +55,7 @@ class SlugController extends Controller
         ]);
         if ($request->hasFile('image')) {
             if ($slug->image) Storage::disk('public')->delete($slug->image);
-            $data['image'] = $request->file('image')->store('slugs', 'public');
+            $data['image'] = $request->file('image')->store('home/SlugsService/', 'public');
         }
         $slug->update($data);
         return redirect()->route('admin.slugs.index')->with('success', 'Slug category updated.');

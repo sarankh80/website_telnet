@@ -40,7 +40,7 @@
             <p class="text-3xl sm:text-3xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
                 {{ __('app.about.company_profile') }}
             </p>
-            <img class="w-full" src="{{asset('images/line.png')}}" alt="">
+            <img class="w-full" src="{{asset('storage/line.png')}}" alt="">
         </div>
 
         <div class="flex flex-col lg:flex-row gap-6">
@@ -53,7 +53,7 @@
                     <div class="glass-card shadow-lg p-6 relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-top gap-5 sm:gap-4 [clip-path:polygon(5rem_0,100%_0,100%_100%,calc(100%-8rem)_100%,0_100%,0_5rem)] h-full">
                         <!-- Left Element: White Background Container with Image -->
                         <div class="shrink-0 w-16 h-16 sm:w-64 sm:h-64 rounded-2xl flex items-center justify-center">
-                            <img src="{{ asset('images/OUR VISION.png') }}" alt="Vision" class="w-full h-full object-contain">
+                            <img src="{{ asset('storage/OUR VISION.png') }}" alt="Vision" class="w-full h-full object-contain">
                         </div>
 
                         <!-- Right Element: Content -->
@@ -73,7 +73,7 @@
                         <!-- Left Image Container with Sub Icon on the Bottom Right -->
                         <div class="relative shrink-0 w-16 h-16 sm:w-64 sm:h-64 rounded-2xl flex items-center justify-center p-3">
                             <!-- Main Image -->
-                            <img src="{{ asset('images/Mission.png') }}" alt="Mission" class="w-full h-full object-contain">
+                            <img src="{{ asset('storage/Mission.png') }}" alt="Mission" class="w-full h-full object-contain">
                         </div>
 
                         <!-- Right Element: Content & List -->
@@ -275,7 +275,7 @@
             <h2 class="text-3xl font-extrabold text-transparent bg-clip-text gradient-brand">
                 {{ app()->getLocale() === 'km' ? 'ឱកាសការងារ' : 'Job Openings' }}
             </h2>
-            <img class="w-48 mx-auto mt-1" src="{{ asset('images/line.png') }}" alt="">
+            <img class="w-48 mx-auto mt-1" src="{{ asset('storage/line.png') }}" alt="">
         </div>
 
         @if($careers->isEmpty())

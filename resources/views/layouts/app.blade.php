@@ -14,9 +14,10 @@
     @endphp
     <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
     <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
-    <link rel="icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">
+    <link rel="icon" type="image/x-icon" href="{{asset('storage/favicon.ico')}}">
     <script src="{{asset('js/filament/tailwind.js')}}"></script>
     <script defer src="{{asset('js/filament/additional/coreProduct.pagination.js')}}"></script>
+    <script defer src="{{asset('js/filament/additional/progressBar.js')}}"></script>
     <script defer src="{{asset('js/filament/additional/slideShow.js')}}"></script>
     <link href="{{asset('css/filament/custome.css')}}" rel="stylesheet">
     <link href="{{asset('css/filament/map/ActivityMap.css')}}" rel="stylesheet">
@@ -108,7 +109,7 @@
 </head>
 
 <body class="light text-adaptive-main antialiased selection:bg-brand-green selection:text-white bg-gradient-to-br from-brand-green/10 via-transparent to-brand-orange/10">
-
+    @include('layouts.progressBar')
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')

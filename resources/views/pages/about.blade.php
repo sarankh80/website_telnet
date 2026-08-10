@@ -26,7 +26,7 @@
             <div class="max-w-4xl items-center flex flex-col md:flex-row gap-6 md:gap-12">
                 <!-- Left Element: Image -->
                 <div class="shrink-0 w-24 h-24 sm:w-72 sm:h-72 rounded-2xl flex items-center justify-center p-1">
-                    <img src="{{ asset('images/OUR VISION.png') }}" alt="Vision" class="w-full h-full object-contain">
+                    <img src="{{ asset('storage/OUR VISION.png') }}" alt="Vision" class="w-full h-full object-contain">
                 </div>
                 <!-- Right Element: Content -->
                 <div class="flex-1 min-w-0 mb-8">
@@ -47,7 +47,7 @@
                     <!-- Col 1: High Speed -->
                     <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center ">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
-                            <img src="{{asset('images/High_Speed.png') }}" alt="High Speed" class="max-w-full max-h-full object-contain">
+                            <img src="{{asset('storage/High_Speed.png') }}" alt="High Speed" class="max-w-full max-h-full object-contain">
                         </div>
                         <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
                             {{ __('app.about.mission_highspeed') }}
@@ -60,7 +60,7 @@
                     <!-- Col 2: Scalable -->
                     <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center md">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
-                            <img src="{{ asset('images/Scalable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
+                            <img src="{{ asset('storage/Scalable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
                         </div>
                         <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
                             {{ __('app.about.mission_scalable') }}
@@ -79,7 +79,7 @@
                     <!-- Col 1: Hot Service (1/4) -->
                     <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center ">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
-                            <img src="{{ asset('images/Hot_Service.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
+                            <img src="{{ asset('storage/Hot_Service.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
                         </div>
                         <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1  uppercase">
                             {{ __('app.about.mission_hotservice') }}
@@ -93,7 +93,7 @@
                     <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center">
                         <!-- Image Wrapper -->
                         <div class="w-48 h-48 md:w-64 md:h-64 mb-4 flex items-center justify-center">
-                            <img src="{{ asset('images/Mission.png') }}" alt="Mission Center" class="max-w-full max-h-full object-contain drop-shadow-md">
+                            <img src="{{ asset('storage/Mission.png') }}" alt="Mission Center" class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
 
                         <!-- Title Outside the Image Wrapper -->
@@ -105,7 +105,7 @@
                     <!-- Col 3: Quality (1/4) -->
                     <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
-                            <img src="{{ asset('images/Quality.png') }}" alt="Quality" class="max-w-full max-h-full object-contain">
+                            <img src="{{ asset('storage/Quality.png') }}" alt="Quality" class="max-w-full max-h-full object-contain">
                         </div>
                         <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1  uppercase">
                             {{ __('app.about.mission_quality') }}
@@ -126,7 +126,7 @@
                     <!-- Col 4: Reliable (1/4) -->
                     <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
-                            <img src="{{ asset('images/Reliable.png') }}" alt="Reliable" class="max-w-full max-h-full object-contain">
+                            <img src="{{ asset('storage/Reliable.png') }}" alt="Reliable" class="max-w-full max-h-full object-contain">
                         </div>
                         <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
                             {{ __('app.about.mission_reliable') }}
@@ -138,7 +138,7 @@
                     <!-- Col 3: Contribute (1/4) -->
                     <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center md">
                         <div class="w-20 h-20 mb-4 flex items-center justify-center">
-                            <img src="{{ asset('images/Contribute.png') }}" alt="Contribute" class="max-w-full max-h-full object-contain">
+                            <img src="{{ asset('storage/Contribute.png') }}" alt="Contribute" class="max-w-full max-h-full object-contain">
                         </div>
                         <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1  uppercase">
                             {{ __('app.about.mission_contribute') }}
