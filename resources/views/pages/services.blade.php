@@ -2,142 +2,208 @@
 @section('title', 'សេវាកម្មស្នូល — TELNET CO., LTD.')
 @section('content')
 
-@php $isKm = app()->getLocale() === 'km'; @endphp
+@php $isKm = app()->getLocale() === 'km';
+$serviceTypes = [
+[
+"id" => 1,
+"name" => "Home Packages",
+"name_km" => "Home Packages",
+"images" => asset('storage/home/serviceTypes/home.png'),
+"icon"=>"fa fa-home",
+"services" => [
+[
+"id" => 1,
+"name" => "Home-S",
+"bandwidth" => 10,
+"price_month" => 16
+],
+[
+"id" => 2,
+"name" => "Home-M",
+"bandwidth" => 20,
+"price_month" => 29
+],
+[
+"id" => 3,
+"name" => "Home-L",
+"bandwidth" => 30,
+"price_month" => 41
+],
+]
+],
+[
+"id" => 2,
+"name" => "Business Packages",
+"name_km" => "Business Packages",
+"images" => asset('storage/home/serviceTypes/biz.png'),
+"icon"=>"fa fa-industry",
+"services" => [
+[
+"id" => 4,
+"name" => "Business-S",
+"bandwidth" => 10,
+"price_month" => 48
+],
+[
+"id" => 5,
+"name" => "Business-M",
+"bandwidth" => 20,
+"price_month" => 96
+],
+[
+"id" => 6,
+"name" => "Business-L",
+"bandwidth" => 30,
+"price_month" => 150
+],
+]
+],
+[
+"id" => 3,
+"name" => "Dedicated Package",
+"name_km" => "Dedicated Package",
+"images" => asset('storage/home/serviceTypes/dia.png'),
+"icon"=>"fa fa-globe",
+"services" => [
+[
+"id" => 4,
+"name" => "Dedicated-S",
+"bandwidth" => 10,
+"price_month" => 120
+],
+[
+"id" => 5,
+"name" => "Dedicated-M",
+"bandwidth" => 20,
+"price_month" => 240
+],
+[
+"id" => 6,
+"name" => "Dedicated-L",
+"bandwidth" => 30,
+"price_month" => 360
+],
+]
+],
+];
+
+
+@endphp
 
 <nav class="sticky top-20 z-40 max-w-8xl h-10 mx-auto px-4 sm:px-6 lg:px-16 relative border-b border-white/10">
 
     <!-- Chamfered Background Layer -->
-    <div class="absolute inset-0 gradient-brand lg:[clip-path:polygon(0_0,_100%_0,_100%_calc(100%-7rem),_calc(100%-12.6rem)_100%,_12.6rem_100%,_0_calc(100%-7rem))] pointer-events-none z-0"></div>
+    <div class="absolute inset-0 bg-[#8fc74a] pointer-events-none z-0"></div>
 
     <!-- Interactive Links Layer -->
     <div class="relative z-10 flex items-center justify-center gap-2 sm:gap-6 h-full text-xs font-medium text-white">
 
+        @foreach($serviceTypes as $st)
         <!-- Child Item 1: Home Packages -->
         <div class="relative group h-full flex items-center">
-            <a href="#sub-link-1" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-[1rem] font-medium !text-white">{{ $isKm ? 'កញ្ចប់សម្រាប់គេហដ្ឋាន' : 'Home Packages' }}</span>
+            <a href="{{ $st['url'] ?? '#' }}" class="h-full px-3 flex items-center gap-2 hover:text-white/80 transition-colors duration-200 cursor-pointer">
+                {{-- Dynamic Icon or Image --}}
+                @if(!empty($st['icon']))
+                <i class="{{ $st['icon'] }} text-base"></i>
+                @elseif(!empty($st['images']))
+                <img class="h-5 w-5 object-contain" loading="lazy" src="{{ $st['images'] }}" alt="{{ $st['name'] }}">
+                @else
+                <i class="fa-solid fa-layer-group text-sm"></i>
+                @endif
+
+                <span class="text-sm font-medium text-white">{{ $st['name'] }}</span>
                 <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
             </a>
 
             <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
-                <div class="max-w-7xl mx-auto p-6 grid grid-cols-2 sm:grid-cols-4 gap-6">
+                <div class="max-w-7xl mx-auto p-4 sm:p-6 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                    @foreach($st["services"] as $s)
+                    <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
+                        <div class="max-w-7xl mx-auto p-4 sm:p-6 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                            @foreach($st["services"] as $s)
+                            <a href="#model-s" class="group/card block">
+                                <!-- Green outer container: reduced padding to p-1 (4px) to make the green border thin -->
+                                <div class="relative w-full max-w-[280px] sm:max-w-xs mx-auto rounded-[1.25rem] sm:rounded-[1.5rem] overflow-hidden  p-1 shadow-lg transition-all duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-xl">
+                                    <div class="absolute -top-6 -right-6 w-16 sm:w-16 h-12 sm:h-14 rounded-full bg-white/10"></div>
+                                    <div class="absolute top-4 right-10 w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-white/20"></div>
 
-                    <a href="#model-s" class="group/card p-4 rounded-2xl hover:bg-gray-50 transition flex flex-col items-center text-center border border-transparent hover:border-gray-100">
-                        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=500&auto=format&fit=crop&q=60" alt="Model S" class="w-full h-32 object-cover rounded-xl mb-3 shadow-sm group-hover/card:scale-[1.02] transition duration-300" />
-                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">Model S</h4>
-                        <span class="text-[11px] text-brand-green font-semibold">Explore Specs</span>
-                    </a>
+                                    <div class="relative h-full rounded-[1rem] sm:rounded-[1.2rem] bg-white flex flex-col items-center pt-0 overflow-visible">
+                                        <!-- Title Badge -->
+                                        <div class="relative -mt-1 px-4 sm:px-6 py-1 sm:py-1 min-w-[100px] sm:min-w-[130px] rounded-b-xl sm:rounded-b-2xl bg-[#F79633] text-white text-center shadow-md z-20">
+                                            <div class="flex items-center justify-center gap-1.5">
+                                                <span class="text-sm sm:text-lg font-semibold whitespace-nowrap">{{ $s['name'] }}</span>
+                                            </div>
+                                        </div>
 
-                    <a href="#model-3" class="group/card p-4 rounded-2xl hover:bg-gray-50 transition flex flex-col items-center text-center border border-transparent hover:border-gray-100">
-                        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&auto=format&fit=crop&q=60" alt="Model 3" class="w-full h-32 object-cover rounded-xl mb-3 shadow-sm group-hover/card:scale-[1.02] transition duration-300" />
-                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">Model 3</h4>
-                        <span class="text-[11px] text-brand-green font-semibold">Order Now</span>
-                    </a>
+                                        <!-- Bandwidth Section (Reduced vertical padding) -->
+                                        <div class="flex-1 flex flex-col items-center justify-center py-0.5 sm:py-2">
+                                            <!-- Mbps above bandwidth -->
 
-                    <a href="#model-x" class="group/card p-4 rounded-2xl hover:bg-gray-50 transition flex flex-col items-center text-center border border-transparent hover:border-gray-100">
-                        <img src="https://images.unsplash.com/photo-1536700503339-1e4b06520771?w=500&auto=format&fit=crop&q=60" alt="Model X" class="w-full h-32 object-cover rounded-xl mb-3 shadow-sm group-hover/card:scale-[1.02] transition duration-300" />
-                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">Model X</h4>
-                        <span class="text-[11px] text-brand-green font-semibold">Explore Specs</span>
-                    </a>
+                                            <div class="flex items-baseline justify-center leading-none">
+                                                <!-- Text stroke size reduced to 0.75px / 1px -->
+                                                <span class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#8fc74a] drop-shadow-sm">
+                                                    {{ $s['bandwidth'] }}
+                                                </span>
+                                            </div>
+                                            <span class="text-base sm:text-xl font-medium text-[#8fc74a] -mb-1">Mbps</span>
+                                        </div>
 
-                    <a href="#model-y" class="group/card p-4 rounded-2xl hover:bg-gray-50 transition flex flex-col items-center text-center border border-transparent hover:border-gray-100">
-                        <img src="https://images.unsplash.com/photo-1571127236794-81c0137ce69e?w=500&auto=format&fit=crop&q=60" alt="Model Y" class="w-full h-32 object-cover rounded-xl mb-3 shadow-sm group-hover/card:scale-[1.02] transition duration-300" />
-                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">Model Y</h4>
-                        <span class="text-[11px] text-brand-green font-semibold">Order Now</span>
-                    </a>
-
+                                        <!-- Price Badge -->
+                                        <div class="mb-3 sm:mb-4 px-4 sm:px-7 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-[#8fc74a] text-white shadow-sm flex items-baseline gap-1">
+                                            <span class="text-lg sm:text-2xl font-semibold">{{ $s['price_month'] ?? '16' }}</span>
+                                            <span class="text-sm sm:text-lg opacity-90">{{ $s['unit'] ?? 'USD/month' }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-
-        <!-- Child Item 2: Business Packages -->
-        <div class="relative group h-full flex items-center">
-            <a href="#sub-link-2" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-[1rem]">{{ $isKm ? 'កញ្ចប់សម្រាប់ពាណិជ្ជកម្ម' : 'Business Packages' }}</span>
-                <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
-            </a>
-
-            <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
-                <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
-                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
-                            <img src="IMAGE/IDC.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02]" />
-                        </div>
-                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
-                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Child Item 3: Dedicated Packages -->
-        <div class="relative group h-full flex items-center">
-            <a href="#sub-link-3" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-[1rem]">{{ $isKm ? 'កញ្ចប់សម្រាប់' : 'Dedicated Packages' }}</span>
-                <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
-            </a>
-
-            <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
-                <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
-                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
-                            <img src="IMAGE/IDC.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02]" />
-                        </div>
-                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
-                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Child Item 4: Others -->
-        <div class="relative group h-full flex items-center">
-            <a href="#sub-link-4" class="h-full px-3 flex items-center gap-1.5 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                <span class="!text-[1rem]">{{ $isKm ? 'សេវាកម្មផ្សេងទៀត' : 'Others' }}</span>
-                <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
-            </a>
-
-            <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
-                <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
-                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
-                            <img src="IMAGE/IDC.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02] transition duration-300" />
-                        </div>
-                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
-                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
-                    </a>
-
-                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
-                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
-                            <img src="IMAGE/OLT.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02] transition duration-300" />
-                        </div>
-                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
-                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
-                    </a>
-
-                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
-                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
-                            <img src="IMAGE/Conectivity.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02] transition duration-300" />
-                        </div>
-                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
-                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
-                    </a>
-
-                    <a href="#support" class="group/card p-4 rounded-2xl hover:bg-green-50 transition flex flex-col items-center text-center border border-transparent hover:border-green-400">
-                        <div class="w-full h-36 mb-3 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden shadow-sm">
-                            <img src="IMAGE/ICT.png" alt="Support" class="max-w-full max-h-36 object-contain group-hover/card:scale-[1.02] transition duration-300" />
-                        </div>
-                        <h4 class="font-bold text-sm text-gray-900 mb-0.5">24/7 Enterprise Help</h4>
-                        <p class="text-[11px] text-gray-500">Dedicated operational assistance and configuration support guides.</p>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-
+        @endforeach
     </div>
 </nav>
+<section class="w-full border h-auto md:h-[400px] lg:h-[70vh] relative overflow-hidden flex flex-col md:flex-row">
+
+    <!-- Right Side: Content Container (100% on mobile, 30% on desktop) -->
+    <div class="w-full md:w-[30%] h-auto md:h-full flex flex-col justify-center bg-gradient-to-br from-brand-green/10 via-transparent to-brand-orange/10 items-center text-center p-6 z-10 bg-white border-t md:border-t-0 md:border-l flex-grow">
+        <h1 class="flex flex-col gap-2 w-full max-w-xs md:max-w-full">
+            <!-- Line 1: Primary Title Text -->
+            <span class="text-xl sm:text-2xl md:text-2xl lg:text-8xl font-bold uppercase text-[#8fc74a] leading-tight">
+                {{ __('app.internet.title') }}
+            </span>
+        </h1>
+
+        <!-- Feature Keywords -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 pt-6 w-full max-w-xs md:max-w-full">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xl font-semibold  text-[#F79633] border border-[#8fc74a]/30 shadow-xs transition-all duration-200 hover:scale-105">
+                {{__('app.internet.fast')}}
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xl font-semibold bg-[#F79633]/10 text-[#F79633] border border-[#F79633]/30 shadow-xs transition-all duration-200 hover:scale-105">
+                {{__('app.internet.reliable')}}
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xl font-semibold  text-[#F79633] border border-[#8fc74a]/30 shadow-xs transition-all duration-200 hover:scale-105">
+                {{__('app.internet.stable')}}
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xl font-semibold bg-[#F79633]/10 text-[#F79633] border border-[#F79633]/30 shadow-xs transition-all duration-200 hover:scale-105">
+                {{__('app.internet.scalable')}}
+            </span>
+        </div>
+    </div>
+
+    <!-- Left Side: Image Container (100% on mobile, 70% on desktop) -->
+    <div class="w-full md:w-[70%] h-[200px] sm:h-[260px] md:h-full relative overflow-hidden flex-shrink-0 opacity-80">
+        <img src="{{asset('storage/home/services/home.png')}}"
+            alt="Hero Image"
+            class="w-full h-full object-cover opacity-90 wallpaper-infinite" />
+        <!-- Overlay for subtle contrast -->
+        <div class="absolute inset-0 bg-black/10 z-0"></div>
+    </div>
+
+</section>
 <section class="py-12 section-bg-primary border-b border-gray-200 dark:border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-2 text-xs text-adaptive-muted mb-4">

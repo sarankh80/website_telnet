@@ -477,7 +477,7 @@
             searchIcon: null,
 
             defaultCenter: [12.5657, 104.9910],
-            defaultZoom: 7,
+            defaultZoom: 8,
 
             /* Coverage radius: 40 KM from branch */
             coverageKm: 40,

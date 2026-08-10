@@ -132,7 +132,13 @@ return [
         'label' => '07. LEADERSHIP & TEAM',
         'title' => 'TELNET Management & Technical Experts',
     ],
-
+    "internet" => [
+        "title" => "INTERNET SERVICE",
+        "fast" => "Fast",
+        "reliable" => "Reliable",
+        "stable" => "Stable",
+        "scalable" => "Scalability",
+    ],
     'modal' => [
         'title' => 'Request Internet Connection',
         'desc' => 'Please fill out the form below, our team will contact you shortly',
