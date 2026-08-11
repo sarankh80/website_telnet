@@ -33,7 +33,7 @@
                 @foreach($navLinks as $link)
                 @php $active = request()->routeIs($link['route']); @endphp
                 <a href="{{ route($link['route']) }}"
-                    class="nav-link-pill px-2 py-2 rounded-lg hover:text-brand-green hover:bg-brand-green/5 transition flex items-center gap-1.5 {{ $active ? 'text-brand-green active' : '' }}">
+                    class="nav-link-pill text-slate-500 px-2 py-2 rounded-lg hover:text-brand-green hover:bg-brand-green/5 transition flex items-center gap-1.5 {{ $active ? 'text-brand-green active' : '' }}">
                     <span class="text-[1rem]">{{ $link['label'] }}</span>
                 </a>
                 @endforeach

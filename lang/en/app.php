@@ -161,7 +161,7 @@ return [
         "write" => "Write a Review",
     ],
     "partner" => [
-        "title" => "Corporate Subscribers",
+        "title" => "Our Subscribers",
         "slogan" => "Strategic Partners",
     ],
     'footer' => [
