@@ -6,10 +6,13 @@
 $serviceTypes = [
 [
 "id" => 1,
-"name" => "Home Packages",
-"name_km" => "Home Packages",
+"name" => "FTTH-Package",
+"name_km" => "FTTH-Package",
 "images" => asset('storage/home/serviceTypes/home.png'),
-"icon"=>"fa fa-home",
+"icon" => "fa fa-home",
+"types" => [
+[
+"name" => "Home-Package",
 "services" => [
 [
 "id" => 1,
@@ -29,14 +32,90 @@ $serviceTypes = [
 "bandwidth" => 30,
 "price_month" => 41
 ],
+[
+"id" => 3,
+"name" => "Home-L",
+"bandwidth" => 30,
+"price_month" => 41
+],
+[
+"id" => 3,
+"name" => "Home-L",
+"bandwidth" => 30,
+"price_month" => 41
+],
+[
+"id" => 1,
+"name" => "Home-S",
+"bandwidth" => 10,
+"price_month" => 16
+],
+[
+"id" => 2,
+"name" => "Home-M",
+"bandwidth" => 20,
+"price_month" => 29
+],
+[
+"id" => 3,
+"name" => "Home-L",
+"bandwidth" => 30,
+"price_month" => 41
+],
+[
+"id" => 1,
+"name" => "Home-S",
+"bandwidth" => 10,
+"price_month" => 16
+],
+[
+"id" => 2,
+"name" => "Home-M",
+"bandwidth" => 20,
+"price_month" => 29
+],
+[
+"id" => 3,
+"name" => "Home-L",
+"bandwidth" => 30,
+"price_month" => 41
+]
+],
+],
+[
+"name" => "TN-Plan",
+"services" => [
+[
+"id" => 1,
+"name" => "TN-Plan-S",
+"bandwidth" => 10,
+"price_month" => 16
+],
+[
+"id" => 2,
+"name" => "TN-Plan-M",
+"bandwidth" => 20,
+"price_month" => 29
+],
+[
+"id" => 3,
+"name" => "TN-Plan-L",
+"bandwidth" => 30,
+"price_month" => 41
+]
+],
+],
 ]
 ],
 [
 "id" => 2,
-"name" => "Business Packages",
-"name_km" => "Business Packages",
+"name" => "FTTB-Package",
+"name_km" => "FTTB-Package",
 "images" => asset('storage/home/serviceTypes/biz.png'),
-"icon"=>"fa fa-industry",
+"icon" => "fa fa-industry",
+"types" => [
+[
+"name" => "Biz",
 "services" => [
 [
 "id" => 4,
@@ -56,14 +135,44 @@ $serviceTypes = [
 "bandwidth" => 30,
 "price_month" => 150
 ],
+
+]
+],
+[
+"name" => "SME",
+"services" => [
+[
+"id" => 4,
+"name" => "SME-S",
+"bandwidth" => 10,
+"price_month" => 48
+],
+[
+"id" => 5,
+"name" => "SME-M",
+"bandwidth" => 20,
+"price_month" => 96
+],
+[
+"id" => 6,
+"name" => "SME-L",
+"bandwidth" => 30,
+"price_month" => 150
+],
+
+]
+],
 ]
 ],
 [
 "id" => 3,
-"name" => "Dedicated Package",
-"name_km" => "Dedicated Package",
+"name" => "FTTX-Packages",
+"name_km" => "FTTX-Packages",
 "images" => asset('storage/home/serviceTypes/dia.png'),
-"icon"=>"fa fa-globe",
+"icon" => "fa fa-globe",
+"types" => [
+[
+"name" => "DIA",
 "services" => [
 [
 "id" => 4,
@@ -85,24 +194,85 @@ $serviceTypes = [
 ],
 ]
 ],
+[
+"name" => "Dedicated-Global",
+"services" => [
+[
+"id" => 4,
+"name" => "Dedicated-Global-S",
+"bandwidth" => 10,
+"price_month" => 120
+],
+[
+"id" => 5,
+"name" => "Dedicated-Global-M",
+"bandwidth" => 20,
+"price_month" => 240
+],
+[
+"id" => 6,
+"name" => "Dedicated-Global-L",
+"bandwidth" => 30,
+"price_month" => 360
+],
+]
+],
+[
+"name" => "Dedicated-Premuim",
+"services" => [
+[
+"id" => 4,
+"name" => "Dedicated-Premuim-S",
+"bandwidth" => 10,
+"price_month" => 120
+],
+[
+"id" => 5,
+"name" => "Dedicated-Premuim-M",
+"bandwidth" => 20,
+"price_month" => 240
+],
+[
+"id" => 6,
+"name" => "Dedicated-Premuim-L",
+"bandwidth" => 30,
+"price_month" => 360
+],
+]
+],
+]
+],
+];
+$images = [
+[
+"id" => 1,
+"image" => asset('storage/home/services/bgImage1.png'),
+],
+[
+"id" => 2,
+"image" => asset('storage/home/services/bgImage2.png'),
+],
+[
+"id" => 3,
+"image" => asset('storage/home/services/bgImage3.png'),
+],
+[
+"id" => 4,
+"image" => asset('storage/home/services/bgImage4.png'),
+],
 ];
 
 
 @endphp
 
 <nav class="sticky top-20 z-40 max-w-8xl h-10 mx-auto px-4 sm:px-6 lg:px-16 relative border-b border-white/10">
-
-    <!-- Chamfered Background Layer -->
     <div class="absolute inset-0 bg-[#8fc74a] pointer-events-none z-0"></div>
-
-    <!-- Interactive Links Layer -->
     <div class="relative z-10 flex items-center justify-center gap-2 sm:gap-6 h-full text-xs font-medium text-white">
 
         @foreach($serviceTypes as $st)
-        <!-- Child Item 1: Home Packages -->
+        <!-- Horizental Nav as top -->
         <div class="relative group h-full flex items-center">
             <a href="{{ $st['url'] ?? '#' }}" class="h-full px-3 flex items-center gap-2 hover:text-white/80 transition-colors duration-200 cursor-pointer">
-                {{-- Dynamic Icon or Image --}}
                 @if(!empty($st['icon']))
                 <i class="{{ $st['icon'] }} text-base"></i>
                 @elseif(!empty($st['images']))
@@ -110,62 +280,96 @@ $serviceTypes = [
                 @else
                 <i class="fa-solid fa-layer-group text-sm"></i>
                 @endif
-
-                <span class="text-sm font-medium text-white">{{ $st['name'] }}</span>
+                <span class="text-base font-semibold text-white  ">{{ $st['name'] }}</span>
                 <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i>
             </a>
-
+            <!-- Second nav -->
             <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
-                <div class="max-w-7xl mx-auto p-4 sm:p-6 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-                    @foreach($st["services"] as $s)
-                    <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
-                        <div class="max-w-7xl mx-auto p-4 sm:p-6 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-                            @foreach($st["services"] as $s)
-                            <a href="#model-s" class="group/card block">
-                                <!-- Green outer container: reduced padding to p-1 (4px) to make the green border thin -->
-                                <div class="relative w-full max-w-[280px] sm:max-w-xs mx-auto rounded-[1.25rem] sm:rounded-[1.5rem] overflow-hidden  p-1 shadow-lg transition-all duration-300 group-hover/card:-translate-y-1 group-hover/card:shadow-xl">
-                                    <div class="absolute -top-6 -right-6 w-16 sm:w-16 h-12 sm:h-14 rounded-full bg-white/10"></div>
-                                    <div class="absolute top-4 right-10 w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-white/20"></div>
+                <div class="max-w-7xl mx-auto flex max-h-[500px] min-h-[300px]">
+                    {{-- Sidebar --}}
+                    <aside class="w-1/5 bg-slate-50 border-r border-[#8fc74a] p-3 flex flex-col gap-1">
+                        @foreach($st['types'] as $type)
+                        <button type="button"
+                            onclick="showType(`{{ $type['name'] }}`)"
+                            class="type-nav text-left px-3 py-1.5 rounded-lg text-sm sm:text-base font-medium
+                text-gray-700 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] transition">
+                            {{ $type['name'] }}
+                        </button>
+                        @endforeach
+                    </aside>
 
-                                    <div class="relative h-full rounded-[1rem] sm:rounded-[1.2rem] bg-white flex flex-col items-center pt-0 overflow-visible">
-                                        <!-- Title Badge -->
-                                        <div class="relative -mt-1 px-4 sm:px-6 py-1 sm:py-1 min-w-[100px] sm:min-w-[130px] rounded-b-xl sm:rounded-b-2xl bg-[#F79633] text-white text-center shadow-md z-20">
-                                            <div class="flex items-center justify-center gap-1.5">
-                                                <span class="text-sm sm:text-lg font-semibold whitespace-nowrap">{{ $s['name'] }}</span>
-                                            </div>
-                                        </div>
+                    {{-- Services --}}
+                    <main class="w-4/5 p-3 sm:p-4 bg-white overflow-y-auto">
+                        @foreach($st['types'] as $type)
+                        <div id="type-{{$type['name']}}"
+                            class="type-content hidden">
 
-                                        <!-- Bandwidth Section (Reduced vertical padding) -->
-                                        <div class="flex-1 flex flex-col items-center justify-center py-0.5 sm:py-2">
-                                            <!-- Mbps above bandwidth -->
+                            <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
 
-                                            <div class="flex items-baseline justify-center leading-none">
-                                                <!-- Text stroke size reduced to 0.75px / 1px -->
-                                                <span class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#8fc74a] drop-shadow-sm">
-                                                    {{ $s['bandwidth'] }}
+                                @foreach($type['services'] as $service)
+                                <a href="#" class="group/card block">
+                                    <div class="relative w-full rounded-2xl bg-[#8fc74a] p-1 shadow-lg transition duration-300 group-hover/card:-translate-y-1">
+                                        <div class="relative rounded-xl bg-white flex flex-col items-center overflow-visible">
+                                            <div class="relative -mt-1 px-4 py-1 rounded-b-xl bg-[#F79633] text-white text-center shadow-md z-20">
+                                                <span class="text-sm font-semibold whitespace-nowrap">
+                                                    {{ $service['name'] ?? '' }}
                                                 </span>
                                             </div>
-                                            <span class="text-base sm:text-xl font-medium text-[#8fc74a] -mb-1">Mbps</span>
-                                        </div>
+                                            <div class="flex flex-col items-center justify-center py-3">
+                                                <span class="text-4xl sm:text-6xl font-black text-[#8fc74a] leading-none">
+                                                    {{ $service['bandwidth'] ?? '' }}
+                                                </span>
+                                                <span class="text-sm font-medium text-[#8fc74a] mt-1">
+                                                    Mbps
+                                                </span>
+                                            </div>
+                                            <div class="mb-3 px-4 py-1.5 rounded-lg bg-[#8fc74a] text-white shadow-sm">
+                                                <span class="text-base font-semibold">
+                                                    {{ $service['price_month'] ?? '0' }}
+                                                </span>
+                                                <span class="text-xs opacity-90">
+                                                    {{ $service['unit'] ?? 'USD/mo' }}
+                                                </span>
+                                            </div>
 
-                                        <!-- Price Badge -->
-                                        <div class="mb-3 sm:mb-4 px-4 sm:px-7 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-[#8fc74a] text-white shadow-sm flex items-baseline gap-1">
-                                            <span class="text-lg sm:text-2xl font-semibold">{{ $s['price_month'] ?? '16' }}</span>
-                                            <span class="text-sm sm:text-lg opacity-90">{{ $s['unit'] ?? 'USD/month' }}</span>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                            @endforeach
+                                </a>
+                                @endforeach
+
+                            </div>
                         </div>
-                    </div>
-                    @endforeach
+                        @endforeach
+                    </main>
+
                 </div>
             </div>
         </div>
         @endforeach
+
     </div>
 </nav>
+<script>
+    function showType(type) {
+        document.querySelectorAll('.type-content').forEach(el => {
+            el.classList.add('hidden');
+        });
+
+        document.querySelector(`#type-${type}`)?.classList.remove('hidden');
+
+        document.querySelectorAll('.type-nav').forEach(el => {
+            el.classList.remove('bg-[#8fc74a]', 'text-white');
+            el.classList.add('text-gray-700');
+        });
+
+        event.currentTarget.classList.add('bg-[#8fc74a]', 'text-white');
+        event.currentTarget.classList.remove('text-gray-700');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.type-nav')?.click();
+    });
+</script>
 <section class="w-full border h-auto md:h-[400px] lg:h-[70vh] relative overflow-hidden flex flex-col md:flex-row">
 
     <!-- Right Side: Content Container (100% on mobile, 30% on desktop) -->
@@ -194,13 +398,23 @@ $serviceTypes = [
         </div>
     </div>
 
-    <!-- Left Side: Image Container (100% on mobile, 70% on desktop) -->
-    <div class="w-full md:w-[70%] h-[200px] sm:h-[260px] md:h-full relative overflow-hidden flex-shrink-0 opacity-80">
-        <img src="{{asset('storage/home/services/home.png')}}"
-            alt="Hero Image"
-            class="w-full h-full object-cover opacity-90 wallpaper-infinite" />
-        <!-- Overlay for subtle contrast -->
-        <div class="absolute inset-0 bg-black/10 z-0"></div>
+    <div id="slider"
+        class="w-full md:w-[70%] h-[200px] sm:h-[260px] md:h-full relative overflow-hidden flex-shrink-0">
+        @foreach($images as $slug)
+        <div class="slide absolute inset-0 transition-opacity duration-1000">
+
+            <!-- Background with Dynamic Zoom Class Container -->
+            <div class="w-full h-full overflow-hidden">
+                <img
+                    src="{{ $slug['image'] }}"
+                    class="w-full h-full object-cover  wallpaper-infinite">
+            </div>
+            <div class="absolute inset-0 "></div>
+        </div>
+        @endforeach
+        <button id="prevSlide" class="absolute left-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-12 h-12 rounded-full z-20">❮</button>
+        <button id="nextSlide" class="absolute right-5 top-1/2 -translate-y-1/2 bg-[white]/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-12 h-12 rounded-full z-20">❯</button>
+        <div id="dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
     </div>
 
 </section>
