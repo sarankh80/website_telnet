@@ -67,10 +67,10 @@ $latlong="11.54732899907136,104.9089653152003";
                     <a target="_blank" href="{{$tiktokLink??'https://www.tiktok.com/@telnet_isp'}}" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="TikTok">
                         <i class="fa-brands fa-tiktok !text-3xl"></i>
                     </a>
-                    <a target="_blank" href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="Telegram">
+                    <a target="_blank" href="{{$telegramLink??'https://t.me/TELNETCambodia'}}" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="Telegram">
                         <i class="fa-brands fa-telegram !text-3xl"></i>
                     </a>
-                    <a target="_blank" href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="LinkedIn">
+                    <a target="_blank" href="{{$linkIn??'https://www.linkedin.com/company/telnet-co-ltd'}}" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="LinkedIn">
                         <i class="fa-brands fa-linkedin !text-3xl"></i>
                     </a>
                 </div>
