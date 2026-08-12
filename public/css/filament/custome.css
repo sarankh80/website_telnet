@@ -410,3 +410,9 @@
     animation: infinite-zoom 40s ease-in-out infinite;
     will-change: transform;
 }
+
+.gradient-l-to-r {
+    div {
+        background: linear-gradient(to right, #ffffff 30%,transparent 100%);
+    }
+}

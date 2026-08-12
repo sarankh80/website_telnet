@@ -20,16 +20,9 @@
 
         </div> -->
 
-    <style>
-        #test {
-            div {
-                background: linear-gradient(to right, #ffffff 30%, transparent 100%);
-            }
-        }
-    </style>
     <div class="w-full h-[80vh]">
-        <div id="test"
-            class="w-full border border-green-200 md:h-full relative overflow-hidden flex-shrink-0 bg-white">
+        <div
+            class="w-full gradient-l-to-r border border-green-200 md:h-full relative overflow-hidden flex-shrink-0 bg-white">
             <div class="slide absolute inset-0 transition-opacity duration-1000">
 
                 <!-- Background with Dynamic Zoom Class Container -->
@@ -39,7 +32,7 @@
                         class="w-full h-full object-cover  wallpaper-infinite">
                 </div>
             </div>
-            <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-left items-start">
+            <div class="absolute inset-0  sm:py-8 sm:px-16 sm:p-8 flex flex-col justify-left items-start">
                 <!-- Top: Heading -->
                 <h1 class="text-xl sm:text-5xl font-extrabold text-[#8fc74a] mb-8">
                     {{ __('app.about.company_profile') }}
