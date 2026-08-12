@@ -115,7 +115,7 @@
     </div>
 </section>
 <div class="text-center max-w-3xl mx-auto">
-    <h2 class="text-2xl sm:text-4xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
+    <h2 class="text-2xl sm:text-4xl font-extrabold text-center  bg-clip-text text-[#8fc74a] gradient-brand">
         {{ __('app.hero.difference') }}
     </h2>
 </div>
@@ -156,7 +156,7 @@
                             <div class="flex items-start justify-between gap-3">
                                 <div class="flex items-start space-x-3 min-w-0">
                                     <div class="min-w-0">
-                                        <div class="font-bold text-xl text-transparent bg-clip-text gradient-brand transition truncate uppercase ">
+                                        <div class="font-bold text-xl  bg-clip-text text-[#8fc74a] transition truncate uppercase ">
                                             {{ $isKm ? $re['badge_km'] : $re['badge'] }}
                                         </div>
                                     </div>
@@ -1155,18 +1155,7 @@ $reviewInfos = [
 "pin"=>0,
 "created_at" => now(),
 ],
-[
-"title" => "",
-"review_types" => "Service Quality",
-"desc" => "The software solution helped us replace several manual processes with a centralized system. Our team can now manage operations, reporting, and customer information much faster and with far fewer errors.",
-"fullname" => "Emily Carter",
-"posts" => "Operations Manager at PrimeWorks",
-"industry_type" => "Business Services",
-"industry_name" => "PRIMEWORKS",
-"review_rated" => 5,
-"pin"=>0,
-"created_at" => now(),
-],
+
 [
 "title" => "",
 "review_types" => "Service Quality",
@@ -1180,18 +1169,7 @@ $reviewInfos = [
 "pin"=>1,
 "created_at" => now(),
 ],
-[
-"title" => "",
-"review_types" => "Operation Workflow",
-"desc" => "From planning to deployment, the entire ICT infrastructure project was handled professionally. They took the time to understand our requirements and delivered a solution that gives us room to scale as the business grows.",
-"fullname" => "Daniel Thompson",
-"posts" => "Chief Technology Officer at NextVision",
-"industry_type" => "Technology & Innovation",
-"industry_name" => "NEXTVISION",
-"review_rated" => 5,
-"pin"=>0,
-"created_at" => now(),
-],
+
 [
 "title" => "",
 "review_types" => "Customer Service",
@@ -1208,10 +1186,10 @@ $reviewInfos = [
 usort($reviewInfos, function ($a, $b) {
 return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
     @endphp
-    <section class="max-w-8xl pb-16 mx-auto space-y-10 sm:space-y-12 px-4 sm:px-6 md:px-10 lg:px-24 xl:px-40 2xl:px-56">
+    <section class="max-w-8xl mx-auto space-y-5 sm:space-y-2 px-4 sm:px-6 md:px-10 lg:px-24 xl:px-40 2xl:px-56">
 
         <!-- 1. Header & Aggregate Metrics -->
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 border-b border-[#8fc74a]/20 pb-8 sm:pb-10">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 border-b border-[#8fc74a]/20 sm:pb-10">
             <div class="max-w-3xl space-y-4">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8fc74a]/10 border border-[#8fc74a]/30 text-xs font-medium text-[#8fc74a]">
                     <span class="w-2 h-2 rounded-full bg-[#8fc74a] animate-pulse"></span>
@@ -1323,7 +1301,7 @@ return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
         <!-- 3. Dynamic Feedback Grid -->
         <div
             id="feedback-grid"
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 border-b border-[#8fc74a]/20 pb-16 sm:pb-20">
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 border-b border-[#8fc74a]/20 pb-8 sm:pb-10">
             @foreach ($reviewInfos as $review)
             <div class="{{ ($review['pin'] ?? 0) == 1 ? 'sm:col-span-2' : 'col-span-1' }} hover:scale-[0.98] bg-white border border-[#8fc74a]/40 hover:border-[#8fc74a] rounded-2xl p-4 sm:p-6 shadow-xl hover:shadow-[#8fc74a]/15 transition-all duration-300 flex flex-col justify-between">
                 @if($review['pin']==1)
@@ -1430,7 +1408,7 @@ return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
     </section>
     <section class="space-y-12 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <h2 class="text-2xl sm:text-4xl font-extrabold  text-transparent bg-clip-text gradient-brand">
+            <h2 class="text-2xl mt-4 sm:text-4xl font-extrabold  text-transparent bg-clip-text gradient-brand">
                 {{ __('app.support.title') }}
             </h2>
             <p class="text-adaptive-muted text-sm max-w-2xl mx-auto">
@@ -1438,7 +1416,7 @@ return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
             </p>
         </div>
     </section>
-    <section id="support" class="relative overflow-hidden m-4 sm:m-6 md:m-8 p-4 sm:p-6 md:p-8 py-10 sm:py-12 md:py-14 rounded-xl bg-[#8fc74a]/5">
+    <section id="support" class="relative overflow-hidden m-4 sm:m-6 md:m-8 p-4 sm:p-3 md:p-4 py-5 sm:py-6 md:py-7 rounded-xl bg-[#8fc74a]/5">
         <div class="mx-auto max-w-7xl backdrop-blur-md">
             <div class="grid gap-6 sm:gap-8 lg:grid-cols-1">
                 <!-- <div class="space-y-4 sm:space-y-5">
@@ -1630,7 +1608,7 @@ return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
                         shadow-xl">
 
                     <div class="mb-6 sm:mb-8">
-                        <h3 class="mt-2 text-xl sm:text-2xl font-bold text-slate-900 md:text-3xl">
+                        <h3 class="mt-2 text-xl sm:text-3xl font-bold text-slate-900 md:text-3xl">
                             {{ __('app.support.send') }}
                         </h3>
 
