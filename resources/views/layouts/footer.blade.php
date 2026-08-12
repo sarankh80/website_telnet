@@ -35,7 +35,7 @@ $latlong="11.54732899907136,104.9089653152003";
                 ['href'=>route('home'), 'label'=> __('app.footer.home')],
                 ['href'=>route('services'), 'label'=> __('app.footer.services')],
                 ['href'=>route('services'), 'label'=> __('app.footer.business')],
-                ['href'=>route('contact'), 'label'=> __('app.footer.support')],
+                ['href'=>route('support'), 'label'=> __('app.footer.support')],
                 ['href'=>route('about'), 'label'=> __('app.footer.about')],
                 ['href'=>route('career'), 'label'=> __('app.footer.careers')],
                 ['href'=>route('portal'), 'label'=> __('app.footer.portal')],
@@ -48,14 +48,33 @@ $latlong="11.54732899907136,104.9089653152003";
             <div class="space-y-1">
                 <h4 class="text-md font-bold text-white mb-3">{{ __('app.footer.contact') }}</h4>
                 <!-- <p><i class="fa-solid fa-phone text-white mr-1.5"></i>
-                    <a href="tel:{{ preg_replace('/\s+/','',$phone_main) }}" class="hover:text-white transition">{{ $phone_main }}</a>
-                </p> -->
+        <a href="tel:{{ preg_replace('/\s+/','',$phone_main) }}" class="hover:text-white transition">{{ $phone_main }}</a>
+    </p> -->
                 <p><i class="fa-solid fa-headset text-white mr-1.5"></i>
-                    NOC 24/7: <a href="tel:{{ preg_replace('/\s+/','',$phone_noc) }}" class="hover:text-white transition">{{ $phone_noc }}</a></p>
+                    NOC 24/7: <a href="tel:{{ preg_replace('/\s+/','',$phone_noc) }}" class="hover:text-white transition">{{ $phone_noc }}</a>
+                </p>
                 <p><i class="fa-solid fa-envelope text-white mr-1.5"></i>
                     <a href="mailto:{{ $email_main }}" class="hover:text-white transition text-white">{{ $email_main }}</a>
                 </p>
-                <!-- <p><i class="fa-solid fa-globe text-white mr-1.5"></i> {{ $website }}</p> -->
+
+                <!-- Social Media Icons (Row View) -->
+                <div class="flex items-center gap-3 pt-2">
+                    <a href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook !text-3xl"></i>
+                    </a>
+                    <a href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram !text-3xl"></i>
+                    </a>
+                    <a href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin !text-3xl"></i>
+                    </a>
+                    <a href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok !text-3xl"></i>
+                    </a>
+                    <a href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="X (Twitter)">
+                        <i class="fa-brands fa-x-twitter !text-3xl"></i>
+                    </a>
+                </div>
             </div>
             <div class="space-y-2">
                 <h4 class="text-md font-bold text-white mb-3">{{ __('app.footer.address') }}</h4>

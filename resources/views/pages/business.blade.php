@@ -34,7 +34,7 @@
                     <i class="fa-solid fa-paper-plane text-sm"></i>
                     <span>{{ $isKm ? 'ស្នើសុំសេវា' : 'Request a Quote' }}</span>
                 </button>
-                <a href="{{ route('contact') }}"
+                <a href="{{ route('support') }}"
                     class="glass-card text-adaptive-main font-semibold px-6 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 transition hover:-translate-y-0.5 flex items-center gap-2">
                     <i class="fa-solid fa-headset text-brand-green"></i>
                     <span>{{ $isKm ? 'ទំនាក់ទំនងក្រុម' : 'Talk to Sales' }}</span>

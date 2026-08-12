@@ -24,7 +24,7 @@
                 ['route' => 'home', 'label' => __('app.nav.home'), ],
                 ['route' => 'services', 'label' => __('app.nav.internet_service'),],
                 ['route' => 'business', 'label' => __('app.nav.business'), ],
-                ['route' => 'team', 'label' => __('app.nav.support'), ],
+                ['route' => 'support', 'label' => __('app.nav.support'), ],
                 ['route' => 'about', 'label' => __('app.nav.about'), ],
                 ['route' => 'career', 'label' => __('app.nav.careers'), ],
                 ['route' => 'admin.login', 'label' => __('app.nav.portal'),],
@@ -42,15 +42,34 @@
             <!-- Desktop Actions: Language + Theme -->
             @php $currentLocale = app()->getLocale(); @endphp
             <div class="hidden sm:flex items-center space-x-2.5 flex-shrink-0 whitespace-nowrap">
-                <div class="lang-switch-btn px-2 py-2 rounded-xl text-xs font-bold text-adaptive-main flex items-center gap-2 shadow-lg">
+                <div class="lang-switch-btn px-2.5 py-1.5 rounded-xl text-xs font-bold text-adaptive-main flex items-center gap-2 shadow-lg border border-slate-200/50 dark:border-slate-800 bg-white/5 backdrop-blur-md">
                     <a href="{{ route('locale.switch', $currentLocale === 'km' ? 'en' : 'km') }}"
-                        class="flex items-center gap-1.5 cursor-pointer" title="Switch Language / ប្តូរភាសា">
-                        <span class="text-sm">{{ $currentLocale === 'km' ? '🇰🇭' : '🇺🇸' }}</span>
+                        class="flex items-center gap-2 cursor-pointer group"
+                        title="Switch Language / ប្តូរភាសា">
+
+                        {{-- Globe Icon --}}
+                        <svg class="w-4 h-4 text-adaptive-muted group-hover:text-brand-green transition-colors duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
+
+                        {{-- Flag Emoji --}}
+                        <span class="text-sm leading-none">{{ $currentLocale === 'km' ? '🇰🇭' : '🇺🇸' }}</span>
+
+                        {{-- Language Pills --}}
                         <div class="flex items-center gap-1">
-                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold transition {{ $currentLocale === 'km' ? 'bg-brand-green text-white font-extrabold shadow-sm' : 'text-adaptive-muted' }}">ខ្មែរ</span>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold transition {{ $currentLocale === 'km' ? 'bg-brand-green text-white font-extrabold shadow-sm' : 'text-adaptive-muted' }}">
+                                ខ្មែរ
+                            </span>
                             <span class="text-adaptive-muted text-[10px]">/</span>
-                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold transition {{ $currentLocale === 'en' ? 'bg-brand-orange text-white font-extrabold shadow-sm' : 'text-adaptive-muted' }}">EN</span>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold transition {{ $currentLocale === 'en' ? 'bg-brand-orange text-white font-extrabold shadow-sm' : 'text-adaptive-muted' }}">
+                                EN
+                            </span>
                         </div>
+
+                        <!-- {{-- Switch/Refresh Indicator Icon --}}
+                        <svg class="w-3 h-3 text-adaptive-muted opacity-60 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                        </svg> -->
                     </a>
                 </div>
             </div>
@@ -78,7 +97,7 @@
         ['href' => route('business'), 'label' => __('app.nav.business'), 'icon' => 'fa-briefcase', 'color' => 'text-brand-green'],
         ['href' => route('kpi'), 'label' => __('app.nav.kpi'), 'icon' => 'fa-chart-line', 'color' => 'text-brand-green'],
         ['href' => route('about'), 'label' => __('app.nav.about'), 'icon' => 'fa-building', 'color' => 'text-brand-green'],
-        ['href' => route('team'), 'label' => __('app.nav.team'), 'icon' => 'fa-users', 'color' => 'text-brand-green'],
+        ['href' => route('support'), 'label' => __('app.nav.team'), 'icon' => 'fa-users', 'color' => 'text-brand-green'],
         ['href' => route('portal'), 'label' => __('app.nav.portal'), 'icon' => 'fa-headset', 'color' => 'text-brand-orange'],
         ];
         @endphp

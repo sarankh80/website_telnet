@@ -11,9 +11,9 @@ use Illuminate\Http\RedirectResponse;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function support()
     {
-        return view('pages.contact.index');
+        return view('pages.support');
     }
 
     public function store(ContactMessageRequest $request): RedirectResponse

@@ -62,6 +62,12 @@
     "images"=>asset('storage/home/partner/Neakreach.jpg'),
     ],
     [
+    "id"=>11,
+    "name"=>"Fourmi & Partner",
+    "industry_types"=>"Finacail & Commercial",
+    "images"=>asset('storage/home/partner/fourmi.jpg'),
+    ],
+    [
     "id"=>12,
     "name"=>"TAI SENG",
     "industry_types"=>"Fashion & Apparel",
@@ -83,13 +89,7 @@
     "id"=>15,
     "name"=>"Union commercial bank plc",
     "industry_types"=>"Finacail & Commercial",
-    "images"=>asset('storage/home/partner/Union commercial bank plc.png'),
-    ],
-    [
-    "id"=>16,
-    "name"=>"Unknow",
-    "industry_types"=>"Electronics & Technology",
-    "images"=>asset('storage/home/partner/Unknow.png'),
+    "images"=>asset('storage/home/partner/UCB.png'),
     ],
     [
     "id"=>17,
@@ -117,17 +117,17 @@
         <div class="animate-marquee gap-6">
 
             <!-- FIRST SET OF ITEMS -->
-            <div class="flex gap-6 items-start partner-track">
+            <div class="flex gap-2 items-start partner-track">
                 @foreach($partner as $p)
-                <a href="#collab-{{$p['id']}}" class="flex-none w-80 p-2 rounded-2xl bg-white backdrop-blur-md border border-gray-200 hover:border-[#8FC74A]/60 hover:scale-95 transition-all duration-300 group shadow-lg">
+                <a href="#collab-{{$p['id']}}" class="flex-none w-40 p-2 hover:border-[#8FC74A]/60 hover:scale-95 transition-all duration-300 group">
                     <div class="flex items-start gap-4">
-                        <div class="w-24 h-24 rounded-xl  flex items-center justify-center overflow-hidden border border-gray-200 group-hover:scale-95 transition duration-300">
-                            <img src="{{$p['images']}}" alt="{{$p['images']}}" class="w-22 h-22 object-contain" />
+                        <div class="w-24 h-24 rounded-3xl  flex items-center justify-center overflow-hidden  group-hover:scale-95 transition duration-300">
+                            <img src="{{$p['images']}}" alt="{{$p['images']}}" class="w-22 h-22 p-1 object-cover" />
                         </div>
-                        <div>
+                        <!-- <div>
                             <h4 class="text-lg font-bold text-[#8FC74A]  uppercase transition-colors">{{$p['name']}}</h4>
-                            <!-- <p class="text-xs text-[#F79633]">{{$p['industry_types']}}</p> -->
-                        </div>
+                            <p class="text-xs text-[#F79633]">{{$p['industry_types']}}</p>
+                        </div> -->
                     </div>
                 </a>
                 @endforeach

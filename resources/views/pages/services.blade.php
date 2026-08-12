@@ -287,26 +287,23 @@ $images = [
             <div class="fixed left-0 right-0 top-[120px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
                 <div class="max-w-7xl mx-auto flex max-h-[500px] min-h-[300px]">
                     {{-- Sidebar --}}
-                    <aside class="w-1/5 bg-slate-50 border-r border-[#8fc74a] p-3 flex flex-col gap-1">
-                        @foreach($st['types'] as $type)
-                        <button type="button"
-                            onclick="showType(`{{ $type['name'] }}`)"
-                            class="type-nav text-left px-3 py-1.5 rounded-lg text-sm sm:text-base font-medium
-                text-gray-700 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] transition">
-                            {{ $type['name'] }}
-                        </button>
-                        @endforeach
+                    <aside class="w-2/6 bg-slate-50 border-r border-[#8fc74a] p-3 flex flex-col gap-1">
+                        <p
+                            class="type-nav text-left px-3 py-1.5 rounded-lg text-xs text-justify sm:text-sm 
+                            text-gray-700 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] transition">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, reiciendis! Atque ratione, perferendis vel sequi obcaecati aperiam aut amet est maxime rerum! Ipsa nam temporibus eius asperiores, fuga incidunt culpa!
+                        </p>
                     </aside>
 
                     {{-- Services --}}
-                    <main class="w-4/5 p-3 sm:p-4 bg-white overflow-y-auto">
+                    <main class="w-3/6 p-3 sm:p-4 bg-white overflow-y-auto">
                         @foreach($st['types'] as $type)
                         <div id="type-{{$type['name']}}"
                             class="type-content hidden">
 
                             <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
 
-                                @foreach($type['services'] as $service)
+                                <!-- @foreach($type['services'] as $service)
                                 <a href="#" class="group/card block">
                                     <div class="relative w-full rounded-2xl bg-[#8fc74a] p-1 shadow-lg transition duration-300 group-hover/card:-translate-y-1">
                                         <div class="relative rounded-xl bg-white flex flex-col items-center overflow-visible">
@@ -335,13 +332,22 @@ $images = [
                                         </div>
                                     </div>
                                 </a>
-                                @endforeach
+                                @endforeach -->
 
                             </div>
                         </div>
                         @endforeach
                     </main>
-
+                    <aside class="w-1/6 bg-slate-50 border-l border-[#8fc74a] p-3 flex flex-col gap-1">
+                        @foreach($st['types'] as $type)
+                        <button type="button"
+                            onclick="showType(`{{ $type['name'] }}`)"
+                            class="type-nav text-left px-3 py-1.5 rounded-lg text-sm sm:text-base font-medium
+                                   text-gray-700 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] transition">
+                            {{ $type['name'] }}
+                        </button>
+                        @endforeach
+                    </aside>
                 </div>
             </div>
         </div>

@@ -35,16 +35,20 @@
 <section class="relative overflow-hidden pt-8 pb-12 lg:pb-16 section-bg-primary">
     <!-- Outer Card with Fixed Desktop Height -->
     <div class="backdrop-blur-md bg-[#8fc74a]/5 max-w-8xl mx-8 px-4 sm:px-6 lg:px-8 relative z-10  py-8 rounded-lg lg:h-[700px]">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center h-full ">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start h-full ">
             <!-- LEFT COLUMN: Text Description -->
             <div class="lg:col-span-4 space-y-6 text-left flex flex-col">
-                <div class="space-y-4">
-                    <h1 class="text-4xl font-bold text-[#F79633]">{{__('app.hero.slogan')}}</h1>
+                <div class="space-y-4 i">
+                    <h1 class="text-4xl text-center font-bold text-[#8FC74A]">{{__('app.hero.slogan')}}</h1>
+                    <h1 class="text-4xl text-center font-bold text-[#8FC74A]">{{__('app.hero.slogan_1')}}</h1>
                     <p class="text-[#444] text-base sm:text-md leading-relaxed text-justify">
                         {{ __('app.hero.desc') }}
                     </p>
                     <p class="text-[#444] text-base sm:text-md leading-relaxed text-justify">
                         {{ __('app.hero.desc1') }}
+                    </p>
+                    <p class="text-[#444] text-base sm:text-md leading-relaxed text-justify">
+                        {{ __('app.hero.desc2') }}
                     </p>
                 </div>
             </div>
@@ -1436,8 +1440,8 @@ return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
     </section>
     <section id="support" class="relative overflow-hidden m-4 sm:m-6 md:m-8 p-4 sm:p-6 md:p-8 py-10 sm:py-12 md:py-14 rounded-xl bg-[#8fc74a]/5">
         <div class="mx-auto max-w-7xl backdrop-blur-md">
-            <div class="grid gap-6 sm:gap-8 lg:grid-cols-2">
-                <div class="space-y-4 sm:space-y-5">
+            <div class="grid gap-6 sm:gap-8 lg:grid-cols-1">
+                <!-- <div class="space-y-4 sm:space-y-5">
                     <div class="group rounded-2xl border border-slate-200 bg-white p-4 sm:p-6
                             shadow-sm transition duration-300
                             hover:-translate-y-1 hover:shadow-lg">
@@ -1616,7 +1620,7 @@ return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
                         </div>
                     </div>
 
-                </div>
+                </div> -->
 
 
                 {{-- =====================================================
