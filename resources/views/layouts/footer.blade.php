@@ -11,7 +11,7 @@ $f_copy_km = Setting::get('copyright_km','© ២០២៦ TELNET CO., LTD. រ�
 $f_copy_en = Setting::get('copyright_en','© 2026 TELNET CO., LTD. All Rights Reserved.');
 $phone_main = "097 513 5135";
 $phone_noc = "0975135135";
-$email_main = Setting::get('email_main', 'info@telnet.com.kh');
+$email_main = "noc@telnet.com.kh"??Setting::get('email_main', 'noc@telnet.com.kh');
 $website = Setting::get('website', 'www.telnet.com.kh');
 $fb_url = Setting::get('facebook_url','');
 $tg_url = Setting::get('telegram_url','');
@@ -23,7 +23,7 @@ $latlong="11.54732899907136,104.9089653152003";
 <!-- Standard Keyframe snippet (Put in your main <style> tag or CSS file) -->
 <footer class="bg-[#8fc74a]  py-6 text-white text-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-4">
 
             {{-- Brand + Tagline --}}
 
@@ -47,47 +47,47 @@ $latlong="11.54732899907136,104.9089653152003";
             {{-- Contact --}}
             <div class="space-y-1">
                 <h4 class="text-md font-bold text-white mb-3">{{ __('app.footer.contact') }}</h4>
-                <!-- <p><i class="fa-solid fa-phone text-white mr-1.5"></i>
-        <a href="tel:{{ preg_replace('/\s+/','',$phone_main) }}" class="hover:text-white transition">{{ $phone_main }}</a>
-    </p> -->
-                <p><i class="fa-solid fa-headset text-white mr-1.5"></i>
-                    NOC 24/7: <a href="tel:{{ preg_replace('/\s+/','',$phone_noc) }}" class="hover:text-white transition">{{ $phone_noc }}</a>
+                <p><i class="fa-solid fa-phone text-white mr-1.5"></i>
+                    {{__('app.footer.hotline')}} <a href="tel:{{ preg_replace('/\s+/','',$phone_noc) }}" class="hover:text-white transition">{{ $phone_noc }}</a>
                 </p>
                 <p><i class="fa-solid fa-envelope text-white mr-1.5"></i>
-                    <a href="mailto:{{ $email_main }}" class="hover:text-white transition text-white">{{ $email_main }}</a>
+                    {{__('app.footer.noc')}}<a href="mailto:{{ $email_main }}" class="hover:text-white transition text-white">{{ $email_main }}</a>
                 </p>
-
+            </div>
+            <div class="space-y-1">
+                <h4 class="text-base font-bold text-white mb-3">{{ __('app.footer.connect') }}</h4>
                 <!-- Social Media Icons (Row View) -->
-                <div class="flex items-center gap-3 pt-2">
-                    <a href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="Facebook">
+                <div class="flex items-center gap-1 pt-2">
+                    <a target="_blank" target="_blank" href="{{$facebookLink??'https://www.facebook.com/telnet.isp.com.kh'}}" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="Facebook">
                         <i class="fa-brands fa-facebook !text-3xl"></i>
                     </a>
-                    <a href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="Instagram">
+                    <a target="_blank" href="" class="text-white hover:scale-105 hover:opacity-80 transition" aria-label="Instagram">
                         <i class="fa-brands fa-instagram !text-3xl"></i>
                     </a>
-                    <a href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="LinkedIn">
-                        <i class="fa-brands fa-linkedin !text-3xl"></i>
-                    </a>
-                    <a href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="TikTok">
+                    <a target="_blank" href="{{$tiktokLink??'https://www.tiktok.com/@telnet_isp'}}" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="TikTok">
                         <i class="fa-brands fa-tiktok !text-3xl"></i>
                     </a>
-                    <a href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="X (Twitter)">
-                        <i class="fa-brands fa-x-twitter !text-3xl"></i>
+                    <a target="_blank" href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="Telegram">
+                        <i class="fa-brands fa-telegram !text-3xl"></i>
+                    </a>
+                    <a target="_blank" href="" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin !text-3xl"></i>
                     </a>
                 </div>
             </div>
             <div class="space-y-2">
                 <h4 class="text-md font-bold text-white mb-3">{{ __('app.footer.address') }}</h4>
-                <p>{{ __('app.footer.address_text') }}</p>
+                <p class="">{{ __('app.footer.address_text') }}</p>
+                <div class="w-24 h-24 ">
+                    <iframe
+                        src="https://maps.google.com/maps?q={{$latlong}}&output=embed"
+                        style="width:100%;height:100%;border:0;"
+                        loading="lazy"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
-            <!-- <div style="width:100%;height:100%;">
-                <iframe
-                    src="https://maps.google.com/maps?q={{$latlong}}&output=embed"
-                    style="width:100%;height:100%;border:0;"
-                    loading="lazy"
-                    allowfullscreen>
-                </iframe>
-            </div> -->
+
         </div>
 
         <div class="border-t border-white-800 pt-6 text-center text-white-500">

@@ -297,46 +297,21 @@ $images = [
 
                     {{-- Services --}}
                     <main class="w-3/6 p-3 sm:p-4 bg-white overflow-y-auto">
-                        @foreach($st['types'] as $type)
-                        <div id="type-{{$type['name']}}"
-                            class="type-content hidden">
+                        <div id="#"
+                            class="w-full  h-full  md:h-full relative overflow-hidden flex-shrink-0">
+                            <div class="slide absolute inset-0 transition-opacity duration-1000">
 
-                            <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-
-                                <!-- @foreach($type['services'] as $service)
-                                <a href="#" class="group/card block">
-                                    <div class="relative w-full rounded-2xl bg-[#8fc74a] p-1 shadow-lg transition duration-300 group-hover/card:-translate-y-1">
-                                        <div class="relative rounded-xl bg-white flex flex-col items-center overflow-visible">
-                                            <div class="relative -mt-1 px-4 py-1 rounded-b-xl bg-[#F79633] text-white text-center shadow-md z-20">
-                                                <span class="text-sm font-semibold whitespace-nowrap">
-                                                    {{ $service['name'] ?? '' }}
-                                                </span>
-                                            </div>
-                                            <div class="flex flex-col items-center justify-center py-3">
-                                                <span class="text-4xl sm:text-6xl font-black text-[#8fc74a] leading-none">
-                                                    {{ $service['bandwidth'] ?? '' }}
-                                                </span>
-                                                <span class="text-sm font-medium text-[#8fc74a] mt-1">
-                                                    Mbps
-                                                </span>
-                                            </div>
-                                            <div class="mb-3 px-4 py-1.5 rounded-lg bg-[#8fc74a] text-white shadow-sm">
-                                                <span class="text-base font-semibold">
-                                                    {{ $service['price_month'] ?? '0' }}
-                                                </span>
-                                                <span class="text-xs opacity-90">
-                                                    {{ $service['unit'] ?? 'USD/mo' }}
-                                                </span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </a>
-                                @endforeach -->
-
+                                <!-- Background with Dynamic Zoom Class Container -->
+                                <div class="w-full h-full overflow-hidden">
+                                    <img
+                                        src="{{asset('storage/home/services/service1.png')}}"
+                                        class="w-full h-full object-cover  wallpaper-infinite">
+                                </div>
                             </div>
+                            <button id="prevSlide" class="absolute left-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-12 h-12 rounded-full z-20">❮</button>
+                            <button id="nextSlide" class="absolute right-5 top-1/2 -translate-y-1/2 bg-[white]/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-12 h-12 rounded-full z-20">❯</button>
+                            <div id="dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
                         </div>
-                        @endforeach
                     </main>
                     <aside class="w-1/6 bg-slate-50 border-l border-[#8fc74a] p-3 flex flex-col gap-1">
                         @foreach($st['types'] as $type)

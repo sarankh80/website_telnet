@@ -1,4 +1,4 @@
-<section class="w-full pb-12 text-white relative">
+<section class="w-full pb-0 text-white relative">
     @php
     $partner=[
     [
@@ -75,7 +75,7 @@
     ],
     [
     "id"=>13,
-    "name"=>"TKSD",
+    "name"=>"Takisada",
     "industry_types"=>"Fashion & Apparel",
     "images"=>asset('storage/home/partner/TKSD.jpg'),
     ],
@@ -89,13 +89,25 @@
     "id"=>15,
     "name"=>"Union commercial bank plc",
     "industry_types"=>"Finacail & Commercial",
-    "images"=>asset('storage/home/partner/UCB.png'),
+    "images"=>asset('storage/home/partner/Union commercial bank plc.png'),
+    ],
+    [
+    "id"=>15,
+    "name"=>"SRVC Logistic",
+    "industry_types"=>"Finacail & Commercial",
+    "images"=>asset('storage/home/partner/SRVC.jpg'),
     ],
     [
     "id"=>17,
     "name"=>"Zodo",
     "industry_types"=>"Fashion & Apparel",
     "images"=>asset('storage/home/partner/Zodo.png'),
+    ],
+    [
+    "id"=>18,
+    "name"=>"More",
+    "industry_types"=>"Fashion & Apparel",
+    "images"=>asset('storage/home/partner/More.png'),
     ],
     ];
 
@@ -105,9 +117,9 @@
     <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#F79633]/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <!-- Section Title -->
-    <div class="relative z-10 max-w-7xl mx-auto px-4 mb-8 text-center sm:text-left">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 mb-4 text-center sm:text-left">
         <!-- <h3 class="text-xs text-center font-semibold tracking-widest uppercase text-[#F79633]">{{__('app.partner.slogan')}}</h3> -->
-        <h2 class="text-2xl text-center sm:text-4xl font-bold text-[#8FC74A] mt-1">{{__('app.partner.title')}}</h2>
+        <h2 class="text-2xl text-center sm:text-4xl font-bold text-[#8FC74A]">{{__('app.partner.title')}}</h2>
     </div>
 
     <!-- Full Viewport Width Outer Container (Infinite Width) -->
@@ -121,8 +133,8 @@
                 @foreach($partner as $p)
                 <a href="#collab-{{$p['id']}}" class="flex-none w-40 p-2 hover:border-[#8FC74A]/60 hover:scale-95 transition-all duration-300 group">
                     <div class="flex items-start gap-4">
-                        <div class="w-24 h-24 rounded-3xl  flex items-center justify-center overflow-hidden  group-hover:scale-95 transition duration-300">
-                            <img src="{{$p['images']}}" alt="{{$p['images']}}" class="w-22 h-22 p-1 object-cover" />
+                        <div class="w-30 h-30 rounded-3xl  flex items-center justify-center overflow-hidden  group-hover:scale-105 transition duration-300">
+                            <img src="{{$p['images']}}" alt="{{$p['images']}}" class="w-full h-full p-1 object-contain" />
                         </div>
                         <!-- <div>
                             <h4 class="text-lg font-bold text-[#8FC74A]  uppercase transition-colors">{{$p['name']}}</h4>
