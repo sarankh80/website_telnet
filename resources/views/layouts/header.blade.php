@@ -50,10 +50,11 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                         </svg>
                     </button>
-                    <div class="absolute right-0 top-full pt-1 w-36 hidden group-hover:block transition-all duration-200 z-50">
-                        <div class="bg-white dark:bg-white900 rounded-lg shadow-lg border-gray-200 border  py-1 text-xs">
+                    <div class="w-full md:w-36 md:absolute md:right-0 md:top-full md:pt-1 md:hidden md:group-hover:block transition-all duration-200 z-50">
+                        <div class="bg-white dark:bg-white900 rounded-lg shadow-sm md:shadow-lg border-gray-200 border py-1 text-xs">
+
                             <a href="{{ route('locale.switch', 'km') }}"
-                                class="flex items-center justify-between px-3 py-2 hover:bg-white50 dark:hover:bg-white800 transition-colors {{ $currentLocale === 'km' ? 'font-bold text-[#444] bg-white50/50' : 'text-[#444]' }}">
+                                class="flex items-center justify-between px-3 py-2.5 md:py-2 hover:bg-white50 dark:hover:bg-white800 transition-colors {{ $currentLocale === 'km' ? 'font-bold text-[#444] bg-white50/50' : 'text-[#444]' }}">
                                 <span class="flex items-center gap-2">
                                     <span>Cambodia (KH)</span>
                                 </span>
@@ -63,8 +64,9 @@
                                 </svg>
                                 @endif
                             </a>
+
                             <a href="{{ route('locale.switch', 'en') }}"
-                                class="flex items-center justify-between px-3 py-2 hover:bg-white50 dark:hover:bg-white800 transition-colors {{ $currentLocale === 'en' ? 'font-bold text-[#444] bg-white50/50' : 'text-[#444]' }}">
+                                class="flex items-center justify-between px-3 py-2.5 md:py-2 hover:bg-white50 dark:hover:bg-white800 transition-colors {{ $currentLocale === 'en' ? 'font-bold text-[#444] bg-white50/50' : 'text-[#444]' }}">
                                 <span class="flex items-center gap-2">
                                     <span>English (EN)</span>
                                 </span>

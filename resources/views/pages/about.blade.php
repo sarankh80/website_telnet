@@ -36,7 +36,7 @@ $community=asset('storage/home/about/coreValue/communityDevelop.png');
                 </div>
             </div>
             <div class="absolute inset-0 p-6 sm:p-12 md:py-16 md:px-16 flex flex-col justify-left items-start">
-                <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#8fc74a] mb-4 md:mb-8">
+                <h1 class="text-2xl sm:text-4xl uppercase md:text-5xl font-extrabold text-[#8fc74a] mb-4 md:mb-8">
                     {{ __('app.about.company_profile') }}
                 </h1>
                 <div class="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 space-y-4">
@@ -65,15 +65,15 @@ $community=asset('storage/home/about/coreValue/communityDevelop.png');
                 </div>
             </div>
             <div class="absolute inset-0 p-6 sm:p-12 md:py-16 md:px-40 flex flex-col items-start justify-left">
-                <div class="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 ml-auto text-left">
-                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#8fc74a] mb-4 md:mb-8">
+                <div class="w-full sm:w-2/3 md:w-1/2 lg:w-2/4 ml-auto text-left">
+                    <h1 class="text-2xl uppercase sm:text-3xl md:text-4xl font-extrabold text-[#8fc74a] mb-4 md:mb-8">
                         {{ __('app.about.company_strategy') }}
                     </h1>
-                    <div>
-                        <p class="text-[#444] text-justify text-base sm:text-md leading-relaxed mb-2">
+                    <div class="space-y-4">
+                        <p class="text-[#444] text-justify text-base sm:text-md leading-relaxed">
                             {{ __('app.about.strategy_overview') }}
                         </p>
-                        <p class="text-[#444] text-justify text-base sm:text-md leading-relaxed mb-2">
+                        <p class="text-[#444] text-justify text-base sm:text-md leading-relaxed">
                             {{ __('app.about.strategy_overview_1') }}
                         </p>
                     </div>
@@ -82,23 +82,149 @@ $community=asset('storage/home/about/coreValue/communityDevelop.png');
         </div>
     </div>
 
-    <!-- MAIN BODY CONTENT -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 max-w-8xl mx-auto items-start px-4 sm:px-6 lg:px-8">
-        <div class="my-6 lg:col-span-2">
-            <h3 class="text-2xl text-center sm:text-3xl md:text-4xl text-[#8fc74a] font-bold">{{ __('app.about.vision_title') }}</h3>
-        </div>
+    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- SECTION 1: VISION -->
-        <div class="lg:col-span-2 max-w-4xl mx-auto items-start flex flex-col md:flex-row gap-6 md:gap-12 w-full">
-            <div class="shrink-0 w-24 h-24 sm:w-48 sm:h-48 md:w-72 md:h-72 rounded-2xl flex items-center justify-center md:-mt-8">
-                <img src="{{ $vision }}" alt="Vision" class="w-full h-full object-contain ">
+        <div class="flex flex-col md:flex-row items-start gap-6 md:gap-12 w-full my-6">
+
+            <!-- Left: Header + Text Description -->
+            <div class="flex-1 min-w-0 text-left">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl text-[#8fc74a] font-bold mb-4">
+                    {{ __('app.about.vision_title') }}
+                </h3>
+                <p class="text-[#444] text-sm sm:text-lg leading-relaxed">
+                    {{ __('app.about.vision_desc') }}
+                </p>
             </div>
-            <div class="flex-1 min-w-0 mb-4 md:mb-8 text-center md:text-left">
-                <p class="text-[#444] text-left sm:text-justify text-sm sm:text-lg leading-[1.5] mb-2">{{ __('app.about.vision_desc') }}</p>
+
+            <!-- Right: Vision Image -->
+            <div class="shrink-0 w-24 h-24 sm:w-48 sm:h-48 md:w-72 md:h-72 rounded-2xl flex items-start justify-center self-start md:self-start">
+                <img src="{{ $vision }}" alt="Vision" class="w-full h-full object-contain">
             </div>
+
         </div>
     </div>
+    <!-- SECTION 1: Mission -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 max-w-8xl mx-auto items-start px-4 sm:px-6 lg:px-8">
+        <div class="my-6 lg:col-span-2">
+            <h3 class="text-2xl text-center sm:text-3xl md:text-4xl text-[#8fc74a] font-bold">{{ __('app.about.mission_title') }}</h3>
+        </div>
+    </div>
+
+    <div class="w-full lg:grid-cols-6 items-center mx-auto rounded-lg overflow-hidden flex flex-col gap-6 md:gap-0">
+        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 max-w-7xl">
+
+            <!-- High speed -->
+            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start md:border-r border-[#8fc74a]">
+                <div class="flex items-start gap-4 w-full pb-3 mb-3">
+                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
+                        <img src="{{ asset('storage/home/about/mission/highspeed.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
+                        {{ __('app.about.mission_highspeed') }}
+                    </strong>
+                </div>
+                <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div>
+                <p class="text-[#666] text-sm text-left text-justify">
+                    {{ __('app.about.mission_highspeed_desc') }}
+                </p>
+            </div>
+
+            <!-- Scalable Card -->
+            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start">
+                <div class="flex items-start gap-4 w-full pb-3 mb-3">
+                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
+                        <img src="{{ asset('storage/home/about/mission/scalable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
+                        {{ __('app.about.mission_scalable') }}
+                    </strong>
+                </div>
+                <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div>
+                <p class="text-[#666] text-sm text-left text-justify">
+                    {{ __('app.about.mission_scalable_desc') }}
+                </p>
+            </div>
+
+            <!-- Hot Service Card -->
+            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start border-t md:border-t-0 md:border-l border-[#8fc74a]">
+                <div class="flex items-start gap-4 w-full pb-3 mb-3">
+                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
+                        <img src="{{ asset('storage/home/about/mission/hotService.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
+                        {{ __('app.about.mission_hotservice') }}
+                    </strong>
+                </div>
+                <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div>
+                <p class="text-[#666] text-sm text-left text-justify">
+                    {{ __('app.about.mission_hotservice_desc') }}
+                </p>
+            </div>
+
+        </div>
+        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 max-w-7xl">
+
+            <!-- High speed -->
+            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start md:border-r border-[#8fc74a]">
+                <div class="flex items-start gap-4 w-full pb-3 mb-3">
+                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
+                        <img src="{{ asset('storage/home/about/mission/quality.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
+                        {{ __('app.about.mission_quality') }}
+                    </strong>
+                </div>
+                <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div>
+                <p class="text-[#666] text-sm text-left text-justify">
+                    {{ __('app.about.mission_quality_desc') }}
+                </p>
+            </div>
+
+            <!-- Scalable Card -->
+            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start">
+                <div class="flex items-start gap-4 w-full pb-3 mb-3">
+                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
+                        <img src="{{ asset('storage/home/about/mission/reliable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
+                        {{ __('app.about.mission_reliable') }}
+                    </strong>
+                </div>
+                <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div>
+                <p class="text-[#666] text-sm text-left text-justify">
+                    {{ __('app.about.mission_reliable_desc') }}
+                </p>
+            </div>
+
+            <!-- Hot Service Card -->
+            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start border-t md:border-t-0 md:border-l border-[#8fc74a]">
+                <div class="flex items-start gap-4 w-full pb-3 mb-3 ">
+                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
+                        <img src="{{ asset('storage/home/about/mission/contribute.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
+                        {{ __('app.about.mission_contribute') }}
+                    </strong>
+
+                </div>
+                <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div>
+                <p class="text-[#666] text-sm text-left text-justify">
+                    {{ __('app.about.mission_contribute_desc') }}
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
     <!-- SECTION 2: MISSION GRID -->
-    <div class="w-full lg:grid-cols-2 max-w-7xl mx-auto rounded-lg overflow-hidden flex flex-col gap-6 md:gap-0">
+    <div class="w-full lg:grid-cols-2 max-w-7xl mx-auto rounded-lg overflow-hidden flex flex-col gap-6 md:gap-0 hidden">
         <!-- Row 1 -->
         <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0">
             <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]"></div>
