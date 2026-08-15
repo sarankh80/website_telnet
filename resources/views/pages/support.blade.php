@@ -5,25 +5,21 @@
 
 @php $isKm = app()->getLocale() === 'km'; @endphp
 
-<section class="relative h-[80vh] min-h-[500px] py-16 sm:py-20 border-none overflow-hidden bg-slate-950 flex items-center">
+<section class="relative h-[85vh] min-h-[500px] py-16 sm:py-20 border-none overflow-hidden bg-slate-100 flex items-end">
     {{-- Background Image --}}
-    <img src="{{ asset('storage/home/support/customerService.png') }}"
+    <img src="{{ asset('storage/home/support/custoemrService1.jfif') }}"
         alt="Support & Leadership Background"
-        class="absolute inset-0 w-full h-full object-cover object-center">
-    {{-- Content Area - Pushed to the Most Right --}}
+        class="absolute inset-0 w-full h-full object-cover blur-xs">
+    <div class="absolute inset-0 bg-black/20"></div>
     <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
         <div class="flex flex-col items-end text-right max-w-3xl ml-auto">
-
-            {{-- Hero Headings --}}
             <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-1 tracking-tight leading-none drop-shadow-md">
                 {{ __('app.support.title_hero') }}
             </h1>
             <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black text-[#8fc74a] mb-4 tracking-tight leading-none drop-shadow-md">
                 {{ __('app.support.title_hero_1') }}
             </h1>
-
-            {{-- Subtitle --}}
-            <p class="text-gray-200 text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed drop-shadow">
+            <p class="text-white text-sm sm:text-base lg:text-lg max-w-lg text-justify drop-shadow">
                 {{ __('app.support.commit') }}
             </p>
 
@@ -260,25 +256,119 @@
 
 {{-- NEW SECTION 1: 24/7 NETWORK OPERATING CENTER CTA BANNER --}}
 <section class="mx-4 sm:mx-6 md:mx-8 mb-12">
-    <div class="mx-auto max-w-7xl rounded-2xl bg-white p-6 sm:p-10 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="absolute -right-10 -bottom-10 h-64 w-64 rounded-full bg-[#8fc74a]/20 blur-3xl"></div>
-        <div class="relative z-10 max-w-xl">
+    <div class="mx-auto max-w-7xl shadow-2xl border border-slate-200 rounded-2xl p-6 sm:p-10  relative overflow-hidden flex flex-col lg:flex-row items-start justify-between gap-8 ">
+
+        <!-- Left Content Section -->
+        <div class="relative z-10 max-w-xl text-slate-800 lg:sticky lg:top-6">
             <span class="inline-flex items-center gap-2 rounded-full bg-[#8fc74a]/10 px-3 py-1 text-xs font-semibold text-[#8fc74a]">
-                <span class="h-2 w-2 rounded-full bg-[#8fc74a] animate-ping"></span>
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8fc74a] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-[#8fc74a]"></span>
+                </span>
                 {{ $isKm ? 'ការឃ្លាំមើលបណ្តាញផ្ទាល់ ២៤/៧' : 'Live 24/7/365 Monitoring' }}
             </span>
-            <h2 class="mt-4 text-2xl sm:text-3xl font-extrabold tracking-tight">
+
+            <h2 class="mt-4 text-[#8fc74a] text-2xl sm:text-3xl font-extrabold tracking-tight">
                 {{ $isKm ? 'ត្រូវការជំនួយបន្ទាន់សម្រាប់បណ្តាញអុីនធឺណិត?' : 'Need Immediate Emergency Support?' }}
             </h2>
-            <p class="mt-2 text-sm text-slate-400">
+
+            <p class="mt-2 text-sm text-slate-500 leading-relaxed">
                 {{ $isKm ? 'ក្រុមបច្ចេកទេស NOC របស់យើងកែប្រែនិងដោះស្រាយបញ្ហាបណ្តាញរបស់អ្នកជានិច្ចដោយមិនគិតថ្ងៃឈប់សម្រាក' : 'Our dedicated NOC engineers are active around the clock ensuring system availability and rapid response.' }}
             </p>
+
+            <!-- Direct Contact Info Badges -->
+            <div class="mt-6 pt-6 border-t border-slate-100 space-y-3">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    {{ $isKm ? 'ឬទាក់ទងមកកាន់ hotline ផ្ទាល់' : 'Or Call Hotlines Directly:' }}
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="tel:+855975135135" class="inline-flex items-center gap-2 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] px-3 py-2 rounded-lg transition">
+                        <i class="fa-solid fa-phone text-[#F79633]"></i>
+                        <span>Kh / En: +855 97 513 5135</span>
+                    </a>
+                    <a href="tel:+855XXXXXXXX" class="inline-flex items-center gap-2 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] px-3 py-2 rounded-lg transition">
+                        <i class="fa-solid fa-language text-[#8fc74a]"></i>
+                        <span>中文: +855 XX XXX XXX</span>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="relative z-10 shrink-0 w-full md:w-auto">
-            <a href="tel:+855975135135" class="flex items-center justify-center gap-3 rounded-xl bg-[#F79633] px-6 py-4 font-bold text-white shadow-lg transition duration-300 hover:bg-[#F79633]/90 hover:scale-[1.02]">
-                <i class="fa-solid fa-headset text-lg"></i>
-                <span>{{ $isKm ? 'ទាក់ទង NOC ផ្ទាល់' : 'Hotline: +855 97 513 5135' }}</span>
-            </a>
+
+        <!-- Right Emergency Support Form Section -->
+        <div class="relative z-10 w-full lg:max-w-md bg-slate-50 p-6 sm:p-8 rounded-xl border border-slate-200/80 shadow-inner">
+            <h3 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                <i class="fa-solid fa-headset text-[#F79633]"></i>
+                {{ $isKm ? 'ស្នើសុំជំនួយបច្ចេកទេស' : 'Submit Support Request' }}
+            </h3>
+            <p class="text-xs text-slate-500 mb-5">
+                {{ $isKm ? 'សូមបំពេញព័ត៌មានខាងក្រោម ក្រុមការងារយើងនឹងទាក់ទងទៅវិញភ្លាមៗ' : 'Fill in your details below and our NOC team will respond shortly.' }}
+            </p>
+
+            <form action="" method="POST" class="space-y-4">
+                @csrf
+
+                <!-- Customer ID -->
+                <div>
+                    <label for="customer_id" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                        {{ $isKm ? 'អត្តលេខអតិថិជន (Customer ID)' : 'Customer ID' }} <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative">
+                        <input type="text" id="customer_id" name="customer_id" required
+                            placeholder="e.g., CID-10293"
+                            class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-800 placeholder-slate-400 focus:border-[#8fc74a] focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 transition">
+                    </div>
+                </div>
+
+                <!-- Contact Phone & Preferred Language -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label for="phone" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            {{ $isKm ? 'លេខទូរស័ព្ទ' : 'Phone Number' }} <span class="text-red-500">*</span>
+                        </label>
+                        <input type="tel" id="phone" name="phone" required
+                            placeholder="097 XXX XXXX"
+                            class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-800 placeholder-slate-400 focus:border-[#8fc74a] focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 transition">
+                    </div>
+                    <div>
+                        <label for="language" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            {{ $isKm ? 'ភាសា' : 'Preferred Lang' }}
+                        </label>
+                        <select id="language" name="language"
+                            class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-800 focus:border-[#8fc74a] focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 transition">
+                            <option value="km">{{ $isKm ? 'ភាសាខ្មែរ' : 'Khmer' }}</option>
+                            <option value="en" selected>{{ $isKm ? 'អង់គ្លេស' : 'English' }}</option>
+                            <option value="zh">{{ $isKm ? 'ចិន (中文)' : 'Chinese (中文)' }}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Service Address Info -->
+                <div>
+                    <label for="address" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                        {{ $isKm ? 'អាសយដ្ឋានសេវាកម្ម' : 'Service Address / Location' }} <span class="text-red-500">*</span>
+                    </label>
+                    <textarea id="address" name="address" rows="2" required
+                        placeholder="{{ $isKm ? 'ផ្ទះលេខ, ផ្លូវ, ខណ្ឌ/ស្រុក, រាជធានី/ខេត្ត...' : 'House No, St No, Sangkat, Khan, City...' }}"
+                        class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-800 placeholder-slate-400 focus:border-[#8fc74a] focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 transition resize-none"></textarea>
+                </div>
+
+                <!-- Issue Description (Optional) -->
+                <div>
+                    <label for="issue" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                        {{ $isKm ? 'រាយរាប់ពីបញ្ហា (ជម្រើស)' : 'Issue Details (Optional)' }}
+                    </label>
+                    <input type="text" id="issue" name="issue"
+                        placeholder="{{ $isKm ? 'ឧទាហរណ៍៖ អ៊ីនធឺណិតដើរយឺត ឬដាច់...' : 'e.g., Fiber light red, No internet access' }}"
+                        class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-800 placeholder-slate-400 focus:border-[#8fc74a] focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 transition">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="w-full flex items-center justify-center gap-2 rounded-xl bg-[#F79633] px-6 py-3 font-bold text-white shadow-md transition duration-300 hover:bg-[#F79633]/90 hover:scale-[1.01] active:scale-[0.99] mt-2">
+                    <i class="fa-solid fa-paper-plane text-sm"></i>
+                    <span>{{ $isKm ? 'ផ្ញើសំណើបន្ទាន់' : 'Request Emergency Help' }}</span>
+                </button>
+            </form>
         </div>
     </div>
 </section>
@@ -354,38 +444,182 @@
         </div>
 
         <div x-data="{ active: null }" class="space-y-4">
-            {{-- FAQ Item 1 --}}
-            <div class="rounded-xl border border-slate-100 bg-white overflow-hidden">
-                <button @click="active = (active === 1 ? null : 1)" class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-white">
-                    <span>{{ $isKm ? 'តើរយៈពេលឆ្លើយតបសំបុត្រគាំទ្រ (Support Ticket) យូរប៉ុណ្ណា?' : 'How fast does technical support respond to submitted tickets?' }}</span>
-                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" :class="{ 'rotate-180': active === 1 }"></i>
+
+            {{-- Customer Service --}}
+            <div class="rounded-xl border border-[#8fc74a]/20 bg-white overflow-hidden">
+                <button @click="active = (active === 1 ? null : 1)"
+                    class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-[#8fc74a]/5">
+                    <span>
+                        {{ $isKm
+                    ? 'តើខ្ញុំអាចទាក់ទងសេវាបម្រើអតិថិជនតាមរបៀបណា?'
+                    : 'How can I contact customer service?' }}
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"
+                        :class="{ 'rotate-180': active === 1 }"></i>
                 </button>
-                <div x-show="active === 1" x-collapse class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
-                    {{ $isKm ? 'ក្រុមការងារ NOC នឹងពិនិត្យនិងឆ្លើយតបសំបុត្ររបស់អ្នកក្នុងរយៈពេល ១៥ ទៅ ៣០ នាទីបន្ទាប់ពីទទួលបានសំណើ។' : 'Our Network Operations Center monitors tickets 24/7 and acknowledges tickets within 15 to 30 minutes.' }}
+
+                <div x-show="active === 1" x-collapse
+                    class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
+                    {{ $isKm
+                ? 'អ្នកអាចទាក់ទងក្រុមការងារបម្រើអតិថិជនតាមរយៈទូរស័ព្ទ អ៊ីមែល ឬបណ្តាញទំនាក់ទំនងផ្លូវការរបស់យើង។ ក្រុមការងាររបស់យើងរីករាយក្នុងការជួយដោះស្រាយសំណួរ និងសំណើរបស់អ្នក។'
+                : 'You can contact our customer service team by phone, email, or our official communication channels. Our team is ready to assist with your questions, requests, and service needs.' }}
                 </div>
             </div>
 
-            {{-- FAQ Item 2 --}}
-            <div class="rounded-xl border border-slate-100 bg-white overflow-hidden">
-                <button @click="active = (active === 2 ? null : 2)" class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-white">
-                    <span>{{ $isKm ? 'តើខ្ញុំអាចទាក់ទងផ្នែកលក់នៅចុងសប្តាហ៍បានទេ?' : 'Can I reach out for sales support over the weekend?' }}</span>
-                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" :class="{ 'rotate-180': active === 2 }"></i>
+
+            {{-- QoS --}}
+            <div class="rounded-xl border border-[#8fc74a]/20 bg-white overflow-hidden">
+                <button @click="active = (active === 2 ? null : 2)"
+                    class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-[#8fc74a]/5">
+                    <span>
+                        {{ $isKm
+                    ? 'តើគុណភាពសេវា (QoS) របស់អ៊ីនធឺណិតត្រូវបានធានាយ៉ាងដូចម្តេច?'
+                    : 'How is Internet Quality of Service (QoS) maintained?' }}
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"
+                        :class="{ 'rotate-180': active === 2 }"></i>
                 </button>
-                <div x-show="active === 2" x-collapse class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
-                    {{ $isKm ? 'សំណើផ្នែកលក់ដែលផ្ញើនៅចុងសប្តាហ៍នឹងត្រូវពិនិត្យនៅថ្ងៃច័ន្ទបន្ទាប់។ សម្រាប់ករណីបន្ទាន់ សូមទាក់ទងលេខទូរស័ព្ទផ្ទាល់។' : 'Sales inquiries submitted during weekends will be processed on the next business day. Emergency setups can be requested via phone call.' }}
+
+                <div x-show="active === 2" x-collapse
+                    class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
+                    {{ $isKm
+                ? 'យើងប្រើប្រាស់បណ្តាញដែលមានស្ថេរភាព ប្រព័ន្ធត្រួតពិនិត្យបណ្តាញ និងការគ្រប់គ្រង Traffic ដើម្បីរក្សាគុណភាព និងប្រសិទ្ធភាពសេវាអ៊ីនធឺណិត។'
+                : 'We maintain service quality through reliable network infrastructure, continuous network monitoring, traffic management, and proactive performance optimization.' }}
                 </div>
             </div>
 
-            {{-- FAQ Item 3 --}}
-            <div class="rounded-xl border border-slate-100 bg-white overflow-hidden">
-                <button @click="active = (active === 3 ? null : 3)" class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-white">
-                    <span>{{ $isKm ? 'តើខ្ញុំទទួលបានការជូនដំណឹងតាមរបៀបណា?' : 'How will I receive updates on my issue?' }}</span>
-                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" :class="{ 'rotate-180': active === 3 }"></i>
+
+            {{-- Payment & Billing --}}
+            <div class="rounded-xl border border-[#8fc74a]/20 bg-white overflow-hidden">
+                <button @click="active = (active === 3 ? null : 3)"
+                    class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-[#8fc74a]/5">
+                    <span>
+                        {{ $isKm
+                    ? 'តើខ្ញុំអាចបង់ថ្លៃសេវាអ៊ីនធឺណិតតាមវិធីណាខ្លះ?'
+                    : 'What payment methods are available?' }}
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"
+                        :class="{ 'rotate-180': active === 3 }"></i>
                 </button>
-                <div x-show="active === 3" x-collapse class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
-                    {{ $isKm ? 'ប្រព័ន្ធនឹងផ្ញើបច្ចុប្បន្នភាពតាមរយៈអ៊ីមែល ឬលេខទូរស័ព្ទដែលអ្នកបានបញ្ចូលក្នុងទម្រង់ខាងលើ។' : 'Updates are directly dispatched to the email and mobile contact details submitted in the contact form.' }}
+
+                <div x-show="active === 3" x-collapse
+                    class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
+                    {{ $isKm
+                ? 'អតិថិជនអាចបង់ថ្លៃសេវាតាមវិធីដែលក្រុមហ៊ុនបានផ្តល់ជូន ដូចជា ធនាគារ Mobile Banking និងបណ្តាញទូទាត់ដែលបានគាំទ្រ។ សូមរក្សាទុកបង្កាន់ដៃសម្រាប់ជាឯកសារយោង។'
+                : 'Customers can pay their Internet service fees through our supported payment channels, including banking, mobile banking, and other available payment methods. Please keep your payment receipt for reference.' }}
                 </div>
             </div>
+
+
+            {{-- Payment Term --}}
+            <div class="rounded-xl border border-[#8fc74a]/20 bg-white overflow-hidden">
+                <button @click="active = (active === 4 ? null : 4)"
+                    class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-[#8fc74a]/5">
+                    <span>
+                        {{ $isKm
+                    ? 'តើលក្ខខណ្ឌបង់ថ្លៃសេវាប្រចាំខែមានអ្វីខ្លះ?'
+                    : 'What are the monthly payment terms?' }}
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"
+                        :class="{ 'rotate-180': active === 4 }"></i>
+                </button>
+
+                <div x-show="active === 4" x-collapse
+                    class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
+                    {{ $isKm
+                ? 'អតិថិជនត្រូវបង់ថ្លៃសេវាតាមកាលកំណត់ដែលបានបញ្ជាក់ក្នុងវិក្កយបត្រ ឬកិច្ចសន្យាសេវា។ ការយឺតយ៉ាវក្នុងការទូទាត់អាចបណ្តាលឱ្យសេវាត្រូវបានផ្អាកតាមលក្ខខណ្ឌរបស់ក្រុមហ៊ុន។'
+                : 'Customers are required to pay their monthly service fees according to the due date stated on the invoice or service agreement. Late payment may result in service suspension according to the applicable terms.' }}
+                </div>
+            </div>
+
+
+            {{-- Technical Support --}}
+            <div class="rounded-xl border border-[#8fc74a]/20 bg-white overflow-hidden">
+                <button @click="active = (active === 5 ? null : 5)"
+                    class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-[#8fc74a]/5">
+                    <span>
+                        {{ $isKm
+                    ? 'តើខ្ញុំគួរធ្វើអ្វី ប្រសិនបើអ៊ីនធឺណិតមានបញ្ហា?'
+                    : 'What should I do if my Internet connection has a problem?' }}
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"
+                        :class="{ 'rotate-180': active === 5 }"></i>
+                </button>
+
+                <div x-show="active === 5" x-collapse
+                    class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
+                    {{ $isKm
+                ? 'សូមពិនិត្យ Router/ONT និងការតភ្ជាប់ខ្សែជាមុនសិន។ ប្រសិនបើបញ្ហានៅតែបន្ត សូមទាក់ទងក្រុមការងារ Technical Support ដើម្បីធ្វើការត្រួតពិនិត្យ និងដោះស្រាយបញ្ហា។'
+                : 'Please check your router/ONT and cable connections first. If the issue continues, contact our Technical Support team so we can investigate and resolve the problem.' }}
+                </div>
+            </div>
+
+
+            {{-- Technical Solution --}}
+            <div class="rounded-xl border border-[#8fc74a]/20 bg-white overflow-hidden">
+                <button @click="active = (active === 6 ? null : 6)"
+                    class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-[#8fc74a]/5">
+                    <span>
+                        {{ $isKm
+                    ? 'តើក្រុមហ៊ុនមានដំណោះស្រាយបណ្តាញសម្រាប់អាជីវកម្មដែរឬទេ?'
+                    : 'Do you provide network solutions for businesses?' }}
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"
+                        :class="{ 'rotate-180': active === 6 }"></i>
+                </button>
+
+                <div x-show="active === 6" x-collapse
+                    class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
+                    {{ $isKm
+                ? 'មាន។ យើងផ្តល់ជូនដំណោះស្រាយបណ្តាញសម្រាប់អាជីវកម្ម និងសហគ្រាស ដូចជា Dedicated Internet, Business Internet, Network Connectivity, Data Services និងដំណោះស្រាយ ICT តាមតម្រូវការ។'
+                : 'Yes. We provide business and enterprise network solutions including Dedicated Internet, Business Internet, Network Connectivity, Data Services, and customized ICT solutions based on your requirements.' }}
+                </div>
+            </div>
+
+
+            {{-- Installation --}}
+            <div class="rounded-xl border border-[#8fc74a]/20 bg-white overflow-hidden">
+                <button @click="active = (active === 7 ? null : 7)"
+                    class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-[#8fc74a]/5">
+                    <span>
+                        {{ $isKm
+                    ? 'តើការដំឡើងសេវាអ៊ីនធឺណិតត្រូវចំណាយពេលប៉ុន្មាន?'
+                    : 'How long does Internet installation take?' }}
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"
+                        :class="{ 'rotate-180': active === 7 }"></i>
+                </button>
+
+                <div x-show="active === 7" x-collapse
+                    class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
+                    {{ $isKm
+                ? 'រយៈពេលដំឡើងអាស្រ័យលើទីតាំង ស្ថានភាពបណ្តាញ និងប្រភេទសេវាដែលបានជ្រើសរើស។ ក្រុមការងាររបស់យើងនឹងបញ្ជាក់កាលវិភាគដំឡើងបន្ទាប់ពីការត្រួតពិនិត្យលទ្ធភាពសេវា។'
+                : 'Installation time depends on your location, network availability, and selected service package. Our team will confirm the installation schedule after checking service feasibility.' }}
+                </div>
+            </div>
+
+
+            {{-- General / Others --}}
+            <div class="rounded-xl border border-[#8fc74a]/20 bg-white overflow-hidden">
+                <button @click="active = (active === 8 ? null : 8)"
+                    class="flex w-full items-center justify-between p-4 text-left font-semibold text-slate-800 transition hover:bg-[#8fc74a]/5">
+                    <span>
+                        {{ $isKm
+                    ? 'តើខ្ញុំអាចប្តូរ ឬ Upgrade កញ្ចប់សេវារបស់ខ្ញុំបានទេ?'
+                    : 'Can I change or upgrade my Internet package?' }}
+                    </span>
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"
+                        :class="{ 'rotate-180': active === 8 }"></i>
+                </button>
+
+                <div x-show="active === 8" x-collapse
+                    class="p-4 pt-0 text-sm text-slate-600 leading-relaxed">
+                    {{ $isKm
+                ? 'បាន។ អ្នកអាចស្នើសុំប្តូរ ឬ Upgrade កញ្ចប់សេវារបស់អ្នកទៅកាន់កញ្ចប់ដែលសមស្របជាងមុន។ សូមទាក់ទងក្រុមការងារបម្រើអតិថិជន ដើម្បីពិនិត្យលក្ខខណ្ឌ និងលទ្ធភាពសេវា។'
+                : 'Yes. You can request to change or upgrade your current package to better match your needs. Contact our customer service team to check the available packages and applicable terms.' }}
+                </div>
+            </div>
+
         </div>
     </div>
 </section>

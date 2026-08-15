@@ -10,6 +10,15 @@ $serviceTypes = [
 "name_km" => "FTTH-Package",
 "images" => asset('storage/home/serviceTypes/home.png'),
 "icon" => "fa fa-home",
+"desc" => "FTTH-Home Package Internet Services designed to deliver services for home users, small households and residential customers.
+Features:
+- Fiber Optic Technology 100% connectivity.
+- High-speed broadband connectivity
+- Stable and low-latency network performance
+- Affordable monthly subscription
+- PPPoE Connection stable access via Point-to-Point
+- Suitable for browsing, streaming, and online learning
+- Flexible bandwidth packages",
 "types" => [
 [
 "name" => "Home-Package",
@@ -111,8 +120,15 @@ $serviceTypes = [
 "id" => 2,
 "name" => "FTTB-Package",
 "name_km" => "FTTB-Package",
-"images" => asset('storage/home/serviceTypes/biz.png'),
+"images" => asset('storage/home/serviceTypes/business.png'),
 "icon" => "fa fa-industry",
+"desc"=> "Business Packages are designed to deliver high speed with fiber optic communication for:
+Business, Special Economic Zone and other Cooperate Business.
+- Fiber Optic 100% connectivity.
+- Fiber Optic Underground & Overhead.
+- Stable and Refable speed.
+- Added value high speed Youtube, Facebook.
+- Symmetric upload/download speeds.",
 "types" => [
 [
 "name" => "Biz",
@@ -168,8 +184,15 @@ $serviceTypes = [
 "id" => 3,
 "name" => "FTTX-Packages",
 "name_km" => "FTTX-Packages",
-"images" => asset('storage/home/serviceTypes/dia.png'),
+"images" => asset('storage/home/serviceTypes/enterprise.png'),
 "icon" => "fa fa-globe",
+"desc"=> "Dedicated Internet Packages are designed to deliver high speed with fiber optic communication for:
+Enterprises Business, Special Economic Zone, Large Corporations and Casino Online to fulfill ultimate speed, reliability and security.
+- Fiber Optic 100% connectivity.
+- Fiber Optic Underground & Overhead.
+- Stable and Refable speed.
+- Added value high speed Youtube, Facebook.
+- Symmetric upload/download speeds.",
 "types" => [
 [
 "name" => "DIA",
@@ -290,8 +313,8 @@ $images = [
                     <aside class="w-2/6 bg-slate-50 border-r border-[#8fc74a] p-3 flex flex-col gap-1">
                         <p
                             class="type-nav text-left px-3 py-1.5 rounded-lg text-xs text-justify sm:text-sm 
-                            text-gray-700 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] transition">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, reiciendis! Atque ratione, perferendis vel sequi obcaecati aperiam aut amet est maxime rerum! Ipsa nam temporibus eius asperiores, fuga incidunt culpa!
+                            text-gray-700 hover:bg-[#8fc74a]/10 transition">
+                            {!! nl2br(e($st['desc'])) !!}
                         </p>
                     </aside>
 
@@ -304,12 +327,12 @@ $images = [
                                 <!-- Background with Dynamic Zoom Class Container -->
                                 <div class="w-full h-full overflow-hidden">
                                     <img
-                                        src="{{asset('storage/home/services/service1.png')}}"
+                                        src="{{$st['images']}}"
                                         class="w-full h-full object-cover  wallpaper-infinite">
                                 </div>
                             </div>
-                            <button id="prevSlide" class="absolute left-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-12 h-12 rounded-full z-20">❮</button>
-                            <button id="nextSlide" class="absolute right-5 top-1/2 -translate-y-1/2 bg-[white]/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-12 h-12 rounded-full z-20">❯</button>
+                            <button id="prevSlide" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-6 h-6 rounded-full z-20">❮</button>
+                            <button id="nextSlide" class="absolute right-2 top-1/2 -translate-y-1/2 bg-[white]/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-6 h-6 rounded-full z-20">❯</button>
                             <div id="dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
                         </div>
                     </main>
