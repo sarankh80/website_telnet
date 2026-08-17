@@ -21,8 +21,8 @@ class HomeController extends Controller
         $branches    = Branch::active()->get();
         $teamMembers = Team::active()->get();
         $ceo         = Team::active()->ceo()->first();
-        $servicesSlugs=Slugs::all();
-        return view('pages.home.index', compact('currentLocale','services', 'branches', 'teamMembers', 'ceo', 'servicesSlugs'));
+        $servicesSlugs = Slugs::all();
+        return view('pages.home.index', compact('currentLocale', 'services', 'branches', 'teamMembers', 'ceo', 'servicesSlugs'));
     }
 
     public function about()
@@ -68,7 +68,108 @@ class HomeController extends Controller
     public function career()
     {
         $careers = Career::active()->get();
-        return view('pages.career', compact('careers'));
+        $branches = Branch::select(['id', 'name_en'])
+            ->get()
+            ->map(
+                fn($value) =>
+                "<option value='$value->id' "  . ">$value->name_en</option>"
+            )
+            ->implode('');
+        $posts = [
+            [
+                "id" => 1,
+                "name" => "Technical Support Engineering",
+            ],
+            [
+                "id" => 2,
+                "name" => "Network Infrastructure Engineering",
+            ],
+            [
+                "id" => 3,
+                "name" => "Network Operation Center",
+            ],
+            [
+                "id" => 4,
+                "name" => "Human Resource Officer",
+            ],
+            [
+                "id" => 5,
+                "name" => "Senior Accountant Officer",
+            ],
+        ];
+        $jobType = [
+            [
+                "id" => 1,
+                "name" => "Full-Time"
+            ],
+            [
+                "id" => 2,
+                "name" => "Part-Time"
+            ],
+            [
+                "id" => 3,
+                "name" => "Contract"
+            ],
+            [
+                "id" => 4,
+                "name" => "Temporary"
+            ],
+            [
+                "id" => 5,
+                "name" => "Casual"
+            ],
+            [
+                "id" => 6,
+                "name" => "Seasonal"
+            ],
+            [
+                "id" => 7,
+                "name" => "Internship"
+            ],
+            [
+                "id" => 8,
+                "name" => "Freelance"
+            ],
+            [
+                "id" => 9,
+                "name" => "Consultant"
+            ],
+            [
+                "id" => 10,
+                "name" => "Apprentice"
+            ],
+        ];
+        $shiftType = [
+            [
+                "id" => 1,
+                "name" => "[NS] Night Shift"
+            ],
+            [
+                "id" => 2,
+                "name" => "[DS] Day Shift"
+            ],
+            [
+                "id" => 3,
+                "name" => "[MS] Morning Half Shift"
+            ],
+            [
+                "id" => 4,
+                "name" => "[AS] Afternoon Shift"
+            ],
+            [
+                "id" => 5,
+                "name" => "[LS] Late Shift"
+            ],
+            [
+                "id" => 6,
+                "name" => "[ES] Everning Shift"
+            ],
+        ];
+        $positions = "";
+        foreach ($posts as $post) {
+            $positions .= "<option value='" . $post["id"] . "'>" . $post["name"] . "</option>";
+        }
+        return view('pages.career', compact('careers', 'branches', 'positions',"jobType","shiftType"));
     }
 
     public function careerApply(Request $request)
@@ -91,22 +192,22 @@ class HomeController extends Controller
         return back()->with('apply_success', true);
     }
     // app/Http/Controllers/CoverageController.php
-public function data(Request $request)
-{
-    $search = $request->input('query'); // explicit accessor, not $request->query
+    public function data(Request $request)
+    {
+        $search = $request->input('query'); // explicit accessor, not $request->query
 
-    $zones = Branch::query()
-        ->when($search, function ($q) use ($search) {
-            $q->where('name_en', 'like', "%{$search}%")
-              ->orWhere('name_km', 'like', "%{$search}%");
-        })
-        ->get(['id', 'name_en', 'name_km', 'lat', 'lng', 'status']);
+        $zones = Branch::query()
+            ->when($search, function ($q) use ($search) {
+                $q->where('name_en', 'like', "%{$search}%")
+                    ->orWhere('name_km', 'like', "%{$search}%");
+            })
+            ->get(['id', 'name_en', 'name_km', 'lat', 'lng', 'status']);
 
-    return response()->json([
-        'data'  => $zones,
-        'total' => Branch::count(),
-    ]);
-}
+        return response()->json([
+            'data'  => $zones,
+            'total' => Branch::count(),
+        ]);
+    }
 
     public function check(Request $request)
     {

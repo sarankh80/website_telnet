@@ -17,15 +17,19 @@
     <link rel="icon" type="image/x-icon" href="{{asset('storage/favicon.ico')}}">
     <script src="{{asset('js/filament/tailwind.js')}}"></script>
     <script defer src="{{asset('js/filament/additional/coreProduct.pagination.js')}}"></script>
+    <script defer src="{{asset('js/filament/additional/lazyAnimation.js')}}"></script>
     <script defer src="{{asset('js/filament/additional/progressBar.js')}}"></script>
     <script defer src="{{asset('js/filament/additional/slideShow.js')}}"></script>
+    <script defer src="{{asset('js/filament/select2.min.js')}}"></script>
     <link href="{{asset('css/filament/custome.css')}}" rel="stylesheet">
+    <link href="{{asset('css/filament/select2.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/filament/map/ActivityMap.css')}}" rel="stylesheet">
     <link href="{{asset('css/filament/map/ActivityMapMarker.css')}}" rel="stylesheet">
     <script src="{{asset('js/filament/map/leaflet.js')}}"></script>
     <script src="{{asset('js/filament/map/leaflet.markercluster.js')}}"></script>
     <script src="{{asset('js/filament/map/loadingMap.js')}}"></script>
     <script src="{{asset('js/filament/jquery.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <style>
         .gradient-brand {
             background: linear-gradient(to right, #8FC74A, #F79633);
@@ -117,6 +121,9 @@
     @stack('scripts')
 </body>
 <script>
+    $(function() {
+        $('.select2').select2();
+    });
     const track = document.querySelector('.partner-track');
     if (track) {
 

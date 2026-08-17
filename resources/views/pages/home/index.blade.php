@@ -304,7 +304,7 @@
         {{__('app.coverage.available')}}
     </h2>
 </div>
-<section id="coverage" class="py-16 px-4 sm:px-6 lg:px-8 font-sans text-slate-100 ">
+<section id="coverage" class="py-8 px-4 sm:px-6 lg:px-8 font-sans text-slate-100 ">
     <div class="max-w-7xl mx-auto space-y-8 border-b border-[#8fc74a]/20 pb-10" x-data="coverageChecker()" x-init="init()">
         <!-- Search & Control Card -->
         <div class="bg-white backdrop-blur-md border border-orange-300 rounded-xl p-4 sm:p-6 shadow-md">
@@ -591,15 +591,10 @@
                     collapsed: true,
                     position: 'topright'
                 }).addTo(this.map);
-
-
                 /* LOAD DATA */
                 this.loadMarkers();
             },
-
-
             /* ================= DESTROY MAP ================= */
-
             destroyMap() {
                 if (this.map) this.map.remove();
                 this.map = null;
@@ -1186,7 +1181,7 @@ $reviewInfos = [
 usort($reviewInfos, function ($a, $b) {
 return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
     @endphp
-    <section class="max-w-8xl mx-auto space-y-5 sm:space-y-2 px-4 sm:px-6 md:px-10 lg:px-24 xl:px-40 2xl:px-56">
+    <section class="max-w-8xl mx-auto space-y-5 sm:space-y-2 px-4 sm:px-6 md:px-10 lg:px-24 xl:px-40 2xl:px-56 hidden">
 
         <!-- 1. Header & Aggregate Metrics -->
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 border-b border-[#8fc74a]/20 sm:pb-10">
@@ -1406,7 +1401,7 @@ return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
 
         </div>
     </section>
-    <section class="space-y-12 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
+    <section class="space-y-8 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
             <h2 class="text-2xl mt-4 sm:text-4xl font-extrabold  text-transparent bg-clip-text gradient-brand">
                 {{ __('app.support.title') }}
@@ -1600,10 +1595,6 @@ return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
 
                 </div> -->
 
-
-                {{-- =====================================================
-                 RIGHT : CONTACT FORM
-            ====================================================== --}}
                 <div class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-6 md:p-8
                         shadow-xl">
 

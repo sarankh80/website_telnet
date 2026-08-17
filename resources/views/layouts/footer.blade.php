@@ -61,7 +61,7 @@ $latlong="11.54732899907136,104.9089653152003";
                     <a target="_blank" target="_blank" href="{{$facebookLink??'https://www.facebook.com/telnet.isp.com.kh'}}" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="Facebook">
                         <i class="fa-brands fa-facebook !text-3xl"></i>
                     </a>
-                    <a target="_blank" href="" class="text-white hover:scale-105 hover:opacity-80 transition" aria-label="Instagram">
+                    <a target="_blank" href="{{$igLink??'https://www.instagram.com/telnet_isp'}}" class="text-white hover:scale-105 hover:opacity-80 transition" aria-label="Instagram">
                         <i class="fa-brands fa-instagram !text-3xl"></i>
                     </a>
                     <a target="_blank" href="{{$tiktokLink??'https://www.tiktok.com/@telnet_isp'}}" class=" text-white hover:scale-105 hover:opacity-80 transition" aria-label="TikTok">

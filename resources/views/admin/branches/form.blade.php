@@ -44,6 +44,16 @@
 
             <div class="grid md:grid-cols-2 gap-5">
                 <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">City (English)</label>
+                    <input type="text" name="city" value="{{ old('city', $branch->city ?? '') }}" class="admin-input">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">City (Khmer)</label>
+                    <input type="text" name="city_km" value="{{ old('city_km', $branch->city_km ?? '') }}" class="admin-input">
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-5">
+                <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1.5">Province (English)</label>
                     <input type="text" name="province_en" value="{{ old('province_en', $branch->province_en ?? '') }}" class="admin-input">
                 </div>
@@ -75,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-5">
+            <div class="grid md:grid-cols-2 gap-5">
                 <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1.5">Type *</label>
                     <select name="type" class="admin-input">
@@ -86,6 +96,22 @@
                 <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1.5">Sort Order</label>
                     <input type="number" name="sort_order" value="{{ old('sort_order', $branch->sort_order ?? 0) }}" class="admin-input">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Up Time</label>
+                    <input type="text" name="uptime" value="{{ old('uptime', $branch->uptime ?? 0) }}" class="admin-input">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Average Letancy</label>
+                    <input type="text" name="avg_letency" value="{{ old('avg_letency', $branch->avg_letency ?? 0) }}" class="admin-input">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Country</label>
+                    <input type="text" name="country" value="{{ old('country', $branch->country ?? 0) }}" class="admin-input">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Country(Khmer)</label>
+                    <input type="text" name="country_km" value="{{ old('country_km', $branch->country_km ?? 0) }}" class="admin-input">
                 </div>
                 <div class="flex items-end pb-1">
                     <label class="flex items-center gap-2.5 cursor-pointer">

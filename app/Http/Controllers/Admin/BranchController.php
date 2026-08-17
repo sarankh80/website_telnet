@@ -27,6 +27,8 @@ class BranchController extends Controller
             'type'        => ['required', 'in:hq,branch'],
             'address_km'  => ['nullable', 'string', 'max:300'],
             'address_en'  => ['nullable', 'string', 'max:300'],
+            'city' => ['nullable', 'string', 'max:100'],
+            'city_km' => ['nullable', 'string', 'max:100'],
             'province_km' => ['nullable', 'string', 'max:100'],
             'province_en' => ['nullable', 'string', 'max:100'],
             'phone'       => ['nullable', 'string', 'max:50'],
@@ -35,7 +37,12 @@ class BranchController extends Controller
             'lng'         => ['nullable', 'numeric'],
             'sort_order'  => ['nullable', 'integer'],
             'is_active'   => ['nullable', 'boolean'],
+            'uptime'   => ['required', 'string'],
+            'country'   => ['required', 'string'],
+            'country_km'   => ['required', 'string'],
+            'avg_letency'   => ['required', 'string'],
         ]);
+        $data['status'] = ($request->is_active == 1 ? "Available" : "Unavailable");
         $data['is_active'] = $request->boolean('is_active');
         Branch::create($data);
         return redirect()->route('admin.branches.index')->with('success', 'Branch created.');
@@ -54,6 +61,8 @@ class BranchController extends Controller
             'type'        => ['required', 'in:hq,branch'],
             'address_km'  => ['nullable', 'string', 'max:300'],
             'address_en'  => ['nullable', 'string', 'max:300'],
+            'city_km' => ['nullable', 'string', 'max:100'],
+            'city_en' => ['nullable', 'string', 'max:100'],
             'province_km' => ['nullable', 'string', 'max:100'],
             'province_en' => ['nullable', 'string', 'max:100'],
             'phone'       => ['nullable', 'string', 'max:50'],
@@ -62,7 +71,12 @@ class BranchController extends Controller
             'lng'         => ['nullable', 'numeric'],
             'sort_order'  => ['nullable', 'integer'],
             'is_active'   => ['nullable', 'boolean'],
+            'uptime'   => ['required', 'string'],
+            'country'   => ['required', 'string'],
+            'country_km'   => ['required', 'string'],
+            'avg_letency'   => ['required', 'string'],
         ]);
+        $data['status'] = ($request->is_active == 1 ? "Available" : "Unavailable");
         $data['is_active'] = $request->boolean('is_active');
         $branch->update($data);
         return redirect()->route('admin.branches.index')->with('success', 'Branch updated.');

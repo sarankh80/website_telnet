@@ -3,7 +3,12 @@
 
 @section('content')
 
-@php $isKm = app()->getLocale() === 'km'; @endphp
+@php
+$isKm = app()->getLocale() === 'km';
+$serviceImage=asset("storage/home/support/customerCare.png");
+$nocImage=asset("storage/home/support/nocSupport.png");
+$saleImage=asset("storage/home/support/salesSupport.png");
+@endphp
 
 <section class="relative h-[85vh] min-h-[500px] py-16 sm:py-20 border-none overflow-hidden bg-slate-100 flex items-end">
     {{-- Background Image --}}
@@ -26,14 +31,180 @@
         </div>
     </div>
 </section>
+<section class="mx-4 sm:mx-6 md:mx-8 my-8 bg-[#8fc74a]/5 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-10 mx-auto gap-6 max-w-7xl">
 
+        {{-- SECTION 1: Customer Service + Sales Support stacked, Image 1 spans both rows on the right --}}
+
+        <div data-animate="fade-up" class="md:col-span-6 hover:scale-95 bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <div class="flex items-center gap-3 mb-4">
+                <img src="{{ $serviceImage }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.service') }}">
+                <h1 class="text-3xl font-bold text-[#8fc74a] uppercase">
+                    {{ __('app.support.service') }}
+                </h1>
+            </div>
+            <div class="space-y-5">
+                <div>
+                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max border-b-[2px] border-[#F79633]">
+                        {{ __('app.support.service_slogan1') }}
+                    </h2>
+                    <p class="leading-relaxed text-sm text-gray-600">
+                        {{ __('app.support.service_desc1') }}
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max border-b-[2px] border-[#F79633]">
+                        {{ __('app.support.service_contacts') }}
+                    </h2>
+                    <div class="mt-4 space-y-1 flex flex-col items-center sm:items-start">
+                        <a href="tel:+855975135135"
+                            class="flex items-center gap-2 text-xl font-semibold text-[#F79633] transition hover:text-[#8fc74a]">
+                            <svg class="h-6 w-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                            </svg>
+                            +855 97 513 5135
+                        </a>
+
+                        <a href="mailto:support@telnet.com.kh"
+                            class="flex items-center gap-2 text-xl text-slate-500 transition hover:text-[#8fc74a] break-all">
+                            <svg class="h-6 w-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            support@telnet.com.kh
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-animate="fade-up" class="md:col-span-4 hover:scale-95 md:row-span-2 rounded-lg overflow-hidden min-h-[280px] opacity-0 translate-x-8 transition-all duration-700 ease-out">
+            <img
+                src="{{ asset('storage/home/support/solution.jfif') }}"
+                alt="Customer Service"
+                class="w-full h-full object-cover">
+        </div>
+
+        <div data-animate="fade-up" class="md:col-span-6 hover:scale-95 bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <div class="flex items-center gap-3 mb-4">
+                <img src="{{ $saleImage }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.sale') }}">
+                <h1 class="text-3xl font-bold text-[#8fc74a] uppercase">
+                    {{ __('app.support.sale') }}
+                </h1>
+            </div>
+
+            <div class="space-y-5">
+                <div>
+                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max border-b-[2px] border-[#F79633]">
+                        {{ __('app.support.sale_slogan1') }}
+                    </h2>
+                    <p class="leading-relaxed text-sm text-gray-600">
+                        {{ __('app.support.sale_desc1') }}
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max border-b-[2px] border-[#F79633]">
+                        {{ __('app.support.sale_contact') }}
+                    </h2>
+                    <div class="mt-4 space-y-1 flex flex-col items-center sm:items-start">
+                        <a href="tel:+855975135135"
+                            class="flex items-center gap-2 text-xl font-semibold text-[#F79633] transition hover:text-[#8fc74a]">
+                            <svg class="h-6 w-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                            </svg>
+                            +855 97 513 5135
+                        </a>
+
+                        <a href="mailto:support@telnet.com.kh"
+                            class="flex items-center gap-2 text-xl text-slate-500 transition hover:text-[#8fc74a] break-all">
+                            <svg class="h-6 w-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            noc@telnet.com.kh
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-10 mx-auto gap-6 max-w-7xl mt-6">
+
+        {{-- SECTION 2: Image 2 spans both rows on the left, NOC + extra text stacked on the right --}}
+
+        <div data-animate="fade-left" class="md:col-span-4 md:row-span-2 rounded-lg overflow-hidden min-h-[280px] opacity-0 -translate-x-8 transition-all duration-700 ease-out">
+            <img
+                src="{{ asset('storage/home/support/solution.jfif') }}"
+                alt="NOC Support"
+                class="w-full h-full object-cover">
+        </div>
+
+        <div data-animate="fade-up" class="md:col-span-6 hover:scale-95 bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-700 ease-out">
+            <div class="flex items-center gap-3 mb-4">
+                <img src="{{ $nocImage }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.noc') }}">
+                <h1 class="text-3xl font-bold text-[#8fc74a] uppercase">
+                    {{ __('app.support.noc') }}
+                </h1>
+            </div>
+
+            <div class="space-y-5">
+                <div>
+                    <h2 class="text-xl w-max font-semibold text-[#F79633] mb-2">
+                        {{ __('app.support.noc_slogan2') }}
+                        <div class="w-1/2 h-[2px] bg-[#F79633] mt-1"></div>
+                    </h2>
+
+                    <p class="leading-relaxed text-sm text-gray-600">
+                        {{ __('app.support.noc_desc2') }}
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max border-b-[2px] border-[#F79633]">
+                        {{ __('app.support.noc_contacts') }}
+                    </h2>
+                    <div class="mt-4 space-y-1 flex flex-col items-center sm:items-start">
+                        <a href="tel:+855975135135"
+                            class="flex items-center gap-2 text-xl font-semibold text-[#F79633] transition hover:text-[#8fc74a]">
+                            <svg class="h-6 w-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                            </svg>
+                            +855 97 513 5135
+                        </a>
+
+                        <a href="mailto:support@telnet.com.kh"
+                            class="flex items-center gap-2 text-xl text-slate-500 transition hover:text-[#8fc74a] break-all">
+                            <svg class="h-6 w-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            noc@telnet.com.kh
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-animate="fade-up" class="md:col-span-6  p-6 ">
+            <!-- Header -->
+            <div class="flex items-center gap-3 mb-4">
+                <img src="{{ $extraImage ?? '' }}" class="h-10 w-10 object-cover rounded-md" alt="{{ __('app.support.message') }}">
+                <h2 class="text-2xl font-bold text-[#8fc74a]">
+                    {{ __('app.support.message') }}
+                </h2>
+            </div>
+        </div>
+
+    </div>
+</section>
 {{-- Existing Support Cards & Contact Form --}}
 <section id="support" class="relative overflow-hidden m-4 sm:m-6 md:m-8 p-4 sm:p-6 md:p-8 py-10 sm:py-12 md:py-14 rounded-xl bg-[#8fc74a]/5">
     <div class="mx-auto max-w-7xl backdrop-blur-md">
         <div class="grid gap-6 sm:gap-8 lg:grid-cols-2">
 
             {{-- LEFT COLUMN: SUPPORT CARDS --}}
-            <div class="space-y-4 sm:space-y-5">
+            <div class="space-y-4 sm:space-y-5 hidden">
 
                 {{-- Customer Care Card --}}
                 <div class="group rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
@@ -155,7 +326,7 @@
             </div>
 
             {{-- RIGHT COLUMN: CONTACT FORM --}}
-            <div class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-6 md:p-8 shadow-xl">
+            <div class="rounded-3xl border col-span-2 border-slate-200 bg-white p-5 sm:p-6 md:p-8 shadow-xl">
 
                 <div class="mb-6 sm:mb-8">
                     <h3 class="mt-2 text-xl sm:text-2xl font-bold text-slate-900 md:text-3xl">
@@ -373,7 +544,6 @@
     </div>
 </section>
 
-{{-- NEW SECTION 2: OFFICE LOCATION & WORKING HOURS GRID --}}
 <section class="mx-4 sm:mx-6 md:mx-8 mb-12">
     <div class="mx-auto max-w-7xl">
         <div class="mb-8">

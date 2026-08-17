@@ -90,532 +90,170 @@ $community=asset('storage/home/about/coreValue/communityDevelop.png');
 
         </div>
     </div>
-    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- SECTION 1: VISION -->
-        <div class="flex flex-col md:flex-row items-start gap-6 md:gap-12 w-full my-6">
+    <section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
 
-            <!-- Left: Header + Text Description -->
-            <div class="flex-1 min-w-0 text-left">
-                <h3 class="text-2xl sm:text-3xl md:text-4xl text-[#8fc74a] font-bold mb-4">
+            <!-- Left Column: Header & Text Description -->
+            <div class="w-full md:w-1/2 flex flex-col items-start text-left">
+                <h3 class="text-3xl sm:text-4xl md:text-5xl text-[#8fc74a] font-extrabold tracking-tight mb-6">
                     {{ __('app.about.vision_title') }}
                 </h3>
-                <p class="text-[#444] text-sm sm:text-lg leading-relaxed">
+                <p class="text-gray-600 text-base sm:text-lg leading-relaxed">
                     {{ __('app.about.vision_desc') }}
                 </p>
             </div>
 
-            <!-- Right: Vision Image -->
-            <div class="shrink-0 w-16 h-16 sm:w-48 sm:h-48 md:w-72 md:h-72 rounded-2xl flex items-start justify-center self-start md:self-start">
-                <img src="{{ $vision }}" alt="Vision" class="w-full h-full object-contain">
+            <!-- Right Column: Visual Graphic -->
+            <div class="w-full md:w-1/2 flex justify-center items-center">
+                <div class="relative w-full max-w-md sm:max-w-lg p-1 sm:p-8 bg-gradient-to-br from-slate-50 to-emerald-50/40 flex items-center justify-center transition-all duration-300 hover:scale-105">
+                    <img src="{{ $vision }}" alt="Vision Graphic" class="w-full h-full object-contain drop-shadow-md">
+                </div>
             </div>
 
         </div>
-    </div>
-    <!-- SECTION 1: Mission -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 max-w-8xl mx-auto items-start px-4 sm:px-6 lg:px-8 hidden">
-        <div class="my-6 lg:col-span-2">
-            <h3 class="text-2xl text-center sm:text-3xl md:text-4xl text-[#8fc74a] font-bold">{{ __('app.about.mission_title') }}</h3>
-        </div>
-    </div>
-
-    <div class="w-full lg:grid-cols-6 items-center mx-auto rounded-lg overflow-hidden flex flex-col gap-6 md:gap-0 hidden">
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 max-w-7xl">
-
-            <!-- High speed -->
-            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start relative ">
-                <div class="flex items-start gap-4 w-full pb-3 mb-3">
-                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
-                        <img src="{{ asset('storage/home/about/mission/highspeed.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
-                        {{ __('app.about.mission_highspeed') }}
-                    </strong>
-                </div>
-                <!-- <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div> -->
-                <p class="text-[#666] text-sm text-left text-justify hidden">
-                    {{ __('app.about.mission_highspeed_desc') }}
-                </p>
-            </div>
-
-            <!-- Scalable Card -->
-            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start relative ">
-                <div class="flex items-start gap-4 w-full pb-3 mb-3">
-                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
-                        <img src="{{ asset('storage/home/about/mission/scalable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
-                        {{ __('app.about.mission_scalable') }}
-                    </strong>
-                </div>
-                <!-- <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div> -->
-                <p class="text-[#666] text-sm text-left text-justify hidden">
-                    {{ __('app.about.mission_scalable_desc') }}
-                </p>
-            </div>
-
-            <!-- Hot Service Card -->
-            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start border-t md:border-t-0 relative ">
-                <div class="flex items-start gap-4 w-full pb-3 mb-3">
-                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
-                        <img src="{{ asset('storage/home/about/mission/hotService.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
-                        {{ __('app.about.mission_hotservice') }}
-                    </strong>
-                </div>
-                <!-- <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div> -->
-                <p class="text-[#666] text-sm text-left text-justify hidden">
-                    {{ __('app.about.mission_hotservice_desc') }}
-                </p>
-            </div>
-
-        </div>
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 max-w-7xl">
-
-            <!-- Quality Card -->
-            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start relative">
-                <div class="flex items-start gap-4 w-full pb-3 mb-3">
-                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
-                        <img src="{{ asset('storage/home/about/mission/quality.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
-                        {{ __('app.about.mission_quality') }}
-                    </strong>
-                </div>
-                <!-- <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div> -->
-                <p class="text-[#666] text-sm text-left text-justify hidden">
-                    {{ __('app.about.mission_quality_desc') }}
-                </p>
-            </div>
-
-            <!-- Reliable Card -->
-            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start relative ">
-                <div class="flex items-start gap-4 w-full pb-3 mb-3">
-                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
-                        <img src="{{ asset('storage/home/about/mission/reliable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
-                        {{ __('app.about.mission_reliable') }}
-                    </strong>
-                </div>
-                <!-- <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div> -->
-                <p class="text-[#666] text-sm text-left text-justify hidden">
-                    {{ __('app.about.mission_reliable_desc') }}
-                </p>
-            </div>
-
-            <!-- Contribute Card -->
-            <div class="w-full md:w-1/2 p-4 font-medium flex flex-col items-center justify-start border-t md:border-t-0 relative ">
-                <div class="flex items-start gap-4 w-full pb-3 mb-3">
-                    <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
-                        <img src="{{ asset('storage/home/about/mission/contribute.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <strong class="text-[#8fc74a] font-bold text-base uppercase tracking-wide">
-                        {{ __('app.about.mission_contribute') }}
-                    </strong>
-                </div>
-                <!-- <div class="mx-4 mb-4 h-[1px] w-full border border-[#8fc74a]"></div> -->
-                <p class="text-[#666] text-sm text-left text-justify hidden">
-                    {{ __('app.about.mission_contribute_desc') }}
-                </p>
-            </div>
-
-        </div>
-    </div>
-
-
-    <div class="w-full max-w-7xl mx-auto rounded-lg overflow-hidden flex flex-col gap-6 md:gap-0 relative py-8 hidden">
-
-        <!-- SVG CONNECTOR LINES OVERLAY -->
-        <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
-            <g stroke="#8fc74a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-
-                <!-- 1. Center -> High Speed (Top-Left): "|" then "\" -->
-                <line x1="45%" y1="42%" x2="45%" y2="30%" />
-                <line x1="45%" y1="30%" x2="35.5%" y2="23%" />
-
-                <!-- 2. Center -> Scalable (Top-Right): "|" then "/" -->
-                <line x1="55%" y1="42%" x2="55%" y2="30%" />
-                <line x1="55%" y1="30%" x2="64.5%" y2="23%" />
-
-                <!-- 3. Center -> Hot Service (Middle-Left) -->
-                <line x1="42%" y1="50%" x2="22%" y2="50%" />
-
-                <!-- 4. Center -> Quality (Middle-Right) -->
-                <line x1="58%" y1="50%" x2="78%" y2="50%" />
-
-                <!-- 5. Center -> Reliable (Bottom-Left): "|" then "/" -->
-                <line x1="45%" y1="58%" x2="45%" y2="70%" />
-                <line x1="45%" y1="70%" x2="35.5%" y2="77%" />
-
-                <!-- 6. Center -> Contribute (Bottom-Right): "|" then "\" -->
-                <line x1="55%" y1="58%" x2="55%" y2="70%" />
-                <line x1="55%" y1="70%" x2="64.5%" y2="77%" />
-
-            </g>
-        </svg>
-
-        <!-- Row 1 -->
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10">
-            <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]"></div>
-
-            <!-- High Speed (1) -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
-                    <img src="{{ asset('storage/home/about/mission/highspeed.png') }}" alt="High Speed" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_highspeed') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_highspeed_desc') }}
-                </p>
-            </div>
-
-            <!-- Scalable (2) -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
-                    <img src="{{ asset('storage/home/about/mission/scalable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_scalable') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_scalable_desc') }}
-                </p>
-            </div>
-
-            <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]"></div>
-        </div>
-
-        <!-- Row 2 -->
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10">
-            <!-- Hot Service (3) -->
-            <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
-                    <img src="{{ asset('storage/home/about/mission/hotService.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_hotservice') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_hotservice_desc') }}
-                </p>
-            </div>
-
-            <!-- CENTER IMAGE CONTAINER -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center order-first md:order-none relative z-20">
-                <div class="w-36 h-36 md:w-64 md:h-64 mb-4 flex items-center justify-center rounded-full bg-white relative">
-                    <img src="{{ $mission }}" alt="Mission Center" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] text-2xl md:text-3xl font-bold w-full mb-1 uppercase">
-                    {{ __('app.about.mission_title') }}
-                </strong>
-            </div>
-
-            <!-- Quality (4) -->
-            <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
-                    <img src="{{ asset('storage/home/about/mission/quality.png') }}" alt="Quality" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_quality') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_quality_desc') }}
-                </p>
-            </div>
-        </div>
-
-        <!-- Row 3 -->
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10">
-            <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]"></div>
-
-            <!-- Reliable (5) -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
-                    <img src="{{ asset('storage/home/about/mission/reliable.png') }}" alt="Reliable" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_reliable') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_reliable_desc') }}
-                </p>
-            </div>
-
-            <!-- Contribute (6) -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
-                    <img src="{{ asset('storage/home/about/mission/contribute.png') }}" alt="Contribute" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_contribute') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_contribute_desc') }}
-                </p>
-            </div>
-
-            <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center min-h-[14rem]"></div>
-        </div>
-    </div>
+    </section>
     <div class="w-full max-w-7xl mx-auto rounded-lg overflow-hidden flex flex-col gap-6 md:gap-0 relative py-8 ">
 
         <!-- SVG CONNECTOR LINES OVERLAY -->
         <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
-            <g stroke="#8fc74a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <g stroke="#8fc74a" class="hidden" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
 
-                <!-- Top bar: connects High Speed (left) to Scalable (right) -->
-                <line x1="20%" y1="12%" x2="82%" y2="12%" />
+                <!-- Top bar -->
+                <line x1="28%" y1="12%" x2="72%" y2="12%" />
 
-                <!-- Vertical trunk: from top bar down through center, to bottom bar -->
+                <!-- Vertical trunk -->
                 <line x1="50%" y1="12%" x2="50%" y2="85%" />
 
-                <!-- Middle row: Center -> Hot Service (left) -->
-                <line x1="42%" y1="50%" x2="22%" y2="50%" />
+                <!-- Middle row: Center -> Hot Service -->
+                <line x1="44%" y1="50%" x2="28%" y2="50%" />
 
-                <!-- Middle row: Center -> Quality (right) -->
-                <line x1="58%" y1="50%" x2="78%" y2="50%" />
+                <!-- Middle row: Center -> Quality -->
+                <line x1="56%" y1="50%" x2="72%" y2="50%" />
 
-                <!-- Bottom bar: connects Reliable (left) to Contribute (right) -->
-                <line x1="20%" y1="85%" x2="82%" y2="85%" />
+                <!-- Bottom bar -->
+                <line x1="28%" y1="85%" x2="72%" y2="85%" />
 
             </g>
         </svg>
-
         <!-- Row 1 -->
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10">
+        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10 items-center">
 
-
-            <!-- High Speed (1) -->
-            <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_highspeed') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_highspeed_desc') }}
-                </p>
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
+            <!-- High Speed (1) - [Text - Img] -->
+            <div class="w-full md:w-1/3 p-2 font-medium flex flex-col md:flex-row items-center justify-end gap-3 relative  hover:scale-105 transition-all duration-300 ease-in-out">
+                <div class="text-center md:text-right w-full md:w-auto md:max-w-[550px]">
+                    <strong class="block text-[#8fc74a] font-bold text-base mb-1 uppercase leading-snug [text-wrap:balance]">
+                        {{ __('app.about.mission_highspeed') }}
+                    </strong>
+                    <p class="text-[#666] text-xs leading-relaxed hidden">
+                        {{ __('app.about.mission_highspeed_desc') }}
+                    </p>
+                </div>
+                <div class="w-20 h-20 shrink-0 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
                     <img src="{{ asset('storage/home/about/mission/highspeed.png') }}" alt="High Speed" class="max-w-full max-h-full object-contain">
                 </div>
             </div>
-            <div class="hidden md:flex md:w-2/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]"></div>
-            <!-- Scalable (2) -->
-            <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
 
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_scalable') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_scalable_desc') }}
-                </p>
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
-                    <img src="{{ asset('storage/home/about/mission/scalable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
+            <!-- Center Gap -->
+            <div class="hidden md:flex md:w-1/3 p-2 min-h-[14rem]"></div>
+
+            <!-- Scalable (2) - [Img - Text] -->
+            <div class="w-full md:w-1/3 p-2 font-medium flex flex-col md:flex-row items-center justify-start gap-3 relative  hover:scale-105 transition-all duration-300 ease-in-out">
+                <div class="w-20 h-20 shrink-0 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm ">
+                    <img src="{{ asset('storage/home/about/mission/scalable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain ">
+                </div>
+                <div class="text-center md:text-left w-full md:w-auto md:max-w-[550px]">
+                    <strong class="block text-[#8fc74a] font-bold text-base mb-1 uppercase leading-snug [text-wrap:balance]">
+                        {{ __('app.about.mission_scalable') }}
+                    </strong>
+                    <p class="text-[#666] text-xs leading-relaxed hidden">
+                        {{ __('app.about.mission_scalable_desc') }}
+                    </p>
                 </div>
             </div>
-
 
         </div>
 
         <!-- Row 2 -->
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10">
-            <!-- Hot Service (3) -->
-            <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
+        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10 items-center">
+
+            <!-- Hot Service (3) - [Text - Img] -->
+            <div class="w-full md:w-1/3 p-2 font-medium flex flex-col md:flex-row items-center justify-end gap-3 relative  hover:scale-105 transition-all duration-300 ease-in-out">
+                <div class="text-center md:text-right w-full md:w-auto md:max-w-[550px]">
+                    <strong class="block text-[#8fc74a] font-bold text-base mb-1 uppercase leading-snug [text-wrap:balance]">
+                        {{ __('app.about.mission_hotservice') }}
+                    </strong>
+                    <p class="text-[#666] text-xs leading-relaxed hidden">
+                        {{ __('app.about.mission_hotservice_desc') }}
+                    </p>
+                </div>
+                <div class="w-20 h-20 shrink-0 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
                     <img src="{{ asset('storage/home/about/mission/hotService.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
                 </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_hotservice') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_hotservice_desc') }}
-                </p>
             </div>
 
             <!-- CENTER IMAGE CONTAINER -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center order-first md:order-none relative z-20">
-                <div class="w-36 h-36 md:w-48 md:h-48 mb-4 flex items-center justify-center rounded-full bg-white relative">
+            <div class="w-full md:w-1/3 p-2 text-center font-medium flex flex-col items-center justify-center order-first md:order-none relative z-20  hover:scale-105 transition-all duration-300 ease-in-out">
+                <div class="w-36 h-36 md:w-48 md:h-48 mb-3 flex items-center justify-center rounded-full bg-white relative border border-[#8fc74a]/20 shadow-md">
                     <img src="{{ $mission }}" alt="Mission Center" class="max-w-full max-h-full object-contain">
                 </div>
-                <strong class="block text-[#8fc74a] text-2xl md:text-3xl font-bold w-full mb-1 uppercase">
+                <strong class="block text-[#8fc74a] text-2xl md:text-3xl font-bold w-full uppercase">
                     {{ __('app.about.mission_title') }}
                 </strong>
             </div>
 
-            <!-- Quality (4) -->
-            <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
+            <!-- Quality (4) - [Img - Text] -->
+            <div class="w-full md:w-1/3 p-2 font-medium flex flex-col md:flex-row items-center justify-start gap-3 relative  hover:scale-105 transition-all duration-300 ease-in-out">
+                <div class="w-20 h-20 shrink-0 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
                     <img src="{{ asset('storage/home/about/mission/quality.png') }}" alt="Quality" class="max-w-full max-h-full object-contain">
                 </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_quality') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_quality_desc') }}
-                </p>
+                <div class="text-center md:text-left w-full md:w-auto md:max-w-[550px]">
+                    <strong class="block text-[#8fc74a] font-bold text-base mb-1 uppercase leading-snug [text-wrap:balance]">
+                        {{ __('app.about.mission_quality') }}
+                    </strong>
+                    <p class="text-[#666] text-xs leading-relaxed hidden">
+                        {{ __('app.about.mission_quality_desc') }}
+                    </p>
+                </div>
             </div>
+
         </div>
 
         <!-- Row 3 -->
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10">
+        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10 items-center">
 
-
-            <!-- Reliable (5) -->
-            <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
+            <!-- Reliable (5) - [Text - Img] -->
+            <div class="w-full md:w-1/3 p-2 font-medium flex flex-col md:flex-row items-center justify-end gap-3 relative hover:scale-105 transition-all duration-300 ease-in-out">
+                <div class="text-center md:text-right w-full md:w-auto md:max-w-[550px]">
+                    <strong class="block text-[#8fc74a] font-bold text-base mb-1 uppercase leading-snug [text-wrap:balance]">
+                        {{ __('app.about.mission_reliable') }}
+                    </strong>
+                    <p class="text-[#666] text-xs leading-relaxed hidden">
+                        {{ __('app.about.mission_reliable_desc') }}
+                    </p>
+                </div>
+                <div class="w-20 h-20 shrink-0 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
                     <img src="{{ asset('storage/home/about/mission/reliable.png') }}" alt="Reliable" class="max-w-full max-h-full object-contain">
                 </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_reliable') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_reliable_desc') }}
-                </p>
             </div>
-            <div class="hidden md:flex md:w-2/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]"></div>
-            <!-- Contribute (6) -->
-            <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
+
+            <!-- Center Gap -->
+            <div class="hidden md:flex md:w-1/3 p-2 min-h-[14rem]"></div>
+
+            <!-- Contribute (6) - [Img - Text] -->
+            <div class="w-full md:w-1/3 p-2 font-medium flex flex-col md:flex-row items-center justify-start gap-3 relative  hover:scale-105 transition-all duration-300 ease-in-out">
+                <div class="w-20 h-20 shrink-0 flex items-center justify-center bg-white rounded-full relative z-10 border border-[#8fc74a]/20 shadow-sm">
                     <img src="{{ asset('storage/home/about/mission/contribute.png') }}" alt="Contribute" class="max-w-full max-h-full object-contain">
                 </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_contribute') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_contribute_desc') }}
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="w-full lg:grid-cols-2 max-w-7xl mx-auto rounded-lg overflow-hidden flex flex-col gap-6 md:gap-0 relative hidden">
-
-        <!-- BACKGROUND CONNECTING LINES FOR DESKTOP -->
-        <div class="hidden md:block absolute inset-0 pointer-events-none z-0">
-            <!-- Top-Left Line (Center to High Speed) -->
-            <div class="absolute w-[30%] h-[2px] bg-gradient-to-r from-transparent via-[#8fc74a] to-[#8fc74a] top-[28%] left-[20%] -rotate-12 origin-right"></div>
-
-            <!-- Top-Right Line (Center to Scalable) -->
-            <div class="absolute w-[30%] h-[2px] bg-gradient-to-l from-transparent via-[#8fc74a] to-[#8fc74a] top-[28%] right-[20%] rotate-12 origin-left"></div>
-
-            <!-- Middle-Left Line (Center to Hot Service) -->
-            <div class="absolute w-[22%] h-[2px] bg-[#8fc74a] top-[50%] left-[14%] -translate-y-1/2"></div>
-
-            <!-- Middle-Right Line (Center to Quality) -->
-            <div class="absolute w-[22%] h-[2px] bg-[#8fc74a] top-[50%] right-[14%] -translate-y-1/2"></div>
-
-            <!-- Bottom-Left Line (Center to Reliable) -->
-            <div class="absolute w-[30%] h-[2px] bg-gradient-to-r from-transparent via-[#8fc74a] to-[#8fc74a] bottom-[28%] left-[20%] rotate-12 origin-right"></div>
-
-            <!-- Bottom-Right Line (Center to Contribute) -->
-            <div class="absolute w-[30%] h-[2px] bg-gradient-to-l from-transparent via-[#8fc74a] to-[#8fc74a] bottom-[28%] right-[20%] -rotate-12 origin-left"></div>
-        </div>
-
-        <!-- Row 1 -->
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10">
-            <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]"></div>
-
-            <!-- High Speed -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10">
-                    <img src="{{ asset('storage/home/about/mission/highspeed.png') }}" alt="High Speed" class="max-w-full max-h-full object-contain">
+                <div class="text-center md:text-left w-full md:w-auto md:max-w-[550px]">
+                    <strong class="block text-[#8fc74a] font-bold text-base mb-1 uppercase leading-snug [text-wrap:balance]">
+                        {{ __('app.about.mission_contribute') }}
+                    </strong>
+                    <p class="text-[#666] text-xs leading-relaxed hidden">
+                        {{ __('app.about.mission_contribute_desc') }}
+                    </p>
                 </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_highspeed') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_highspeed_desc') }}
-                </p>
             </div>
 
-            <!-- Scalable -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10">
-                    <img src="{{ asset('storage/home/about/mission/scalable.png') }}" alt="Scalable" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_scalable') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_scalable_desc') }}
-                </p>
-            </div>
-
-            <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]"></div>
-        </div>
-
-        <!-- Row 2 -->
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10">
-            <!-- Hot Service -->
-            <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10">
-                    <img src="{{ asset('storage/home/about/mission/hotService.png') }}" alt="Hot Service" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_hotservice') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_hotservice_desc') }}
-                </p>
-            </div>
-
-            <!-- CENTER IMAGE CONTAINER -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center order-first md:order-none relative z-20">
-                <div class="w-36 h-36 md:w-64 md:h-64 mb-4 flex items-center justify-center rounded-full bg-white relative">
-                    <img src="{{ $mission }}" alt="Mission Center" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] text-2xl md:text-3xl font-bold w-full mb-1">
-                    {{ __('app.about.mission_title') }}
-                </strong>
-            </div>
-
-            <!-- Quality -->
-            <div class="w-full md:w-1/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10">
-                    <img src="{{ asset('storage/home/about/mission/quality.png') }}" alt="Quality" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_quality') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_quality_desc') }}
-                </p>
-            </div>
-        </div>
-
-        <!-- Row 3 -->
-        <div class="flex flex-col md:flex-row w-full gap-4 md:gap-0 z-10">
-            <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]"></div>
-
-            <!-- Reliable -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10">
-                    <img src="{{ asset('storage/home/about/mission/reliable.png') }}" alt="Reliable" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_reliable') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_reliable_desc') }}
-                </p>
-            </div>
-
-            <!-- Contribute -->
-            <div class="w-full md:w-2/4 p-2 text-center font-medium flex flex-col items-center justify-center relative">
-                <div class="w-20 h-20 mb-4 flex items-center justify-center bg-white rounded-full relative z-10">
-                    <img src="{{ asset('storage/home/about/mission/contribute.png') }}" alt="Contribute" class="max-w-full max-h-full object-contain">
-                </div>
-                <strong class="block text-[#8fc74a] font-bold w-full text-base mb-1 uppercase">
-                    {{ __('app.about.mission_contribute') }}
-                </strong>
-                <p class="text-[#666] text-xs text-center sm:text-justify hidden">
-                    {{ __('app.about.mission_contribute_desc') }}
-                </p>
-            </div>
-
-            <div class="hidden md:flex md:w-1/4 p-2 text-center font-medium flex-col items-center justify-center min-h-[14rem]"></div>
         </div>
     </div>
 

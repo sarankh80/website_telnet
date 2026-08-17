@@ -23,6 +23,8 @@ class Branch extends Model
         'lat',
         'lng',
         'is_active',
+        'avg_letency',
+        "uptime",
         'sort_order',
     ];
 
