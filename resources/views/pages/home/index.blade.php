@@ -262,8 +262,8 @@
 
             <!-- RIGHT : 70% -->
             <div class="lg:col-span-8">
-                <div id="slider"
-                    class="relative h-[600px] rounded-xl overflow-hidden shadow-2xl">
+                <div
+                    class="slider relative h-[600px] rounded-xl overflow-hidden shadow-2xl">
                     @foreach($servicesSlugs as $index => $slug)
                     <div class="slide absolute inset-0 transition-opacity duration-1000
                         {{ $index == 0 ? 'opacity-100 active' : 'opacity-0 pointer-events-none' }}">
@@ -291,16 +291,16 @@
                     @endforeach
 
                     <!-- Controls -->
-                    <button id="prevSlide" class="absolute left-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-white w-12 h-12 rounded-full z-20">❮</button>
-                    <button id="nextSlide" class="absolute right-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-white w-12 h-12 rounded-full z-20">❯</button>
-                    <div id="dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
+                    <button class="prevSlide absolute left-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-white w-12 h-12 rounded-full z-20">❮</button>
+                    <button class="nextSlide absolute right-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-white w-12 h-12 rounded-full z-20">❯</button>
+                    <div class="dots absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <div class="text-center space-y-1 max-w-2xl mx-auto pt-8">
-    <h2 class="sm:text-4xl font-extrabold text-center text-transparent bg-clip-text gradient-brand">
+    <h2 class="sm:text-4xl font-extrabold text-center  text-[#8FC74A]">
         {{__('app.coverage.available')}}
     </h2>
 </div>
@@ -332,14 +332,14 @@
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
-                            <span>CHECK LOCATION</span>
+                            <span>{{__('app.coverage.check')}}</span>
                         </div>
                     </template>
                     <button
                         type="button"
                         @click="resetMap()"
                         class="bg-slate-600 hover:bg-slate-700 text-white  px-5 py-1 rounded-lg transition text-sm">
-                        RESET
+                        {{__('app.coverage.reset')}}
                     </button>
                     <template x-if="isLoading">
                         <span class="inline-block animate-spin border-2 border-slate-950 border-t-transparent rounded-full w-4 h-4"></span>
@@ -348,17 +348,17 @@
             </form>
             <div x-show="distance !== null" x-cloak class="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm">
                 <div class="flex justify-between items-center">
-                    <span class="text-slate-500">Distance to nearest branch</span>
+                    <span class="text-slate-500">{{__('app.coverage.nearest')}}</span>
                     <strong class="text-[#8FC74A]" x-text="distance != null ? distance.toFixed(2) + ' km' : ''"></strong>
                 </div>
             </div>
-            <div class="mt-4 flex flex-wrap items-center gap-2 text-xs text-slate-400" x-show="presetRegions.length > 0">
-                <span class="text-lg font-bold text-[#8FC74A]">Popular regions:</span>
+            <div class="mt-4 flex flex-wrap items-center gap-2 text-base text-slate-400" x-show="presetRegions.length > 0">
+                <span class="text-lg font-bold text-[#8FC74A]">{{__('app.coverage.branches')}}</span>
                 <template x-for="branch in presetRegions" :key="branch.id || branch.name_en">
                     <button
                         type="button"
                         @click="selectRegion(branch)"
-                        class="px-2.5 py-2 bg-gray-500 hover:bg-[#8FC74A] rounded shadow-md text-white text-md transition transform hover:-translate-y-0.5"
+                        class="px-2.5 py-1 hover:bg-[#F79633] bg-[#8FC74A] rounded-lg text-md uppercase shadow-md text-white transition duration-300 transform hover:scale-95"
                         x-text="branch.name_en"></button>
                 </template>
             </div>
@@ -424,18 +424,18 @@
             <!-- Side Stats & Details -->
             <div class="space-y-4">
                 <div class="bg-white border border-orange-200 rounded-xl p-4">
-                    <h3 class="text-sm font-semibold text-[#8fc74a] mb-3">Network Highlights</h3>
+                    <h3 class="text-sm font-semibold text-[#8fc74a] mb-3">{{__('app.coverage.hightlight')}}</h3>
                     <ul class="space-y-3 text-xs text-slate-300">
                         <li class="flex justify-between pb-2 border-b border-slate-700/50">
-                            <span class="text-gray-400 font-bold">Avg. Latency</span>
+                            <span class="text-gray-400 font-bold">{{__('app.coverage.letency')}}</span>
                             <span class="font-semibold text-[#8FC74A]" x-text="avgLatency">---</span>
                         </li>
                         <li class="flex justify-between pb-2 border-b border-slate-700/50">
-                            <span class="text-gray-400 font-bold">Network Uptime</span>
+                            <span class="text-gray-400 font-bold">{{__('app.coverage.uptime')}}</span>
                             <span class="font-semibold text-[#8FC74A]" x-text="networkUptime">---</span>
                         </li>
                         <li class="flex justify-between">
-                            <span class="text-gray-400 font-bold">Total Covered Zones</span>
+                            <span class="text-gray-400 font-bold">{{__('app.coverage.totalzone')}}</span>
                             <span class="font-semibold text-[#8FC74A]" x-text="totalZones">---</span>
                         </li>
                     </ul>
@@ -1403,7 +1403,7 @@ return ($b['pin'] ?? 0) <=> ($a['pin'] ?? 0);});
     </section>
     <section class="space-y-8 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <h2 class="text-2xl mt-4 sm:text-4xl font-extrabold  text-transparent bg-clip-text gradient-brand">
+            <h2 class="text-2xl mt-4 sm:text-4xl font-extrabold  text-[#8FC74A]">
                 {{ __('app.support.title') }}
             </h2>
             <p class="text-adaptive-muted text-sm max-w-2xl mx-auto">

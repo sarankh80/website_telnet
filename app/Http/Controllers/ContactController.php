@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactMessageRequest;
 use App\Http\Requests\ServiceRequestForm;
+use App\Models\Branch;
 use App\Models\ContactMessage;
 use App\Models\ServiceRequest;
 use Illuminate\Http\JsonResponse;
@@ -13,7 +14,8 @@ class ContactController extends Controller
 {
     public function support()
     {
-        return view('pages.support');
+        $branches = Branch::all();
+        return view('pages.support', compact('branches'));
     }
 
     public function store(ContactMessageRequest $request): RedirectResponse

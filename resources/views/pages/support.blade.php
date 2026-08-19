@@ -5,25 +5,42 @@
 
 @php
 $isKm = app()->getLocale() === 'km';
-$serviceImage=asset("storage/home/support/customerCare.png");
-$nocImage=asset("storage/home/support/nocSupport.png");
-$saleImage=asset("storage/home/support/salesSupport.png");
+$serviceImage=asset("storage/home/support/saleSupport.png");
+$serviceSupportIcon=asset("storage/home/support/serviceSupportIcon.png");
+
+$nocImage=asset("storage/home/support/nocService.png");
+$nocImage2=asset("storage/home/support/nocSupportDiagram.png");
+$nocSupportIcon=asset('storage/home/support/nocSupportIcon.png');
+$tseLevel=asset('storage/home/support/tse.png');
+$nocLevel=asset('storage/home/support/noc.png');
+$noc1Level=asset('storage/home/support/noc1.png');
+
+
+$saleImage=asset("storage/home/support/saleSupport.png");
+$saleSupportIcon=asset("storage/home/support/saleSupportIcon.png");
 @endphp
 
 <section class="relative h-[85vh] min-h-[500px] py-16 sm:py-20 border-none overflow-hidden bg-slate-100 flex items-end">
+
     {{-- Background Image --}}
-    <img src="{{ asset('storage/home/support/custoemrService1.jfif') }}"
+    <img src="{{ asset('storage/home/support/custoemrService1.png') }}"
         alt="Support & Leadership Background"
         class="absolute inset-0 w-full h-full object-cover blur-xs">
-    <div class="absolute inset-0 bg-black/20"></div>
-    <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end">
+
+    {{-- Bottom-right → Middle gradient --}}
+    <div class="absolute inset-0 bg-[linear-gradient(to_top_left,rgba(143,199,74,0.85)_0%,rgba(143,199,74,0.55)_25%,rgba(143,199,74,0.2)_65%,transparent_75%)]"></div>
+
+    <div class="relative w-full px-4 sm:px-6 lg:px-8 flex justify-end">
         <div class="flex flex-col items-end text-right max-w-3xl ml-auto">
-            <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-1 tracking-tight leading-none drop-shadow-md">
+
+            <h1 class="text-2xl sm:text-3xl lg:text-5xl font-black text-white mb-1 uppercase tracking-tight leading-none drop-shadow-md">
                 {{ __('app.support.title_hero') }}
             </h1>
-            <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black text-[#8fc74a] mb-4 tracking-tight leading-none drop-shadow-md">
+
+            <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black text-white uppercase mb-4 tracking-tight leading-none drop-shadow-md">
                 {{ __('app.support.title_hero_1') }}
             </h1>
+
             <p class="text-white text-sm sm:text-base lg:text-lg max-w-lg text-justify drop-shadow">
                 {{ __('app.support.commit') }}
             </p>
@@ -33,19 +50,16 @@ $saleImage=asset("storage/home/support/salesSupport.png");
 </section>
 <section class="mx-4 sm:mx-6 md:mx-8 my-8 bg-[#8fc74a]/5 py-8">
     <div class="grid grid-cols-1 md:grid-cols-10 mx-auto gap-6 max-w-7xl">
-
-        {{-- SECTION 1: Customer Service + Sales Support stacked, Image 1 spans both rows on the right --}}
-
-        <div data-animate="fade-up" class="md:col-span-6 hover:scale-95 bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-700 ease-out">
+        <div data-animate="fade-up" class="md:col-span-6 hover:scale-95 bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-300 hover:scale-95 ease-out">
             <div class="flex items-center gap-3 mb-4">
-                <img src="{{ $serviceImage }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.service') }}">
+                <img src="{{ $serviceSupportIcon }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.service') }}">
                 <h1 class="text-3xl font-bold text-[#8fc74a] uppercase">
                     {{ __('app.support.service') }}
                 </h1>
             </div>
             <div class="space-y-5">
                 <div>
-                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max border-b-[2px] border-[#F79633]">
+                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max bg-[#]">
                         {{ __('app.support.service_slogan1') }}
                     </h2>
                     <p class="leading-relaxed text-sm text-gray-600">
@@ -54,7 +68,7 @@ $saleImage=asset("storage/home/support/salesSupport.png");
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max border-b-[2px] border-[#F79633]">
+                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max px-4 rounded-full border border-[#F79633]/30 bg-[#F79633]/10">
                         {{ __('app.support.service_contacts') }}
                     </h2>
                     <div class="mt-4 space-y-1 flex flex-col items-center sm:items-start">
@@ -78,16 +92,16 @@ $saleImage=asset("storage/home/support/salesSupport.png");
             </div>
         </div>
 
-        <div data-animate="fade-up" class="md:col-span-4 hover:scale-95 md:row-span-2 rounded-lg overflow-hidden min-h-[280px] opacity-0 translate-x-8 transition-all duration-700 ease-out">
+        <div data-animate="fade-up" class="md:col-span-4 hover:scale-95 md:row-span-2 rounded-lg overflow-hidden min-h-[280px] opacity-0 translate-x-8 transition-all duration-300 hover:scale-95 ease-out">
             <img
-                src="{{ asset('storage/home/support/solution.jfif') }}"
+                src="{{ $serviceImage }}"
                 alt="Customer Service"
                 class="w-full h-full object-cover">
         </div>
 
-        <div data-animate="fade-up" class="md:col-span-6 hover:scale-95 bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-700 ease-out">
+        <div data-animate="fade-up" class="md:col-span-6 hover:scale-95 bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-300 hover:scale-95 ease-out">
             <div class="flex items-center gap-3 mb-4">
-                <img src="{{ $saleImage }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.sale') }}">
+                <img src="{{ $saleSupportIcon }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.sale') }}">
                 <h1 class="text-3xl font-bold text-[#8fc74a] uppercase">
                     {{ __('app.support.sale') }}
                 </h1>
@@ -95,7 +109,7 @@ $saleImage=asset("storage/home/support/salesSupport.png");
 
             <div class="space-y-5">
                 <div>
-                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max border-b-[2px] border-[#F79633]">
+                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max bg-[#]">
                         {{ __('app.support.sale_slogan1') }}
                     </h2>
                     <p class="leading-relaxed text-sm text-gray-600">
@@ -104,7 +118,7 @@ $saleImage=asset("storage/home/support/salesSupport.png");
                 </div>
 
                 <div>
-                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max border-b-[2px] border-[#F79633]">
+                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max  px-4 rounded-full border border-[#F79633]/30 bg-[#F79633]/10">
                         {{ __('app.support.sale_contact') }}
                     </h2>
                     <div class="mt-4 space-y-1 flex flex-col items-center sm:items-start">
@@ -130,83 +144,218 @@ $saleImage=asset("storage/home/support/salesSupport.png");
 
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-10 mx-auto gap-6 max-w-7xl mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-10 gap-5 max-w-7xl mx-auto mt-6 md:h-[1100px]">
 
-        {{-- SECTION 2: Image 2 spans both rows on the left, NOC + extra text stacked on the right --}}
+        <!-- LEFT: NOC IMAGE 70% + NOC NOTE 30% -->
+        <div class="md:col-span-4 flex flex-col gap-5 min-h-0">
 
-        <div data-animate="fade-left" class="md:col-span-4 md:row-span-2 rounded-lg overflow-hidden min-h-[280px] opacity-0 -translate-x-8 transition-all duration-700 ease-out">
-            <img
-                src="{{ asset('storage/home/support/solution.jfif') }}"
-                alt="NOC Support"
-                class="w-full h-full object-cover">
-        </div>
-
-        <div data-animate="fade-up" class="md:col-span-6 hover:scale-95 bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-700 ease-out">
-            <div class="flex items-center gap-3 mb-4">
-                <img src="{{ $nocImage }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.noc') }}">
-                <h1 class="text-3xl font-bold text-[#8fc74a] uppercase">
-                    {{ __('app.support.noc') }}
-                </h1>
+            <!-- NOC IMAGE -->
+            <div
+                data-animate="fade-left"
+                class="flex-[7] min-h-0 rounded-2xl overflow-hidden shadow-xl shadow-[#8fc74a]/20 opacity-0 -translate-x-8 transition-all duration-300 hover:scale-[0.98] ease-out">
+                <img
+                    src="{{ $nocImage }}"
+                    alt="NOC Support"
+                    class="w-full h-full object-cover">
             </div>
 
-            <div class="space-y-5">
-                <div>
-                    <h2 class="text-xl w-max font-semibold text-[#F79633] mb-2">
-                        {{ __('app.support.noc_slogan2') }}
-                        <div class="w-1/2 h-[2px] bg-[#F79633] mt-1"></div>
-                    </h2>
+            <!-- NOC NOTE -->
+            <div
+                data-animate="fade-up"
+                class="flex-[3] min-h-0 p-5 md:p-6 flex flex-col justify-center opacity-0 translate-y-8">
+                <div class="flex items-center gap-3 mb-3">
 
-                    <p class="leading-relaxed text-sm text-gray-600">
-                        {{ __('app.support.noc_desc2') }}
-                    </p>
+                    <h2 class="text-6xl font-bold text-[#8fc74a]">
+                        {{ __('app.support.direct_to') }}
+                    </h2>
                 </div>
 
-                <div>
-                    <h2 class="text-xl font-semibold text-[#F79633] mb-2 w-max border-b-[2px] border-[#F79633]">
-                        {{ __('app.support.noc_contacts') }}
-                    </h2>
-                    <div class="mt-4 space-y-1 flex flex-col items-center sm:items-start">
-                        <a href="tel:+855975135135"
-                            class="flex items-center gap-2 text-xl font-semibold text-[#F79633] transition hover:text-[#8fc74a]">
-                            <svg class="h-6 w-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
-                            </svg>
-                            +855 97 513 5135
-                        </a>
+                <h3 class="text-lg font-semibold text-[#F79633] mb-1">
+                    {{ __('app.support.direct_to_desc') }}
+                </h3>
+            </div>
+        </div>
 
-                        <a href="mailto:support@telnet.com.kh"
-                            class="flex items-center gap-2 text-xl text-slate-500 transition hover:text-[#8fc74a] break-all">
-                            <svg class="h-6 w-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            noc@telnet.com.kh
-                        </a>
+        <!-- RIGHT: NOC INFO 30% + SUPPORT LEVEL 70% -->
+        <div class="md:col-span-6 flex flex-col gap-5 min-h-0">
+
+            <!-- NOC INFO -->
+            <div
+                data-animate="fade-up"
+                class="flex-[3] min-h-0 bg-white p-5 md:p-6 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-300 hover:scale-[0.98] ease-out">
+                <div class="flex items-center gap-3 mb-3">
+                    <img
+                        src="{{ $nocSupportIcon }}"
+                        class="h-10 w-10 object-cover"
+                        alt="{{ __('app.support.noc') }}">
+                    <h1 class="text-2xl font-bold text-[#8fc74a] uppercase">
+                        {{ __('app.support.noc') }}
+                    </h1>
+                </div>
+
+                <div class="space-y-3">
+                    <div>
+                        <h2 class="text-lg font-semibold text-[#F79633] mb-1">
+                            {{ __('app.support.noc_slogan2') }}
+                        </h2>
+                        <p class="leading-relaxed text-sm text-gray-600">
+                            {{ __('app.support.noc_desc2') }}
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="text-base font-semibold text-[#F79633] mb-2 w-max px-3 py-1 rounded-full border border-[#F79633]/30 bg-[#F79633]/10">
+                            {{ __('app.support.noc_contacts') }}
+                        </h2>
+                        <div class="space-y-1">
+                            <a
+                                href="tel:+855975135135"
+                                class="flex items-center gap-2 text-base font-semibold text-[#F79633] hover:text-[#8fc74a]">
+                                <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                                </svg>
+                                +855 97 513 5135
+                            </a>
+                            <a
+                                href="mailto:noc@telnet.com.kh"
+                                class="flex items-center gap-2 text-base text-gray-500 hover:text-[#8fc74a] break-all">
+                                <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                noc@telnet.com.kh
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div data-animate="fade-up" class="md:col-span-6  p-6 ">
-            <!-- Header -->
-            <div class="flex items-center gap-3 mb-4">
-                <img src="{{ $extraImage ?? '' }}" class="h-10 w-10 object-cover rounded-md" alt="{{ __('app.support.message') }}">
-                <h2 class="text-2xl font-bold text-[#8fc74a]">
-                    {{ __('app.support.message') }}
-                </h2>
+
+            <!-- SUPPORT LEVEL -->
+            <div
+                data-animate="fade-left"
+                class="flex-[7] min-h-0 rounded-2xl md:pl-28 overflow-hidden bg-white p-5 md:p-6 shadow-xl shadow-[#8fc74a]/20 opacity-0 -translate-x-8 transition-all duration-300 hover:scale-[0.98] ease-out flex flex-col justify-center">
+                <div class="relative flex flex-col justify-between h-full max-w-2xl mx-auto w-full py-3">
+
+                    <!-- Connecting Line -->
+                    <div class="absolute left-20 top-20 bottom-20 w-1 bg-[#F79633] -translate-x-1/2 z-0"></div>
+
+                    <!-- LEVEL 1 -->
+                    <div class="relative z-10 flex items-center gap-6">
+                        <div class="w-40 h-40 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md">
+                            <img
+                                src="{{ $tseLevel ?? '' }}"
+                                alt="NOC Team"
+                                class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-[#8fc74a] tracking-wide">NOC TEAM</h3>
+                            <p class="text-base font-semibold text-[#F79633]">1<sup class="text-xs">st</sup> Level</p>
+                            <p class="text-base font-semibold text-[#F79633]">TEL: <a href="tel:081687697" class="hover:underline">0975135135</a></p>
+                            <p class="text-base font-semibold text-[#F79633]">Email: <a href="mailto:noc@telnet.com.kh" class="hover:underline">noc@telnet.com.kh</a></p>
+                        </div>
+                    </div>
+
+                    <!-- LEVEL 2 -->
+                    <div class="relative z-10 flex items-center gap-6">
+                        <div class="w-40 h-40 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md">
+                            <img
+                                src="{{ $nocLevel ?? '' }}"
+                                alt="Head of NOC"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-[#8fc74a] tracking-wide">HEAD OF NOC</h3>
+                            <p class="text-base font-semibold text-[#F79633]">2<sup class="text-xs">nd</sup> Level</p>
+                            <p class="text-base font-semibold text-[#F79633]">TEL: <a href="tel:0888916667" class="hover:underline">0888916667</a></p>
+                            <p class="text-base font-semibold text-[#F79633]">Email: <a href="mailto:ny.savann@telnet.com.kh" class="hover:underline">ny.savann@telnet.com.kh</a></p>
+                        </div>
+                    </div>
+
+                    <!-- LEVEL 3 -->
+                    <div class="relative z-10 flex items-center gap-6">
+                        <div class="w-40 h-40 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md">
+                            <img
+                                src="{{ $noc1Level ?? '' }}"
+                                alt="Operation & Director"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-[#8fc74a] tracking-wide">OPERATION & DIRECTOR</h3>
+                            <p class="text-base font-semibold text-[#F79633]">3<sup class="text-xs">rd</sup> Level</p>
+                            <p class="text-base font-semibold text-[#F79633]">TEL: <a href="tel:081687697" class="hover:underline">081687697</a></p>
+                            <p class="text-base font-semibold text-[#F79633]">Email: <a href="mailto:neth.sokunthearith@telnet.com.kh" class="hover:underline">neth.sokunthearith@telnet.com.kh</a></p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
 
+        </div>
+    </div>
     </div>
 </section>
-{{-- Existing Support Cards & Contact Form --}}
-<section id="support" class="relative overflow-hidden m-4 sm:m-6 md:m-8 p-4 sm:p-6 md:p-8 py-10 sm:py-12 md:py-14 rounded-xl bg-[#8fc74a]/5">
+
+<section class="mx-4 sm:mx-6 md:mx-8 mb-12">
+    <div class="mx-auto max-w-7xl">
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-[#8fc74a]">
+                {{ __('app.support.branches') }}
+            </h2>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            @foreach($branches as $branch)
+            <div class="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#8fc74a]/30 hover:shadow-lg hover:shadow-[#8fc74a]/10">
+                <!-- Header: Icon & Title -->
+                <div class="flex items-center gap-3">
+                    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8fc74a]/10 text-[#8fc74a] transition-colors duration-300 group-hover:bg-[#8fc74a]/20 group-hover:text-white">
+                        <svg class="w-8 h-8 text-[#8fc74a]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- Main Structure -->
+                            <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                            <!-- Windows / Departments Grid -->
+                            <rect x="7" y="5" width="3" height="3" rx="0.5"></rect>
+                            <rect x="14" y="5" width="3" height="3" rx="0.5"></rect>
+                            <rect x="7" y="10" width="3" height="3" rx="0.5"></rect>
+                            <rect x="14" y="10" width="3" height="3" rx="0.5"></rect>
+                            <!-- Entrance Door -->
+                            <path d="M10 22v-5h4v5"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 leading-snug">
+                        {{ $isKm ? $branch->name_km : $branch->name_en }}
+                    </h3>
+                </div>
+
+                <!-- Address directly under Name & Icon -->
+                <p class="mt-3 text-sm text-slate-500 leading-relaxed">
+                    {{ $isKm ? $branch->address_km : $branch->address_en }}
+                </p>
+
+                <!-- Action Footer -->
+                <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-[#8fc74a]">
+                    <span>{{ $isKm ? 'ទិសដៅផ្លូវ' : 'Get Directions' }}</span>
+                    <i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                </div>
+            </div>
+            @endforeach
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F79633]/10 text-[#F79633] mb-4">
+                    <i class="fa-solid fa-clock text-xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900">{{ $isKm ? 'ម៉ោងធ្វើការធម្មតា' : 'Business Hours' }}</h3>
+                <ul class="mt-2 space-y-1 text-sm text-slate-500">
+                    <li class="flex justify-between"><span>Mon - Fri:</span> <span class="font-medium text-slate-700">8:00 AM - 5:00 PM</span></li>
+                    <li class="flex justify-between"><span>Saturday:</span> <span class="font-medium text-slate-700">8:00 AM - 12:00 PM</span></li>
+                    <li class="flex justify-between"><span>Sunday:</span> <span class="font-medium text-[#F79633]">NOC Emergency Only</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="support" class="relative overflow-hidden m-4 sm:m-6 md:m-8 p-4 sm:p-6 md:p-8 py-10 sm:py-12 md:py-14 rounded-xl bg-[#8fc74a]/5 hidden">
     <div class="mx-auto max-w-7xl backdrop-blur-md">
         <div class="grid gap-6 sm:gap-8 lg:grid-cols-2">
-
-            {{-- LEFT COLUMN: SUPPORT CARDS --}}
             <div class="space-y-4 sm:space-y-5 hidden">
-
-                {{-- Customer Care Card --}}
                 <div class="group rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-5 text-center sm:text-left">
                         <div class="flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-xl bg-[#8fc74a]/10 text-[#F79633] transition group-hover:bg-[#8fc74a] group-hover:text-white">
@@ -249,7 +398,7 @@ $saleImage=asset("storage/home/support/salesSupport.png");
                 <div class="group rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-5 text-center sm:text-left">
                         <div class="flex h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 shrink-0 items-center justify-center rounded-xl bg-[#F79633]/10 text-[#F79633] transition group-hover:bg-[#F79633] group-hover:text-white">
-                            <img src="{{ asset('storage/home/support/nocSupport.png') }}"
+                            <img src="{{ $nocSupportIcon }}"
                                 alt="{{ __('app.support.noc') }}"
                                 class="object-contain w-full">
                         </div>
@@ -424,8 +573,6 @@ $saleImage=asset("storage/home/support/salesSupport.png");
         </div>
     </div>
 </section>
-
-{{-- NEW SECTION 1: 24/7 NETWORK OPERATING CENTER CTA BANNER --}}
 <section class="mx-4 sm:mx-6 md:mx-8 mb-12">
     <div class="mx-auto max-w-7xl shadow-2xl border border-slate-200 rounded-2xl p-6 sm:p-10  relative overflow-hidden flex flex-col lg:flex-row items-start justify-between gap-8 ">
 
@@ -544,62 +691,6 @@ $saleImage=asset("storage/home/support/salesSupport.png");
     </div>
 </section>
 
-<section class="mx-4 sm:mx-6 md:mx-8 mb-12">
-    <div class="mx-auto max-w-7xl">
-        <div class="mb-8">
-            <h2 class="text-2xl font-bold text-slate-900">
-                {{ $isKm ? 'ទីតាំងការិយាល័យ & ម៉ោងធ្វើការ' : 'Our Office & Business Hours' }}
-            </h2>
-            <p class="text-sm text-slate-500 mt-1">
-                {{ $isKm ? 'សូមអញ្ជើញមកកាន់ការិយាល័យផ្ទាល់ ឬទំនាក់ទំនងតាមម៉ោងធ្វើការ' : 'Visit our main HQ or reach out during active business operational periods.' }}
-            </p>
-        </div>
-
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {{-- HQ Location --}}
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#8fc74a]/10 text-[#8fc74a] mb-4">
-                    <i class="fa-solid fa-building text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-slate-900">{{ $isKm ? 'ការិយាល័យកណ្តាល (HQ)' : 'Main Headquarters' }}</h3>
-                <p class="mt-2 text-sm text-slate-500 leading-relaxed">
-                    {{ $isKm ? 'រាជធានីភ្នំពេញ, ព្រះរាជាណាចក្រកម្ពុជា' : 'Phnom Penh Metropolis, Kingdom of Cambodia' }}
-                </p>
-                <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-[#8fc74a] font-semibold">
-                    <span>{{ $isKm ? 'ទិសដៅផ្លូវ' : 'Get Directions' }}</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </div>
-            </div>
-
-            {{-- Support Schedule --}}
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F79633]/10 text-[#F79633] mb-4">
-                    <i class="fa-solid fa-clock text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-slate-900">{{ $isKm ? 'ម៉ោងធ្វើការធម្មតា' : 'Business Hours' }}</h3>
-                <ul class="mt-2 space-y-1 text-sm text-slate-500">
-                    <li class="flex justify-between"><span>Mon - Fri:</span> <span class="font-medium text-slate-700">8:00 AM - 5:00 PM</span></li>
-                    <li class="flex justify-between"><span>Saturday:</span> <span class="font-medium text-slate-700">8:00 AM - 12:00 PM</span></li>
-                    <li class="flex justify-between"><span>Sunday:</span> <span class="font-medium text-[#F79633]">NOC Emergency Only</span></li>
-                </ul>
-            </div>
-
-            {{-- Direct Contact Hub --}}
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
-                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#8fc74a]/10 text-[#8fc74a] mb-4">
-                    <i class="fa-solid fa-envelope-open-text text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-slate-900">{{ $isKm ? 'ប្រអប់សំបុត្រផ្លូវការ' : 'Official Inquiries' }}</h3>
-                <p class="mt-2 text-sm text-slate-500 leading-relaxed">
-                    {{ $isKm ? 'ផ្ញើសារសាកសួរព័ត៌មានបន្ថែម ឬអាជីវកម្ម' : 'Send official corporate communication or business partnerships.' }}
-                </p>
-                <a href="mailto:info@telnet.com.kh" class="mt-4 inline-block text-xs font-bold text-[#8fc74a] hover:underline">
-                    info@telnet.com.kh &rarr;
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 
 {{-- NEW SECTION 3: FREQUENTLY ASKED QUESTIONS (ACCORDION) --}}
 <section class="mx-4 sm:mx-6 md:mx-8 mb-16">

@@ -428,3 +428,9 @@
         transparent 100%
     );
 } */
+
+.gradient-br-to-tl {
+    div {
+        background: linear-gradient(to bottom right, transparent 50%, #8fc74a 100%);
+    }
+}

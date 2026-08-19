@@ -9,59 +9,66 @@ $selectedJob=0;
 <section class="relative bg-[#8fc74a] text-white py-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
     <div class="max-w-5xl mx-auto relative z-10">
         <div class="text-center mb-2">
-            <h1 class="text-2xl sm:text-4xl font-black tracking-tight drop-shadow-sm">
+            <h1 class="text-2xl sm:text-4xl p-4 font-bold drop-shadow-sm">
                 {{ __('app.career.slogan') }}
             </h1>
         </div>
-        <!-- Search Container -->
-        <div class="bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-md shadow-2xl ring-1 ring-black/5">
+        <div class="bg-white/95 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-slate-100">
             <form
                 action="#"
                 method="#"
-                class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+                class="grid grid-cols-1 md:grid-cols-10 gap-4 items-end">
                 @csrf
-                <!-- Branch -->
-                <div class="md:col-span-4 relative">
+
+                <!-- Branch Select -->
+                <div class="md:col-span-4 flex flex-col gap-1.5 relative">
+                    <label for="branch_filter" class="text-base text-slate-700 font-semibold tracking-wide">
+                        {{ __('app.career.branch') }}
+                    </label>
                     <select
                         name="branch_filter"
                         id="branch_filter"
-                        class="select2 w-full text-slate-800 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#8fc74a] focus:outline-none transition">
+                        class="select2 w-full text-slate-800 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#8fc74a] focus:border-transparent focus:outline-none transition-all">
                         <option value="">
-                            {{__('app.career.branch') }}
+                            {{ __('app.career.branch_filter') }}
                         </option>
                         {!! $branches !!}
                     </select>
                 </div>
-                <!-- Position -->
-                <div class="md:col-span-4 relative">
+
+                <!-- Position Select -->
+                <div class="md:col-span-4 flex flex-col gap-1.5 relative">
+                    <label for="post_filter" class="text-base text-slate-700 font-semibold tracking-wide">
+                        {{ __('app.career.posts') }}
+                    </label>
                     <select
                         name="post_filter"
                         id="post_filter"
-                        class="select2 w-full text-slate-800 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#8fc74a] focus:outline-none transition">
+                        class="select2 w-full text-slate-800 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#8fc74a] focus:border-transparent focus:outline-none transition-all">
                         <option value="">
-                            {{__('app.career.posts') }}
+                            {{ __('app.career.posts_filter') }}
                         </option>
                         {!! $positions !!}
                     </select>
                 </div>
+
                 <!-- Action Buttons -->
-                <div class="md:col-span-4 flex items-center gap-2">
-                    <!-- Search -->
+                <div class="md:col-span-2 flex items-center gap-2 relative">
+                    <!-- Search Button -->
                     <button
                         type="submit"
-                        class="flex-0 inline-flex items-center justify-center gap-1
-                           bg-[#8fc74a] hover:bg-[#7eb53c]
-                           text-white 
-                          py-1 px-2
-                           rounded-md
-                           shadow-md hover:shadow-lg
-                           transition-all
-                           transform active:scale-95
-                           text-sm cursor-pointer">
-
+                        class="flex-1 inline-flex items-center justify-center gap-1.5
+                               bg-[#8fc74a] hover:bg-[#7eb53c]
+                               text-white font-medium
+                               py-1 px-2
+                               rounded-md
+                               shadow-md shadow-[#8fc74a]/20 hover:shadow-lg
+                               transition-all duration-200
+                               active:scale-95
+                               text-sm cursor-pointer">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="w-4 h-4"
+                            class="w-4 h-4 shrink-0"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -71,27 +78,27 @@ $selectedJob=0;
                                 stroke-linejoin="round"
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
-                        <span class="uppercase">
+                        <span class="uppercase tracking-wider">
                             {{ __('app.career.search') }}
                         </span>
                     </button>
-                    <!-- Reset -->
+
+                    <!-- Reset Button -->
                     <a
                         href=""
-                        class="inline-flex items-center justify-center gap-1
-                           bg-slate-100 hover:bg-slate-200
-                           text-slate-600
-                          py-1 px-3
-                           rounded-md
-                           transition-all
-                           active:scale-95
-                           text-sm
-                           cursor-pointer
-                           border border-slate-200"
-                        title=" {{ __('app.career.reset') }}">
+                        class="inline-flex items-center justify-center gap-1.5
+                               bg-slate-100 hover:bg-slate-200
+                               text-slate-600 font-medium
+                               py-1 px-2
+                               rounded-md
+                               transition-all duration-200
+                               active:scale-95
+                               text-sm cursor-pointer
+                               border border-slate-200"
+                        title="{{ __('app.career.reset') }}">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="w-4 h-4"
+                            class="w-4 h-4 shrink-0"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -101,12 +108,12 @@ $selectedJob=0;
                                 stroke-linejoin="round"
                                 d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
-                        <span class="hidden sm:inline uppercase">
+                        <span class="hidden sm:inline uppercase tracking-wider">
                             {{ __('app.career.reset') }}
                         </span>
                     </a>
                 </div>
-
+            </form>
         </div>
     </div>
 </section>

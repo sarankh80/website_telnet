@@ -1,10 +1,13 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll("#slider .slide");
-    const prevBtn = document.getElementById("prevSlide");
-    const nextBtn = document.getElementById("nextSlide");
-    const dotsContainer = document.getElementById("dots");
+const slider = document.querySelector(".slider");
 
+const slides = slider.querySelectorAll(".slide");
+
+const prevBtn = slider.querySelector(".prevSlide");
+
+const nextBtn = slider.querySelector(".nextSlide");
+
+const dotsContainer = slider.querySelector(".dots");
     if (!slides.length) return;
 
     let currentIndex = 0;
