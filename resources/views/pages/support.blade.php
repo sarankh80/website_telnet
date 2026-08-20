@@ -309,7 +309,7 @@ $saleSupportIcon=asset("storage/home/support/saleSupportIcon.png");
                 <!-- Header: Icon & Title -->
                 <div class="flex items-center gap-3">
                     <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#8fc74a]/10 text-[#8fc74a] transition-colors duration-300 group-hover:bg-[#8fc74a]/20 group-hover:text-white">
-                        <svg class="w-8 h-8 text-[#8fc74a]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="w-8 h-8 text-[#F79633]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <!-- Main Structure -->
                             <rect x="4" y="2" width="16" height="20" rx="2"></rect>
                             <!-- Windows / Departments Grid -->
@@ -321,7 +321,7 @@ $saleSupportIcon=asset("storage/home/support/saleSupportIcon.png");
                             <path d="M10 22v-5h4v5"></path>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 leading-snug">
+                    <h3 class="text-lg font-bold text-[#8fc74a] leading-snug">
                         {{ $isKm ? $branch->name_km : $branch->name_en }}
                     </h3>
                 </div>

@@ -200,6 +200,14 @@ pricing models, and highly reliable network operations.',
 
         "plan_slogan"=> "We're Committed to Solving Your Connectivity Challenges with Flexible and Customizable Plans Designed Around Your Needs as",
         "popular"=> "Most Popular",
+
+        "global"=> "Flexible & Stable Global Routing access",
+        "globa1"=> "High-Capacity Global Transit",
+        "globa2"=> "Thousands of Redundant Routes",
+        "globa3"=> "Intelligent Traffic Management",
+        "globa_desc1"=> "Our high-capacity IP Transit infrastructure provides scalable international connectivity through multiple Tier-1 and upstream network paths, enabling efficient traffic delivery to global destinations, content providers, cloud platforms, and critical Internet services.",
+        "globa_desc2"=> "Our network utilizes thousands of diverse and redundant routing paths across multiple carriers, PoPs, and international links, reducing dependency on individual connections and maintaining resilient connectivity during link failures, congestion, or upstream disruptions.",
+        "globa_desc3"=> "Advanced routing and traffic-engineering technologies continuously optimize traffic across available paths based on network conditions, latency, capacity, and route availability, ensuring efficient utilization of bandwidth and consistent performance across global destinations.",
     ],
     'modal' => [
         'title' => 'Request Internet Connection',

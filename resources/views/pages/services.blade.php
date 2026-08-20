@@ -6,7 +6,7 @@
 $serviceTypes = [
 [
 "id" => 1,
-"name" => "FTTH-Package",
+"name" => "Household",
 "name_km" => "FTTH-Package",
 "images" => asset('storage/home/serviceTypes/home.png'),
 "icon" => "fa fa-home",
@@ -118,7 +118,7 @@ Features:
 ],
 [
 "id" => 2,
-"name" => "FTTB-Package",
+"name" => "Corporate Business",
 "name_km" => "FTTB-Package",
 "images" => asset('storage/home/serviceTypes/business.png'),
 "icon" => "fa fa-industry",
@@ -182,7 +182,7 @@ Business, Special Economic Zone and other Cooperate Business.
 ],
 [
 "id" => 3,
-"name" => "FTTX-Packages",
+"name" => "Dedicated",
 "name_km" => "FTTX-Packages",
 "images" => asset('storage/home/serviceTypes/enterprise.png'),
 "icon" => "fa fa-globe",
@@ -284,69 +284,75 @@ $images = [
 "image" => asset('storage/home/services/bgImage4.png'),
 ],
 ];
-$images1=$images;
+
 $capacityImage=asset('storage/home/services/bgImage4.png');
 $cdnImage=asset("storage/home/services/cdn.png");
+$wifiImage=asset("storage/home/services/wifi.png");
 $socialImage=asset("storage/home/services/social.png");
+$internetIcon=asset("storage/home/services/InternetIcon.gif");
 
 @endphp
-
-<nav class="sticky top-20 z-40 max-w-8xl h-16 mx-auto px-4 sm:px-6 lg:px-16 relative border-b border-white/10">
-    <div class="absolute inset-0 bg-[#8fc74a] pointer-events-none z-0"></div>
+<script defer src="{{asset('js/filament/additional/views/services/services.js')}}"></script>
+<nav class="sticky top-20 z-40 max-w-8xl h-10 mx-auto px-4 sm:px-6 lg:px-16 relative border-b border-white/10">
+    <div class="absolute inset-0 bg-[#8fc74a] pointer-events-none z-0 "></div>
     <div class="relative z-10 flex items-center justify-center gap-2 sm:gap-6 h-full text-xs font-medium text-white">
 
         @foreach($serviceTypes as $st)
-        <!-- Horizental Nav as top -->
+        <!-- Horizontal Nav Item -->
         <div class="relative group h-full flex items-center">
-            <a href="{{ $st['url'] ?? '#' }}" class="h-full px-3 flex items-center gap-2 hover:text-white/80 hover:bg-[#F79633] transition-colors duration-200 cursor-pointer">
+            <a href="{{ $st['url'] ?? '#' }}" class="h-full px-4 rounded-xl flex items-center gap-2 hover:text-white hover:bg-[#5e872d] transition-colors duration-200 cursor-pointer">
                 @if(!empty($st['icon']))
                 <i class="{{ $st['icon'] }} text-base"></i>
-                @elseif(!empty($st['images']))
-                <img class="h-5 w-5 object-contain" loading="lazy" src="{{ $st['images'] }}" alt="{{ $st['name'] }}">
                 @else
                 <i class="fa-solid fa-layer-group text-sm"></i>
                 @endif
-                <span class="text-base font-semibold text-white  ">{{ $st['name'] }}</span>
-                <!-- <i class="fa-solid fa-chevron-down text-[8px] opacity-70 group-hover:rotate-180 transition-transform duration-200"></i> -->
+                <span class="text-base font-semibold text-white">{{ $st['name'] }}</span>
+                <!-- Optional Arrow Indicator -->
+                <i class="fa-solid fa-chevron-down text-[10px] opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
             </a>
-            <!-- Second nav -->
-            <div class="fixed left-0 right-0 top-[140px] hidden group-hover:block z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 transition-all duration-200">
-                <div class="max-w-7xl mx-auto flex max-h-[500px] min-h-[300px]">
-                    {{-- Sidebar --}}
-                    <aside class="w-2/6 bg-slate-50 border-r border-[#8fc74a] p-3 flex flex-col gap-1">
-                        <p
-                            class="type-nav text-left px-3 py-1.5 rounded-lg text-xs text-justify sm:text-sm 
-                            text-gray-700 transition">
+
+            <!-- Animated Dropdown Nav -->
+            <div class="fixed left-0 right-0 top-[120px] z-50 w-screen bg-white border-b border-gray-200 shadow-xl text-gray-800 
+                        opacity-0 invisible pointer-events-none translate-y-3 scale-[0.99]
+                        group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:scale-100
+                        transition-all duration-300 ease-out origin-top">
+
+                <!-- Inner Wrapper: Matches top nav's px-4 sm:px-6 lg:px-16 exactly -->
+                <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-16 flex max-h-[500px] min-h-[300px]">
+
+                    {{-- Left Sidebar --}}
+                    <aside class="w-2/6 bg-slate-50 border-r border-[#8fc74a] p-4 flex flex-col gap-1">
+                        <p class="type-nav text-left px-3 py-2 rounded-lg text-xs sm:text-sm text-gray-700 leading-relaxed">
                             {!! nl2br(e($st['desc'])) !!}
                         </p>
                     </aside>
-                    <main class="w-3/6 p-3 sm:p-4 bg-white overflow-y-auto">
-                        <div id="#"
-                            class="w-full  h-full  md:h-full relative overflow-hidden flex-shrink-0">
-                            <div class="slide absolute inset-0 transition-opacity duration-1000">
 
-                                <!-- Background with Dynamic Zoom Class Container -->
+                    {{-- Main Slider Content --}}
+                    <main class="w-3/6 p-4 bg-white overflow-y-auto">
+                        <div id="#" class="w-full h-full relative overflow-hidden flex-shrink-0">
+                            <div class="slide absolute inset-0 transition-opacity duration-1000">
                                 <div class="w-full h-full overflow-hidden">
-                                    <img
-                                        src="{{$st['images']}}"
-                                        class="w-full h-full object-cover  wallpaper-infinite">
+                                    <img src="{{$st['images']}}" class="w-full h-full object-cover wallpaper-infinite">
                                 </div>
                             </div>
                             <button id="prevSlide" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-6 h-6 rounded-full z-20">❮</button>
-                            <button id="nextSlide" class="absolute right-2 top-1/2 -translate-y-1/2 bg-[white]/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-6 h-6 rounded-full z-20">❯</button>
+                            <button id="nextSlide" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-6 h-6 rounded-full z-20">❯</button>
                             <div id="dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
                         </div>
                     </main>
-                    <aside class="w-1/6 bg-slate-50 border-l border-[#8fc74a] p-3 flex flex-col gap-1">
+
+                    {{-- Right Navigation Buttons --}}
+                    <aside class="w-1/6 bg-slate-50 border-l border-[#8fc74a] p-4 flex flex-col gap-1">
                         @foreach($st['types'] as $type)
                         <button type="button"
                             onclick="showType(`{{ $type['name'] }}`)"
-                            class="type-nav text-left px-3 py-1.5 rounded-lg text-sm sm:text-base font-medium
-                                   text-gray-700 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] transition">
+                            class="type-nav text-left px-3 py-2 rounded-lg text-sm sm:text-base font-medium
+                                   text-gray-700 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] transition-all duration-150">
                             {{ $type['name'] }}
                         </button>
                         @endforeach
                     </aside>
+
                 </div>
             </div>
         </div>
@@ -354,75 +360,134 @@ $socialImage=asset("storage/home/services/social.png");
 
     </div>
 </nav>
-<script>
-    function showType(type) {
-        document.querySelectorAll('.type-content').forEach(el => {
-            el.classList.add('hidden');
-        });
+<section class="w-full h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-[90vh] relative overflow-hidden ">
 
-        document.querySelector(`#type-${type}`)?.classList.remove('hidden');
+    <div x-data="tileSlider({{ json_encode($images) }})" class="relative grid grid-cols-1 md:grid-cols-2 w-full h-full">
+        <!-- Tile 1 (Left / Large) -->
+        <div class="relative overflow-hidden shadow-lg gradient-b-to-t">
+            <template x-for="(image, index) in images" :key="index">
+                <div x-show="currentIndexes[0] === index"
+                    x-transition:enter="transition ease-out duration-1000"
+                    x-transition:enter-start="opacity-0 scale-105"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    x-transition:leave="transition ease-in duration-1000"
+                    x-transition:leave-start="opacity-100 scale-100"
+                    x-transition:leave-end="opacity-0 scale-95"
+                    class="absolute inset-0 w-full h-full">
+                    <img :src="image.image" class="w-full h-full object-cover wallpaper-infinite">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
+                </div>
+            </template>
+            <!-- Text Overlay Container (Positioned On Top of Image) -->
+            <div class="absolute inset-0 z-20 flex flex-col justify-end items-center text-center p-6 pointer-events-none">
+                <div class="pointer-events-auto max-w-4xl mx-auto flex flex-col items-start">
 
-        document.querySelectorAll('.type-nav').forEach(el => {
-            el.classList.remove('bg-[#8fc74a]', 'text-white');
-            el.classList.add('text-gray-700');
-        });
+                    <h1 class="flex flex-col gap-2 w-full">
+                        <!-- Primary Title Text -->
+                        <span class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase text-white leading-tight drop-shadow-md tracking-wide">
+                            {{ __('app.internet.title') }}
+                        </span>
+                    </h1>
 
-        event.currentTarget.classList.add('bg-[#8fc74a]', 'text-white');
-        event.currentTarget.classList.remove('text-gray-700');
-    }
+                    <!-- Feature Keywords -->
+                    <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 pt-6 w-full">
+                        <span class="inline-flex hover:cursor-pointer items-center gap-1.5 px-8 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold text-white bg-[#F79633]/40 border border-[#F79633] backdrop-blur-md shadow-lg transition-all duration-200 hover:bg-[#F79633] hover:scale-110">
+                            {{__('app.internet.fast')}}
+                        </span>
+                        <span class="inline-flex hover:cursor-pointer items-center gap-1.5 px-8 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold text-white bg-[#F79633]/40 border border-[#F79633] backdrop-blur-md shadow-lg transition-all duration-200 hover:bg-[#F79633] hover:scale-110">
+                            {{__('app.internet.reliable')}}
+                        </span>
+                        <span class="inline-flex hover:cursor-pointer items-center gap-1.5 px-8 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold text-white bg-[#F79633]/40 border border-[#F79633] backdrop-blur-md shadow-lg transition-all duration-200 hover:bg-[#F79633] hover:scale-110">
+                            {{__('app.internet.stable')}}
+                        </span>
+                        <span class="inline-flex hover:cursor-pointer items-center gap-1.5 px-8 py-2 rounded-full text-base sm:text-lg md:text-xl font-semibold text-white bg-[#F79633]/40 border border-[#F79633] backdrop-blur-md shadow-lg transition-all duration-200 hover:bg-[#F79633] hover:scale-110">
+                            {{__('app.internet.scalable')}}
+                        </span>
+                    </div>
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector('.type-nav')?.click();
-    });
-</script>
-<section class="w-full border h-auto md:h-[400px] lg:h-[70vh] relative flex flex-col md:flex-row max-w-full">
-
-    <!-- Right Side: Content Container (100% on mobile, 30% on desktop) -->
-    <div class="w-full md:w-[30%] h-auto md:h-full flex flex-col justify-center bg-gradient-to-br from-brand-green/10 via-transparent to-brand-orange/10 items-center text-center p-6 z-10 bg-white border-t md:border-t-0 md:border-l order-2 md:order-1">
-        <h1 class="flex flex-col gap-2 w-full max-w-xs md:max-w-full">
-            <!-- Line 1: Primary Title Text -->
-            <span class="text-xl sm:text-2xl md:text-2xl lg:text-8xl font-bold uppercase text-[#8fc74a] leading-tight break-words">
-                {{ __('app.internet.title') }}
-            </span>
-        </h1>
-
-        <!-- Feature Keywords -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5 pt-6 w-full max-w-xs md:max-w-full">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xl font-semibold text-[#F79633] border border-[#8fc74a]/30 shadow-xs transition-all duration-200 hover:scale-105">
-                {{__('app.internet.fast')}}
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xl font-semibold bg-[#F79633]/10 text-[#F79633] border border-[#F79633]/30 shadow-xs transition-all duration-200 hover:scale-105">
-                {{__('app.internet.reliable')}}
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xl font-semibold text-[#F79633] border border-[#8fc74a]/30 shadow-xs transition-all duration-200 hover:scale-105">
-                {{__('app.internet.stable')}}
-            </span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xl font-semibold bg-[#F79633]/10 text-[#F79633] border border-[#F79633]/30 shadow-xs transition-all duration-200 hover:scale-105">
-                {{__('app.internet.scalable')}}
-            </span>
-        </div>
-    </div>
-
-    <!-- Left/Main Side: Slider (100% on mobile, 70% on desktop) -->
-    <div class="slider w-full md:w-[70%] h-[200px] sm:h-[260px] md:h-full relative overflow-hidden order-1 md:order-2">
-        @foreach($images as $slug)
-        <div class="slide absolute inset-0 transition-opacity duration-1000">
-            <!-- Background with Dynamic Zoom Class Container -->
-            <div class="w-full h-full overflow-hidden">
-                <img
-                    src="{{ $slug['image'] }}"
-                    class="w-full h-full object-cover">
+                </div>
             </div>
-            <div class="absolute inset-0"></div>
         </div>
-        @endforeach
 
-        <button class="prevSlide absolute left-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-12 h-12 rounded-full z-20 flex items-center justify-center">❮</button>
-        <button class="nextSlide absolute right-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-12 h-12 rounded-full z-20 flex items-center justify-center">❯</button>
-        <div class="dots absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
+        <!-- Right Column (Tile 2 & Tile 3 Split) -->
+        <div class="grid grid-rows-2 h-full">
+            <!-- Tile 2 (Top Right) -->
+            <div class="relative overflow-hidden  shadow-lg">
+                <template x-for="(image, index) in images" :key="index">
+                    <div x-show="currentIndexes[1] === index"
+                        x-transition:enter="transition ease-out duration-1000"
+                        x-transition:enter-start="opacity-0"
+                        x-transition:enter-end="opacity-100"
+                        x-transition:leave="transition ease-in duration-1000"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        class="absolute inset-0 w-full h-full">
+                        <img :src="image.image" class="w-full h-full object-cover wallpaper-infinite">
+                        <div class="absolute inset-0 "></div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Tile 3 (Bottom Right) -->
+            <div class="relative overflow-hidden shadow-lg ">
+                <template x-for="(image, index) in images" :key="index">
+                    <div x-show="currentIndexes[2] === index"
+                        x-transition:enter="transition ease-out duration-1000"
+                        x-transition:enter-start="opacity-0"
+                        x-transition:enter-end="opacity-100"
+                        x-transition:leave="transition ease-in duration-1000"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        class="absolute inset-0 w-full h-full">
+                        <img :src="image.image" class="w-full h-full object-cover wallpaper-infinite">
+                        <div class="absolute inset-0 "></div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <button @click="nextSlide()" class="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 bg-[#8fc74a]/30 hover:bg-[#8fc74a] hover:text-white transition backdrop-blur text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full z-30 flex items-center justify-center shadow-lg">❮</button>
+        <button @click="nextSlide()" class="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 bg-[#8fc74a]/30 hover:bg-[#8fc74a] hover:text-white transition backdrop-blur text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full z-30 flex items-center justify-center shadow-lg">❯</button>
     </div>
-
 </section>
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('tileSlider', (images) => ({
+            images: images,
+            currentIndexes: [0, 1, 2],
+            timer: null,
+
+            init() {
+                // Automatically swap images every 4 seconds
+                this.timer = setInterval(() => {
+                    this.nextSlide();
+                }, 4000);
+            },
+
+            nextSlide() {
+                if (this.images.length < 3) return;
+
+                // Pick a random tile position (0, 1, or 2) to change
+                const tileToSwap = Math.floor(Math.random() * 3);
+
+                // Get array of image indices not currently displayed anywhere on screen
+                const availableIndices = this.images
+                    .map((_, idx) => idx)
+                    .filter(idx => !this.currentIndexes.includes(idx));
+
+                if (availableIndices.length === 0) return;
+
+                // Pick a random new image from available ones
+                const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+
+                // Update only that targeted tile so it fades smoothly
+                this.currentIndexes[tileToSwap] = randomIndex;
+            }
+        }))
+    })
+</script>
 <section class="relative overflow-hidden bg-white space-y-32">
 
     {{-- ambient network-grid backdrop --}}
@@ -451,7 +516,7 @@ $socialImage=asset("storage/home/services/social.png");
                 <p class="mt-5 text-lg leading-relaxed text-adaptive-muted max-w-xl">
                     {{ __('app.internet.capacity_slogan_desc') ?? 'Fiber-to-the-home speeds, honest pricing, and a network engineered for streaming, gaming, and working from anywhere in Cambodia.' }}
                 </p>
-                <div class="mt-10 grid grid-cols-2 gap-6 max-w-md">
+                <div class="mt-10 grid grid-cols-2 gap-6 max-w-full">
                     <div>
                         <div class="flex items-center">
                             <span class="text-4xl font-extrabold text-brand-green">1</span>
@@ -473,33 +538,20 @@ $socialImage=asset("storage/home/services/social.png");
                 </div>
             </div>
 
-            <div class="slider w-full md:col-span-1 h-[200px] sm:h-[260px] md:h-full relative overflow-hidden order-1 md:order-2">
-                @foreach($images1 as $slug)
+            <div class="slider w-full md:col-span-1 h-[200px] sm:h-[260px] md:h-full relative overflow-hidden order-1 md:order-2 rounded-2xl">
                 <div class="slide absolute inset-0 transition-opacity duration-1000">
                     <div class="w-full h-full overflow-hidden">
                         <img
-                            src="{{ $slug['image'] }}"
+                            src="{{$wifiImage  }}"
                             class="w-full h-full object-cover">
                     </div>
-
                     <div class="absolute inset-0"></div>
                 </div>
-                @endforeach
-
-                <button class="prevSlide absolute left-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-12 h-12 rounded-full z-20 flex items-center justify-center">
-                    ❮
-                </button>
-
-                <button class="nextSlide absolute right-5 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-12 h-12 rounded-full z-20 flex items-center justify-center">
-                    ❯
-                </button>
-
-                <div class="dots absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
             </div>
 
         </div>
     </div>
-
+    <!-- Peering -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-7xl mx-auto min-h-[500px] lg:h-[500px]">
         <!-- Left Column: 50% Main Image -->
         <div class="w-full col-span-1 h-[400px] lg:h-full rounded-2xl overflow-hidden shadow-xl shadow-[#8fc74a]/10 bg-gray-100 flex-shrink-0 transition-all duration-300 hover:scale-95 ease-out">
@@ -507,7 +559,7 @@ $socialImage=asset("storage/home/services/social.png");
         </div>
 
         <!-- Right Column: 50% Content & Images -->
-        <div data-animate="fade-up" class="flex flex-col col-span-2 justify-between h-full space-y-6 overflow-hidden ">
+        <div data-animate="fade-up" class="flex flex-col col-span-2 justify-between h-full space-y-6 overflow-hidden translate-y-8">
             <!-- Top: Text Content -->
             <div class="space-y-4 flex-shrink-0">
                 <span class="inline-flex items-center gap-2 rounded-full border border-brand-green/30 bg-brand-green/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-brand-green">
@@ -547,137 +599,301 @@ $socialImage=asset("storage/home/services/social.png");
             </div>
         </div>
     </div>
-    <div id="plans" class="relative max-w-7xl mx-auto px-6 lg:px-8 pb-24">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-adaptive-main">
-                {{ __('app.internet.plan_slogan') ?? 'Pick your speed' }}
-            </h2>
-            <p class="mt-2 text-adaptive-muted">{{ __('app.internet.plan_slogan') ?? 'Switch or upgrade anytime, no lock-in fees.' }}</p>
+</section>
+<section class="w-full relative overflow-hidden py-20 lg:py-28">
+    {{-- existing grid backdrop --}}
+    <div class="pointer-events-none absolute inset-0 opacity-[0.04] dark:opacity-[0.06]"
+        style="background-image:linear-gradient(#8fc74a 1px,transparent 1px),linear-gradient(90deg,#8fc74a 1px,transparent 1px);background-size:40px 40px;">
+    </div>
+
+    <div class="max-w-8xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+            <div class="lg:col-span-6 lg:pl-4 px-6 grid grid-cols-1 md:grid-cols-6 gap-6 items-start">
+                <!-- Top Full Width (col-span-6) -->
+                <div class="col-span-1 md:col-span-6 space-y-2">
+                    <div class="flex items-center gap-3 sm:gap-4">
+                        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#8fc74a] pb-1">
+                            {{__('app.internet.global')}}
+                        </h2>
+                    </div>
+                </div>
+                <!-- Middle Left Column (col-span-3) -->
+                <div class="col-span-1 md:col-span-3 space-y-3">
+                    <div class="text-left text-sm sm:text-base leading-relaxed text-adaptive-muted">
+                        <h2 class="text-xl sm:text-xl lg:text-2xl font-black tracking-tight text-[#F79633] pb-1">
+                            {{__('app.internet.globa1')}}
+                        </h2>
+                        <p class="text-xs sm:text-sm text-adaptive-muted text-justify">
+                            {{__('app.internet.globa_desc1')}}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Middle Right Column (col-span-3) -->
+                <div class="col-span-1 md:col-span-3 space-y-3">
+                    <div class="text-left text-sm sm:text-base leading-relaxed text-adaptive-muted">
+                        <h2 class="text-xl sm:text-xl lg:text-2xl font-black tracking-tight text-[#F79633] pb-1">
+                            {{__('app.internet.globa2')}}
+                        </h2>
+                        <p class="text-xs sm:text-sm text-adaptive-muted text-justify">
+                            {{__('app.internet.globa_desc2')}}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bottom Full Width (col-span-6) -->
+                <div class="col-span-1 md:col-span-3 pt-2">
+                    <div class="p-4 rounded-lg bg-black/5 dark:bg-white/5 ">
+                        <h2 class="text-xl sm:text-xl lg:text-2xl font-black tracking-tight text-[#F79633] pb-1">
+                            {{__('app.internet.globa3')}}
+                        </h2>
+                        <p class="text-xs sm:text-sm text-adaptive-muted text-justify">
+                            {{__('app.internet.globa_desc3')}}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="lg:col-span-6 relative lg:-ml-8 h-1/2">
+                <div id="routeSlideshow" class="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden bg-black/5 dark:bg-white/5"
+                    style="clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 88%);">
+
+                    <img src="{{ $cdnImage}}"
+                        alt="Tokyo landing station — primary international gateway"
+                        data-caption="Tokyo landing station — primary international gateway"
+                        class="route-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100">
+
+                    <img src="{{ $socialImage }}"
+                        alt="Singapore transit hub — regional peering exchange"
+                        data-caption="Singapore transit hub — regional peering exchange"
+                        class="route-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0">
+
+                    <img src="{{ $wifiImage }}"
+                        alt="Hong Kong backup route — automatic failover in under 2 seconds"
+                        data-caption="Hong Kong backup route — automatic failover in under 2 seconds"
+                        class="route-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0">
+
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <p id="routeCaption" class="text-white text-sm sm:text-base font-semibold drop-shadow">
+                            Tokyo landing station — primary international gateway
+                        </p>
+                    </div>
+                </div>
+
+                {{-- route path nav --}}
+                <div id="routeNav" class="flex items-center gap-0 mt-6 pl-2">
+                    <div class="flex items-center flex-1">
+                        <button type="button" data-index="0" aria-label="Go to slide 1"
+                            class="route-dot relative w-3 h-3 rounded-full shrink-0 transition-colors duration-300 bg-[#F79633]">
+                            <span class="route-ring absolute -inset-1.5 rounded-full border border-[#F79633]/50"></span>
+                        </button>
+                        <div class="h-px flex-1 bg-[#8fc74a]/20"></div>
+                    </div>
+                    <div class="flex items-center flex-1">
+                        <button type="button" data-index="1" aria-label="Go to slide 2"
+                            class="route-dot relative w-3 h-3 rounded-full shrink-0 transition-colors duration-300 bg-[#8fc74a]/30 hover:bg-[#8fc74a]/60">
+                            <span class="route-ring absolute -inset-1.5 rounded-full border border-transparent"></span>
+                        </button>
+                        <div class="h-px flex-1 bg-[#8fc74a]/20"></div>
+                    </div>
+                    <div class="flex items-center">
+                        <button type="button" data-index="2" aria-label="Go to slide 3"
+                            class="route-dot relative w-3 h-3 rounded-full shrink-0 transition-colors duration-300 bg-[#8fc74a]/30 hover:bg-[#8fc74a]/60">
+                            <span class="route-ring absolute -inset-1.5 rounded-full border border-transparent"></span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </div>
+</section>
 
-        @php
-        $plans = [
-        ['name' => 'Basic', 'speed' => '50', 'price' => '$15', 'popular' => false],
-        ['name' => 'Family', 'speed' => '200', 'price' => '$28', 'popular' => true],
-        ['name' => 'Pro', 'speed' => '500', 'price' => '$45', 'popular' => false],
-        ['name' => 'Standard', 'speed' => '100', 'price' => '$20', 'popular' => false],
-        ['name' => 'Business', 'speed' => '800', 'price' => '$65', 'popular' => false],
-        ['name' => 'Ultra', 'speed' => '1000','price' => '$80', 'popular' => false],
-        ];
+<section class="w-full max-w-7xl mx-auto bg-slate-100  border-slate-200 rounded-3xl shadow py-2 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-center">
+        <nav class="hidden lg:flex items-center space-x-1 xl:space-x-1 text-xs xl:text-sm font-semibold text-adaptive-muted whitespace-nowrap">
+            @php
+            $navLinks = [
+            [
+            'route' => 'home',
+            'label' => __('app.nav.home'),
+            'icon' => '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>'
+            ],
+            [
+            'route' => 'home',
+            'label' => __('app.nav.home_broadband'),
+            'icon' => '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>'
+            ],
+            [
+            'route' => 'home',
+            'label' => __('app.nav.dedicated_internet'),
+            'icon' => '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>'
+            ],
+            [
+            'route' => 'home',
+            'label' => __('app.nav.managed_network'),
+            'icon' => '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>'
+            ],
+            ];
+            @endphp
 
-        $features = [
-        __('app.internet.feature_unlimited') ?? 'Unlimited data',
-        __('app.internet.feature_install') ?? 'Free installation',
-        __('app.internet.feature_support') ?? '24/7 support line',
-        ];
+            @foreach($navLinks as $link)
+            @php $active = request()->routeIs($link['route']); @endphp
+            <a href="{{ route($link['route']) }}"
+                class="nav-link-pill text-slate-500 px-3 py-2 rounded-lg hover:text-brand-green hover:bg-brand-green/5 transition flex items-center gap-1.5 {{ $active ? 'text-brand-green active bg-brand-green/5' : '' }}">
+                {!! $link['icon'] !!}
+                <span class="text-[0.95rem]">{!! $link['label'] !!}</span>
+            </a>
+            @endforeach
+        </nav>
+    </div>
+</section>
 
-        $popularLabel = __('app.internet.popular') ?? 'Most Popular';
-        $chooseLabel = __('app.internet.choose_plan') ?? 'Choose plan';
-        @endphp
+<section class="w-full relative overflow-hidden py-20 lg:py-28">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-7xl mx-auto min-h-[500px] lg:h-[500px]">
+        <div id="plans" class="relative col-span-3 max-w-7xl mx-auto px-6 lg:px-8 pb-24">
+            <div class="text-center max-w-2xl mx-auto mb-12 hidden">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-adaptive-main">
+                    {{ __('app.internet.plan_slogan') ?? 'Pick your speed' }}
+                </h2>
+                <p class="mt-2 text-adaptive-muted">{{ __('app.internet.plan_slogan') ?? 'Switch or upgrade anytime, no lock-in fees.' }}</p>
+            </div>
 
-        <div
-            x-data="planCarousel({{ Illuminate\Support\Js::from($plans) }}, 3)"
-            x-init="init()"
-            class="relative">
-            {{-- viewport --}}
-            <div class="overflow-hidden">
-                <div
-                    class="flex transition-transform duration-500 ease-in-out"
-                    :style="`transform: translateX(-${page * 100}%)`">
-                    <template x-for="(chunk, i) in pages" :key="i">
-                        <div class="grid md:grid-cols-3 gap-6 items-start w-full shrink-0 px-1">
-                            <template x-for="plan in chunk" :key="plan.name">
-                                <div
-                                    class="relative rounded-2xl p-8 border transition-transform duration-300 hover:-translate-y-1"
-                                    :class="plan.popular
+            @php
+            $plans = [
+            ['name' => 'Basic', 'speed' => '50', 'price' => '$15', 'popular' => false],
+            ['name' => 'Family', 'speed' => '200', 'price' => '$28', 'popular' => true],
+            ['name' => 'Pro', 'speed' => '500', 'price' => '$45', 'popular' => false],
+            ['name' => 'Standard', 'speed' => '100', 'price' => '$20', 'popular' => false],
+            ['name' => 'Business', 'speed' => '800', 'price' => '$65', 'popular' => true],
+            ['name' => 'Ultra', 'speed' => '1000','price' => '$80', 'popular' => false],
+            ];
+
+            $features = [
+            __('app.internet.feature_unlimited') ?? 'Unlimited data',
+            __('app.internet.feature_install') ?? 'Free installation',
+            __('app.internet.feature_support') ?? '24/7 support line',
+            ];
+
+            $popularLabel = __('app.internet.popular') ?? 'Most Popular';
+            $chooseLabel = __('app.internet.choose_plan') ?? 'Choose plan';
+            @endphp
+
+            <div
+                x-data="planCarousel({{ Illuminate\Support\Js::from($plans) }}, 3)"
+                x-init="init()"
+                class="relative">
+                {{-- viewport --}}
+                <div class="overflow-hidden">
+                    <div
+                        class="flex transition-transform duration-500 ease-in-out"
+                        :style="`transform: translateX(-${page * 100}%)`">
+                        <template x-for="(chunk, i) in pages" :key="i">
+                            <div class="grid md:grid-cols-3 gap-6 items-start w-full shrink-0 px-1">
+                                <template x-for="plan in chunk" :key="plan.name">
+                                    <div
+                                        class="relative rounded-2xl p-8 border transition-transform duration-300 hover:-translate-y-1"
+                                        :class="plan.popular
                                 ? 'border-brand-orange bg-white dark:bg-white/5 shadow-2xl scale-105'
                                 : 'border-black/10 bg-white'">
-                                    <span
-                                        x-show="plan.popular"
-                                        class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-orange px-3 py-1 text-xs font-bold text-white shadow">{{ $popularLabel }}</span>
+                                        <span
+                                            x-show="plan.popular"
+                                            class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-orange px-3 py-1 text-xs font-bold text-white shadow">{{ $popularLabel }}</span>
 
-                                    <h3 class="text-sm font-semibold uppercase tracking-wide text-adaptive-muted" x-text="plan.name"></h3>
+                                        <h3 class="text-sm font-semibold uppercase tracking-wide text-adaptive-muted" x-text="plan.name"></h3>
 
-                                    <div class="mt-3 flex items-baseline gap-1">
-                                        <span class="text-4xl font-extrabold text-adaptive-main" x-text="plan.price"></span>
-                                        <span class="text-sm text-adaptive-muted">/mo</span>
-                                    </div>
+                                        <div class="mt-3 flex items-baseline gap-1">
+                                            <span class="text-4xl font-extrabold text-adaptive-main" x-text="plan.price"></span>
+                                            <span class="text-sm text-adaptive-muted">/mo</span>
+                                        </div>
 
-                                    <p class="mt-2 text-sm text-adaptive-muted">
-                                        <span x-text="plan.speed"></span> Mbps download
-                                    </p>
+                                        <p class="mt-2 text-sm text-adaptive-muted">
+                                            <span x-text="plan.speed"></span> Mbps download
+                                        </p>
 
-                                    <ul class="mt-6 space-y-3 text-sm text-adaptive-main">
-                                        @foreach ($features as $feature)
-                                        <li class="flex items-center gap-2">
-                                            <svg class="w-4 h-4 text-brand-green shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                            </svg>
-                                            {{ $feature }}
-                                        </li>
-                                        @endforeach
-                                    </ul>
+                                        <ul class="mt-6 space-y-3 text-sm text-adaptive-main">
+                                            @foreach ($features as $feature)
+                                            <li class="flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-brand-green shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                {{ $feature }}
+                                            </li>
+                                            @endforeach
+                                        </ul>
 
-                                    <a
-                                        href="#"
-                                        class="mt-8 block text-center rounded-xl px-5 py-3 text-sm font-semibold transition-colors"
-                                        :class="plan.popular
+                                        <a
+                                            href="#"
+                                            class="mt-8 block text-center rounded-xl px-5 py-3 text-sm font-semibold transition-colors"
+                                            :class="plan.popular
                                     ? 'gradient-brand text-white hover:opacity-90'
                                     : 'border border-black/10 dark:border-white/15 text-adaptive-main hover:border-brand-green/50 hover:text-brand-green'">{{ $chooseLabel }}</a>
-                                </div>
-                            </template>
-                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                {{-- prev / next arrows --}}
+                <button
+                    @click="prev()"
+                    x-show="pages.length > 1"
+                    class="absolute top-1/2 -left-4 -translate-y-1/2 w-10 h-10 rounded-full bg-white dark:bg-white/10 border border-black/10 dark:border-white/15 shadow flex items-center justify-center text-adaptive-main hover:text-brand-green disabled:opacity-30"
+                    :disabled="page === 0">‹</button>
+
+                <button
+                    @click="next()"
+                    x-show="pages.length > 1"
+                    class="absolute top-1/2 -right-4 -translate-y-1/2 w-10 h-10 rounded-full bg-white dark:bg-white/10 border border-black/10 dark:border-white/15 shadow flex items-center justify-center text-adaptive-main hover:text-brand-green disabled:opacity-30"
+                    :disabled="page === pages.length - 1">›</button>
+
+                {{-- dots --}}
+                <div class="mt-6 flex justify-center gap-2" x-show="pages.length > 1">
+                    <template x-for="(chunk, i) in pages" :key="i">
+                        <button
+                            @click="page = i"
+                            class="w-2.5 h-2.5 rounded-full transition-colors"
+                            :class="page === i ? 'bg-brand-orange' : 'bg-black/15 dark:bg-white/20'"></button>
                     </template>
                 </div>
             </div>
 
-            {{-- prev / next arrows --}}
-            <button
-                @click="prev()"
-                x-show="pages.length > 1"
-                class="absolute top-1/2 -left-4 -translate-y-1/2 w-10 h-10 rounded-full bg-white dark:bg-white/10 border border-black/10 dark:border-white/15 shadow flex items-center justify-center text-adaptive-main hover:text-brand-green disabled:opacity-30"
-                :disabled="page === 0">‹</button>
-
-            <button
-                @click="next()"
-                x-show="pages.length > 1"
-                class="absolute top-1/2 -right-4 -translate-y-1/2 w-10 h-10 rounded-full bg-white dark:bg-white/10 border border-black/10 dark:border-white/15 shadow flex items-center justify-center text-adaptive-main hover:text-brand-green disabled:opacity-30"
-                :disabled="page === pages.length - 1">›</button>
-
-            {{-- dots --}}
-            <div class="mt-6 flex justify-center gap-2" x-show="pages.length > 1">
-                <template x-for="(chunk, i) in pages" :key="i">
-                    <button
-                        @click="page = i"
-                        class="w-2.5 h-2.5 rounded-full transition-colors"
-                        :class="page === i ? 'bg-brand-orange' : 'bg-black/15 dark:bg-white/20'"></button>
-                </template>
-            </div>
+            <script>
+                function planCarousel(plans, perPage) {
+                    return {
+                        plans,
+                        perPage,
+                        page: 0,
+                        pages: [],
+                        init() {
+                            this.pages = [];
+                            for (let i = 0; i < this.plans.length; i += this.perPage) {
+                                this.pages.push(this.plans.slice(i, i + this.perPage));
+                            }
+                        },
+                        next() {
+                            if (this.page < this.pages.length - 1) this.page++;
+                        },
+                        prev() {
+                            if (this.page > 0) this.page--;
+                        },
+                    };
+                }
+            </script>
         </div>
-
-        <script>
-            function planCarousel(plans, perPage) {
-                return {
-                    plans,
-                    perPage,
-                    page: 0,
-                    pages: [],
-                    init() {
-                        this.pages = [];
-                        for (let i = 0; i < this.plans.length; i += this.perPage) {
-                            this.pages.push(this.plans.slice(i, i + this.perPage));
-                        }
-                    },
-                    next() {
-                        if (this.page < this.pages.length - 1) this.page++;
-                    },
-                    prev() {
-                        if (this.page > 0) this.page--;
-                    },
-                };
-            }
-        </script>
     </div>
+</section>
+<section>
 
     {{-- =========================== CTA BANNER =========================== --}}
     <div class="relative max-w-7xl mx-auto px-6 lg:px-8 pb-20">
@@ -700,7 +916,6 @@ $socialImage=asset("storage/home/services/social.png");
     </div>
 
 </section>
-
 <section class="py-14 bg-gradient-to-r from-brand-green/20 via-brand-orange/20 to-brand-green/20">
     <div class="max-w-4xl mx-auto px-4 text-center space-y-5">
         <h2 class="text-2xl font-extrabold text-adaptive-main">

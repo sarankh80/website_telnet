@@ -421,16 +421,17 @@
         background: linear-gradient(to left, #ffffff 40%, transparent 100%);
     }
 }
-/* .gradient-tr-to-bl {
-    background-image: linear-gradient(
-        to bottom left,
-        #ffffff 40%,
-        transparent 100%
-    );
-} */
-
+.gradient-b-to-t {
+    div {
+        background: linear-gradient(to top, #8fc74a 1%, transparent 60%);
+    }
+}
 .gradient-br-to-tl {
     div {
-        background: linear-gradient(to bottom right, transparent 50%, #8fc74a 100%);
+        background: linear-gradient(
+            to bottom right,
+            transparent 50%,
+            #8fc74a 100%
+        );
     }
 }
