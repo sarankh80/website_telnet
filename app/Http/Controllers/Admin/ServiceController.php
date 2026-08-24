@@ -13,15 +13,14 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::with('slug', 'type')->orderBy('sort_order')->get();
+        $services = Service::with( 'type')->orderBy('sort_order')->get();
         return view('admin.services.index', compact('services'));
     }
 
     public function create()
     {
-        $slugs        = Slugs::orderBy('name')->get();
         $serviceTypes = ServiceType::with('slug')->orderBy('slug_id')->orderBy('name')->get();
-        return view('admin.services.form', ['service' => new Service(), 'slugs' => $slugs, 'serviceTypes' => $serviceTypes]);
+        return view('admin.services.form', ['service' => new Service(), 'serviceTypes' => $serviceTypes]);
     }
 
     public function store(Request $request)
@@ -31,15 +30,12 @@ class ServiceController extends Controller
             'name_en'        => ['required', 'string', 'max:200'],
             'description_km' => ['nullable', 'string'],
             'description_en' => ['nullable', 'string'],
-            'icon'           => ['required', 'string', 'max:100'],
-            'badge_km'       => ['nullable', 'string', 'max:100'],
-            'badge_en'       => ['nullable', 'string', 'max:100'],
-            'color'          => ['required', 'in:green,orange'],
+            'price'       => ['required', 'integer'],
+            'terms'       => ['required', 'integer'],
             'sort_order'     => ['nullable', 'integer'],
             'is_active'      => ['nullable', 'boolean'],
-            'image'        => ['nullable', 'image', 'max:2048'],
-            'slug_id'      => ['nullable', 'exists:slugs,id'],
-            'service_type' => ['nullable', 'exists:service_types,id'],
+            'image'        => ['required', 'image', 'max:2048'],
+            'service_type' => ['required', 'exists:service_types,id'],
         ]);
         $data['is_active'] = $request->boolean('is_active');
         if ($request->hasFile('image')) {
@@ -63,15 +59,12 @@ class ServiceController extends Controller
             'name_en'        => ['required', 'string', 'max:200'],
             'description_km' => ['nullable', 'string'],
             'description_en' => ['nullable', 'string'],
-            'icon'           => ['required', 'string', 'max:100'],
-            'badge_km'       => ['nullable', 'string', 'max:100'],
-            'badge_en'       => ['nullable', 'string', 'max:100'],
-            'color'          => ['required', 'in:green,orange'],
+            'price'       => ['required', 'integer'],
+            'terms'       => ['required', 'integer'],
             'sort_order'     => ['nullable', 'integer'],
             'is_active'      => ['nullable', 'boolean'],
-            'image'          => ['nullable', 'image', 'max:2048'],
-            'slug_id'        => ['nullable', 'exists:slugs,id'],
-            'service_type'   => ['nullable', 'exists:service_types,id'],
+            'image'        => ['required', 'image', 'max:2048'],
+            'service_type' => ['required', 'exists:service_types,id'],
         ]);
         $data['is_active'] = $request->boolean('is_active');
         if ($request->hasFile('image')) {

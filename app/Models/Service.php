@@ -11,15 +11,14 @@ class Service extends Model
         'name_en',
         'description_km',
         'description_en',
-        'icon',
-        'badge_km',
-        'badge_en',
-        'color',
+        'price',
+        'terms',
         'image',
         'is_active',
         'sort_order',
         'service_type',
-        'slug_id',
+        "created_at",
+        "updated_at"
     ];
 
     protected $casts = ['is_active' => 'boolean'];
@@ -27,24 +26,6 @@ class Service extends Model
     public function scopeActive($query)
     {
         return $query->where('is_active', true)->orderBy('sort_order');
-    }
-
-    public function getName(): string
-    {
-        return app()->getLocale() === 'km' ? $this->name_km : $this->name_en;
-    }
-    public function getDescription(): ?string
-    {
-        return app()->getLocale() === 'km' ? $this->description_km : $this->description_en;
-    }
-    public function getBadge(): ?string
-    {
-        return app()->getLocale() === 'km' ? $this->badge_km : $this->badge_en;
-    }
-
-    public function slug()
-    {
-        return $this->belongsTo(Slugs::class, 'slug_id');
     }
 
     public function type()

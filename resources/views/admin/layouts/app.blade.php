@@ -10,12 +10,18 @@
     <script src="{{asset('js/filament/datatable/dataTables.min.js')}}"></script>
     <link href="{{asset('css/filament/font/kontumruy.css')}}" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{asset('storage/favicon.ico')}}">
+    <script defer src="{{asset('js/filament/select2.min.js')}}"></script>
+    <link href="{{asset('css/filament/select2.min.css')}}" rel="stylesheet">
+    <script src="{{asset('js/filament/jquery.min.js')}}"></script>
     {{-- Apply saved theme before paint to avoid flash --}}
     <script>
         (function() {
             var t = localStorage.getItem('admin-theme') || 'light';
             document.documentElement.classList.toggle('admin-light', t === 'light');
         })();
+        $(function() {
+            $('.select2').select2();
+        });
     </script>
     @if(App::getLocale() == 'km')
     <style>
@@ -334,6 +340,7 @@
     </script>
     <script>
         (function() {
+
             var btn = document.getElementById('admin-theme-toggle');
             var icon = document.getElementById('theme-icon');
             var label = document.getElementById('theme-label');
