@@ -13,7 +13,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::with( 'type')->orderBy('sort_order')->get();
+        $services = Service::with('type')->orderBy('sort_order')->get();
         return view('admin.services.index', compact('services'));
     }
 
@@ -30,11 +30,10 @@ class ServiceController extends Controller
             'name_en'        => ['required', 'string', 'max:200'],
             'description_km' => ['nullable', 'string'],
             'description_en' => ['nullable', 'string'],
-            'price'       => ['required', 'integer'],
-            'terms'       => ['required', 'integer'],
             'sort_order'     => ['nullable', 'integer'],
             'is_active'      => ['nullable', 'boolean'],
             'image'        => ['required', 'image', 'max:2048'],
+            'icon'        => ['required', 'image', 'max:2048'],
             'service_type' => ['required', 'exists:service_types,id'],
         ]);
         $data['is_active'] = $request->boolean('is_active');
@@ -59,11 +58,10 @@ class ServiceController extends Controller
             'name_en'        => ['required', 'string', 'max:200'],
             'description_km' => ['nullable', 'string'],
             'description_en' => ['nullable', 'string'],
-            'price'       => ['required', 'integer'],
-            'terms'       => ['required', 'integer'],
             'sort_order'     => ['nullable', 'integer'],
             'is_active'      => ['nullable', 'boolean'],
             'image'        => ['required', 'image', 'max:2048'],
+            'icon'        => ['required', 'image', 'max:2048'],
             'service_type' => ['required', 'exists:service_types,id'],
         ]);
         $data['is_active'] = $request->boolean('is_active');

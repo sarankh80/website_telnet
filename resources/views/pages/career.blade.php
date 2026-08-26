@@ -7,7 +7,7 @@ $selectedJob=0;
 @endphp
 @section('content')
 <section class="relative bg-[#8fc74a] text-white py-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
-    <div class="max-w-5xl mx-auto relative z-10">
+    <div class="max-w-4xl mx-auto relative z-10">
         <div class="text-center mb-2">
             <h1 class="text-2xl sm:text-4xl p-4 font-bold drop-shadow-sm">
                 {{ __('app.career.slogan') }}
@@ -17,11 +17,11 @@ $selectedJob=0;
             <form
                 action="#"
                 method="#"
-                class="grid grid-cols-1 md:grid-cols-10 gap-4 items-end">
+                class="grid grid-cols-1 md:grid-cols-9 gap-4 items-end">
                 @csrf
 
-                <!-- Branch Select -->
-                <div class="md:col-span-4 flex flex-col gap-1.5 relative">
+                <!-- Branch Select (Added md:col-start-2 to center the 8-column layout within 10 columns) -->
+                <div class="md:col-span-3  flex flex-col gap-1.5 relative">
                     <label for="branch_filter" class="text-base text-slate-700 font-semibold tracking-wide">
                         {{ __('app.career.branch') }}
                     </label>
@@ -37,7 +37,7 @@ $selectedJob=0;
                 </div>
 
                 <!-- Position Select -->
-                <div class="md:col-span-4 flex flex-col gap-1.5 relative">
+                <div class="md:col-span-3 flex flex-col gap-1.5 relative">
                     <label for="post_filter" class="text-base text-slate-700 font-semibold tracking-wide">
                         {{ __('app.career.posts') }}
                     </label>
@@ -53,19 +53,19 @@ $selectedJob=0;
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="md:col-span-2 flex items-center gap-2 relative">
+                <div class="md:col-span-3 flex items-center gap-2 relative">
                     <!-- Search Button -->
                     <button
                         type="submit"
-                        class="flex-1 inline-flex items-center justify-center gap-1.5
-                               bg-[#8fc74a] hover:bg-[#7eb53c]
+                        class="inline-flex col-span-1 items-center justify-center gap-1.5
+                               bg-[#8fc74a] hover:bg-slate-200
                                text-white font-medium
-                               py-1 px-2
+                               py-1 px-3
                                rounded-md
-                               shadow-md shadow-[#8fc74a]/20 hover:shadow-lg
                                transition-all duration-200
                                active:scale-95
-                               text-sm cursor-pointer">
+                               text-sm cursor-pointer
+                               border border-slate-200 h-full">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="w-4 h-4 shrink-0"
@@ -84,17 +84,17 @@ $selectedJob=0;
                     </button>
 
                     <!-- Reset Button -->
-                    <a
+                    <button
                         href=""
-                        class="inline-flex items-center justify-center gap-1.5
+                        class="inline-flex col-span-1 items-center justify-center gap-1.5
                                bg-slate-100 hover:bg-slate-200
                                text-slate-600 font-medium
-                               py-1 px-2
+                               py-1 px-3
                                rounded-md
                                transition-all duration-200
                                active:scale-95
                                text-sm cursor-pointer
-                               border border-slate-200"
+                               border border-slate-200 h-full"
                         title="{{ __('app.career.reset') }}">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +111,7 @@ $selectedJob=0;
                         <span class="hidden sm:inline uppercase tracking-wider">
                             {{ __('app.career.reset') }}
                         </span>
-                    </a>
+                    </button>
                 </div>
             </form>
         </div>

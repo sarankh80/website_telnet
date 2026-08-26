@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Controllers;
+namespace App\Services;
 
 abstract class Services {
 

@@ -293,6 +293,10 @@ $internetIcon=asset("storage/home/services/InternetIcon.gif");
 
 $homePlate=asset("storage/home/services/home_plate.png");
 $bizPlate=asset("storage/home/services/business_plate.png");
+
+$homeIcon=asset("storage/home/services/home_icon.png");
+$bizIcon=asset("storage/home/services/biz_icon.png");
+
 @endphp
 <script defer src="{{asset('js/filament/additional/views/services/services.js')}}"></script>
 <nav class="sticky top-20 z-40 max-w-8xl h-10 mx-auto px-4 sm:px-6 lg:px-16 relative border-b border-white/10">
@@ -718,46 +722,43 @@ $bizPlate=asset("storage/home/services/business_plate.png");
     </div>
 
     <!-- Sidebar / Navigation -->
-    <aside class="w-full lg:w-1/3 xl:w-1/4 border border-[#8fc74a]/50 shadow-[#8fc74a]/20 rounded-2xl shadow-xl mx-4 sm:mx-6 lg:mx-4 p-3 sm:p-4 flex flex-col justify-between shrink-0 h-max lg:max-h-[1200px] overflow-y-auto mb-4 sm:mb-6 lg:mb-0">
-        <div class="space-y-4 sm:space-y-6">
-            <nav class="space-y-3 sm:space-y-4 lg:space-y-6" aria-label="Service Categories">
-                @foreach($serviceTypes as $st)
-                <div class="space-y-2">
-                    <div class="flex items-center gap-2.5 px-2 py-1 text-sm sm:text-base font-bold text-slate-400">
-                        <span class="truncate">{{ $st['name'] }}</span>
-                    </div>
-
-                    @if(!empty($st['types']))
-                    <div class="space-y-1 ml-2 border-l border-gray-200">
-                        @foreach($st['types'] as $child)
-                        <a href="#service-{{ $child['id'] ?? $loop->index }}"
-                            class="group flex items-center justify-between px-3 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-[#8fc74a] hover:bg-[#8fc74a]/10 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 active:scale-[0.98]">
-                            <span class="truncate">{{ $child['name'] }}</span>
-                        </a>
-                        @endforeach
-                    </div>
-                    @else
-                    <div class="pl-1">
-                        <a href="#service-{{ $st['id'] ?? $loop->index }}"
-                            class="border-l border-gray-200 group flex items-center justify-between px-3 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-[#8fc74a] hover:bg-[#8fc74a]/10 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 active:scale-[0.98]">
-                            <span class="truncate">{{ $st['name'] }}</span>
-                            <svg class="w-3.5 h-3.5 text-slate-400 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                    </div>
-                    @endif
+    <aside class="w-full lg:w-1/3 xl:w-1/4 border border-[#8fc74a]/50 shadow-[#8fc74a]/20 shadow-xl rounded-2xl mx-4 sm:mx-6 lg:mx-4 p-3 sm:p-4 flex flex-col shrink-0 h-max lg:max-h-[1200px] overflow-y-auto mb-4 sm:mb-6 lg:mb-0">
+        <nav class="space-y-4 sm:space-y-6" aria-label="Service Categories">
+            @foreach($serviceType as $st)
+            <div class="space-y-2">
+                <div class="flex items-center gap-2.5 px-2 py-1">
+                    <span class="truncate text-sm sm:text-base font-bold text-slate-400">{{ $st->name }}</span>
                 </div>
-                @endforeach
-            </nav>
-        </div>
+                @if($st->services->isNotEmpty())
+                <div class="ml-2 space-y-1 border-l border-gray-200">
+                    @foreach($st->services as $child)
+                    <a href="{{ route('services.eachTypes', $child->id) }}"
+                        class="group flex items-center justify-between w-full mx-2 px-3 py-2 rounded-r-lg text-xs sm:text-sm font-medium transition-all duration-200 ease-in-out {{ isset($sv) && $sv->id == $child->id ? 'border-l-2 border-[#8fc74a] bg-[#8fc74a]/10 text-[#8fc74a]' : 'text-slate-600 hover:text-[#8fc74a] hover:bg-[#8fc74a]/10' }} focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 active:scale-[0.98]">
+                        <span class="truncate">{{ $child->name_en }}</span>
+                    </a>
+                    @endforeach
+                </div>
+                @else
+                <div class="pl-1">
+                    <a href="#service-{{ $st->id }}"
+                        class="group flex items-center justify-between w-full px-3 py-2 rounded-xl border-l border-gray-200 text-xs sm:text-sm font-medium text-slate-600 hover:text-[#8fc74a] hover:bg-[#8fc74a]/10 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 active:scale-[0.98]">
+                        <span class="truncate">{{ $st->name }}</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+                @endif
+            </div>
+            @endforeach
+        </nav>
     </aside>
 
     <!-- Main Content -->
     <main class="w-full lg:w-2/3 xl:w-3/4 px-4 sm:px-6 space-y-5 sm:space-y-8 overflow-y-auto">
         <header class="max-w-2xl">
-            <h1 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-slate-900 mt-1 sm:mt-3 tracking-tight">Ultra-Fast Fiber Optic Internet</h1>
-            <p class="text-[#444] mt-2 text-xs sm:text-sm lg:text-base leading-relaxed">Experience symmetrical gigabit speeds designed for heavy streaming, competitive gaming, and multi-device households.</p>
+            <h1 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-[#8fc74a] mt-1 sm:mt-3 tracking-tight">{{ $isKm?$sv->name_km:$sv->name_en }}</h1>
+            <p class="text-slate-600 mt-2 text-xs sm:text-sm lg:text-base leading-relaxed">{!! $isKm?$sv->description_km:$sv->description_en !!}</p>
         </header>
 
         <!-- Image Carousel -->
@@ -792,62 +793,93 @@ $bizPlate=asset("storage/home/services/business_plate.png");
 
         <!-- Pricing Grid -->
         <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 py-3 sm:py-8">
-            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-[#8fc74a] shadow-md flex flex-col justify-between relative hover:scale-[1.02] sm:hover:scale-105 duration-300 transition-all">
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-base sm:text-lg font-bold text-[#8fc74a]">Standard Fiber</h3>
-                    </div>
-                    <div class="my-3 sm:my-4">
-                        <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#F79633]">$49</span>
-                        <span class="text-slate-500 font-medium text-sm sm:text-base">/month</span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Ideal for standard homes. Includes up to 300 Mbps download and upload speeds with unlimited data.</p>
-                </div>
-                <button class="mt-4 sm:mt-6 w-full py-2.5 sm:py-3 bg-[#8fc74a] hover:bg-[#F79633] text-white font-semibold rounded-xl transition-all shadow-md shadow-indigo-100 active:scale-[0.98] text-sm sm:text-base">Order Now</button>
-            </div>
+            @foreach($sv->tariff as $tr)
+            <div class="bg-white p-6 sm:p-8 pt-10 sm:pt-14 rounded-2xl border border-[#8fc74a]/40 shadow-sm hover:shadow-xl flex flex-col justify-between relative hover:-translate-y-1 transition-all duration-300 mt-8 group">
 
-            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-[#8fc74a] shadow-md flex flex-col justify-between relative hover:scale-[1.02] sm:hover:scale-105 duration-300 transition-all">
-                <span class="absolute -top-3 right-6 bg-[#8fc74a] text-white text-[9px] sm:text-[10px] font-extrabold uppercase px-2 sm:px-2.5 py-0.5 rounded-full tracking-wider">Best Value</span>
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-base sm:text-lg font-bold text-[#8fc74a]">Gigabit Ultra</h3>
-                    </div>
-                    <div class="my-3 sm:my-4">
-                        <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#F79633]">$79</span>
-                        <span class="text-slate-500 font-medium text-sm sm:text-base">/month</span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Maximum performance with 1000 Mbps speeds, includes Mesh WiFi equipment and priority support.</p>
+                <!-- Legend Badge (Floating Image Header) -->
+                <div class="absolute -top-7 left-1/2 -translate-x-1/2 bg-white border-2 border-[#8fc74a] rounded-full p-1 shadow-md flex items-center justify-center w-14 h-14 sm:w-20 sm:h-20 z-10 transition-transform duration-300 group-hover:scale-105">
+                    <img src="{{$homeIcon}}" alt="Standard Fiber Icon" class="w-8 h-8 sm:w-16 sm:h-16 object-contain">
                 </div>
-                <button class="mt-4 sm:mt-6 w-full py-2.5 sm:py-3 bg-[#8fc74a] hover:bg-[#F79633] text-white font-semibold rounded-xl transition-all shadow-md shadow-indigo-100 active:scale-[0.98] text-sm sm:text-base">Order Now</button>
-            </div>
 
-            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-[#8fc74a] shadow-md flex flex-col justify-between relative hover:scale-[1.02] sm:hover:scale-105 duration-300 transition-all">
                 <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-base sm:text-lg font-bold text-[#8fc74a]">Gigabit Ultra</h3>
+                    <!-- Card Title -->
+                    <div class="text-center pb-4 border-b border-slate-100">
+                        <h3 class="text-lg sm:text-2xl font-bold text-[#8fc74a] tracking-wider">{{$isKm?$tr->name_km:$tr->name_en}}</h3>
                     </div>
-                    <div class="my-3 sm:my-4">
-                        <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#F79633]">$79</span>
-                        <span class="text-slate-500 font-medium text-sm sm:text-base">/month</span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Maximum performance with 1000 Mbps speeds, includes Mesh WiFi equipment and priority support.</p>
-                </div>
-                <button class="mt-4 sm:mt-6 w-full py-2.5 sm:py-3 bg-[#8fc74a] hover:bg-[#F79633] text-white font-semibold rounded-xl transition-all shadow-md shadow-indigo-100 active:scale-[0.98] text-sm sm:text-base">Order Now</button>
-            </div>
 
-            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-[#8fc74a] shadow-md flex flex-col justify-between relative hover:scale-[1.02] sm:hover:scale-105 duration-300 transition-all">
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-base sm:text-lg font-bold text-[#8fc74a]">Customize</h3>
+                    <!-- Pricing Block -->
+                    <div class="my-5 text-center">
+                        <span class="text-4xl sm:text-5xl font-black text-[#F79633] tracking-tight">${{$tr->price}}</span>
+                        <span class="text-slate-400 font-medium text-sm sm:text-base ml-1">{{($tr->term)>=2 ? __('app.internet.terms'):__('app.internet.term')}}</span>
                     </div>
-                    <div class="my-3 sm:my-4">
-                        <span class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#F79633]">$XX</span>
-                        <span class="text-slate-500 font-medium text-sm sm:text-base">/month</span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Tailored bandwidth and routing features built around custom infrastructure requirements.</p>
+
+                    <!-- Features List -->
+                    <ul class="text-xs sm:text-sm text-slate-600 space-y-3 list-none pl-0 my-6">
+                        <li class="flex items-start gap-3">
+                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
+                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span>Fiber Optic Technology 100% connectivity.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
+                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span>High-speed broadband connectivity</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
+                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span>Stable and low-latency network performance</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
+                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span>Affordable monthly subscription</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
+                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span>PPPoE Connection stable access via Point-to-Point</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
+                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span>Suitable for browsing, streaming, and online learning</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
+                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <span>Flexible bandwidth packages</span>
+                        </li>
+                    </ul>
                 </div>
-                <button class="mt-4 sm:mt-6 w-full py-2.5 sm:py-3 bg-[#8fc74a] hover:bg-[#F79633] text-white font-semibold rounded-xl transition-all shadow-md shadow-indigo-100 active:scale-[0.98] text-sm sm:text-base">Order Now</button>
+
+                <!-- CTA Button -->
+                <button class="mt-4 sm:mt-6 w-full py-3 bg-[#8fc74a] hover:bg-[#F79633] text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-[#F79633]/20 active:scale-[0.98] text-sm sm:text-base cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#8fc74a] focus:ring-offset-2">
+                    Order Now
+                </button>
             </div>
+            @endforeach
         </div>
     </main>
 

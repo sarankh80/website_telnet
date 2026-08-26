@@ -7,7 +7,9 @@ use App\Models\Career;
 use App\Models\CareerApplication;
 use App\Models\CorporateSubscriber;
 use App\Models\Service;
+use App\Models\ServiceType;
 use App\Models\Slugs;
+use App\Models\Tariffs;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -38,10 +40,16 @@ class HomeController extends Controller
 
     public function services()
     {
-        $services = Service::active()->get();
-        return view('pages.services', compact('services'));
+        $serviceType = ServiceType::all();
+        $sv = Service::first();
+        return view('pages.services', compact('sv','serviceType'));
     }
-
+    public function serviceseachTypes(int $typeId)
+    {
+        $serviceType = ServiceType::all();
+        $sv = Service::FindOrfail($typeId);
+        return view('pages.services', compact('sv', 'serviceType'));
+    }
     public function kpi()
     {
         return view('pages.kpi');
@@ -169,7 +177,7 @@ class HomeController extends Controller
         foreach ($posts as $post) {
             $positions .= "<option value='" . $post["id"] . "'>" . $post["name"] . "</option>";
         }
-        return view('pages.career', compact('careers', 'branches', 'positions',"jobType","shiftType"));
+        return view('pages.career', compact('careers', 'branches', 'positions', "jobType", "shiftType"));
     }
 
     public function careerApply(Request $request)

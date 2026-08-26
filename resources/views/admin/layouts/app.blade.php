@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Dashboard') — TELNET Admin</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="{{asset('js/filament/datatable/dataTables.min.js')}}"></script>
+    @vite(['resources/css/app.css'])
+    <script src="{{asset('js/filament/jquery-3.6.3.min.js')}}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> -->
+    <link href="{{asset('css/filament/dataTables.min.css')}}" rel="stylesheet">
+    <script src="{{asset('js/filament/datatable/jquery.dataTables.min.js')}}"></script>
     <link href="{{asset('css/filament/font/kontumruy.css')}}" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{asset('storage/favicon.ico')}}">
     <script defer src="{{asset('js/filament/select2.min.js')}}"></script>
     <link href="{{asset('css/filament/select2.min.css')}}" rel="stylesheet">
-    <script src="{{asset('js/filament/jquery.min.js')}}"></script>
+    <script src="{{asset('js/filament/additional/datatable/datatable.load.js')}}"></script>
     {{-- Apply saved theme before paint to avoid flash --}}
     <script>
         (function() {
@@ -48,6 +52,25 @@
             color: #333 !important;
         }
     </style>
+    @else
+    <style>
+        a,
+        p,
+        span,
+        button,
+        label,
+        legend,
+        th,
+        table,
+        tbody,
+        thead,
+        div,
+        input {
+            font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+            font-weight: normal !important;
+        }
+    </style>
+
     @endif
 </head>
 
@@ -213,9 +236,8 @@
 
                     @if(isset($canAdd) && $canAdd)
                     <div class="h-8 w-px bg-slate-700"></div>
-                    <button onclick="window.location.href=`{{ $canAdd['route'] ?? $routeForAdd ?? '#' }}`"
-                        class="px-4 py-2 bg-brand-green hover:bg-brand-green/90 text-white text-sm font-medium rounded-lg transition-all shadow-md">
-                        {{ $canAdd['title'] }}
+                    <button onclick="window.location.href=`{{ $canAdd['url'] ?? $routeForAdd ?? '#' }}`"
+                        class="px-4 py-2 bg-brand-green hover:bg-brand-green/90 text-white text-sm font-medium rounded-lg transition-all shadow-md"><i class="fa-solid fa-plus"></i> {{ $canAdd['title'] }}
                     </button>
                     @endif
                 </div>
@@ -226,7 +248,7 @@
 
             {{-- Scrollable content area --}}
             <div class="flex-1 overflow-y-auto">
-                <div class="p-3 sm:px-8 sm:py-4 w-full mx-auto">
+                <div class="p-3 sm:px-4 sm:py-4 w-full mx-auto">
 
                     {{-- Flash Notifications --}}
                     @if(session('success'))
@@ -241,14 +263,10 @@
                     </div>
                     @endif
 
-                    {{-- Breadcrumb / brucher --}}
                     @includeIf('admin.layouts.brucher')
-
-                    {{-- Search (only shown when the calling view opts in) --}}
                     @if(isset($search) && $search)
                     @include('admin.layouts.search')
                     @endif
-
                     {{-- Page content --}}
                     <div class="pb-10 p-4">
                         @yield('content')
@@ -260,43 +278,7 @@
     </div>
 
     @stack('scripts')
-    <!-- <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9/dist/umd/simple-datatables.js"></script> -->
     <script>
-        (function() {
-            function initDatatables() {
-                if (typeof simpleDatatables === 'undefined') return;
-                document.querySelectorAll('table.admin-datatable').forEach(function(table) {
-                    new simpleDatatables.DataTable(table, {
-                        searchable: false,
-                        fixedHeight: false,
-                        paging: true,
-                        perPage: 10,
-                        perPageSelect: [10, 15, 25, 50, 100],
-                        labels: {
-                            placeholder: '{{ __("admin.datatable.search") }}',
-                            perPage: '{{ __("admin.datatable.per_page") }}',
-                            noRows: '{{ __("admin.datatable.no_rows") }}',
-                            noResults: '{{ __("admin.datatable.no_results") }}',
-                            info: '{{ __("admin.datatable.info") }}',
-                            infoFiltered: '{{ __("admin.datatable.info_filtered") }}',
-                        },
-                    });
-                });
-            }
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initDatatables);
-            } else {
-                initDatatables();
-            }
-        })();
-    </script>
-    <script>
-        /* ── Global admin translate helper ──────────────────────────────────────────
-   Called from Alpine.js tab wrappers.
-   el  = root element of the x-data component (this.$el)
-   tab = current active tab ('en' or 'km')
-   Returns the new active tab on success, or null.
-─────────────────────────────────────────────────────────────────────────── */
         window.adminTranslate = async function(el, tab) {
             var toLang = tab === 'en' ? 'km' : 'en';
             var fromEl = el.querySelector('[data-lang="' + tab + '"] .quill-editor');

@@ -37,7 +37,7 @@
             <div class="grid md:grid-cols-3 gap-5">
                 <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('admin.services.service_type') }}</label>
-                    <select name="service_type" class="admin-input select2">
+                    <select name="service_type" class="select2">
                         <option value="">-- SELECT --</option>
                         @foreach($serviceTypes as $type)
                         <option value="{{ $type->id }}"

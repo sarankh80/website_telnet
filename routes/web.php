@@ -18,6 +18,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/coverage', [HomeController::class, 'coverage'])->name('coverage');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
+Route::get('/services/{typeId}', [HomeController::class, 'serviceseachTypes'])->name('services.eachTypes');
 Route::get('/kpi', [HomeController::class, 'kpi'])->name('kpi');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/portal', [HomeController::class, 'portal'])->name('portal');
@@ -37,11 +38,24 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('login', [Admin\AuthController::class, 'login'])->name('login.post');
     Route::post('logout', [Admin\AuthController::class, 'logout'])->name('logout');
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Route Data
+    |--------------------------------------------------------------------------
+    |
+    | Route For geting data As Datatable Form
+    | 
+    |
+    */
+    Route::get('/admin/tariffs/data', [Admin\TariffController::class, 'data'])->name('tariffs.data');
+
+
     // ─── Protected Admin Routes ────────────────────────────
     Route::middleware('admin')->group(function () {
         Route::get('/', [Admin\DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('services', Admin\ServiceController::class);
+        Route::resource('tariffs', Admin\TariffController::class);
         Route::resource('slugs', Admin\SlugController::class);
         Route::resource('service-types', Admin\ServiceTypeController::class);
         Route::resource('corporate-subscribers', Admin\CorporateSubscriberController::class);
