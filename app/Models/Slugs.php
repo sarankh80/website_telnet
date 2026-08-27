@@ -12,11 +12,6 @@ class Slugs extends Model
 
     public function serviceTypes()
     {
-        return $this->hasMany(ServiceType::class, 'slug_id');
-    }
-
-    public function services()
-    {
-        return $this->hasMany(Service::class, 'slug_id');
+        return $this->hasMany(ServiceType::class, 'slug_id','id');
     }
 }

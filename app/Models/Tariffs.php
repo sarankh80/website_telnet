@@ -16,7 +16,8 @@ class Tariffs extends Model
         "description_kh",
         "price",
         "term",
-        "image",
+        "sort",
+        "status",
         "created_at",
         "updated_at"
     ];

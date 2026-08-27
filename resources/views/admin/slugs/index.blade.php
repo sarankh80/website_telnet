@@ -1,68 +1,80 @@
 @extends('admin.layouts.app')
-@section('title', __('admin.slugs.title'))
+@section('title', __('admin.services.title'))
 
 @section('content')
-<div class="flex items-center justify-between mb-6">
-    <div></div>
-    <a href="{{ route('admin.slugs.create') }}"
-        class="px-4 py-2 bg-brand-green hover:bg-[#7ab534] text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
-        <i class="fa-solid fa-plus"></i> {{ __('admin.slugs.add') }}
-    </a>
-</div>
 
-<div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-    <div class="overflow-x-auto">
-        <table id="service-slug" class="w-full text-sm admin-datatable" style="min-width:600px">
+<!-- Main Wrapper -->
+<div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+    <!-- Responsive Scroll Wrapper -->
+    <div class="w-full overflow-x-auto p-4">
+        <table class="w-full min-w-[700px] text-sm text-slate-300 " id="slugs-table" ref-data="{{route('admin.slugs.data')}}">
             <thead>
-                <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase tracking-wider">
-                    <th class="px-5 py-3.5 text-left w-8">#</th>
-                    <th class="px-5 py-3.5 text-left">{{ __('admin.slugs.category') }}</th>
-                    <th class="px-5 py-3.5 text-center">{{ __('admin.slugs.types') }}</th>
-                    <th class="px-5 py-3.5 text-center">{{ __('admin.slugs.services') }}</th>
-                    <th class="px-5 py-3.5 text-right">{{ __('admin.field.actions') }}</th>
+                <tr class="bg-slate-800/50 border-b border-slate-800 text-xs text-slate-400 tracking-wider">
+                    <th class="px-5 py-3.5 text-left font-semibold w-[10%]">{{__('app.internet.slugs.id')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap w-[15%]">{{__('app.internet.slugs.name')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap w-[20%]">{{__('app.internet.slugs.name_km')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold hidden lg:table-cell w-[10%]">{{__('app.internet.slugs.image')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold hidden md:table-cell w-[35%]">{{__('app.internet.slugs.desc_en')}}</th>
+                    <th class="px-5 py-3.5 text-right font-semibold whitespace-nowrap w-[10%]">{{ __('admin.field.actions') }}</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-slate-800">
-                @forelse($slugs as $slug)
-                <tr class="hover:bg-slate-800/40 transition">
-                    <td class="px-5 py-4 text-slate-500">{{ $loop->iteration }}</td>
-                    <td class="px-5 py-4">
-                        <div class="flex items-center gap-3">
-                            @if($slug->image)
-                            <img src="{{ Storage::url($slug->image) }}" alt=""
-                                class="w-9 h-9 rounded-lg object-cover flex-shrink-0 border border-slate-700">
-                            @else
-                            <div class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0">
-                                <i class="fa-solid fa-layer-group text-slate-500 text-sm"></i>
-                            </div>
-                            @endif
-                            <div>
-                                <p class="font-medium text-slate-200">{{ $slug->name }}</p>
-                                <p class="text-xs text-slate-500">{{ $slug->name_km }}</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-5 py-4 text-center text-slate-400">{{ $slug->service_types_count }}</td>
-                    <td class="px-5 py-4 text-center text-slate-400">{{ $slug->services_count }}</td>
-                    <td class="px-5 py-4 text-right">
-                        <div class="flex items-center justify-end gap-2">
-                            <a href="{{ route('admin.slugs.edit', $slug) }}"
-                                class="px-3 py-1.5 text-xs bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg transition">{{ __('admin.btn.edit') }}</a>
-                            <form method="POST" action="{{ route('admin.slugs.destroy', $slug) }}"
-                                onsubmit="return confirm(`{{ __('admin.btn.delete') }}?`)">
-                                @csrf @method('DELETE')
-                                <button class="px-3 py-1.5 text-xs bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg transition">{{ __('admin.btn.delete') }}</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="5" class="px-5 py-10 text-center text-slate-500">{{ __('admin.slugs.no_categories') }}</td>
-                </tr>
-                @endforelse
-            </tbody>
         </table>
     </div>
 </div>
+<script>
+    $(function() {
+        let columns = [{
+                data: "id",
+                name: "id"
+            },
+            {
+                data: "name",
+                name: "name"
+            },
+            {
+                data: "name_km",
+                name: "name_km"
+            },
+            {
+                data: "image",
+                name: "image"
+            },
+            {
+                data: "desc",
+                name: "desc"
+            },
+            {
+                data: "actions",
+                name: "actions",
+                orderable: false,
+                searchable: false
+            }
+        ];
+        var optionSelected = {};
+
+        function customStyle(nRow, aData, iDataIndex) {
+            // $("td:eq(5)", nRow).attr("style", "text-align:right;");
+
+            // if (aData.status == "Available") {
+            //     $("td:eq(7)", nRow).attr(
+            //         "style", "text-align:center;"
+            //     );
+            // } else if (aData.status == "In Used") {
+            //     $("td:eq(7)", nRow).attr(
+            //         "style", "text-align:center;background-color:#8fc74a;color: #fff;font-weight: bold;"
+            //     );
+            // } else if (aData.status == "Broken") {
+            //     $("td:eq(7)", nRow).attr(
+            //         "style", "text-align:center;background-color:red;color: #fff;font-weight: bold;"
+            //     );
+            // } else if (aData.status == "Sending") {
+            //     $("td:eq(7)", nRow).attr(
+            //         "style", "text-align:center;background-color:blue;color: #fff;font-weight: bold;"
+            //     );
+            // }
+        }
+        // $("#slugs-table").DataTable();
+        initDataTable('slugs-table', columns, ".search", ".reset", customStyle, optionSelected);
+    });
+</script>
 @endsection

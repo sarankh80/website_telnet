@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\Models\Tariffs;
+use Illuminate\Foundation\Http\Middleware\TransformsRequest;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -14,13 +16,15 @@ class TariffController extends Controller
      */
     public function index()
     {
+        $title = __('app.internet.tariff.title');
+        $sub_title = __('app.internet.tariff.title') . " " . __('app.controls.action.search');
         $canAdd = [
             "url" => route('admin.tariffs.create'),
             "title" => __('app.controls.action.add') . " " . __('app.internet.tariff.title'),
         ];
         $slugs = Tariffs::all();
         $search = true;
-        return view('admin.tariffs.index', compact('slugs', 'search', 'canAdd'));
+        return view('admin.tariffs.index', compact('slugs', 'search', 'canAdd', 'title', 'sub_title'));
     }
 
     /**
@@ -28,7 +32,11 @@ class TariffController extends Controller
      */
     public function create()
     {
-        
+        $title = __('app.controls.action.add')  . " " . __('app.internet.tariff.title');
+        $tariffs = new Tariffs();
+        $redirectRoute = route("admin.tariffs.index");
+        $services = $this->repository->getSelectOption(Service::class, "id", "name_en");
+        return view('admin.tariffs.form', compact('tariffs', 'title', 'services', 'redirectRoute'));
     }
 
     /**
@@ -36,7 +44,19 @@ class TariffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name_kh'        => ['required', 'string', 'max:200'],
+            'name_en'        => ['required', 'string', 'max:200'],
+            'description_kh' => ['nullable', 'string'],
+            'description_en' => ['nullable', 'string'],
+            'sort'     => ['nullable', 'integer'],
+            'price'     => ['required', 'integer'],
+            'term'     => ['required', 'integer'],
+            'status'      => ['nullable', 'boolean'],
+            'services_id' => ['required', 'exists:services,id'],
+        ]);
+        Tariffs::create($data);
+        return redirect()->route('admin.tariffs.index')->with('success', 'Tariffs Created');
     }
 
     /**
@@ -52,7 +72,10 @@ class TariffController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $redirectRoute = route('admin.tariffs.index');
+        $tariffs = Tariffs::findOrFail($id);
+        $services = $this->repository->getSelectOption(Service::class, "id", "name_en", $tariffs->services_id);
+        return view('admin.tariffs.form', compact('services', 'tariffs', 'redirectRoute'));
     }
 
     /**
@@ -60,7 +83,20 @@ class TariffController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tariffs = Tariffs::findOrFail($id);
+        $data = $request->validate([
+            'name_kh'        => ['required', 'string', 'max:200'],
+            'name_en'        => ['required', 'string', 'max:200'],
+            'description_kh' => ['nullable', 'string'],
+            'description_en' => ['nullable', 'string'],
+            'sort'     => ['nullable', 'integer'],
+            'price'     => ['required', 'integer'],
+            'term'     => ['required', 'integer'],
+            'status'      => ['nullable', 'boolean'],
+            'services_id' => ['required', 'exists:services,id'],
+        ]);
+        $tariffs->update($data);
+        return redirect()->route('admin.tariffs.index')->with('success', 'Tariffs Created');
     }
 
     /**
@@ -68,7 +104,9 @@ class TariffController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tariffs = Tariffs::findOrFail($id);
+        $tariffs->delete();
+        return redirect()->route('admin.tariffs.index')->with('success', 'Tariffs Deleted');
     }
     public function data(Request $request)
     {
@@ -81,7 +119,8 @@ class TariffController extends Controller
             "description_kh",
             "price",
             "term",
-            "image",
+            "sort",
+            "status",
             "created_at",
             "updated_at"
         ])->with(['services'])->orderBy('id', 'desc');
@@ -99,8 +138,14 @@ class TariffController extends Controller
                 // $csrf = csrf_token();
 
                 $buttons = '<div class="space-x-1 text-center">';
-                $buttons .= '<a href="" class="hover:bg-[#777] hover:text-white border shadow rounded border-[#777] text-[#000] bg-gray-100 leading-2 px-2 py-[2px] my-[1px]">' . __('app.controls.action.edit') . '</a>';
-                $buttons .= '<a href="" class="hover:bg-[#777] hover:text-white border shadow rounded border-[#777] text-[#000] bg-gray-100 leading-2 px-2 py-[2px] my-[1px]">' . __('app.controls.action.remove') . '</a>';
+                $buttons .= '<a href="' . route('admin.tariffs.edit', $inventory->id) .  '" class="hover:bg-[#777] hover:text-white border shadow rounded border-[#777] text-[#000] bg-gray-100 leading-2 px-2 py-1 my-[1px]">' . __('app.controls.action.edit') . '</a>';
+                $buttons .= '<form action="' . route('admin.tariffs.destroy', $inventory->id) . '" method="POST" class="inline-block">
+                                ' . csrf_field() . '
+                                ' . method_field('DELETE') . '
+                                <button type="submit" class="hover:bg-[#777] hover:text-white border shadow rounded border-[#777] text-[#000] bg-gray-100 leading-2 px-2 py-2 my-[1px]">
+                                    ' . __('app.controls.action.remove') . '
+                                </button>
+                            </form>';
                 $buttons .= '</div>';
 
                 return $buttons;
@@ -111,9 +156,12 @@ class TariffController extends Controller
             ->editColumn('serviceName', function ($inventory) {
                 return ('<a href="#" class="text-black text-[12px] underline hover:text-black font-bold">' . e($inventory->services->name_en) . '</a>');
             })
-            // ->editColumn('product', function ($inventory) {
-            //     return '<a href="#" class="text-black text-[12px] underline hover:text-black font-bold">' . e($inventory->product->name) . '</a>';
-            // })
+            ->editColumn('price', function ($inventory) {
+                return '$' . e(($inventory->price) >= 1 ? number_format($inventory->price, 2) : "XX");
+            })
+            ->editColumn('term', function ($inventory) {
+                return e("Every ".$inventory->term ." ". (($inventory->term) >= 2 ? "Monthes" : "Month"));
+            })
             // ->editColumn('branch', function ($inventory) {
             //     return e($inventory->branches->name);
             // })
@@ -124,7 +172,7 @@ class TariffController extends Controller
             //     return $user->created_at ? $user->created_at->format('Y-m-d H:i:s') : '';
             // })
             // ->addIndexColumn()
-            ->rawColumns(['actions', 'description_en', 'serviceName'])
+            ->rawColumns(['actions', 'description_en', 'serviceName', 'price'])
             ->make(true);
     }
 }

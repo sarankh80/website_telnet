@@ -34,6 +34,6 @@ class Service extends Model
     }
     public function tariff()
     {
-        return $this->hasMany(Tariffs::class, 'services_id', 'id');
+        return $this->hasMany(Tariffs::class, 'services_id', 'id')->orderBy('sort',"asc");
     }
 }

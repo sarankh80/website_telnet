@@ -8,7 +8,7 @@
     <div class="absolute inset-0 flex flex-col justify-start items-center text-center px-4 z-10 mt-24">
         <h1 class="flex flex-col gap-2 max-w-6xl">
             <!-- Line 1: Primary Color (#8fc74a) -->
-            <span class="text-2xl sm:text-4xl md:text-5xl font-bold uppercase text-[#8fc74a] outline-[4px] outline-white outline-offset-2 leading-tight">
+            <span class="text-2xl sm:text-4xl md:text-5xl font-bold uppercase text-[#8fc74a] leading-tight">
                 {{ __('app.hero.title') }}
 
             </span>

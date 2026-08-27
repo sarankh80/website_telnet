@@ -119,9 +119,3 @@ if (document.readyState === 'loading') {
 } else {
     initApp();
 }
-
-import $ from 'jquery';
-import DataTable from 'datatables.net';
-window.$ = $;
-window.jQuery = $;
-window.DataTable = DataTable;

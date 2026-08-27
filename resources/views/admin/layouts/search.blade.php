@@ -1,6 +1,6 @@
 <fieldset class=" border border-gray-300 dark:border-gray-700 shadow-lg rounded-lg p-4 bg-white dark:bg-[#161b22]">
-    <legend class="text-xl font-semibold px-2 text-gray-600 dark:text-blue-400">
-        {{ $sub_title ?? 'Search Filters' }}
+    <legend class="text-xl bold !font-bold px-2 text-gray-600 dark:text-blue-400">
+        {{ $sub_title ?? 'Searches Catalog' }}
     </legend>
     <!-- Row 1 -->
     <div class="grid grid-cols-1 md:grid-cols-{{$colspanRow1??4}} gap-4 items-end mb-1">
@@ -27,11 +27,11 @@
 
         <div class="flex gap-2">
             <button type="button" id="search"
-                class="search flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-1 px-4 rounded transition duration-150">
+                class="search flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-1 px-4 rounded-lg transition duration-150">
                 <i class="fas fa-search mr-1"></i> {{ __('admin.search.search') ?? 'Search' }}
             </button>
             <button type="reset" id="reset" onclick="window.location.href=''"
-                class="reset flex-1 bg-red-500 hover:bg-red-600 text-white font-medium text-sm py-1 px-4 rounded transition duration-150">
+                class="reset flex-1 bg-red-500 hover:bg-red-600 text-white font-medium text-sm py-1 px-4 rounded-lg transition duration-150">
                 {{ __('admin.search.reset') ?? 'Reset' }}
             </button>
         </div>

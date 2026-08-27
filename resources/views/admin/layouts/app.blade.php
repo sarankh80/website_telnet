@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Dashboard') — TELNET Admin</title>
-    @vite(['resources/css/app.css'])
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <script src="{{asset('js/filament/jquery-3.6.3.min.js')}}"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script> -->
     <!-- <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> -->
@@ -29,7 +29,10 @@
     </script>
     @if(App::getLocale() == 'km')
     <style>
-        a,
+        [x-cloak] {
+            display: none !important;
+        }
+
         p,
         span,
         button,
@@ -37,7 +40,6 @@
         legend,
         th,
         table,
-        tbody,
         thead,
         div,
         input {
@@ -54,7 +56,7 @@
     </style>
     @else
     <style>
-        a,
+
         p,
         span,
         button,
@@ -62,7 +64,7 @@
         legend,
         th,
         table,
-        tbody,
+
         thead,
         div,
         input {
@@ -104,6 +106,7 @@
                 ['route' => 'admin.slugs.index', 'icon' => 'fa-layer-group', 'label' => __('admin.nav.service_slug')],
                 ['route' => 'admin.service-types.index', 'icon' => 'fa-tags', 'label' => __('admin.nav.service_types')],
                 ['route' => 'admin.services.index', 'icon' => 'fa-bolt', 'label' => __('admin.nav.services')],
+                ['route' => 'admin.tariffs.index', 'icon' => 'fa-wifi', 'label' => __('app.internet.tariff.title')],
                 ['route' => 'admin.branches.index', 'icon' => 'fa-map-pin', 'label' => __('admin.nav.branches')],
                 ['route' => 'admin.teams.index', 'icon' => 'fa-users', 'label' => __('admin.nav.team')],
                 ]
@@ -192,9 +195,11 @@
                     <button class="lg:hidden text-slate-400 hover:text-slate-100 transition p-1 -ml-1" @click.stop="sidebarOpen = !sidebarOpen">
                         <i class="fa-solid fa-bars text-lg"></i>
                     </button>
+                    @if(isset($title))
                     <h1 class="text-xl sm:text-2xl font-semibold truncate">
-                        @yield('title', 'Dashboard')
+                        {{$title}}
                     </h1>
+                    @endif
                 </div>
 
                 <div class="flex items-center gap-3 flex-shrink-0">

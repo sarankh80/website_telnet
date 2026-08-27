@@ -558,7 +558,7 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
         </div>
     </div>
     <!-- Peering -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-stretch max-w-7xl mx-auto min-h-0 lg:min-h-[500px] lg:h-[500px] px-4 sm:px-6 lg:px-0">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-stretch max-w-7xl mx-auto min-h-0 lg:min-h-[500px] lg:h-[600px] px-4 sm:px-6 lg:px-0">
         <!-- Left Column: 50% Main Image -->
         <div class="w-full col-span-1 h-[220px] sm:h-[300px] lg:h-full rounded-2xl overflow-hidden shadow-xl shadow-[#8fc74a]/10 bg-gray-100 flex-shrink-0 transition-all duration-300 hover:scale-95 ease-out">
             <img src="{{$cdnImage}}" alt="Main Image" class="w-full h-full object-cover" />
@@ -587,7 +587,7 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
 
             <!-- Bottom: 2-Column Split (25% overall width each) -->
             <div class="grid grid-cols-2 gap-3 sm:gap-4 flex-1 min-h-0">
-                <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 h-full min-h-[100px] transition-all duration-300 hover:scale-95 ease-out">
+                <div class="rounded-xl overflow-hidden shadow-md bg-gray-100 h-full min-h-[200px] transition-all duration-300 hover:scale-95 ease-out">
                     <img src="{{$socialImage}}" alt="Feature Image Right" class="w-full h-full object-cover" />
                 </div>
                 <div class="rounded-xl overflow-hidden h-full">
@@ -754,128 +754,148 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
         </nav>
     </aside>
 
-    <!-- Main Content -->
-    <main class="w-full lg:w-2/3 xl:w-3/4 px-4 sm:px-6 space-y-5 sm:space-y-8 overflow-y-auto">
+    <main class="w-full lg:w-2/3 xl:w-3/4 px-4 sm:px-6 space-y-8 overflow-y-auto">
+        <!-- Header Section -->
         <header class="max-w-2xl">
-            <h1 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-[#8fc74a] mt-1 sm:mt-3 tracking-tight">{{ $isKm?$sv->name_km:$sv->name_en }}</h1>
-            <p class="text-slate-600 mt-2 text-xs sm:text-sm lg:text-base leading-relaxed">{!! $isKm?$sv->description_km:$sv->description_en !!}</p>
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#8fc74a] tracking-tight">
+                {{ $isKm ? $sv->name_km : $sv->name_en }}
+            </h1>
+            <p class="text-slate-500 mt-2 text-sm sm:text-base leading-relaxed">
+                {!! $isKm ? $sv->description_km : $sv->description_en !!}
+            </p>
         </header>
 
-        <!-- Image Carousel -->
-        <div class="relative w-full overflow-hidden shadow-lg group bg-slate-900 aspect-[16/9] sm:aspect-[16/7]">
-            <div id="slides" class="flex transition-transform duration-500 ease-out h-full w-full">
+        <!-- Hero / Feature Banner -->
+        <div class="relative w-full rounded-3xl overflow-hidden shadow-2xl bg-slate-950 aspect-[16/9] sm:aspect-[21/9]">
+            <div id="slides" class="flex transition-transform duration-700 ease-in-out h-full w-full">
                 <div class="min-w-full h-full relative">
-                    <img src="{{$homePlate}}" alt="Gigabit Speed Poster" class="w-full h-full object-cover opacity-75" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent p-3 sm:p-6 flex flex-col justify-end">
-                        <span class="text-[9px] sm:text-xs font-semibold text-indigo-400 uppercase tracking-wider">Poster 01</span>
-                        <h3 class="text-sm sm:text-xl font-bold text-white">Zero Latency Gaming Network</h3>
+                    <img src="{{$homePlate}}" alt="Gigabit Speed Poster" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-950/40 to-transparent p-6 sm:p-10 flex flex-col justify-end">
+                        <span class="inline-block w-fit px-3 py-1 rounded-full text-xs font-semibold bg-[#8fc74a]/20 text-[#8fc74a] border border-[#8fc74a]/30 backdrop-blur-md mb-2">
+                            Ultra High Speed
+                        </span>
+                        <h2 class="text-xl sm:text-3xl font-extrabold text-white tracking-wide">Zero Latency Gaming Network</h2>
                     </div>
                 </div>
                 <div class="min-w-full h-full relative">
-                    <img src="{{$bizPlate}}" alt="Work from Home Poster" class="w-full h-full object-cover opacity-75" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent p-3 sm:p-6 flex flex-col justify-end">
-                        <span class="text-[9px] sm:text-xs font-semibold text-indigo-400 uppercase tracking-wider">Poster 02</span>
-                        <h3 class="text-sm sm:text-xl font-bold text-white">Uninterrupted Remote Productivity</h3>
+                    <img src="{{$bizPlate}}" alt="Work from Home Poster" class="w-full h-full object-cover opacity-60" />
+                    <div class="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-950/40 to-transparent p-6 sm:p-10 flex flex-col justify-end">
+                        <span class="inline-block w-fit px-3 py-1 rounded-full text-xs font-semibold bg-[#F79633]/20 text-[#F79633] border border-[#F79633]/30 backdrop-blur-md mb-2">
+                            Enterprise Grade
+                        </span>
+                        <h2 class="text-xl sm:text-3xl font-extrabold text-white tracking-wide">Uninterrupted Remote Productivity</h2>
                     </div>
                 </div>
             </div>
-            <button onclick="moveSlide(-1)" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-800 p-1.5 sm:p-2 rounded-full shadow-md transition-all focus:outline-none">
-                <svg class="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+
+            <!-- Carousel Navigation Controls -->
+            <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/30 backdrop-blur-md text-white p-2.5 rounded-2xl transition-all focus:outline-none border border-white/20">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
                 </svg>
             </button>
-            <button onclick="moveSlide(1)" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-slate-800 p-1.5 sm:p-2 rounded-full shadow-md transition-all focus:outline-none">
-                <svg class="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/30 backdrop-blur-md text-white p-2.5 rounded-2xl transition-all focus:outline-none border border-white/20">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
                 </svg>
             </button>
         </div>
 
-        <!-- Pricing Grid -->
-        <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 py-3 sm:py-8">
+        <!-- Pricing Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 py-6">
             @foreach($sv->tariff as $tr)
-            <div class="bg-white p-6 sm:p-8 pt-10 sm:pt-14 rounded-2xl border border-[#8fc74a]/40 shadow-sm hover:shadow-xl flex flex-col justify-between relative hover:-translate-y-1 transition-all duration-300 mt-8 group">
-
-                <!-- Legend Badge (Floating Image Header) -->
-                <div class="absolute -top-7 left-1/2 -translate-x-1/2 bg-white border-2 border-[#8fc74a] rounded-full p-1 shadow-md flex items-center justify-center w-14 h-14 sm:w-20 sm:h-20 z-10 transition-transform duration-300 group-hover:scale-105">
-                    <img src="{{$homeIcon}}" alt="Standard Fiber Icon" class="w-8 h-8 sm:w-16 sm:h-16 object-contain">
-                </div>
+            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-3xl  hover:shadow-2xl hover:shadow-[#8fc74a]/10 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between relative group">
 
                 <div>
-                    <!-- Card Title -->
-                    <div class="text-center pb-4 border-b border-slate-100">
-                        <h3 class="text-lg sm:text-2xl font-bold text-[#8fc74a] tracking-wider">{{$isKm?$tr->name_km:$tr->name_en}}</h3>
+                    <!-- Floating Icon & Header Section -->
+                    <div class="flex items-center gap-4 pb-6 border-b border-slate-100">
+                        <div class="w-20 h-20 rounded-2xl bg-slate-50 border border-slate-100 shadow-inner grid place-items-center shrink-0 group-hover:bg-[#8fc74a]/10 transition-colors duration-300">
+                            <img src="{{asset('storage/'.$tr->services->image)}}" alt="Service Icon" class="max-w-full max-h-full object-contain">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-[#8fc74a] group-hover:text-[#F79633] transition-colors duration-300">
+                                {{ $isKm ? $tr->name_km : $tr->name_en }}
+                            </h3>
+                            <span class="text-xs text-slate-400">{{__('app.internet.local_s')}}</span><br>
+                            <span class="text-xs text-slate-400">{{__('app.internet.global_s')}}</span>
+                        </div>
                     </div>
 
                     <!-- Pricing Block -->
-                    <div class="my-5 text-center">
-                        <span class="text-4xl sm:text-5xl font-black text-[#F79633] tracking-tight">${{$tr->price}}</span>
-                        <span class="text-slate-400 font-medium text-sm sm:text-base ml-1">{{($tr->term)>=2 ? __('app.internet.terms'):__('app.internet.term')}}</span>
+                    <div class="my-6">
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="text-4xl sm:text-5xl font-black text-[#8fc74a] tracking-tight">
+                                ${{ ($tr->price) >= 1 ? $tr->price : "XX" }}
+                            </span>
+                            <span class="text-slate-400 font-semibold text-sm">
+                                {{ ($tr->term) >= 2 ? __('app.internet.terms') : __('app.internet.term') }}
+                            </span>
+                        </div>
                     </div>
 
                     <!-- Features List -->
-                    <ul class="text-xs sm:text-sm text-slate-600 space-y-3 list-none pl-0 my-6">
-                        <li class="flex items-start gap-3">
-                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
-                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <ul class="space-y-3.5 text-xs sm:text-sm text-slate-600 my-6">
+                        <li class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-[#8fc74a]/15 text-[#8fc74a] grid place-items-center shrink-0">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
-                            </div>
+                            </span>
                             <span>Fiber Optic Technology 100% connectivity.</span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
-                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <li class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-[#8fc74a]/15 text-[#8fc74a] grid place-items-center shrink-0">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
-                            </div>
+                            </span>
                             <span>High-speed broadband connectivity</span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
-                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <li class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-[#8fc74a]/15 text-[#8fc74a] grid place-items-center shrink-0">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
-                            </div>
+                            </span>
                             <span>Stable and low-latency network performance</span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
-                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <li class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-[#8fc74a]/15 text-[#8fc74a] grid place-items-center shrink-0">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
-                            </div>
+                            </span>
                             <span>Affordable monthly subscription</span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
-                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <li class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-[#8fc74a]/15 text-[#8fc74a] grid place-items-center shrink-0">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
-                            </div>
-                            <span>PPPoE Connection stable access via Point-to-Point</span>
+                            </span>
+                            <span>PPPoE Connection stable access</span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
-                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <li class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-[#8fc74a]/15 text-[#8fc74a] grid place-items-center shrink-0">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
-                            </div>
-                            <span>Suitable for browsing, streaming, and online learning</span>
+                            </span>
+                            <span>Suitable for streaming and online learning</span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <div class="p-0.5 rounded-full bg-[#8fc74a]/10 shrink-0 mt-0.5">
-                                <svg class="w-3.5 h-3.5 text-[#8fc74a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <li class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-[#8fc74a]/15 text-[#8fc74a] grid place-items-center shrink-0">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
-                            </div>
+                            </span>
                             <span>Flexible bandwidth packages</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- CTA Button -->
-                <button class="mt-4 sm:mt-6 w-full py-3 bg-[#8fc74a] hover:bg-[#F79633] text-white font-bold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-[#F79633]/20 active:scale-[0.98] text-sm sm:text-base cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#8fc74a] focus:ring-offset-2">
+                <!-- CTA Action -->
+                <button class="mt-4 w-full py-3.5 px-4 bg-[#8fc74a] hover:bg-[#F79633] text-white font-bold rounded-2xl transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#8fc74a]/25 text-sm cursor-pointer active:scale-[0.98]">
                     Order Now
                 </button>
             </div>

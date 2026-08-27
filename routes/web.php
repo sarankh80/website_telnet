@@ -48,6 +48,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     |
     */
     Route::get('/admin/tariffs/data', [Admin\TariffController::class, 'data'])->name('tariffs.data');
+    Route::get('/admin/slugs/data', [Admin\SlugController::class, 'data'])->name('slugs.data');
+    Route::get('/admin/service-types/data', [Admin\ServiceTypeController::class, 'data'])->name('service-types.data');
+    Route::get('/admin/services/data', [Admin\ServiceController::class, 'data'])->name('services.data');
 
 
     // ─── Protected Admin Routes ────────────────────────────
