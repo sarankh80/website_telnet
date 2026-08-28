@@ -51,6 +51,8 @@ class TariffController extends Controller
             'description_en' => ['nullable', 'string'],
             'sort'     => ['nullable', 'integer'],
             'price'     => ['required', 'integer'],
+            'local_band'     => ['required', 'integer'],
+            'global_band'     => ['required', 'integer'],
             'term'     => ['required', 'integer'],
             'status'      => ['nullable', 'boolean'],
             'services_id' => ['required', 'exists:services,id'],
@@ -91,6 +93,8 @@ class TariffController extends Controller
             'description_en' => ['nullable', 'string'],
             'sort'     => ['nullable', 'integer'],
             'price'     => ['required', 'integer'],
+            'local_band'     => ['required', 'integer'],
+            'global_band'     => ['required', 'integer'],
             'term'     => ['required', 'integer'],
             'status'      => ['nullable', 'boolean'],
             'services_id' => ['required', 'exists:services,id'],
@@ -115,6 +119,8 @@ class TariffController extends Controller
             "services_id",
             "name_en",
             "name_kh",
+            "local_band",
+            "global_band",
             "description_en",
             "description_kh",
             "price",
@@ -126,16 +132,6 @@ class TariffController extends Controller
         ])->with(['services'])->orderBy('id', 'desc');
         return DataTables::of($inventories)
             ->addColumn('actions', function ($inventory) {
-                // $editable = $this->isAccessible("edit Inventory Product Detail", "translate.admin_relatedOrg_edit", "admin.inventory.product-detail.edit", $inventory->id);
-                // $deleteable = $this->isAccessible("delete Inventory Product Detail", "translate.admin_relatedOrg_delete", "admin.inventory.product-detail.destroy", $inventory->id);
-                // $printable = $this->isPrintable(
-                //     "print Inventory Product Detail",
-                //     "translate.document_controll_print",
-                //     "printQRProduct",
-                //     $inventory->id,
-                //     "App\Models\Admin\Inventory\ProductDetail"
-                // );
-                // $csrf = csrf_token();
 
                 $buttons = '<div class="space-x-1 text-center">';
                 $buttons .= '<a href="' . route('admin.tariffs.edit', $inventory->id) .  '" class="hover:bg-[#777] hover:text-white border shadow rounded border-[#777] text-[#000] bg-gray-100 leading-2 px-2 py-1 my-[1px]">' . __('app.controls.action.edit') . '</a>';
@@ -162,9 +158,12 @@ class TariffController extends Controller
             ->editColumn('term', function ($inventory) {
                 return e("Every ".$inventory->term ." ". (($inventory->term) >= 2 ? "Monthes" : "Month"));
             })
-            // ->editColumn('branch', function ($inventory) {
-            //     return e($inventory->branches->name);
-            // })
+            ->editColumn('bandwidth', function ($inventory) {
+                return "
+                        <span class=''>Local Speed : " . ($inventory->local_band??0) . " Mbps</span><br>
+                        <span class=''>Global Speed : " . ($inventory->global_band??0) . " Mbps</span><br>
+                ";
+            })
             // ->editColumn('qr', function ($inventory) {
             //     return e($inventory->branches->name);
             // })
@@ -172,7 +171,7 @@ class TariffController extends Controller
             //     return $user->created_at ? $user->created_at->format('Y-m-d H:i:s') : '';
             // })
             // ->addIndexColumn()
-            ->rawColumns(['actions', 'description_en', 'serviceName', 'price'])
+            ->rawColumns(['actions', 'description_en', 'serviceName', 'price', 'bandwidth'])
             ->make(true);
     }
 }

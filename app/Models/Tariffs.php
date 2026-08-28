@@ -12,6 +12,8 @@ class Tariffs extends Model
         "services_id",
         "name_en",
         "name_kh",
+        "local_band",
+        "global_band",
         "description_en",
         "description_kh",
         "price",

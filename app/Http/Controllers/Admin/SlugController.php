@@ -57,7 +57,6 @@ class SlugController extends Controller
             'name_km' => ['required', 'string', 'max:200'],
             'desc'    => ['nullable', 'string'],
             'desc_km' => ['nullable', 'string'],
-            'image'   => ['nullable', 'image', 'max:5120'],
         ]);
         if ($request->hasFile('image')) {
             if ($slug->image) Storage::disk('public')->delete($slug->image);

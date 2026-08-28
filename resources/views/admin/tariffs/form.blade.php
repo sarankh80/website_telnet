@@ -45,6 +45,18 @@
                         class="admin-input">
                 </div>
             </div>
+            <div class="grid md:grid-cols-2 gap-5">
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('app.internet.tariff.local_band') }} *</label>
+                    <input type="number" name="local_band" value="{{ old('local_band', $tariffs->local_band ?? '') }}" required
+                        class="admin-input" placeholder="{{ __('app.internet.tariff.local_band') }} *">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">{{ __('app.internet.tariff.global_band') }} *</label>
+                    <input type="number" name="global_band" placeholder="{{ __('app.internet.tariff.global_band') }} *" value="{{ old('global_band', $tariffs->global_band ?? '') }}" required
+                        class="admin-input">
+                </div>
+            </div>
 
             <div class="grid md:grid-cols-3 gap-5">
                 <div>

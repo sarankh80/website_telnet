@@ -66,8 +66,6 @@ class ServiceController extends Controller
             'description_en' => ['nullable', 'string'],
             'sort_order'     => ['nullable', 'integer'],
             'is_active'      => ['nullable', 'boolean'],
-            'image'        => ['required', 'image', 'max:2048'],
-            'icon'        => ['required', 'image', 'max:2048'],
             'service_type' => ['required', 'exists:service_types,id'],
         ]);
         $data['is_active'] = $request->boolean('is_active');

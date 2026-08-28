@@ -3,269 +3,6 @@
 @section('content')
 
 @php $isKm = app()->getLocale() === 'km';
-$serviceTypes = [
-[
-"id" => 1,
-"name" => "Household",
-"name_km" => "FTTH-Package",
-"images" => asset('storage/home/serviceTypes/home.png'),
-"icon" => "fa fa-home",
-"desc" => "FTTH-Home Package Internet Services designed to deliver services for home users, small households and residential customers.
-Features:
-- Fiber Optic Technology 100% connectivity.
-- High-speed broadband connectivity
-- Stable and low-latency network performance
-- Affordable monthly subscription
-- PPPoE Connection stable access via Point-to-Point
-- Suitable for browsing, streaming, and online learning
-- Flexible bandwidth packages",
-"types" => [
-[
-"name" => "Home-Package",
-"services" => [
-[
-"id" => 1,
-"name" => "Home-S",
-"bandwidth" => 10,
-"price_month" => 16
-],
-[
-"id" => 2,
-"name" => "Home-M",
-"bandwidth" => 20,
-"price_month" => 29
-],
-[
-"id" => 3,
-"name" => "Home-L",
-"bandwidth" => 30,
-"price_month" => 41
-],
-[
-"id" => 3,
-"name" => "Home-L",
-"bandwidth" => 30,
-"price_month" => 41
-],
-[
-"id" => 3,
-"name" => "Home-L",
-"bandwidth" => 30,
-"price_month" => 41
-],
-[
-"id" => 1,
-"name" => "Home-S",
-"bandwidth" => 10,
-"price_month" => 16
-],
-[
-"id" => 2,
-"name" => "Home-M",
-"bandwidth" => 20,
-"price_month" => 29
-],
-[
-"id" => 3,
-"name" => "Home-L",
-"bandwidth" => 30,
-"price_month" => 41
-],
-[
-"id" => 1,
-"name" => "Home-S",
-"bandwidth" => 10,
-"price_month" => 16
-],
-[
-"id" => 2,
-"name" => "Home-M",
-"bandwidth" => 20,
-"price_month" => 29
-],
-[
-"id" => 3,
-"name" => "Home-L",
-"bandwidth" => 30,
-"price_month" => 41
-]
-],
-],
-[
-"name" => "TN-Plan",
-"services" => [
-[
-"id" => 1,
-"name" => "TN-Plan-S",
-"bandwidth" => 10,
-"price_month" => 16
-],
-[
-"id" => 2,
-"name" => "TN-Plan-M",
-"bandwidth" => 20,
-"price_month" => 29
-],
-[
-"id" => 3,
-"name" => "TN-Plan-L",
-"bandwidth" => 30,
-"price_month" => 41
-]
-],
-],
-]
-],
-[
-"id" => 2,
-"name" => "Corporate Business",
-"name_km" => "FTTB-Package",
-"images" => asset('storage/home/serviceTypes/business.png'),
-"icon" => "fa fa-industry",
-"desc"=> "Business Packages are designed to deliver high speed with fiber optic communication for:
-Business, Special Economic Zone and other Cooperate Business.
-- Fiber Optic 100% connectivity.
-- Fiber Optic Underground & Overhead.
-- Stable and Refable speed.
-- Added value high speed Youtube, Facebook.
-- Symmetric upload/download speeds.",
-"types" => [
-[
-"name" => "Biz",
-"services" => [
-[
-"id" => 4,
-"name" => "Business-S",
-"bandwidth" => 10,
-"price_month" => 48
-],
-[
-"id" => 5,
-"name" => "Business-M",
-"bandwidth" => 20,
-"price_month" => 96
-],
-[
-"id" => 6,
-"name" => "Business-L",
-"bandwidth" => 30,
-"price_month" => 150
-],
-
-]
-],
-[
-"name" => "SME",
-"services" => [
-[
-"id" => 4,
-"name" => "SME-S",
-"bandwidth" => 10,
-"price_month" => 48
-],
-[
-"id" => 5,
-"name" => "SME-M",
-"bandwidth" => 20,
-"price_month" => 96
-],
-[
-"id" => 6,
-"name" => "SME-L",
-"bandwidth" => 30,
-"price_month" => 150
-],
-
-]
-],
-]
-],
-[
-"id" => 3,
-"name" => "Dedicated",
-"name_km" => "FTTX-Packages",
-"images" => asset('storage/home/serviceTypes/enterprise.png'),
-"icon" => "fa fa-globe",
-"desc"=> "Dedicated Internet Packages are designed to deliver high speed with fiber optic communication for:
-Enterprises Business, Special Economic Zone, Large Corporations and Casino Online to fulfill ultimate speed, reliability and security.
-- Fiber Optic 100% connectivity.
-- Fiber Optic Underground & Overhead.
-- Stable and Refable speed.
-- Added value high speed Youtube, Facebook.
-- Symmetric upload/download speeds.",
-"types" => [
-[
-"name" => "DIA",
-"services" => [
-[
-"id" => 4,
-"name" => "Dedicated-S",
-"bandwidth" => 10,
-"price_month" => 120
-],
-[
-"id" => 5,
-"name" => "Dedicated-M",
-"bandwidth" => 20,
-"price_month" => 240
-],
-[
-"id" => 6,
-"name" => "Dedicated-L",
-"bandwidth" => 30,
-"price_month" => 360
-],
-]
-],
-[
-"name" => "Dedicated-Global",
-"services" => [
-[
-"id" => 4,
-"name" => "Dedicated-Global-S",
-"bandwidth" => 10,
-"price_month" => 120
-],
-[
-"id" => 5,
-"name" => "Dedicated-Global-M",
-"bandwidth" => 20,
-"price_month" => 240
-],
-[
-"id" => 6,
-"name" => "Dedicated-Global-L",
-"bandwidth" => 30,
-"price_month" => 360
-],
-]
-],
-[
-"name" => "Dedicated-Premuim",
-"services" => [
-[
-"id" => 4,
-"name" => "Dedicated-Premuim-S",
-"bandwidth" => 10,
-"price_month" => 120
-],
-[
-"id" => 5,
-"name" => "Dedicated-Premuim-M",
-"bandwidth" => 20,
-"price_month" => 240
-],
-[
-"id" => 6,
-"name" => "Dedicated-Premuim-L",
-"bandwidth" => 30,
-"price_month" => 360
-],
-]
-],
-]
-],
-];
 $images = [
 [
 "id" => 1,
@@ -284,7 +21,6 @@ $images = [
 "image" => asset('storage/home/services/bgImage4.png'),
 ],
 ];
-
 $capacityImage=asset('storage/home/services/bgImage4.png');
 $cdnImage=asset("storage/home/services/cdn.png");
 $wifiImage=asset("storage/home/services/wifi.png");
@@ -303,7 +39,7 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
     <div class="absolute inset-0 bg-[#8fc74a] pointer-events-none z-0 "></div>
     <div class="relative z-10 flex items-center justify-center gap-2 sm:gap-6 h-full text-xs font-medium text-white">
 
-        @foreach($serviceTypes as $st)
+        @foreach($serviceType as $st)
         <!-- Horizontal Nav Item -->
         <div class="relative group h-full flex items-center">
             <a href="{{ $st['url'] ?? '#' }}" class="h-full px-2 sm:px-4 rounded-xl flex items-center gap-1 sm:gap-2 hover:text-white hover:bg-[#5e872d] transition-colors duration-200 cursor-pointer">
@@ -325,20 +61,16 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
 
                 <!-- Inner Wrapper: Matches top nav's px-4 sm:px-6 lg:px-16 exactly -->
                 <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-16 flex flex-col lg:flex-row max-h-[80vh] lg:max-h-[500px] lg:min-h-[300px]">
-
-                    {{-- Left Sidebar --}}
                     <aside class="w-full lg:w-2/6 bg-slate-50 border-b lg:border-b-0 lg:border-r border-[#8fc74a] p-3 sm:p-4 flex flex-col gap-1">
-                        <p class="type-nav text-left px-2 sm:px-3 py-2 rounded-lg text-xs sm:text-sm text-gray-700 leading-relaxed">
-                            {!! nl2br(e($st['desc'])) !!}
+                        <p class="type-nav text-left px-2 sm:px-3 py-2 rounded-lg text-xs sm:text-xl text-gray-700 leading-relaxed">
+                            {!!$st->desc !!}
                         </p>
                     </aside>
-
-                    {{-- Main Slider Content --}}
                     <main class="w-full lg:w-3/6 p-3 sm:p-4 bg-white overflow-y-auto order-last lg:order-none">
                         <div id="#" class="w-full h-40 sm:h-56 lg:h-full relative overflow-hidden flex-shrink-0">
                             <div class="slide absolute inset-0 transition-opacity duration-1000">
                                 <div class="w-full h-full overflow-hidden">
-                                    <img src="{{$st['images']}}" class="w-full h-full object-cover wallpaper-infinite">
+                                    <img src="{{asset('storage/'.$st->image)}}" class="w-full h-full object-cover wallpaper-infinite">
                                 </div>
                             </div>
                             <button id="prevSlide" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 transition backdrop-blur text-[#8fc74a] w-6 h-6 rounded-full z-20">❮</button>
@@ -346,16 +78,14 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
                             <div id="dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
                         </div>
                     </main>
-
-                    {{-- Right Navigation Buttons --}}
                     <aside class="w-full lg:w-1/6 bg-slate-50 border-t lg:border-t-0 lg:border-l border-[#8fc74a] p-3 sm:p-4 flex flex-row lg:flex-col gap-1 overflow-x-auto">
-                        @foreach($st['types'] as $type)
-                        <button type="button"
-                            onclick="showType(`{{ $type['name'] }}`)"
-                            class="type-nav text-left px-3 py-2 rounded-lg text-xs sm:text-sm md:text-base font-medium whitespace-nowrap
-                                   text-gray-700 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] transition-all duration-150">
-                            {{ $type['name'] }}
-                        </button>
+                        @foreach($st->services as $srv)
+                        <a href="{{route('services.eachTypes', $srv->id).'#internet-services'}}"
+                            class="type-nav text-left px-3 py-2 text-xs sm:text-sm md:text-base font-medium whitespace-nowrap
+                                   text-gray-700 hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] transition-all duration-150
+                                   {{ isset($srv) && $srv->id == $sv->id ? 'border-l-2 border-[#8fc74a] bg-[#8fc74a]/10 text-[#8fc74a]' : 'text-slate-600 hover:text-[#8fc74a] hover:bg-[#8fc74a]/10' }}">
+                            {{ $srv->name_en }}
+                        </a>
                         @endforeach
                     </aside>
 
@@ -716,14 +446,28 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
     </div>
 </section>
 
-<section class="relative flex flex-col lg:flex-row w-full min-h-screen text-slate-800 font-sans pb-12 sm:pb-20">
+<section id="internet-services" class="relative flex flex-col lg:flex-row w-full min-h-screen text-slate-800 font-sans pb-12 sm:pb-20">
     <div class="pointer-events-none absolute inset-0 opacity-[0.04] dark:opacity-[0.06]"
         style="background-image:linear-gradient(#8fc74a 1px,transparent 1px),linear-gradient(90deg,#8fc74a 1px,transparent 1px);background-size:40px 40px;">
     </div>
 
-    <!-- Sidebar / Navigation -->
-    <aside class="w-full lg:w-1/3 xl:w-1/4 border border-[#8fc74a]/50 shadow-[#8fc74a]/20 shadow-xl rounded-2xl mx-4 sm:mx-6 lg:mx-4 p-3 sm:p-4 flex flex-col shrink-0 h-max lg:max-h-[1200px] overflow-y-auto mb-4 sm:mb-6 lg:mb-0">
-        <nav class="space-y-4 sm:space-y-6" aria-label="Service Categories">
+    <aside class="w-full lg:w-1/3 xl:w-1/4 border border-[#8fc74a]/50 shadow-[#8fc74a]/20 shadow-xl rounded-2xl mx-auto lg:mx-4 p-3 sm:p-4 flex flex-col shrink-0 h-auto lg:h-max lg:max-h-[1200px] overflow-y-auto mb-4 sm:mb-6 lg:mb-0 sticky top-32 z-30 bg-white" x-data="{ open: false }">
+        <!-- Mobile Accordion Toggle -->
+        <button @click="open = !open"
+            type="button"
+            class="flex lg:hidden items-center justify-between w-full px-2 py-1 text-left focus:outline-none"
+            aria-expanded="false"
+            :aria-expanded="open.toString()">
+            <span class="text-sm sm:text-base font-bold text-slate-700">Service Categories</span>
+            <svg class="w-5 h-5 text-slate-500 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+
+        <!-- Navigation List (Always visible on lg+, collapsible on mobile) -->
+        <nav class="space-y-4 sm:space-y-6 mt-3 lg:mt-0 transition-all duration-300"
+            :class="{ 'block': open, 'hidden lg:block': !open }"
+            aria-label="Service Categories">
             @foreach($serviceType as $st)
             <div class="space-y-2">
                 <div class="flex items-center gap-2.5 px-2 py-1">
@@ -732,8 +476,8 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
                 @if($st->services->isNotEmpty())
                 <div class="ml-2 space-y-1 border-l border-gray-200">
                     @foreach($st->services as $child)
-                    <a href="{{ route('services.eachTypes', $child->id) }}"
-                        class="group flex items-center justify-between w-full mx-2 px-3 py-2 rounded-r-lg text-xs sm:text-sm font-medium transition-all duration-200 ease-in-out {{ isset($sv) && $sv->id == $child->id ? 'border-l-2 border-[#8fc74a] bg-[#8fc74a]/10 text-[#8fc74a]' : 'text-slate-600 hover:text-[#8fc74a] hover:bg-[#8fc74a]/10' }} focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 active:scale-[0.98]">
+                    <a href="{{ route('services.eachTypes', $child->id).'#internet-services' }}"
+                        class="group flex items-center justify-between min-h-[44px] px-3 py-2 rounded-r-lg text-xs sm:text-sm font-medium transition-all duration-200 ease-in-out {{ isset($sv) && $sv->id == $child->id ? 'border-l-2 border-[#8fc74a] bg-[#8fc74a]/10 text-[#8fc74a]' : 'text-slate-600 hover:text-[#8fc74a] hover:bg-[#8fc74a]/10' }} focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 active:scale-[0.98]">
                         <span class="truncate">{{ $child->name_en }}</span>
                     </a>
                     @endforeach
@@ -741,7 +485,7 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
                 @else
                 <div class="pl-1">
                     <a href="#service-{{ $st->id }}"
-                        class="group flex items-center justify-between w-full px-3 py-2 rounded-xl border-l border-gray-200 text-xs sm:text-sm font-medium text-slate-600 hover:text-[#8fc74a] hover:bg-[#8fc74a]/10 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 active:scale-[0.98]">
+                        class="group flex items-center justify-between min-h-[44px] px-3 py-2 rounded-xl border-l border-gray-200 text-xs sm:text-sm font-medium text-slate-600 hover:text-[#8fc74a] hover:bg-[#8fc74a]/10 transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#8fc74a]/20 active:scale-[0.98]">
                         <span class="truncate">{{ $st->name }}</span>
                         <svg class="w-3.5 h-3.5 text-slate-400 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -816,8 +560,8 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
                             <h3 class="text-xl font-bold text-[#8fc74a] group-hover:text-[#F79633] transition-colors duration-300">
                                 {{ $isKm ? $tr->name_km : $tr->name_en }}
                             </h3>
-                            <span class="text-xs text-slate-400">{{__('app.internet.local_s')}}</span><br>
-                            <span class="text-xs text-slate-400">{{__('app.internet.global_s')}}</span>
+                            <span class="text-xs text-slate-400">{{__('app.internet.local_s')}} : <span class="text-[#F79633] font-bold"> {{($tr->local_band>=1?$tr->local_band:"XX")}} Mbps</span></span><br>
+                            <span class="text-xs text-slate-400">{{__('app.internet.global_s')}} : <span class="text-[#F79633] font-bold"> {{($tr->global_band)>=1?$tr->global_band:"XX"}} Mbps</span></span>
                         </div>
                     </div>
 

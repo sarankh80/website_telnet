@@ -10,11 +10,12 @@
         <table class="w-full min-w-[700px] text-sm text-slate-300 " id="tariffs-table" ref-data="{{route('admin.tariffs.data')}}">
             <thead>
                 <tr class="bg-slate-800/50 border-b border-slate-800 text-xs text-slate-400 tracking-wider">
-                    <th class="px-5 py-3.5 text-left font-semibold w-[10%]">{{__('app.internet.tariff.id')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold w-[6%]">{{__('app.internet.tariff.id')}}</th>
                     <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap w-[15%]">{{__('app.internet.tariff.name_en')}}</th>
                     <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap w-[10%]">{{__('app.internet.tariff.service')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap w-[8%]">{{__('app.internet.tariff.bandwidth')}}</th>
                     <th class="px-5 py-3.5 text-left font-semibold hidden md:table-cell w-[30%]">{{__('app.internet.tariff.desc_en')}}</th>
-                    <th class="px-5 py-3.5 text-left font-semibold hidden lg:table-cell w-[10%]">{{__('app.internet.tariff.price')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold hidden lg:table-cell w-[6%]">{{__('app.internet.tariff.price')}}</th>
                     <th class="px-5 py-3.5 text-center font-semibold whitespace-nowrap w-[15%]">{{__('app.internet.tariff.term')}}</th>
                     <th class="px-5 py-3.5 text-right font-semibold whitespace-nowrap w-[10%]">{{ __('admin.field.actions') }}</th>
                 </tr>
@@ -35,6 +36,10 @@
             {
                 data: "serviceName",
                 name: "serviceName"
+            },
+            {
+                data: "bandwidth",
+                name: "bandwidth"
             },
             {
                 data: "description_en",

@@ -10,9 +10,10 @@
             <thead>
                 <tr class="bg-slate-800/50 border-b border-slate-800 text-xs text-slate-400 tracking-wider">
                     <th class="px-5 py-3.5 text-left font-semibold w-[10%]">{{__('app.internet.servicetype.id')}}</th>
-                    <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap w-[20%]">{{__('app.internet.servicetype.name')}}</th>
-                    <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap w-[25%]">{{__('app.internet.servicetype.name_km')}}</th>
-                    <th class="px-5 py-3.5 text-left font-semibold hidden md:table-cell w-[35%]">{{__('app.internet.servicetype.desc_en')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap w-[15%]">{{__('app.internet.servicetype.name')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap w-[20%]">{{__('app.internet.servicetype.slugs')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold whitespace-nowrap w-[15%]">{{__('app.internet.servicetype.image')}}</th>
+                    <th class="px-5 py-3.5 text-left font-semibold hidden md:table-cell w-[30%]">{{__('app.internet.servicetype.desc_en')}}</th>
                     <th class="px-5 py-3.5 text-right font-semibold whitespace-nowrap w-[10%]">{{ __('admin.field.actions') }}</th>
                 </tr>
             </thead>
@@ -29,9 +30,14 @@
                 data: "name",
                 name: "name"
             },
+
             {
                 data: "slugs",
                 name: "slugs"
+            },
+            {
+                data: "image",
+                name: "image"
             },
             {
                 data: "desc",

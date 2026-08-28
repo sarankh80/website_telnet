@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceType extends Model
 {
-    protected $fillable = ['name', 'name_km', 'desc', 'desc_km', 'slug_id'];
+    protected $fillable = ['name', 'name_km', 'image','icon', 'desc', 'desc_km', 'slug_id'];
 
     public function slug()
     {
@@ -15,6 +15,6 @@ class ServiceType extends Model
 
     public function services()
     {
-        return $this->hasMany(Service::class, 'service_type');
+        return $this->hasMany(Service::class, 'service_type')->orderBy('sort_order','asc');
     }
 }

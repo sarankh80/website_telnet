@@ -198,10 +198,10 @@
                     </div>
                     <span class="text-xs font-bold px-2 py-0.5 rounded
                         {{ $service->color === 'green' ? 'bg-brand-green/10 text-brand-green' : 'bg-brand-orange/10 text-brand-orange' }}">
-                        {{ $service->getBadge() }}
+                      
                     </span>
-                    <h4 class="text-sm font-bold text-adaptive-main mt-2 mb-1">{{ $service->getName() }}</h4>
-                    <p class="text-xs text-adaptive-muted leading-relaxed line-clamp-3">{{ $service->getDescription() }}</p>
+                    <h4 class="text-sm font-bold text-adaptive-main mt-2 mb-1">#</h4>
+                    <p class="text-xs text-adaptive-muted leading-relaxed line-clamp-3">#</p>
                     <button onclick="openModal('serviceModal')"
                         class="mt-3 text-xs font-bold {{ $service->color === 'green' ? 'text-brand-green' : 'text-brand-orange' }} flex items-center gap-1 hover:gap-2 transition-all">
                         <span>{{ $isKm ? 'សាកសួរ' : 'Inquire' }}</span>

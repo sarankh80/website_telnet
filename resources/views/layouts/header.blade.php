@@ -101,12 +101,12 @@
     <div id="mobile-menu" class="hidden lg:hidden section-bg-secondary border-b border-gray-700/80 px-4 pt-4 pb-6 space-y-2 text-sm transition-all duration-300 shadow-xl">
         @php
         $mobileLinks = [
-        ['href' => route('home'), 'label' => __('app.nav.home'), 'icon' => 'fa-house', 'color' => 'text-brand-green'],
-        ['href' => route('services'), 'label' => __('app.nav.internet_service'), 'icon' => 'fa-bolt', 'color' => 'text-brand-orange'],
+        ['href' => 'home', 'label' => __('app.nav.home'), 'icon' => 'fa-house', 'color' => 'text-brand-green'],
+        ['href' => 'services', 'label' => __('app.nav.internet_service'), 'icon' => 'fa-bolt', 'color' => 'text-brand-orange'],
         ['href' => route('business'), 'label' => __('app.nav.business'), 'icon' => 'fa-briefcase', 'color' => 'text-brand-green'],
-        ['href' => route('kpi'), 'label' => __('app.nav.kpi'), 'icon' => 'fa-chart-line', 'color' => 'text-brand-green'],
-        ['href' => route('about'), 'label' => __('app.nav.about'), 'icon' => 'fa-building', 'color' => 'text-brand-green'],
-        ['href' => route('support'), 'label' => __('app.nav.team'), 'icon' => 'fa-users', 'color' => 'text-brand-green'],
+        ['href' => 'support', 'label' => __('app.nav.support'), 'icon' => 'fa-chart-line', 'color' => 'text-brand-green'],
+        ['href' => 'about', 'label' => __('app.nav.about'), 'icon' => 'fa-building', 'color' => 'text-brand-green'],
+        ['href' => 'career', 'label' => __('app.nav.careers'), 'icon' => 'fa-users', 'color' => 'text-brand-green'],
         ['href' => route('portal'), 'label' => __('app.nav.portal'), 'icon' => 'fa-headset', 'color' => 'text-brand-orange'],
         ];
         @endphp

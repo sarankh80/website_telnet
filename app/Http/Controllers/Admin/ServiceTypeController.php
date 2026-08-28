@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\ServiceType;
 use App\Models\Slugs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables;
+
 class ServiceTypeController extends Controller
 {
     public function index()
@@ -16,9 +18,9 @@ class ServiceTypeController extends Controller
             "url" => route('admin.service-types.create'),
             "title" => __('app.controls.action.add') . " " . __('app.internet.servicetype.title'),
         ];
-        $search=true;
+        $search = true;
         $serviceTypes = ServiceType::with('slug')->withCount('services')->orderBy('id')->get();
-        return view('admin.service-types.index', compact('serviceTypes','canAdd','title', 'search'));
+        return view('admin.service-types.index', compact('serviceTypes', 'canAdd', 'title', 'search'));
     }
 
     public function create()
@@ -32,10 +34,15 @@ class ServiceTypeController extends Controller
         $data = $request->validate([
             'name'    => ['required', 'string', 'max:200'],
             'name_km' => ['required', 'string', 'max:200'],
+            'image'        => ['required', 'image', 'max:2048'],
+            'icon'        => ['required', 'image', 'max:2048'],
             'desc'    => ['nullable', 'string'],
             'desc_km' => ['nullable', 'string'],
             'slug_id' => ['required', 'exists:slugs,id'],
         ]);
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('home/services', 'public');
+        }
         ServiceType::create($data);
         return redirect()->route('admin.service-types.index')->with('success', 'Service type created.');
     }
@@ -48,15 +55,38 @@ class ServiceTypeController extends Controller
 
     public function update(Request $request, ServiceType $serviceType)
     {
+
         $data = $request->validate([
             'name'    => ['required', 'string', 'max:200'],
             'name_km' => ['required', 'string', 'max:200'],
+            'image'   => ['nullable', 'image', 'max:102400'],
+            'icon'    => ['nullable', 'image', 'max:2048'],
             'desc'    => ['nullable', 'string'],
             'desc_km' => ['nullable', 'string'],
             'slug_id' => ['required', 'exists:slugs,id'],
         ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+
+            if (!$image->isValid()) {
+                return back()->withErrors([
+                    'image' => $image->getErrorMessage(),
+                ]);
+            }
+
+            if ($serviceType->image) {
+                Storage::disk('public')->delete($serviceType->image);
+            }
+
+            $data['image'] = $image->store('home/services', 'public');
+        }
+
         $serviceType->update($data);
-        return redirect()->route('admin.service-types.index')->with('success', 'Service type updated.');
+
+        return redirect()
+            ->route('admin.service-types.index')
+            ->with('success', 'Service type updated.');
     }
 
     public function destroy(ServiceType $serviceType)
@@ -70,10 +100,11 @@ class ServiceTypeController extends Controller
             "id",
             'name',
             'name_km',
+            'image',
             'desc',
             'desc_km',
             'slug_id'
-        ])->with(['slug','services'])->orderBy('id', 'desc');
+        ])->with(['slug', 'services'])->orderBy('id', 'desc');
         return DataTables::of($inventories)
             ->addColumn('actions', function ($inventory) {
 
@@ -94,10 +125,21 @@ class ServiceTypeController extends Controller
                 return ($inventory->desc);
             })
             ->editColumn('slugs', function ($inventory) {
-                return ("<a href='' class='font-bold underline text-black hover:text-black'>".$inventory->slug->name."</a>");
+                return ("<a href='' class='font-bold underline text-black hover:text-black'>" . $inventory->slug->name . "</a>");
             })
-
-            ->rawColumns(['actions', 'desc', 'slugs'])
+            ->editColumn('image', function ($r) {
+                if (!$r->image) {
+                    return '<span class="text-xs text-gray-400 italic">No image</span>';
+                }
+                $url = asset('storage/' . $r->image);
+                return '
+                        <div class="flex items-center justify-center">
+                            <div class="h-36 w-36 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-gray-50 p-1 shadow-sm">
+                                <img class="h-full w-full object-contain rounded" src="' . $url . '" alt="Image">
+                            </div>
+                        </div>';
+            })
+            ->rawColumns(['actions', 'desc', 'slugs', 'image'])
             ->make(true);
     }
 }
