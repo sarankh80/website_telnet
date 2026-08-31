@@ -425,6 +425,9 @@
     div {
         background: linear-gradient(to top, #8fc74a 1%, transparent 60%);
     }
+    .business{
+         background: linear-gradient(to top, #8fc74a 1%, transparent 80%);
+    }
 }
 .gradient-br-to-tl {
     div {

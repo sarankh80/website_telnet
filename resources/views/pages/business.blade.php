@@ -3,215 +3,418 @@
 @section('title', $isKm ? 'អាជីវកម្ម — TELNET CO., LTD.' : 'Business Solutions — TELNET CO., LTD.')
 
 @section('content')
+@php
+$bizImage=asset("storage/home/business/business1.png");
 
-{{-- Hero --}}
-<section class="relative overflow-hidden py-16 lg:py-24">
-    <div class="absolute inset-0 bg-gradient-to-br from-brand-green/10 via-transparent to-brand-orange/10 pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="flex items-center gap-2 text-xs text-adaptive-muted mb-6">
-            <a href="{{ route('home') }}" class="hover:text-brand-green transition">{{ __('app.nav.home') }}</a>
-            <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            <span class="text-brand-green">{{ __('app.nav.business') }}</span>
-        </div>
-        <div class="max-w-3xl space-y-5">
-            <span class="inline-block text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full uppercase tracking-widest">
+@endphp
+
+<section class="relative overflow-hidden py-16 lg:py-24 min-h-[90vh] flex items-start">
+    <!-- Background Layer -->
+    <div class="absolute inset-0 z-0">
+        <!-- Background Image -->
+        <img
+            src="{{ $bizImage }}"
+            alt="Business Connectivity Background"
+            class="absolute inset-0 w-full h-full object-cover object-center wallpaper-infinite" />
+        <!-- Bottom Brand Gradient -->
+        <!-- <div class="gradient-b-to-t business absolute inset-0 pointer-events-none"></div> -->
+        <!-- Brand Accent Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-green/20 via-transparent to-brand-orange/20 pointer-events-none"></div>
+    </div>
+    <!-- Content Container -->
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-16 relative z-10 w-full">
+        <div class="max-w-5xl space-y-5">
+            <!-- Label -->
+            <span class="inline-block text-xs font-bold text-brand-orange bg-brand-orange/20 px-3 border border-orange-300 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">
                 {{ $isKm ? 'ដំណោះស្រាយសហគ្រាស' : 'Enterprise Solutions' }}
             </span>
-            <h1 class="text-3xl sm:text-5xl font-black text-adaptive-main leading-tight">
-                {{ $isKm ? 'ដំណោះស្រាយអ៊ីនធឺណិត' : 'Business Internet &' }}<br>
-                <span class="text-transparent bg-clip-text gradient-brand">
-                    {{ $isKm ? 'សម្រាប់អាជីវកម្ម' : 'Enterprise Connectivity' }}
-                </span>
+            <!-- Heading -->
+            <h1 class="w-full text-5xl sm:text-7xl font-black uppercase text-[#8fc74a] leading-tight">
+                {{ $isKm ? 'ដំណោះស្រាយអ៊ីនធឺណិត' : 'Business Cooperate' }}<br>
             </h1>
-            <p class="text-adaptive-muted text-base sm:text-lg leading-relaxed max-w-2xl">
+            <!-- Description -->
+            <p class="text-[#F79633] text-base sm:text-lg leading-relaxed max-w-3xl">
                 {{ $isKm
                     ? 'ធេលណេត ផ្តល់ដំណោះស្រាយអ៊ីនធឺណិតកាបូបអុបទិកដែលអាចទុកចិត្ត លឿន និងមានសុវត្ថិភាព ដែលត្រូវបានរចនាឡើងសម្រាប់អាជីវកម្ម SME សហគ្រាស និងស្ថាប័នរដ្ឋាភិបាល។'
-                    : 'TELNET delivers reliable, high-speed fiber optic internet solutions designed for SMEs, enterprises, and government institutions — backed by 24/7 NOC support and guaranteed SLA.' }}
+                    : 'TELNET delivers reliable, high-speed fiber optic internet solutions designed for SMEs, enterprises, and government institutions backed by 24/7 NOC support and guaranteed SLA.' }}
             </p>
+            <!-- Buttons -->
             <div class="flex flex-wrap gap-3 pt-2">
-                <button onclick="openModal('serviceModal')"
-                    class="gradient-brand text-white font-bold px-7 py-3.5 rounded-xl shadow-lg transition hover:-translate-y-0.5 flex items-center gap-2">
+                <button
+                    onclick="openModal('serviceModal')"
+                    class="gradient-brand text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-[#8fc74a] transition hover:-translate-y-0.5 flex items-center gap-2">
                     <i class="fa-solid fa-paper-plane text-sm"></i>
-                    <span>{{ $isKm ? 'ស្នើសុំសេវា' : 'Request a Quote' }}</span>
+
+                    <span>
+                        {{ $isKm ? 'ស្នើសុំសេវា' : 'Request a Quote' }}
+                    </span>
                 </button>
-                <a href="{{ route('support') }}"
-                    class="glass-card text-adaptive-main font-semibold px-6 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 transition hover:-translate-y-0.5 flex items-center gap-2">
-                    <i class="fa-solid fa-headset text-brand-green"></i>
-                    <span>{{ $isKm ? 'ទំនាក់ទំនងក្រុម' : 'Talk to Sales' }}</span>
+                <a
+                    href="{{ route('support') }}"
+                    class="gradient-brand text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-[#8fc74a] transition hover:-translate-y-0.5 flex items-center gap-2">
+                    <i class="fa-solid fa-headset text-sm"></i>
+                    <span>
+                        {{ $isKm ? 'ទំនាក់ទំនងក្រុម' : 'Talk to Sales' }}
+                    </span>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-{{-- Why TELNET for Business --}}
-<section class="py-14 border-y border-gray-200 dark:border-gray-800">
+<section id="services" class="py-8 section-bg-primary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-adaptive-main mb-2">
+        <div class="text-center">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#8fc74a] mb-2">
                 {{ $isKm ? 'ហេតុអ្វីបានជាយើងជ្រើសរើស ធេលណេត?' : 'Why Businesses Choose TELNET?' }}
             </h2>
-            <p class="text-adaptive-muted text-sm max-w-xl mx-auto">
-                {{ $isKm ? 'ការប្តេជ្ញាចិត្តរបស់យើងចំពោះគុណភាព ល្បឿន និងការគាំទ្រ' : 'Our commitment to quality, speed and dedicated enterprise support' }}
-            </p>
-        </div>
-        @php
-        $features = [
-            ['icon'=>'fa-bolt', 'color'=>'green', 'title_en'=>'Dedicated Bandwidth', 'title_km'=>'កម្រិតទំហំបណ្តាញផ្ទាល់', 'desc_en'=>'Guaranteed symmetric speeds with no congestion — your bandwidth is yours alone.', 'desc_km'=>'ល្បឿនស៊ីមេទ្រីដែលទទួលបានការធានា ដោយគ្មានការទប់ស្ទះ។'],
-            ['icon'=>'fa-shield-halved', 'color'=>'orange', 'title_en'=>'SLA Guaranteed', 'title_km'=>'ការធានា SLA', 'desc_en'=>'99.9% uptime SLA with financial-backed guarantees and rapid fault response.', 'desc_km'=>'SLA ០១ ២ ০ ៩% ជាមួយការធានា និងការដោះស្រាយបញ្ហារហ័ស។'],
-            ['icon'=>'fa-headset', 'color'=>'green', 'title_en'=>'24/7 NOC Support', 'title_km'=>'ការគាំទ្រ NOC ២៤/៧', 'desc_en'=>'Round-the-clock monitoring and dedicated enterprise technical support team.', 'desc_km'=>'ការត្រួតពិនិត្យ និងក្រុមជំនួយបច្ចេកទេសសហគ្រាស ២៤ ម៉ោង ៧ ថ្ងៃ។'],
-            ['icon'=>'fa-network-wired', 'color'=>'orange', 'title_en'=>'Fiber Optic Infrastructure', 'title_km'=>'ហេដ្ឋារចនាសម្ព័ន្ធកាបូបអុបទិក', 'desc_en'=>'FTTH, FTTB, FTTX, FTTO — modern fiber directly to your premises.', 'desc_km'=>'FTTH, FTTB, FTTX, FTTO — កាបូបអុបទិកទំនើបផ្ទាល់ទៅកន្លែងរបស់អ្នក។'],
-            ['icon'=>'fa-expand', 'color'=>'green', 'title_en'=>'Scalable Plans', 'title_km'=>'ផែនការអាចពង្រីកបាន', 'desc_en'=>'Easily upgrade bandwidth as your business grows — no infrastructure change needed.', 'desc_km'=>'ដំឡើងទំហំបណ្តាញបានយ៉ាងងាយ នៅពេលអាជីវកម្មរបស់អ្នករីកចម្រើន។'],
-            ['icon'=>'fa-lock', 'color'=>'orange', 'title_en'=>'Enterprise Security', 'title_km'=>'សុវត្ថិភាពសហគ្រាស', 'desc_en'=>'Dedicated IP, firewall management, and VPN solutions to protect your data.', 'desc_km'=>'IP ផ្ទាល់ ការគ្រប់គ្រង firewall និង VPN ដើម្បីការពារទិន្នន័យរបស់អ្នក។'],
-        ];
-        @endphp
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            @foreach($features as $f)
-            <div class="glass-card glass-card-hover p-6 rounded-2xl flex gap-4">
-                <div class="w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center
-                    {{ $f['color'] === 'green' ? 'bg-brand-green/10 text-brand-green' : 'bg-brand-orange/10 text-brand-orange' }}">
-                    <i class="fa-solid {{ $f['icon'] }} text-lg"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-adaptive-main text-sm mb-1">{{ $isKm ? $f['title_km'] : $f['title_en'] }}</h3>
-                    <p class="text-adaptive-muted text-xs leading-relaxed">{{ $isKm ? $f['desc_km'] : $f['desc_en'] }}</p>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- Service Packages --}}
-<section class="py-14">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-adaptive-main mb-2">
-                {{ $isKm ? 'ប្រភេទសេវាកម្មអាជីវកម្ម' : 'Business Service Packages' }}
-            </h2>
-            <p class="text-adaptive-muted text-sm max-w-xl mx-auto">
-                {{ $isKm ? 'ជ្រើសរើសសេវាកម្មដែលសមស្របជាមួយអាជីវកម្មរបស់អ្នក' : 'Choose the right connectivity solution for your business needs' }}
-            </p>
         </div>
 
-        @php
-        $packages = [
-            [
-                'icon'     => 'fa-building',
-                'color'    => 'green',
-                'badge_en' => 'FTTB / FTTO',
-                'badge_km' => 'FTTB / FTTO',
-                'title_en' => 'Business Internet',
-                'title_km' => 'អ៊ីនធឺណិតអាជីវកម្ម',
-                'desc_en'  => 'High-speed fiber to the building or office. Ideal for SMEs needing stable, symmetric connectivity with SLA.',
-                'desc_km'  => 'កាបូបអុបទិកល្បឿនខ្ពស់ទៅអគារ ឬការិយាល័យ។ សមល្អសម្រាប់ SME ដែលត្រូវការការតភ្ជាប់ស្ថិតស្ថេរ ជាមួយ SLA។',
-                'features_en' => ['Symmetric download/upload speeds', 'Dedicated fiber line', 'Business SLA guarantee', '24/7 technical support'],
-                'features_km' => ['ល្បឿនទាញយក/បញ្ជូនស្មើ', 'បណ្តាញកាបូបអុបទិកផ្ទាល់', 'ការធានា SLA អាជីវកម្ម', 'ការគាំទ្របច្ចេកទេស ២៤/៧'],
-            ],
-            [
-                'icon'     => 'fa-server',
-                'color'    => 'orange',
-                'badge_en' => 'FTTX / Dedicated',
-                'badge_km' => 'FTTX / Dedicated',
-                'title_en' => 'Enterprise Dedicated',
-                'title_km' => 'សហគ្រាស Dedicated',
-                'desc_en'  => 'Fully dedicated fiber lines for enterprises needing maximum performance, security, and reliability.',
-                'desc_km'  => 'បណ្តាញកាបូបអុបទិកផ្ទាល់ ១០០% សម្រាប់សហគ្រាសដែលត្រូវការประ​效率ខ្ពស់ សុវត្ថិភាព និងភាពជឿជាក់ ។',
-                'features_en' => ['Fully dedicated bandwidth', 'Static IP addresses', 'BGP peering available', 'Priority NOC response'],
-                'features_km' => ['ទំហំបណ្តាញ Dedicated ១០០%', 'អាសយដ្ឋាន IP ស្ថិរ', 'BGP peering អាចប្រើ', 'ការឆ្លើយតប NOC អាទិភាព'],
-            ],
-            [
-                'icon'     => 'fa-database',
-                'color'    => 'green',
-                'badge_en' => 'IDC Services',
-                'badge_km' => 'IDC Services',
-                'title_en' => 'IDC / Data Center',
-                'title_km' => 'IDC / មជ្ឈមណ្ឌលទិន្នន័យ',
-                'desc_en'  => 'Co-location, rack hosting, and managed services in our secure, climate-controlled data center facility.',
-                'desc_km'  => 'ការដំឡើងហេដ្ឋារចនាសម្ព័ន្ធ ការបង្ហោះ rack និងសេវាគ្រប់គ្រងនៅក្នុងមជ្ឈមណ្ឌលទិន្នន័យដែលមានសុវត្ថិភាព។',
-                'features_en' => ['Rack & cage co-location', 'Redundant power (N+1)', 'Tier-3 physical security', 'Cross-connect available'],
-                'features_km' => ['Co-location rack & cage', 'ថាមពលបម្រុង (N+1)', 'សុវត្ថិភាពរូបវន្ត Tier-3', 'Cross-connect អាចប្រើ'],
-            ],
-            [
-                'icon'     => 'fa-microchip',
-                'color'    => 'orange',
-                'badge_en' => 'ICT Solutions',
-                'badge_km' => 'ICT Solutions',
-                'title_en' => 'ICT & Network Projects',
-                'title_km' => 'គម្រោង ICT និងបណ្តាញ',
-                'desc_en'  => 'End-to-end ICT infrastructure design, deployment, and managed services for your organisation.',
-                'desc_km'  => 'ការរចនា ការដំឡើង និងសេវាគ្រប់គ្រង ICT ពីចុងដល់ចុងសម្រាប់ស្ថាប័នរបស់អ្នក។',
-                'features_en' => ['Network design & deployment', 'LAN / WAN / SD-WAN', 'Structured cabling', 'Ongoing managed services'],
-                'features_km' => ['រចនា & ដំឡើងបណ្តាញ', 'LAN / WAN / SD-WAN', 'ការដំឡើង Cabling', 'សេវាគ្រប់គ្រងបន្ត'],
-            ],
-        ];
-        @endphp
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            @foreach($packages as $pkg)
-            <div class="glass-card glass-card-hover p-7 rounded-2xl flex flex-col gap-4">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center text-xl
-                        {{ $pkg['color'] === 'green' ? 'bg-brand-green/10 text-brand-green' : 'bg-brand-orange/10 text-brand-orange' }}">
-                        <i class="fa-solid {{ $pkg['icon'] }}"></i>
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <!-- 3-Column Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach($slugs as $sl)
+                <div class="flex flex-col rounded-xl overflow-hidden shadow-sm border border-slate-200/100 bg-white hover:shadow transition group">
+                    <!-- 1. Top Image Banner -->
+                    <div class="w-full h-36 sm:h-56 overflow-hidden bg-slate-100 relative ">
+                        <a href="">
+                            <img loading="lazy"
+                                src="{{asset('storage/'.$sl->image??'')}}"
+                                alt="{{$sl->image}}"
+                                class="w-full shrink-0 h-full object-cover group-hover:scale-105 transition duration-300" />
+                        </a>
                     </div>
-                    <div>
-                        <span class="text-xs font-bold px-2 py-0.5 rounded
-                            {{ $pkg['color'] === 'green' ? 'bg-brand-green/10 text-brand-green' : 'bg-brand-orange/10 text-brand-orange' }}">
-                            {{ $isKm ? $pkg['badge_km'] : $pkg['badge_en'] }}
-                        </span>
-                        <h3 class="text-lg font-bold text-adaptive-main mt-1">{{ $isKm ? $pkg['title_km'] : $pkg['title_en'] }}</h3>
-                    </div>
-                </div>
-                <p class="text-adaptive-muted text-sm leading-relaxed">{{ $isKm ? $pkg['desc_km'] : $pkg['desc_en'] }}</p>
-                <ul class="space-y-1.5">
-                    @foreach($isKm ? $pkg['features_km'] : $pkg['features_en'] as $feat)
-                    <li class="flex items-center gap-2 text-xs text-adaptive-muted">
-                        <i class="fa-solid fa-check text-brand-green flex-shrink-0"></i>
-                        <span>{{ $feat }}</span>
-                    </li>
-                    @endforeach
-                </ul>
-                <button onclick="openModal('serviceModal')"
-                    class="mt-auto inline-flex items-center gap-1.5 text-xs font-bold
-                        {{ $pkg['color'] === 'green' ? 'text-brand-green' : 'text-brand-orange' }}
-                        hover:gap-2.5 transition-all">
-                    <span>{{ $isKm ? 'សាកសួរព័ត៌មាន' : 'Request This Service' }}</span>
-                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                </button>
-            </div>
-            @endforeach
-        </div>
-
-        {{-- DB services if any --}}
-        @if($services->count())
-        <div class="border-t border-gray-200 dark:border-gray-800 pt-10">
-            <h3 class="text-xl font-bold text-adaptive-main mb-6 text-center">
-                {{ $isKm ? 'សេវាកម្មរបស់យើង' : 'Our Available Services' }}
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                @foreach($services as $service)
-                <div class="glass-card glass-card-hover p-5 rounded-2xl">
-                    <div class="w-10 h-10 rounded-xl mb-3 flex items-center justify-center text-lg
-                        {{ $service->color === 'green' ? 'bg-brand-green/10 text-brand-green' : 'bg-brand-orange/10 text-brand-orange' }}">
-                        <i class="{{ $service->icon }}"></i>
-                    </div>
-                    <span class="text-xs font-bold px-2 py-0.5 rounded
-                        {{ $service->color === 'green' ? 'bg-brand-green/10 text-brand-green' : 'bg-brand-orange/10 text-brand-orange' }}">
-                      
-                    </span>
-                    <h4 class="text-sm font-bold text-adaptive-main mt-2 mb-1">#</h4>
-                    <p class="text-xs text-adaptive-muted leading-relaxed line-clamp-3">#</p>
-                    <button onclick="openModal('serviceModal')"
-                        class="mt-3 text-xs font-bold {{ $service->color === 'green' ? 'text-brand-green' : 'text-brand-orange' }} flex items-center gap-1 hover:gap-2 transition-all">
-                        <span>{{ $isKm ? 'សាកសួរ' : 'Inquire' }}</span>
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </button>
+                    <a
+                        href=""
+                        class="p-4 relative flex flex-col justify-between flex-1 cursor-pointer transition ">
+                        <div>
+                            <div class="flex items-start justify-between gap-3">
+                                <div class="flex items-start space-x-3 min-w-0">
+                                    <div class="min-w-0">
+                                        <div class="font-bold text-xl  bg-clip-text text-[#8fc74a] transition truncate uppercase ">
+                                            {{ $isKm ? $sl->name_km : $sl->name }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex items-center  flex-wrap">
+                                <span class="text-sm  rounded-md  text-justify line-clamp-6 !leading-relaxed ">
+                                    {!! $isKm ? $sl->desc_km : $sl->desc !!}
+                                </span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 @endforeach
             </div>
         </div>
-        @endif
+    </div>
+</section>
+<section class="bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Section Header -->
+        <div class="mb-8 max-w-2xl text-base space-y-4">
+            <h2 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#8fc74a]">{{__('app.business.payment.sub_title')}}</h2>
+            <p class="mt-1 text-sm  text-[#444]">{{__('app.business.payment.desc')}}</p>
+        </div>
+
+        <!-- Payment Options Group -->
+        <div class="space-y-4" x-data="{ method: 'cash' }">
+
+            <!-- Option 1: Cash on Delivery / Cash Payment -->
+            <label
+                :class="method === 'cash' ? 'border-[#8fc74a] ring-[#8fc74a]/20 bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
+                class="relative flex flex-col p-5 rounded-xl border cursor-pointer transition-all shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <input
+                            type="radio"
+                            name="payment_method"
+                            value="cash"
+                            x-model="method"
+                            class="h-5 w-5 text-emerald-600 border-slate-300 focus:ring-emerald-500">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-[#8fc74a]/10 rounded-lg text-slate-700">
+                                <!-- Cash Icon -->
+                                <svg class="w-8 h-8  text-[#8fc74a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="block text-base uppercase font-extrabold text-[#8fc74a]">{{__('app.business.payment.cash.title')}}</span>
+                                <span class="block text-sm text-slate-500">{{__('app.business.payment.cash.desc')}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-full text-[#F79633] bg-[#F79633]/20 border border-[#F79633]">{{__('app.business.payment.cash.condition')}}</span>
+                </div>
+                <!-- Extra details section when selected -->
+                <div x-show="method === 'cash'" x-cloak class="mt-4 pt-4 border-t border-slate-200 text-sm text-slate-600 pl-9">
+                    <p class="mb-3 font-medium text-slate-700">{{__('app.business.payment.cash.require')}}</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                        <!-- Branch Select -->
+                        <div class="col-span-1">
+                            <label for="cash_branch" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.branch')}}
+                            </label>
+                            <select name="branch" id="cash_branch" class="select2 w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                <option value="">{{__('app.career.branch_filter')}}</option>
+                                {!! $branches !!}
+                            </select>
+                        </div>
+
+                        <!-- CID Input -->
+                        <div class="col-span-1">
+                            <label for="cid" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.cid')}}
+                            </label>
+                            <input type="text" id="cid" name="cid"
+                                placeholder=" {{__('app.business.payment.cash.cid')}}"
+                                class="w-full bg-white px-2 p-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+
+                        <!-- CID Input -->
+                        <div class="col-span-1">
+                            <label for="cid" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.aid')}}
+                            </label>
+                            <input type="text" id="aid" name="aid"
+                                placeholder=" {{__('app.business.payment.cash.aid')}}"
+                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+
+                        <!-- phone Input -->
+                        <div class="col-span-1">
+                            <label for="phone" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.phone')}}
+                            </label>
+                            <input type="text" id="phone" name="phone"
+                                placeholder=" {{__('app.business.payment.cash.phone')}}"
+                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+                        <!-- contact Input -->
+                        <div class="col-span-1">
+                            <label for="contact" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.contact')}}
+                            </label>
+                            <input type="text" id="contact" name="contact"
+                                placeholder=" {{__('app.business.payment.cash.contact')}}"
+                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+                        <!-- address Input -->
+                        <div class="col-span-1">
+                            <label for="address" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.address')}}
+                            </label>
+                            <input type="text" id="address" name="address"
+                                placeholder=" {{__('app.business.payment.cash.address')}}"
+                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <label
+                :class="method === 'bank_transfer' ? 'border-[#8fc74a] ring-[#8fc74a] bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
+                class="relative flex flex-col p-5 rounded-xl border cursor-pointer transition-all shadow-sm"
+                x-data="{
+                            selectedBankId: null,
+                            copied: false,
+                            banks: {{ $paymentMethods->keyBy('id')->toJson() }},
+                            init() {
+                                // Set default selected bank to the first entry if available
+                                const bankKeys = Object.keys(this.banks);
+                                if (bankKeys.length > 0) {
+                                    this.selectedBankId = bankKeys[0];
+                                }
+                            },
+                            get currentBank() {
+                                return this.banks[this.selectedBankId] || {};
+                            },
+                            copyAccount() {
+                                if (!this.currentBank.account_id) return;
+                                navigator.clipboard.writeText(this.currentBank.account_id);
+                                this.copied = true;
+                                setTimeout(() => this.copied = false, 2000);
+                            }
+                        }">
+
+                <!-- Top Selector Row -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <input
+                            type="radio"
+                            name="payment_method"
+                            value="bank_transfer"
+                            x-model="method"
+                            class="h-5 w-5 text-emerald-600 border-slate-300 focus:ring-emerald-500">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-[#8fc74a]/10 rounded-lg text-slate-700">
+                                <svg class="w-8 h-8 text-[#8fc74a]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+                                    <rect x="12" y="5" width="30" height="54" rx="5" stroke="#8fc74a" stroke-width="3" />
+                                    <rect x="17" y="11" width="20" height="35" rx="2" fill="#8fc74a" opacity="0.12" />
+                                    <circle cx="27" cy="52" r="2" fill="#8fc74a" />
+                                    <rect x="29" y="25" width="28" height="19" rx="3" fill="white" stroke="#F79633" stroke-width="3" />
+                                    <path d="M31 31H55" stroke="#F79633" stroke-width="3" />
+                                    <path d="M33 37H41" stroke="#8fc74a" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M45 37H51" stroke="#8fc74a" stroke-width="2" stroke-linecap="round" />
+                                    <circle cx="49" cy="48" r="8" fill="#8fc74a" />
+                                    <path d="M45 48L48 51L54 45" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="block text-base font-extrabold text-[#8fc74a]">{{ __('app.business.payment.mobile_app.title') }}</span>
+                                <span class="block text-sm text-slate-500">{{ __('app.business.payment.mobile_app.desc') }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expanded Details Section -->
+                <div x-show="method === 'bank_transfer'" x-cloak class="mt-4 pt-4 border-t border-slate-100 text-sm text-slate-600 pl-0 sm:pl-9">
+
+                    <!-- Bank Option Tabs -->
+                    <span class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">{{ __('app.business.payment.mobile_app.require') }}</span>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-4">
+                        <template x-for="(bank, id) in banks" :key="id">
+                            <button type="button"
+                                @click.prevent="selectedBankId = id"
+                                :class="selectedBankId == id ? 'border-[#8fc74a] bg-[#8fc74a] text-white font-extrabold' : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'"
+                                class="px-3 py-2 border rounded-lg text-md font-extrabold text-center transition-colors">
+                                <span x-text="bank.short_name || bank.fullname"></span>
+                            </button>
+                        </template>
+                    </div>
+
+                    <!-- Bank Info Card + Dynamic QR Code Display -->
+                    <div x-show="selectedBankId && currentBank"
+                        class="bg-slate-50 p-6 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+                        <!-- Bank Details Column -->
+                        <div class="text-base md:text-lg space-y-2 w-full text-slate-700 col-span-2">
+                            <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
+                                <span class="text-slate-400">{{ __('app.business.payment.mobile_app.bank') }}:</span>
+                                <strong class="font-semibold text-slate-800" x-text="currentBank.fullname"></strong>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
+                                <span class="text-slate-400">{{ __('app.business.payment.mobile_app.acc_name') }}:</span>
+                                <span class="text-slate-700 font-medium" x-text="currentBank.account_name"></span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-1.5">
+                                <span class="text-slate-400">{{ __('app.business.payment.mobile_app.acc_id') }}:</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-slate-900 font-bold tracking-wide" x-text="currentBank.account_id"></span>
+                                    <button type="button" @click.prevent="copyAccount()" class="text-emerald-600 hover:text-emerald-700 text-xs font-medium underline focus:outline-none">
+                                        <span x-text="copied ? 'Copied!' : 'Copy'"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div x-show="currentBank.bank_code" class="flex justify-between pb-1">
+                                <span class="text-slate-400">{{ __('app.business.payment.mobile_app.bank_code') }}:</span>
+                                <span class="text-slate-700 font-medium" x-text="currentBank.bank_code"></span>
+                            </div>
+                        </div>
+
+                        <!-- Centered QR Code Column -->
+                        <div class="flex justify-center w-full">
+                            <div class="w-full max-w-xs flex flex-col items-center justify-center px-4 py-8 bg-white rounded-xl  shadow-lg">
+                                <img :src="'{{ asset('storage') }}/' + currentBank.qr_code"
+                                    :alt="(currentBank.short_name || 'Bank') + ' QR Code'"
+                                    class="w-full h-full md:w-56 md:h-64 rounded-lg object-cover">
+
+                                <span class="text-md font-semibold text-slate-500 mt-2 tracking-wide uppercase">
+                                    {{ __('app.business.payment.mobile_app.scan') }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <!-- Option 2: Cheque Payment -->
+            <label
+                :class="method === 'cheque' ? 'border-[#8fc74a] ring-[#8fc74a] bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
+                class="relative flex flex-col p-5 rounded-xl border cursor-pointer transition-all shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <input
+                            type="radio"
+                            name="payment_method"
+                            value="cheque"
+                            x-model="method"
+                            class="h-5 w-5 text-emerald-600 border-slate-300 focus:ring-emerald-500">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-slate-100 rounded-lg text-slate-700">
+                                <!-- Cheque Icon -->
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="block text-base font-extrabold uppercase text-[#8fc74a]">Cheque Payment</span>
+                                <span class="block text-sm text-slate-500">Subject to clearance before processing order.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Requires Verification</span>
+                </div>
+
+                <!-- Extra Cheque details inputs -->
+                <div x-show="method === 'cheque'" x-cloak class="mt-4 pt-4 border-t border-slate-100 space-y-3 pl-9">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-700 mb-1">Cheque Number</label>
+                            <input type="text" placeholder="e.g. CHQ-008921" class="w-full text-sm rounded-lg border-slate-300 focus:border-emerald-500 focus:ring-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-700 mb-1">Bank Name</label>
+                            <input type="text" placeholder="e.g. Commercial Bank" class="w-full text-sm rounded-lg border-slate-300 focus:border-emerald-500 focus:ring-emerald-500">
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+
+
+            <!-- Option 4: Credit / Debit Card / QR -->
+            <label
+                :class="method === 'card' ? 'border-[#8fc74a] ring-[#8fc74a] bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
+                class="relative flex flex-col p-5 rounded-xl border cursor-pointer transition-all shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <input
+                            type="radio"
+                            name="payment_method"
+                            value="card"
+                            x-model="method"
+                            class="h-5 w-5 text-emerald-600 border-slate-300 focus:ring-emerald-500">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-slate-100 rounded-lg text-slate-700">
+                                <!-- Credit Card Icon -->
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="block text-base font-semibold text-slate-900">Credit / Debit Card / QR Code</span>
+                                <span class="block text-sm text-slate-500">Instant online payment processing.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">Instant</span>
+                </div>
+            </label>
+
+        </div>
+
+        <!-- Confirm Action -->
+        <div class="mt-8 flex justify-end">
+            <button type="button" class="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm rounded-xl transition-colors shadow-sm focus:outline-none focus focus:ring-slate-900 focus:ring-offset-2">
+                Proceed with Payment
+            </button>
+        </div>
+
     </div>
 </section>
 
@@ -231,12 +434,12 @@
             @foreach($corporates as $corp)
             <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 text-center hover:border-brand-green/40 transition border border-transparent">
                 @if($corp->logo)
-                    <img src="{{ Storage::url($corp->logo) }}" alt="{{ $corp->getName() }}"
-                        class="h-12 w-auto object-contain max-w-[100px]">
+                <img src="{{ Storage::url($corp->logo) }}" alt="{{ $corp->getName() }}"
+                    class="h-12 w-auto object-contain max-w-[100px]">
                 @else
-                    <div class="w-12 h-12 rounded-lg bg-brand-green/10 flex items-center justify-center">
-                        <i class="fa-solid fa-building text-brand-green"></i>
-                    </div>
+                <div class="w-12 h-12 rounded-lg bg-brand-green/10 flex items-center justify-center">
+                    <i class="fa-solid fa-building text-brand-green"></i>
+                </div>
                 @endif
                 <p class="text-xs font-semibold text-adaptive-muted leading-tight">{{ $corp->getName() }}</p>
             </div>
@@ -252,10 +455,10 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             @php
             $stats = [
-                ['num'=>'100+',  'label_en'=>'Corporate Clients',      'label_km'=>'អតិថិជនសហស្ថាប័ន'],
-                ['num'=>'99.9%', 'label_en'=>'Network Uptime SLA',     'label_km'=>'SLA ហ្វូបណ្តាញ'],
-                ['num'=>'24/7',  'label_en'=>'NOC Support',            'label_km'=>'ការគាំទ្រ NOC'],
-                ['num'=>'12+',   'label_en'=>'PoPs Nationwide',        'label_km'=>'PoP ទូទាំងប្រទេស'],
+            ['num'=>'100+', 'label_en'=>'Corporate Clients', 'label_km'=>'អតិថិជនសហស្ថាប័ន'],
+            ['num'=>'99.9%', 'label_en'=>'Network Uptime SLA', 'label_km'=>'SLA ហ្វូបណ្តាញ'],
+            ['num'=>'24/7', 'label_en'=>'NOC Support', 'label_km'=>'ការគាំទ្រ NOC'],
+            ['num'=>'12+', 'label_en'=>'PoPs Nationwide', 'label_km'=>'PoP ទូទាំងប្រទេស'],
             ];
             @endphp
             @foreach($stats as $s)

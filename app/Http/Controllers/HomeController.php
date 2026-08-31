@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\PaymentMethods;
 use App\Models\Branch;
 use App\Models\Career;
 use App\Models\CareerApplication;
@@ -42,7 +43,7 @@ class HomeController extends Controller
     {
         $serviceType = ServiceType::all();
         $sv = Service::first();
-        return view('pages.services', compact('sv','serviceType'));
+        return view('pages.services', compact('sv', 'serviceType'));
     }
     public function serviceseachTypes(int $typeId)
     {
@@ -64,9 +65,12 @@ class HomeController extends Controller
 
     public function business()
     {
+        $paymentMethods = PaymentMethods::all();
         $services   = Service::active()->get();
+        $slugs = Slugs::all();
+        $branches = $this->repository->getSelectOption(Branch::class, 'id', 'name_en');
         $corporates = CorporateSubscriber::active()->get();
-        return view('pages.business', compact('services', 'corporates'));
+        return view('pages.business', compact('services', 'corporates', 'slugs', 'branches', 'paymentMethods'));
     }
 
     public function portal()
