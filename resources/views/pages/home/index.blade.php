@@ -243,21 +243,25 @@
     <div class="max-w-8xl mx-auto px-6">
         <div class="grid lg:grid-cols-12 gap-8 items-start">
             <!-- LEFT : 30% -->
-            <div class="lg:col-span-4">
-                <h2 class="text-4xl font-bold mt-4 text-[#F79633]">
+            <div class="lg:col-span-4 text-center md:text-left">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 text-[#F79633] text-center md:text-left">
                     {{ __('app.hero.core-product') }}
                 </h2>
-                <p class="mt-6 text-gray-600 leading-relaxed text-justify">
-                    {{__('app.hero.core-product_desc')}}
+
+                <p class="mt-4 sm:mt-6 text-gray-600 leading-relaxed text-center md:text-left md:text-justify text-sm sm:text-base">
+                    {{ __('app.hero.core-product_desc') }}
                 </p>
-                <a href="{{route('business')}}"
-                    class="inline-block font-semibold mr-2 text-lg mt-8 bg-[#F79633] text-white px-6 py-2 rounded-xl shadow-xl hover:scale-105 hover:bg-[#F79633]">
-                    {{__('app.controls.buttons.learn_more')}}
-                </a>
-                <a href="#"
-                    class="inline-block  font-semibold text-lg mt-8 bg-[#8fc74a] text-white px-6 py-2 rounded-xl shadow-xl hover:scale-105 hover:bg-[#8fc74a]">
-                    {{__('app.controls.buttons.connect_us')}}
-                </a>
+
+                <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+                    <a href="{{ route('business') }}"
+                        class="w-full sm:w-auto text-center font-semibold text-base sm:text-lg bg-[#F79633] text-white px-6 py-2.5 rounded-xl shadow-xl transition-transform duration-200 hover:scale-105 active:scale-95">
+                        {{ __('app.controls.buttons.learn_more') }}
+                    </a>
+                    <a href="#"
+                        class="w-full sm:w-auto text-center font-semibold text-base sm:text-lg bg-[#8fc74a] text-white px-6 py-2.5 rounded-xl shadow-xl transition-transform duration-200 hover:scale-105 active:scale-95">
+                        {{ __('app.controls.buttons.connect_us') }}
+                    </a>
+                </div>
             </div>
 
             <!-- RIGHT : 70% -->

@@ -1,75 +1,179 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const loader = document.getElementById("page-loader");
     const progress = document.getElementById("page-progress");
 
-    let progressValue = 0;
-    let timer = null;
+    if (!loader || !progress) return;
 
+    let progressValue = 0;
+    let progressTimer = null;
+    let isLoading = false;
+
+    // Initial state
+    progress.style.width = "0%";
+    progress.style.opacity = "0";
+    progress.style.transition = "none";
+
+    /**
+     * Start page loading
+     */
     function startLoading() {
+        // Prevent the loader from restarting
+        if (isLoading) return;
+
+        isLoading = true;
+
+        clearInterval(progressTimer);
+
+        // Reset instantly
         progressValue = 0;
 
+        progress.style.transition = "none";
         progress.style.width = "0%";
         progress.style.opacity = "1";
 
-        clearInterval(timer);
+        // Force repaint
+        progress.offsetWidth;
 
-        timer = setInterval(() => {
-            if (progressValue < 90) {
-                progressValue += Math.random() * 8;
+        // Enable smooth animation
+        progress.style.transition =
+            "width 0.35s cubic-bezier(0.4, 0, 0.2, 1), " +
+            "opacity 0.25s ease";
 
-                if (progressValue > 90) {
-                    progressValue = 90;
-                }
-
-                progress.style.width = `${progressValue}%`;
+        // Gradually move toward 90%
+        progressTimer = setInterval(() => {
+            if (!isLoading) {
+                clearInterval(progressTimer);
+                return;
             }
-        }, 150);
+
+            if (progressValue >= 90) {
+                clearInterval(progressTimer);
+                return;
+            }
+
+            const remaining = 90 - progressValue;
+
+            // Fast at beginning, slower near 90%
+            const increment = Math.max(
+                0.3,
+                remaining * 0.12 + Math.random() * 1.5
+            );
+
+            progressValue += increment;
+
+            if (progressValue > 90) {
+                progressValue = 90;
+            }
+
+            progress.style.width = `${progressValue}%`;
+        }, 180);
     }
 
+    /**
+     * Finish page loading
+     */
     function finishLoading() {
-        clearInterval(timer);
+        // Nothing to finish
+        if (!isLoading) return;
+
+        clearInterval(progressTimer);
+
+        isLoading = false;
+
+        // Complete smoothly
+        progress.style.transition =
+            "width 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
 
         progress.style.width = "100%";
 
+        // Give the user time to see completion
         setTimeout(() => {
+            progress.style.transition =
+                "opacity 0.35s ease";
+
             progress.style.opacity = "0";
 
+            // Reset after fade
             setTimeout(() => {
+                progress.style.transition = "none";
                 progress.style.width = "0%";
-            }, 300);
-        }, 200);
+            }, 350);
+
+        }, 250);
     }
 
-    // Detect normal internal page navigation
+    /**
+     * Handle internal navigation
+     */
     document.addEventListener("click", (event) => {
         const link = event.target.closest("a");
 
         if (!link) return;
 
-        // Ignore external links
+        // Only normal left-click navigation
+        if (event.button !== 0) return;
+
+        // External link
         if (link.origin !== window.location.origin) return;
 
-        // Ignore new tab/window
+        // New tab/window
         if (link.target === "_blank") return;
 
-        // Ignore downloads
+        // Download
         if (link.hasAttribute("download")) return;
 
-        // Ignore modifier clicks
-        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+        // Modifier keys
+        if (
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey ||
+            event.altKey
+        ) {
             return;
         }
 
-        // Ignore same-page anchors
-        if (link.pathname === window.location.pathname && link.hash) {
+        // JavaScript links
+        if (
+            link.href.startsWith("javascript:") ||
+            link.getAttribute("href") === "#"
+        ) {
             return;
         }
+
+        // Same-page anchor
+        const currentUrl = new URL(window.location.href);
+        const targetUrl = new URL(link.href);
+
+        if (
+            targetUrl.pathname === currentUrl.pathname &&
+            targetUrl.search === currentUrl.search &&
+            targetUrl.hash
+        ) {
+            return;
+        }
+
+        // Already loading
+        if (isLoading) return;
 
         startLoading();
     });
 
-    // New page completely loaded
+    /**
+     * Browser back / forward
+     */
+    window.addEventListener("popstate", () => {
+        startLoading();
+    });
+
+    /**
+     * Page fully loaded
+     *
+     * This will only finish an active navigation loader.
+     * It will NOT create an animation on the first page load.
+     */
     window.addEventListener("load", () => {
         finishLoading();
     });
 });
+

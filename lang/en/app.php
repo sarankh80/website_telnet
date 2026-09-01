@@ -278,6 +278,11 @@ pricing models, and highly reliable network operations.',
         ],
     ],
     "business" => [
+        "hook"=>"We're here to help you with Modern solution as",
+        "business"=>"Our Business Available for Cooperate as",
+        "get_start"=>"Get Started",
+        "readmore"=>"Read More",
+        "hook_desc"=> "We are a telecommunications and ICT organization providing Internet connectivity, network infrastructure, data services, and technology solutions. Our operations cover FTTH and OLT networks, Internet services, network connectivity, Data & IDC infrastructure, and ICT projects. We focus on developing reliable and scalable infrastructure supported by professional engineering, network management, and operational processes. Our approach is centered on service continuity, technical standards, infrastructure reliability, and long-term cooperation with customers, businesses, and technology partners. By continuously developing our network capabilities and technical resources, we aim to contribute to the advancement of Cambodia’s telecommunications and digital infrastructure and support the continued growth of connected communities and organizations.",
         "payment" => [
             "title" => "Payment Options",
             "sub_title" => "Payment Options",

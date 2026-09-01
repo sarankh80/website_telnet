@@ -49,8 +49,8 @@ $bizImage=asset("storage/home/business/business1.png");
                         {{ $isKm ? 'ស្នើសុំសេវា' : 'Request a Quote' }}
                     </span>
                 </button>
-                <a
-                    href="{{ route('support') }}"
+                <a target="_blank"
+                    href="{{$telegramLink??'https://t.me/NOC_Hotline'}}"
                     class="gradient-brand text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-[#8fc74a] transition hover:-translate-y-0.5 flex items-center gap-2">
                     <i class="fa-solid fa-headset text-sm"></i>
                     <span>
@@ -62,15 +62,23 @@ $bizImage=asset("storage/home/business/business1.png");
     </div>
 </section>
 
-<section id="services" class="py-8 section-bg-primary">
+<section id="slugs" class="py-8 section-bg-primary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#8fc74a] mb-2">
-                {{ $isKm ? 'ហេតុអ្វីបានជាយើងជ្រើសរើស ធេលណេត?' : 'Why Businesses Choose TELNET?' }}
+        <div class="px-4">
+            <h2 class="text-2xl sm:text-3xl font-semibold capitalize border-b-2 border-[#8fc74a] text-[#8fc74a] pb-4 mb-2">
+                {{ __('app.business.hook') }}
             </h2>
+            <p class="text-sm  rounded-md  text-justify line-clamp-6 !leading-relaxed">
+                {{ __('app.business.hook_desc') }}
+            </p>
         </div>
-
+        <br>
         <div class="max-w-7xl mx-auto px-4 py-8">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-semibold uppercase text-[#8fc74a] pb-4 mb-2">
+                    {{ __('app.business.business') }}
+                </h2>
+            </div>
             <!-- 3-Column Grid Container -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($slugs as $sl)
@@ -104,6 +112,14 @@ $bizImage=asset("storage/home/business/business1.png");
                             </div>
                         </div>
                     </a>
+                    <div class="flex justify-center px-4 pb-4">
+                        <button
+                            class="text-sm bg-[#8fc74a] text-white font-bold px-8 p-2 rounded-xl transition hover:-translate-y-0.5 flex items-center gap-2">
+                            <span class="uppercase">
+                                {{__('app.business.readmore')}}
+                            </span>
+                        </button>
+                    </div>
                 </div>
                 @endforeach
             </div>
@@ -134,19 +150,19 @@ $bizImage=asset("storage/home/business/business1.png");
                             x-model="method"
                             class="h-5 w-5 text-emerald-600 border-slate-300 focus:ring-emerald-500">
                         <div class="flex items-center gap-3">
-                            <div class="p-2 bg-[#8fc74a]/10 rounded-lg text-slate-700">
+                            <div class="p-2 bg-slate-100 rounded-lg text-slate-700">
                                 <!-- Cash Icon -->
-                                <svg class="w-8 h-8  text-[#8fc74a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-8 h-8  text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
                                 </svg>
                             </div>
                             <div>
-                                <span class="block text-base uppercase font-extrabold text-[#8fc74a]">{{__('app.business.payment.cash.title')}}</span>
+                                <span class="block text-base font-semibold text-slate-900">{{__('app.business.payment.cash.title')}}</span>
                                 <span class="block text-sm text-slate-500">{{__('app.business.payment.cash.desc')}}</span>
                             </div>
                         </div>
                     </div>
-                    <span class="text-xs font-medium px-2.5 py-1 rounded-full text-[#F79633] bg-[#F79633]/20 border border-[#F79633]">{{__('app.business.payment.cash.condition')}}</span>
+
                 </div>
                 <!-- Extra details section when selected -->
                 <div x-show="method === 'cash'" x-cloak class="mt-4 pt-4 border-t border-slate-200 text-sm text-slate-600 pl-9">
@@ -250,21 +266,21 @@ $bizImage=asset("storage/home/business/business1.png");
                             x-model="method"
                             class="h-5 w-5 text-emerald-600 border-slate-300 focus:ring-emerald-500">
                         <div class="flex items-center gap-3">
-                            <div class="p-2 bg-[#8fc74a]/10 rounded-lg text-slate-700">
+                            <div class="p-2 bg-slate-100 rounded-lg text-slate-700">
                                 <svg class="w-8 h-8 text-[#8fc74a]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-                                    <rect x="12" y="5" width="30" height="54" rx="5" stroke="#8fc74a" stroke-width="3" />
-                                    <rect x="17" y="11" width="20" height="35" rx="2" fill="#8fc74a" opacity="0.12" />
-                                    <circle cx="27" cy="52" r="2" fill="#8fc74a" />
-                                    <rect x="29" y="25" width="28" height="19" rx="3" fill="white" stroke="#F79633" stroke-width="3" />
-                                    <path d="M31 31H55" stroke="#F79633" stroke-width="3" />
-                                    <path d="M33 37H41" stroke="#8fc74a" stroke-width="2" stroke-linecap="round" />
-                                    <path d="M45 37H51" stroke="#8fc74a" stroke-width="2" stroke-linecap="round" />
-                                    <circle cx="49" cy="48" r="8" fill="#8fc74a" />
+                                    <rect x="12" y="5" width="30" height="54" rx="5" stroke="#444" stroke-width="3" />
+                                    <rect x="17" y="11" width="20" height="35" rx="2" fill="#444" opacity="0.12" />
+                                    <circle cx="27" cy="52" r="2" fill="#444" />
+                                    <rect x="29" y="25" width="28" height="19" rx="3" fill="white" stroke="#444" stroke-width="3" />
+                                    <path d="M31 31H55" stroke="#444" stroke-width="3" />
+                                    <path d="M33 37H41" stroke="#444" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M45 37H51" stroke="#444" stroke-width="2" stroke-linecap="round" />
+                                    <circle cx="49" cy="48" r="8" fill="#444" />
                                     <path d="M45 48L48 51L54 45" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
                             <div>
-                                <span class="block text-base font-extrabold text-[#8fc74a]">{{ __('app.business.payment.mobile_app.title') }}</span>
+                                <span class="block text-base font-semibold text-slate-900">{{ __('app.business.payment.mobile_app.title') }}</span>
                                 <span class="block text-sm text-slate-500">{{ __('app.business.payment.mobile_app.desc') }}</span>
                             </div>
                         </div>
@@ -352,12 +368,12 @@ $bizImage=asset("storage/home/business/business1.png");
                                 </svg>
                             </div>
                             <div>
-                                <span class="block text-base font-extrabold uppercase text-[#8fc74a]">Cheque Payment</span>
+                                <span class="block text-base font-semibold text-slate-900">Cheque Payment</span>
                                 <span class="block text-sm text-slate-500">Subject to clearance before processing order.</span>
                             </div>
                         </div>
                     </div>
-                    <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Requires Verification</span>
+
                 </div>
 
                 <!-- Extra Cheque details inputs -->
@@ -402,7 +418,7 @@ $bizImage=asset("storage/home/business/business1.png");
                             </div>
                         </div>
                     </div>
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800">Instant</span>
+
                 </div>
             </label>
 
@@ -496,5 +512,5 @@ $bizImage=asset("storage/home/business/business1.png");
         </div>
     </div>
 </section>
-
+@include('layouts.scrollBar')
 @endsection
