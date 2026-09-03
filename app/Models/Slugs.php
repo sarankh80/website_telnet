@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Admin\SlugBenifit;
 use Illuminate\Database\Eloquent\Model;
 
 class Slugs extends Model
@@ -12,6 +13,10 @@ class Slugs extends Model
 
     public function serviceTypes()
     {
-        return $this->hasMany(ServiceType::class, 'slug_id','id');
+        return $this->hasMany(ServiceType::class, 'slug_id', 'id');
+    }
+    public function benifit()
+    {
+        return $this->hasMany(SlugBenifit::class, 'slug_id', 'id');
     }
 }

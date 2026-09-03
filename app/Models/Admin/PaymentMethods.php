@@ -15,6 +15,7 @@ class PaymentMethods extends Model
         "account_id",
         "account_name",
         "qr_code",
+        "show_qr",
         "created_at",
         "updated_at"
     ];

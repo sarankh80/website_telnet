@@ -45,12 +45,12 @@ $saleSupportIcon = asset('storage/home/support/saleSupportIcon.png');
 </section>
 
 {{-- ============================= INTRO ============================= --}}
-<section class="mx-4 sm:mx-6 md:mx-8 mt-10 mb-16">
+<section class="mx-4 sm:mx-6 md:mx-8 mt-10 mb-6">
     <div class="max-w-7xl mx-auto">
         <h2 class="text-2xl sm:text-3xl font-semibold capitalize border-b-2 border-[#8fc74a] text-[#8fc74a] pb-4 mb-3">
             {{ __('app.support.hook') }}
         </h2>
-        <p class="text-sm text-[#444] text-justify !leading-relaxed">
+        <p class="text-sm text-[#444] max-w-4xl text-justify !leading-relaxed">
             {{ __('app.support.hook_desc') }}
         </p>
     </div>
@@ -60,190 +60,164 @@ $saleSupportIcon = asset('storage/home/support/saleSupportIcon.png');
 <section class="mx-4 sm:mx-6 md:mx-8 mb-12">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-        {{-- Banner Image (Spans Full Height on the Left) --}}
-        <div data-animate="fade-up" class="lg:col-span-4  overflow-hidden shadow-xl shadow-[#8fc74a]/20 opacity-0 translate-y-8 transition-all duration-300  ease-out flex">
+        {{-- Banner image --}}
+        <div data-animate="fade-up" class="lg:col-span-4 min-h-[280px] rounded-2xl overflow-hidden shadow-xl shadow-[#8fc74a]/20 opacity-0 translate-y-8 transition-all duration-300 hover:scale-[0.98] ease-out">
             <img src="{{ $serviceImage }}" alt="Customer Service" class="w-full h-full object-cover">
         </div>
 
-        {{-- Right Side Column (Stacked Top/Bottom Cards) --}}
-        <div class="lg:col-span-8 flex flex-col gap-6">
+        <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-            {{-- Top Card: Customer Service --}}
-            <div data-animate="fade-up" class="flex px-6 md:px-8  flex flex-col justify-between opacity-0 translate-y-8 transition-all duration-300 ease-out">
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="{{ $serviceSupportIcon }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.service') }}">
-                        <h3 class="text-2xl font-bold text-[#8fc74a] uppercase">{{ __('app.support.service') }}</h3>
-                    </div>
-
-                    <h4 class="text-md font-semibold text-[#F79633] uppercase mb-2">{{ __('app.support.service_slogan1') }}</h4>
-                    <p class="leading-relaxed text-sm text-gray-600 mb-4">{{ __('app.support.service_desc1') }}</p>
+            {{-- Customer Service --}}
+            <div data-animate="fade-up" class="bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-300 hover:scale-[0.98] ease-out">
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="{{ $serviceSupportIcon }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.service') }}">
+                    <h3 class="text-2xl font-bold text-[#8fc74a] uppercase">{{ __('app.support.service') }}</h3>
                 </div>
 
-                <div class="space-y-2">
-                    {{-- Phone Grid Row --}}
-                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center gap-1 sm:gap-2 text-sm border-b border-[#F79633]/20">
-                        <span class="sm:col-span-6 text-slate-400 font-medium uppercase tracking-wider text-xs">Phone</span>
-                        <div class="sm:col-span-6 text-right">
-                            <a href="tel:+855975135135" class="inline-flex items-center gap-2 text-base font-semibold text-[#F79633] transition hover:text-[#8fc74a]">
-                                <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
-                                </svg>
-                                +855 97 513 5135
-                            </a>
-                        </div>
-                    </div>
+                <h4 class="text-lg font-semibold text-[#F79633] mb-2">{{ __('app.support.service_slogan1') }}</h4>
+                <p class="leading-relaxed text-sm text-gray-600 mb-4">{{ __('app.support.service_desc1') }}</p>
 
-                    {{-- Email/Gmail Grid Row --}}
-                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center gap-1 sm:gap-2 text-sm border-b border-[#F79633]/20">
-                        <span class="sm:col-span-6 text-slate-400 font-medium uppercase tracking-wider text-xs">Email</span>
-                        <div class="sm:col-span-6 text-right">
-                            <a href="mailto:support@telnet.com.kh" class="inline-flex items-center gap-2 text-slate-600 transition hover:text-[#8fc74a] break-all">
-                                <svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                </svg>
-                                support@telnet.com.kh
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            {{-- Bottom Card: Sales Support --}}
-            <div data-animate="fade-up" class="flex px-6 md:px-8  flex flex-col justify-between opacity-0 translate-y-8 transition-all duration-300 ease-out">
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="{{ $saleSupportIcon }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.sale') }}">
-                        <h3 class="text-2xl font-bold text-[#8fc74a] uppercase">{{ __('app.support.sale') }}</h3>
-                    </div>
-
-                    <h4 class="text-md font-semibold text-[#F79633] uppercase mb-2">{{ __('app.support.sale_slogan1') }}</h4>
-                    <p class="leading-relaxed text-sm text-gray-600 mb-4">{{ __('app.support.sale_desc1') }}</p>
-                </div>
-
-                <div class="space-y-2">
-                    {{-- Phone Grid Row --}}
-                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center gap-1 sm:gap-2 text-sm border-b border-[#F79633]/20">
-                        <span class="sm:col-span-6 text-slate-400 font-medium uppercase tracking-wider text-xs">Phone</span>
-                        <div class="sm:col-span-6  text-right">
-                            <a href="tel:+855975135135" class="inline-flex items-center gap-2 text-base font-semibold text-[#F79633] transition hover:text-[#8fc74a]">
-                                <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
-                                </svg>
-                                +855 97 513 5135
-                            </a>
-                        </div>
-                    </div>
-
-                    {{-- Email/Gmail Grid Row --}}
-                    <div class="grid grid-cols-1 sm:grid-cols-12 items-center gap-1 sm:gap-2 text-sm border-b border-[#F79633]/20">
-                        <span class="sm:col-span-6 text-slate-400 font-medium uppercase tracking-wider text-xs">Email</span>
-                        <div class="sm:col-span-6 text-right">
-                            <a href="mailto:support@telnet.com.kh" class="inline-flex items-center gap-2 text-slate-600 transition hover:text-[#8fc74a] break-all">
-                                <svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                </svg>
-                                support@telnet.com.kh
-                            </a>
-                        </div>
-                    </div>
+                <div class="mt-auto pt-4 border-t border-slate-100 space-y-1">
+                    <a href="tel:+855975135135" class="flex items-center gap-2 text-lg font-semibold text-[#F79633] transition hover:text-[#8fc74a]">
+                        <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                        </svg>
+                        +855 97 513 5135
+                    </a>
+                    <a href="mailto:support@telnet.com.kh" class="flex items-center gap-2 text-sm text-slate-500 transition hover:text-[#8fc74a] break-all">
+                        <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        support@telnet.com.kh
+                    </a>
                 </div>
             </div>
 
+            {{-- Sales Support --}}
+            <div data-animate="fade-up" class="bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-[#8fc74a]/20 flex flex-col justify-center opacity-0 translate-y-8 transition-all duration-300 hover:scale-[0.98] ease-out">
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="{{ $saleSupportIcon }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.sale') }}">
+                    <h3 class="text-2xl font-bold text-[#8fc74a] uppercase">{{ __('app.support.sale') }}</h3>
+                </div>
+
+                <h4 class="text-lg font-semibold text-[#F79633] mb-2">{{ __('app.support.sale_slogan1') }}</h4>
+                <p class="leading-relaxed text-sm text-gray-600 mb-4">{{ __('app.support.sale_desc1') }}</p>
+
+                <div class="mt-auto pt-4 border-t border-slate-100 space-y-1">
+                    <a href="tel:+855975135135" class="flex items-center gap-2 text-lg font-semibold text-[#F79633] transition hover:text-[#8fc74a]">
+                        <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                        </svg>
+                        +855 97 513 5135
+                    </a>
+                    <a href="mailto:support@telnet.com.kh" class="flex items-center gap-2 text-sm text-slate-500 transition hover:text-[#8fc74a] break-all">
+                        <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        support@telnet.com.kh
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 {{-- ============================= NOC SECTION ============================= --}}
 <section class="mx-4 sm:mx-6 md:mx-8 mb-12 bg-[#8fc74a]/5 rounded-2xl py-10 px-4 sm:px-6 md:px-8">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-        <div data-animate="fade-up" class="flex col-span-8  flex flex-col opacity-0 translate-y-8 transition-all duration-300 ease-out">
-            <div>
-                <div class="flex items-center gap-3 mb-4">
-                    <img src="{{ $saleSupportIcon }}" class="h-12 w-12 object-cover" alt="{{ __('app.support.noc') }}">
+        {{-- Banner + note --}}
+        <div class="lg:col-span-5 flex flex-col gap-5">
+            <div data-animate="fade-left" class="rounded-2xl overflow-hidden shadow-xl shadow-[#8fc74a]/20 min-h-[260px] opacity-0 -translate-x-8 transition-all duration-300 hover:scale-[0.98] ease-out">
+                <img src="{{ $nocImage }}" alt="NOC Support" class="w-full h-full object-cover">
+            </div>
+            <div data-animate="fade-up" class="p-2 opacity-0 translate-y-8 transition-all duration-300">
+                <h2 class="text-4xl sm:text-5xl font-bold text-[#8fc74a] leading-tight">
+                    {{ __('app.support.direct_to') }}
+                </h2>
+                <p class="text-base font-semibold text-[#F79633] mt-2">
+                    {{ __('app.support.direct_to_desc') }}
+                </p>
+            </div>
+        </div>
+
+        <div class="lg:col-span-7 flex flex-col gap-6">
+
+            {{-- NOC info card --}}
+            <div data-animate="fade-up" class="bg-white p-6 rounded-2xl shadow-xl shadow-[#8fc74a]/20 opacity-0 translate-y-8 transition-all duration-300 hover:scale-[0.98] ease-out">
+                <div class="flex items-center gap-3 mb-3">
+                    <img src="{{ $nocSupportIcon }}" class="h-10 w-10 object-cover" alt="{{ __('app.support.noc') }}">
                     <h3 class="text-2xl font-bold text-[#8fc74a] uppercase">{{ __('app.support.noc') }}</h3>
                 </div>
 
-                <h4 class="text-md font-semibold text-[#F79633] uppercase mb-2">{{ __('app.support.noc_slogan2') }}</h4>
+                <h4 class="text-lg font-semibold text-[#F79633] mb-1">{{ __('app.support.noc_slogan2') }}</h4>
                 <p class="leading-relaxed text-sm text-gray-600 mb-4">{{ __('app.support.noc_desc2') }}</p>
-            </div>
 
-            <div class="space-y-2">
-                {{-- Phone Grid Row --}}
-                <div class="grid grid-cols-1 sm:grid-cols-12 items-center gap-1 sm:gap-2 text-sm border-b border-[#F79633]/20">
-                    <span class="sm:col-span-6 text-slate-400 font-medium uppercase tracking-wider text-xs">Phone</span>
-                    <div class="sm:col-span-6  text-right">
-                        <a href="tel:+855975135135" class="inline-flex items-center gap-2 text-base font-semibold text-[#F79633] transition hover:text-[#8fc74a]">
-                            <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
-                            </svg>
-                            +855 97 513 5135
-                        </a>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-12 items-center gap-1 sm:gap-2 text-sm border-b border-[#F79633]/20">
-                    <span class="sm:col-span-6 text-slate-400 font-medium uppercase tracking-wider text-xs">Email</span>
-                    <div class="sm:col-span-6 text-right">
-                        <a href="mailto:support@telnet.com.kh" class="inline-flex items-center gap-2 text-slate-600 transition hover:text-[#8fc74a] break-all">
-                            <svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            noc@telnet.com.kh
-                        </a>
-                    </div>
+                <div class="pt-4 border-t border-slate-100 space-y-1">
+                    <a href="tel:+855975135135" class="flex items-center gap-2 text-base font-semibold text-[#F79633] hover:text-[#8fc74a]">
+                        <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
+                        </svg>
+                        +855 97 513 5135
+                    </a>
+                    <a href="mailto:noc@telnet.com.kh" class="flex items-center gap-2 text-sm text-gray-500 hover:text-[#8fc74a] break-all">
+                        <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        noc@telnet.com.kh
+                    </a>
                 </div>
             </div>
-            <div data-animate="fade-up" class="py-6 my-8 opacity-0 translate-y-8 transition-all duration-300">
-                <h4 class="text-xl sm:text-2xl font-bold text-[#8fc74a] pb-6 text-center uppercase tracking-wide">
-                    {{ $isKm ? 'ដំណាក់កាលឆ្លើយតប' : 'Escalation Path Procedure' }}
+
+            {{-- Escalation levels: horizontal timeline (visible, no fixed height, mobile-first) --}}
+            <div data-animate="fade-up" class="bg-white p-6 rounded-2xl shadow-xl shadow-[#8fc74a]/20 opacity-0 translate-y-8 transition-all duration-300">
+                <h4 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">
+                    {{ $isKm ? 'ដំណាក់កាលឆ្លើយតប' : 'Escalation Path' }}
                 </h4>
 
-                <div class="relative flex flex-col md:flex-row md:items-start gap-8 md:gap-4 px-4 sm:px-0">
+                <div class="relative flex flex-col md:flex-row md:items-start gap-8 md:gap-4">
                     {{-- connecting line: vertical on mobile, horizontal on desktop --}}
-                    <div class="absolute left-16 sm:left-20 top-8 bottom-8 w-0.5 bg-[#F79633]/40 md:left-0 md:right-0 md:top-12 md:bottom-auto md:h-0.5 md:w-auto"></div>
+                    <div class="absolute left-8 top-8 bottom-8 w-0.5 bg-[#F79633]/40 md:left-0 md:right-0 md:top-8 md:bottom-auto md:h-0.5 md:w-auto"></div>
 
                     {{-- Level 1 --}}
                     <div class="relative z-10 flex md:flex-col items-center gap-4 md:gap-3 md:flex-1 md:text-center">
-                        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
+                        <div class="w-16 h-16 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md">
                             <img src="{{ $tseLevel }}" alt="NOC Team" class="w-full h-full object-contain">
                         </div>
-                        <div class="min-w-0 flex-1 md:w-full">
-                            <p class="text-xs sm:text-sm font-semibold text-[#F79633]">1<sup>st</sup> Level</p>
-                            <h5 class="text-sm sm:text-base font-extrabold text-[#8fc74a] truncate">NOC TEAM</h5>
+                        <div>
+                            <p class="text-xs font-semibold text-[#F79633]">1<sup>st</sup> Level</p>
+                            <h5 class="text-base font-extrabold text-[#8fc74a]">NOC TEAM</h5>
+                            <a href="tel:0975135135" class="block text-xs text-slate-600 hover:text-[#F79633]">0975135135</a>
+                            <a href="mailto:noc@telnet.com.kh" class="block text-xs text-slate-500 hover:text-[#F79633] break-all">noc@telnet.com.kh</a>
                         </div>
                     </div>
 
                     {{-- Level 2 --}}
                     <div class="relative z-10 flex md:flex-col items-center gap-4 md:gap-3 md:flex-1 md:text-center">
-                        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
+                        <div class="w-16 h-16 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md">
                             <img src="{{ $nocLevel }}" alt="Head of NOC" class="w-full h-full object-cover">
                         </div>
-                        <div class="min-w-0 flex-1 md:w-full">
-                            <p class="text-xs sm:text-sm font-semibold text-[#F79633]">2<sup>nd</sup> Level</p>
-                            <h5 class="text-sm sm:text-base font-extrabold text-[#8fc74a] truncate">HEAD OF NOC</h5>
+                        <div>
+                            <p class="text-xs font-semibold text-[#F79633]">2<sup>nd</sup> Level</p>
+                            <h5 class="text-base font-extrabold text-[#8fc74a]">HEAD OF NOC</h5>
+                            <a href="tel:0888916667" class="block text-xs text-slate-600 hover:text-[#F79633]">0888916667</a>
+                            <a href="mailto:ny.savann@telnet.com.kh" class="block text-xs text-slate-500 hover:text-[#F79633] break-all">ny.savann@telnet.com.kh</a>
                         </div>
                     </div>
 
                     {{-- Level 3 --}}
                     <div class="relative z-10 flex md:flex-col items-center gap-4 md:gap-3 md:flex-1 md:text-center">
-                        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
+                        <div class="w-16 h-16 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md">
                             <img src="{{ $noc1Level }}" alt="Operation & Director" class="w-full h-full object-cover">
                         </div>
-                        <div class="min-w-0 flex-1 md:w-full">
-                            <p class="text-xs sm:text-sm font-semibold text-[#F79633]">3<sup>rd</sup> Level</p>
-                            <h5 class="text-sm sm:text-base font-extrabold text-[#8fc74a] truncate">OPERATIONS DIRECTOR</h5>
+                        <div>
+                            <p class="text-xs font-semibold text-[#F79633]">3<sup>rd</sup> Level</p>
+                            <h5 class="text-base font-extrabold text-[#8fc74a]">OPERATIONS DIRECTOR</h5>
+                            <a href="tel:081687697" class="block text-xs text-slate-600 hover:text-[#F79633]">081687697</a>
+                            <a href="mailto:neth.sokunthearith@telnet.com.kh" class="block text-xs text-slate-500 hover:text-[#F79633] break-all">neth.sokunthearith@telnet.com.kh</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        {{-- Banner + note --}}
-
-        <div class="lg:col-span-4 flex flex-col gap-5">
-            <div data-animate="fade-left" class="overflow-hidden h-[600px] opacity-0 -translate-x-8 transition-all duration-300 ease-out">
-                <img src="{{ $nocImage }}" alt="NOC Support" class="w-full h-full object-cover">
             </div>
         </div>
     </div>

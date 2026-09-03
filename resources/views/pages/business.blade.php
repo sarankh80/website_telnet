@@ -64,28 +64,29 @@ $bizImage=asset("storage/home/business/business1.png");
 
 <section id="slugs" class="py-8 section-bg-primary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="px-4">
-            <h2 class="text-2xl sm:text-3xl font-semibold capitalize border-b-2 border-[#8fc74a] text-[#8fc74a] pb-4 mb-2">
+        <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold  capitalize border-b-2 border-[#8fc74a] text-[#8fc74a] pb-4 mb-2">
                 {{ __('app.business.hook') }}
             </h2>
-            <p class="text-sm  rounded-md  text-justify line-clamp-6 !leading-relaxed">
+            <p class="text-sm  text-[#444] rounded-md  text-justify line-clamp-6 !leading-relaxed">
                 {{ __('app.business.hook_desc') }}
             </p>
         </div>
         <br>
-        <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="max-w-7xl mx-auto py-8">
             <div>
                 <h2 class="text-2xl sm:text-3xl font-semibold uppercase text-[#8fc74a] pb-4 mb-2">
                     {{ __('app.business.business') }}
                 </h2>
             </div>
+
             <!-- 3-Column Grid Container -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($slugs as $sl)
                 <div class="flex flex-col rounded-xl overflow-hidden shadow-sm border border-slate-200/100 bg-white hover:shadow transition group">
                     <!-- 1. Top Image Banner -->
                     <div class="w-full h-36 sm:h-56 overflow-hidden bg-slate-100 relative ">
-                        <a href="">
+                        <a href="{{route('business.show',$sl->id).'#slugs'}}">
                             <img loading="lazy"
                                 src="{{asset('storage/'.$sl->image??'')}}"
                                 alt="{{$sl->image}}"
@@ -93,7 +94,7 @@ $bizImage=asset("storage/home/business/business1.png");
                         </a>
                     </div>
                     <a
-                        href=""
+                        href="{{route('business.show',$sl->id).'#slugs'}}"
                         class="p-4 relative flex flex-col justify-between flex-1 cursor-pointer transition ">
                         <div>
                             <div class="flex items-start justify-between gap-3">
@@ -113,126 +114,56 @@ $bizImage=asset("storage/home/business/business1.png");
                         </div>
                     </a>
                     <div class="flex justify-center px-4 pb-4">
-                        <button
+                        <a href="{{route('business.show',$sl->id).'#slugs'}}"
                             class="text-sm bg-[#8fc74a] text-white font-bold px-8 p-2 rounded-xl transition hover:-translate-y-0.5 flex items-center gap-2">
                             <span class="uppercase">
-                                {{__('app.business.readmore')}}
+                                {{__('app.business.get_start')}}
                             </span>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 @endforeach
             </div>
+
+
         </div>
     </div>
 </section>
+
+{{-- Stats strip --}}
+<section class="pb-10 dark:border-gray-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            @php
+            $stats = [
+            ['num'=>'100+', 'label_en'=>'Corporate Clients', 'label_km'=>'អតិថិជនសហស្ថាប័ន'],
+            ['num'=>'99.9%', 'label_en'=>'Network Uptime SLA', 'label_km'=>'SLA ហ្វូបណ្តាញ'],
+            ['num'=>'24/7', 'label_en'=>'NOC Support', 'label_km'=>'ការគាំទ្រ NOC'],
+            ['num'=>'12+', 'label_en'=>'PoPs Nationwide', 'label_km'=>'PoP ទូទាំងប្រទេស'],
+            ];
+            @endphp
+            @foreach($stats as $s)
+            <div>
+                <div class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text gradient-brand">{{ $s['num'] }}</div>
+                <div class="text-xs text-adaptive-muted mt-1 font-semibold">{{ $isKm ? $s['label_km'] : $s['label_en'] }}</div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 <section class="bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
-        <div class="mb-8 max-w-2xl text-base space-y-4">
-            <h2 class="text-2xl sm:text-3xl font-extrabold uppercase text-[#8fc74a]">{{__('app.business.payment.sub_title')}}</h2>
+        <div class="mb-8  text-base space-y-4">
+            <h2 class="text-2xl sm:text-3xl text-justify font-semibold uppercase border-b-2 border-[#8fc74a] text-[#8fc74a] pb-4 mb-2">{{__('app.business.payment.sub_title')}}</h2>
             <p class="mt-1 text-sm  text-[#444]">{{__('app.business.payment.desc')}}</p>
         </div>
 
         <!-- Payment Options Group -->
-        <div class="space-y-4" x-data="{ method: 'cash' }">
-
-            <!-- Option 1: Cash on Delivery / Cash Payment -->
+        <div class="space-y-4" x-data="{ method: 'bank_transfer' }">
             <label
-                :class="method === 'cash' ? 'border-[#8fc74a] ring-[#8fc74a]/20 bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
-                class="relative flex flex-col p-5 rounded-xl border cursor-pointer transition-all shadow-sm">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-4">
-                        <input
-                            type="radio"
-                            name="payment_method"
-                            value="cash"
-                            x-model="method"
-                            class="h-5 w-5 text-emerald-600 border-slate-300 focus:ring-emerald-500">
-                        <div class="flex items-center gap-3">
-                            <div class="p-2 bg-slate-100 rounded-lg text-slate-700">
-                                <!-- Cash Icon -->
-                                <svg class="w-8 h-8  text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <span class="block text-base font-semibold text-slate-900">{{__('app.business.payment.cash.title')}}</span>
-                                <span class="block text-sm text-slate-500">{{__('app.business.payment.cash.desc')}}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- Extra details section when selected -->
-                <div x-show="method === 'cash'" x-cloak class="mt-4 pt-4 border-t border-slate-200 text-sm text-slate-600 pl-9">
-                    <p class="mb-3 font-medium text-slate-700">{{__('app.business.payment.cash.require')}}</p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-                        <!-- Branch Select -->
-                        <div class="col-span-1">
-                            <label for="cash_branch" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                                {{__('app.business.payment.cash.branch')}}
-                            </label>
-                            <select name="branch" id="cash_branch" class="select2 w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                                <option value="">{{__('app.career.branch_filter')}}</option>
-                                {!! $branches !!}
-                            </select>
-                        </div>
-
-                        <!-- CID Input -->
-                        <div class="col-span-1">
-                            <label for="cid" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                                {{__('app.business.payment.cash.cid')}}
-                            </label>
-                            <input type="text" id="cid" name="cid"
-                                placeholder=" {{__('app.business.payment.cash.cid')}}"
-                                class="w-full bg-white px-2 p-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                        </div>
-
-                        <!-- CID Input -->
-                        <div class="col-span-1">
-                            <label for="cid" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                                {{__('app.business.payment.cash.aid')}}
-                            </label>
-                            <input type="text" id="aid" name="aid"
-                                placeholder=" {{__('app.business.payment.cash.aid')}}"
-                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                        </div>
-
-                        <!-- phone Input -->
-                        <div class="col-span-1">
-                            <label for="phone" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                                {{__('app.business.payment.cash.phone')}}
-                            </label>
-                            <input type="text" id="phone" name="phone"
-                                placeholder=" {{__('app.business.payment.cash.phone')}}"
-                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                        </div>
-                        <!-- contact Input -->
-                        <div class="col-span-1">
-                            <label for="contact" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                                {{__('app.business.payment.cash.contact')}}
-                            </label>
-                            <input type="text" id="contact" name="contact"
-                                placeholder=" {{__('app.business.payment.cash.contact')}}"
-                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                        </div>
-                        <!-- address Input -->
-                        <div class="col-span-1">
-                            <label for="address" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                                {{__('app.business.payment.cash.address')}}
-                            </label>
-                            <input type="text" id="address" name="address"
-                                placeholder=" {{__('app.business.payment.cash.address')}}"
-                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                        </div>
-                    </div>
-                </div>
-            </label>
-
-            <label
-                :class="method === 'bank_transfer' ? 'border-[#8fc74a] ring-[#8fc74a] bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
+                :class="method === 'bank_transfer' ? 'border-[#8fc74a] border-2 ring-[#8fc74a] bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
                 class="relative flex flex-col p-5 rounded-xl border cursor-pointer transition-all shadow-sm"
                 x-data="{
                             selectedBankId: null,
@@ -296,8 +227,8 @@ $bizImage=asset("storage/home/business/business1.png");
                         <template x-for="(bank, id) in banks" :key="id">
                             <button type="button"
                                 @click.prevent="selectedBankId = id"
-                                :class="selectedBankId == id ? 'border-[#8fc74a] bg-[#8fc74a] text-white font-extrabold' : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'"
-                                class="px-3 py-2 border rounded-lg text-md font-extrabold text-center transition-colors">
+                                :class="selectedBankId == id ? 'border-[#8fc74a] bg-[#8fc74a] text-white font-extrabold' : 'border-[#8fc74a] bg-white text-[#F79633] hover:bg-slate-50'"
+                                class="px-3 py-2 border  rounded-lg text-md font-extrabold text-center transition-colors">
                                 <span x-text="bank.short_name || bank.fullname"></span>
                             </button>
                         </template>
@@ -308,7 +239,7 @@ $bizImage=asset("storage/home/business/business1.png");
                         class="bg-slate-50 p-6 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
 
                         <!-- Bank Details Column -->
-                        <div class="text-base md:text-lg space-y-2 w-full text-slate-700 col-span-2">
+                        <div class="text-base md:text-lg space-y-2 w-full text-slate-700 col-span-3">
                             <div class="flex justify-between border-b border-slate-200/60 pb-1.5">
                                 <span class="text-slate-400">{{ __('app.business.payment.mobile_app.bank') }}:</span>
                                 <strong class="font-semibold text-slate-800" x-text="currentBank.fullname"></strong>
@@ -326,14 +257,14 @@ $bizImage=asset("storage/home/business/business1.png");
                                     </button>
                                 </div>
                             </div>
-                            <div x-show="currentBank.bank_code" class="flex justify-between pb-1">
+                            <div x-show="currentBank.bank_code" class="flex justify-between pb-1 hidden">
                                 <span class="text-slate-400">{{ __('app.business.payment.mobile_app.bank_code') }}:</span>
                                 <span class="text-slate-700 font-medium" x-text="currentBank.bank_code"></span>
                             </div>
                         </div>
 
                         <!-- Centered QR Code Column -->
-                        <div class="flex justify-center w-full">
+                        <!-- <div class="flex justify-center w-full">
                             <div class="w-full max-w-xs flex flex-col items-center justify-center px-4 py-8 bg-white rounded-xl  shadow-lg">
                                 <img :src="'{{ asset('storage') }}/' + currentBank.qr_code"
                                     :alt="(currentBank.short_name || 'Bank') + ' QR Code'"
@@ -343,14 +274,14 @@ $bizImage=asset("storage/home/business/business1.png");
                                     {{ __('app.business.payment.mobile_app.scan') }}
                                 </span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </label>
 
             <!-- Option 2: Cheque Payment -->
             <label
-                :class="method === 'cheque' ? 'border-[#8fc74a] ring-[#8fc74a] bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
+                :class="method === 'cheque' ? 'border-[#8fc74a] border-2  ring-[#8fc74a] bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
                 class="relative flex flex-col p-5 rounded-xl border cursor-pointer transition-all shadow-sm">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-4">
@@ -363,13 +294,13 @@ $bizImage=asset("storage/home/business/business1.png");
                         <div class="flex items-center gap-3">
                             <div class="p-2 bg-slate-100 rounded-lg text-slate-700">
                                 <!-- Cheque Icon -->
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                 </svg>
                             </div>
                             <div>
-                                <span class="block text-base font-semibold text-slate-900">Cheque Payment</span>
-                                <span class="block text-sm text-slate-500">Subject to clearance before processing order.</span>
+                                <span class="block text-base font-semibold text-slate-900">{{__('app.business.payment.check.title')}}</span>
+                                <span class="block text-sm text-slate-500">{{__('app.business.payment.check.desc')}}</span>
                             </div>
                         </div>
                     </div>
@@ -377,116 +308,108 @@ $bizImage=asset("storage/home/business/business1.png");
                 </div>
 
                 <!-- Extra Cheque details inputs -->
-                <div x-show="method === 'cheque'" x-cloak class="mt-4 pt-4 border-t border-slate-100 space-y-3 pl-9">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-xs font-medium text-slate-700 mb-1">Cheque Number</label>
-                            <input type="text" placeholder="e.g. CHQ-008921" class="w-full text-sm rounded-lg border-slate-300 focus:border-emerald-500 focus:ring-emerald-500">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-slate-700 mb-1">Bank Name</label>
-                            <input type="text" placeholder="e.g. Commercial Bank" class="w-full text-sm rounded-lg border-slate-300 focus:border-emerald-500 focus:ring-emerald-500">
-                        </div>
-                    </div>
+                <div x-show="method === 'cheque'" x-cloak class="mt-4 pt-4 border-t text-sm border-slate-100 space-y-3 pl-9">
+                    <p class="mb-3 font-medium text-slate-700">{{__('app.business.payment.check.info')}}</p>
                 </div>
             </label>
 
-
-
-            <!-- Option 4: Credit / Debit Card / QR -->
+            <!-- Option 1: Cash on Delivery / Cash Payment -->
             <label
-                :class="method === 'card' ? 'border-[#8fc74a] ring-[#8fc74a] bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
-                class="relative flex flex-col p-5 rounded-xl border cursor-pointer transition-all shadow-sm">
+                :class="method === 'cash' ? 'border-[#8fc74a] border-2  ring-[#8fc74a]/20 bg-emerald-50/10' : 'border-slate-200 bg-white hover:border-slate-300'"
+                class="relative flex flex-col p-5 rounded-xl border cursor-pointer transform  duration-300 transition-all shadow-sm">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-4">
                         <input
                             type="radio"
                             name="payment_method"
-                            value="card"
+                            value="cash"
                             x-model="method"
                             class="h-5 w-5 text-emerald-600 border-slate-300 focus:ring-emerald-500">
                         <div class="flex items-center gap-3">
                             <div class="p-2 bg-slate-100 rounded-lg text-slate-700">
-                                <!-- Credit Card Icon -->
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                <!-- Cash Icon -->
+                                <svg class="w-8 h-8  text-[#444]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
                                 </svg>
                             </div>
                             <div>
-                                <span class="block text-base font-semibold text-slate-900">Credit / Debit Card / QR Code</span>
-                                <span class="block text-sm text-slate-500">Instant online payment processing.</span>
+                                <span class="block text-base font-semibold text-slate-900">{{__('app.business.payment.cash.title')}}</span>
+                                <span class="block text-sm text-slate-500">{{__('app.business.payment.cash.desc')}}</span>
                             </div>
                         </div>
                     </div>
 
                 </div>
-            </label>
+                <!-- Extra details section when selected -->
+                <div x-show="method === 'cash'" x-cloak class="mt-4 pt-4 border-t border-slate-200 text-sm text-slate-600 pl-9">
+                    <p class="mb-3 font-medium text-slate-700">{{__('app.business.payment.cash.require')}}</p>
+                    <p class="mb-3 font-medium text-slate-700">{{__('app.business.payment.cash.inquery')}}</p>
 
-        </div>
+                    <!-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                       
+                        <div class="col-span-1">
+                            <label for="cash_branch" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.branch')}}
+                            </label>
+                            <select name="branch" id="cash_branch" class="select2 w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                <option value="">{{__('app.career.branch_filter')}}</option>
+                                {!! $branches !!}
+                            </select>
+                        </div>
 
-        <!-- Confirm Action -->
-        <div class="mt-8 flex justify-end">
-            <button type="button" class="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm rounded-xl transition-colors shadow-sm focus:outline-none focus focus:ring-slate-900 focus:ring-offset-2">
-                Proceed with Payment
-            </button>
-        </div>
+                      
+                        <div class="col-span-1">
+                            <label for="cid" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.cid')}}
+                            </label>
+                            <input type="text" id="cid" name="cid"
+                                placeholder=" {{__('app.business.payment.cash.cid')}}"
+                                class="w-full bg-white px-2 p-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
 
-    </div>
-</section>
+                      
+                        <div class="col-span-1">
+                            <label for="cid" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.aid')}}
+                            </label>
+                            <input type="text" id="aid" name="aid"
+                                placeholder=" {{__('app.business.payment.cash.aid')}}"
+                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
 
-{{-- Corporate Clients --}}
-@if($corporates->count())
-<section class="py-14 border-t border-gray-200 dark:border-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-8">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-adaptive-main mb-2">
-                {{ $isKm ? 'អតិថិជនសហស្ថាប័នរបស់យើង' : 'Our Corporate Clients' }}
-            </h2>
-            <p class="text-adaptive-muted text-sm">
-                {{ $isKm ? 'ស្ថាប័នដែលទុកចិត្តលើ ធេលណេត' : 'Trusted by leading organisations across Cambodia' }}
-            </p>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            @foreach($corporates as $corp)
-            <div class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 text-center hover:border-brand-green/40 transition border border-transparent">
-                @if($corp->logo)
-                <img src="{{ Storage::url($corp->logo) }}" alt="{{ $corp->getName() }}"
-                    class="h-12 w-auto object-contain max-w-[100px]">
-                @else
-                <div class="w-12 h-12 rounded-lg bg-brand-green/10 flex items-center justify-center">
-                    <i class="fa-solid fa-building text-brand-green"></i>
+                        
+                        <div class="col-span-1">
+                            <label for="phone" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.phone')}}
+                            </label>
+                            <input type="text" id="phone" name="phone"
+                                placeholder=" {{__('app.business.payment.cash.phone')}}"
+                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+                        
+                        <div class="col-span-1">
+                            <label for="contact" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.contact')}}
+                            </label>
+                            <input type="text" id="contact" name="contact"
+                                placeholder=" {{__('app.business.payment.cash.contact')}}"
+                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+                        
+                        <div class="col-span-1">
+                            <label for="address" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
+                                {{__('app.business.payment.cash.address')}}
+                            </label>
+                            <input type="text" id="address" name="address"
+                                placeholder=" {{__('app.business.payment.cash.address')}}"
+                                class="w-full bg-white px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+                    </div> -->
                 </div>
-                @endif
-                <p class="text-xs font-semibold text-adaptive-muted leading-tight">{{ $corp->getName() }}</p>
-            </div>
-            @endforeach
+            </label>
         </div>
     </div>
 </section>
-@endif
-
-{{-- Stats strip --}}
-<section class="py-10 border-y border-gray-200 dark:border-gray-800">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            @php
-            $stats = [
-            ['num'=>'100+', 'label_en'=>'Corporate Clients', 'label_km'=>'អតិថិជនសហស្ថាប័ន'],
-            ['num'=>'99.9%', 'label_en'=>'Network Uptime SLA', 'label_km'=>'SLA ហ្វូបណ្តាញ'],
-            ['num'=>'24/7', 'label_en'=>'NOC Support', 'label_km'=>'ការគាំទ្រ NOC'],
-            ['num'=>'12+', 'label_en'=>'PoPs Nationwide', 'label_km'=>'PoP ទូទាំងប្រទេស'],
-            ];
-            @endphp
-            @foreach($stats as $s)
-            <div>
-                <div class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text gradient-brand">{{ $s['num'] }}</div>
-                <div class="text-xs text-adaptive-muted mt-1 font-semibold">{{ $isKm ? $s['label_km'] : $s['label_en'] }}</div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
 {{-- CTA --}}
 <section class="py-16">
     <div class="max-w-3xl mx-auto px-4 text-center space-y-5">

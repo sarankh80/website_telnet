@@ -24,6 +24,7 @@ Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/portal', [HomeController::class, 'portal'])->name('portal');
 Route::get('/career', [HomeController::class, 'career'])->name('career');
 Route::get('/business', [HomeController::class, 'business'])->name('business');
+Route::get('/business/{id}', [HomeController::class, 'businessShow'])->name('business.show');
 Route::get('/support', [ContactController::class, 'support'])->name('support');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::post('/service-request', [ContactController::class, 'serviceRequest'])->name('service.request');

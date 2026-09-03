@@ -130,6 +130,8 @@ pricing models, and highly reliable network operations.',
         'title' => 'Service Quality Standards (SLA & Network Quality)',
     ],
     'support' => [
+        "hook"=> "Always Connected Always Supported",
+        "hook_desc"=> "Reliable connectivity is backed by reliable support. Our dedicated technical support team is available 24/7 to monitor, troubleshoot, and resolve connectivity issues, helping keep your home, business, and critical network services running smoothly. From technical assistance and network troubleshooting to service requests and incident management, we provide responsive support whenever you need it.",
         "title" => "Got a Question? Let's Talk.",
         "title_hero" => "Meeting Our Professional",
         "title_hero_1" => "Support Center",
@@ -278,18 +280,20 @@ pricing models, and highly reliable network operations.',
         ],
     ],
     "business" => [
-        "hook"=>"We're here to help you with Modern solution as",
-        "business"=>"Our Business Available for Cooperate as",
-        "get_start"=>"Get Started",
-        "readmore"=>"Read More",
-        "hook_desc"=> "We are a telecommunications and ICT organization providing Internet connectivity, network infrastructure, data services, and technology solutions. Our operations cover FTTH and OLT networks, Internet services, network connectivity, Data & IDC infrastructure, and ICT projects. We focus on developing reliable and scalable infrastructure supported by professional engineering, network management, and operational processes. Our approach is centered on service continuity, technical standards, infrastructure reliability, and long-term cooperation with customers, businesses, and technology partners. By continuously developing our network capabilities and technical resources, we aim to contribute to the advancement of Cambodia’s telecommunications and digital infrastructure and support the continued growth of connected communities and organizations.",
+        "hook" => "We're here to help you with Modern solution as",
+        "business" => "Our Business Available for Cooperate as",
+        "get_start" => "Get Started",
+        "readmore" => "Read More",
+        "hook_desc" => "We are a telecommunications and ICT organization providing Internet connectivity, network infrastructure, data services, and technology solutions. Our operations cover FTTH and OLT networks, Internet services, network connectivity, Data & IDC infrastructure, and ICT projects. We focus on developing reliable and scalable infrastructure supported by professional engineering, network management, and operational processes. Our approach is centered on service continuity, technical standards, infrastructure reliability, and long-term cooperation with customers, businesses, and technology partners. By continuously developing our network capabilities and technical resources, we aim to contribute to the advancement of Cambodia’s telecommunications and digital infrastructure and support the continued growth of connected communities and organizations.",
         "payment" => [
             "title" => "Payment Options",
             "sub_title" => "Payment Options",
             "desc" => "The payment policy adopted by Telnet Co., Ltd. is all inclusive because we are quite aware that different customers prefer different payment options as it suits them but at the same time, we will ensure that we abide by the financial rules and regulation of the company.",
+            "proceed" => "Proceed with Payment",
             "cash" => [
                 "title" => "Cash Payment",
-                "require" => "Please kindly fill your basic information as below : ",
+                "require" => "If all above methods are not suitable, TELNET will offer to collect payment by our collector",
+                "inquery" => "Please contact via 097 5135 135 for support any inquiry.",
                 "desc" => "Pay directly with physical cash upon delivery or in person.",
                 "aid" => "Account ID",
                 "cid" => "Customer ID",
@@ -308,9 +312,18 @@ pricing models, and highly reliable network operations.',
                 "acc_id" => "Account No",
                 "bank_code" => "Bank Code",
                 "scan" => "Scan to Pay",
+            ],
+            "check" => [
+                "title" => "Check to TELNET CO., LTD",
+                "desc" => "For corporate and business customers, we accept payment by check. Please make the check payable to TELNET CO., LTD. and clearly indicate your invoice number or customer account number as the payment reference.",
+                "info" => "Convenient payment option for business and corporate customers. Make your check payable to TELNET CO., LTD. and include your invoice number for proper payment identification. Payment is confirmed after bank clearance."
             ]
 
         ],
+        "detail"=>[
+            "hook"=> "That's why we're the best ",
+            "benifit"=> "Key Benefits"
+        ]
     ],
     'modal' => [
         'title' => 'Request Internet Connection',

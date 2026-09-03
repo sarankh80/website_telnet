@@ -72,6 +72,15 @@ class HomeController extends Controller
         $corporates = CorporateSubscriber::active()->get();
         return view('pages.business', compact('services', 'corporates', 'slugs', 'branches', 'paymentMethods'));
     }
+    public function businessShow(string $id)
+    {
+        $paymentMethods = PaymentMethods::all();
+        $services   = Service::active()->get();
+        $slugs = Slugs::findOrFail($id);
+        $branches = $this->repository->getSelectOption(Branch::class, 'id', 'name_en');
+        $corporates = CorporateSubscriber::active()->get();
+        return view('pages.businessShow', compact('services', 'corporates', 'slugs', 'branches', 'paymentMethods'));
+    }
 
     public function portal()
     {

@@ -25,6 +25,9 @@ class Tariffs extends Model
     ];
     public function services()
     {
-        return $this->belongsTo(Service::class, "services_id", "id");
+        return $this->belongsTo(Service::class, "services_id", "id")->withDefault([
+            "name_en" => "Unspecified",
+            "name_kh" => "មិនច្បាស់លាស់",
+        ]);
     }
 }
