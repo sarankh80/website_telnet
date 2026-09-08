@@ -546,7 +546,7 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
         </div>
 
         <!-- Pricing Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 py-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 py-6">
             @foreach($sv->tariff as $tr)
             <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-3xl  hover:shadow-2xl hover:shadow-[#8fc74a]/10 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between relative group">
 

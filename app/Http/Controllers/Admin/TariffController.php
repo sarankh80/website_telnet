@@ -85,22 +85,30 @@ class TariffController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $tariffs = Tariffs::findOrFail($id);
+        $tariff = Tariffs::findOrFail($id);
+
         $data = $request->validate([
-            'name_kh'        => ['required', 'string', 'max:200'],
-            'name_en'        => ['required', 'string', 'max:200'],
+            'name_kh'       => ['required', 'string', 'max:200'],
+            'name_en'       => ['required', 'string', 'max:200'],
             'description_kh' => ['nullable', 'string'],
             'description_en' => ['nullable', 'string'],
-            'sort'     => ['nullable', 'integer'],
-            'price'     => ['required', 'integer'],
-            'local_band'     => ['required', 'integer'],
-            'global_band'     => ['required', 'integer'],
-            'term'     => ['required', 'integer'],
-            'status'      => ['nullable', 'boolean'],
-            'services_id' => ['required', 'exists:services,id'],
+            'sort'          => ['nullable', 'integer'],
+            'price'         => ['required', 'integer'],
+            'local_band'    => ['required', 'integer'],
+            'global_band'   => ['required', 'integer'],
+            'term'          => ['required', 'integer'],
+            'status'        => ['nullable', 'boolean'],
+            'services_id'   => ['required', 'exists:services,id'],
         ]);
-        $tariffs->update($data);
-        return redirect()->route('admin.tariffs.index')->with('success', 'Tariffs Created');
+
+        // Checkbox: checked = 1, unchecked = 0
+        $data['status'] = $request->boolean('status');
+
+        $tariff->update($data);
+
+        return redirect()
+            ->route('admin.tariffs.index')
+            ->with('success', 'Tariff Updated');
     }
 
     /**
@@ -156,12 +164,12 @@ class TariffController extends Controller
                 return '$' . e(($inventory->price) >= 1 ? number_format($inventory->price, 2) : "XX");
             })
             ->editColumn('term', function ($inventory) {
-                return e("Every ".$inventory->term ." ". (($inventory->term) >= 2 ? "Monthes" : "Month"));
+                return e("Every " . $inventory->term . " " . (($inventory->term) >= 2 ? "Monthes" : "Month"));
             })
             ->editColumn('bandwidth', function ($inventory) {
                 return "
-                        <span class=''>Local Speed : " . ($inventory->local_band??0) . " Mbps</span><br>
-                        <span class=''>Global Speed : " . ($inventory->global_band??0) . " Mbps</span><br>
+                        <span class=''>Local Speed : " . ($inventory->local_band ?? 0) . " Mbps</span><br>
+                        <span class=''>Global Speed : " . ($inventory->global_band ?? 0) . " Mbps</span><br>
                 ";
             })
             // ->editColumn('qr', function ($inventory) {

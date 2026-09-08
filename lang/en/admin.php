@@ -184,10 +184,14 @@ return [
     ],
 
     'branches' => [
-        'title'       => 'Branches',
+        'id'       => 'Branches ID',
+        'title'       => 'Branches Name',
         'add'         => 'Add Branch',
         'branch'      => 'Branch',
         'province'    => 'Province',
+        'country'    => 'Country',
+        'phone'    => 'Phone Number',
+        'address'    => 'Address',
         'no_branches' => 'No branches found.',
     ],
 

@@ -89,7 +89,7 @@ $saleSupportIcon = asset('storage/home/support/saleSupportIcon.png');
                                 <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
                                 </svg>
-                                +855 97 513 5135
+                                +855 975135135
                             </a>
                         </div>
                     </div>
@@ -130,7 +130,7 @@ $saleSupportIcon = asset('storage/home/support/saleSupportIcon.png');
                                 <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
                                 </svg>
-                                +855 97 513 5135
+                                +855 975135135
                             </a>
                         </div>
                     </div>
@@ -178,7 +178,7 @@ $saleSupportIcon = asset('storage/home/support/saleSupportIcon.png');
                             <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.2l-2.12 1.06a11.05 11.05 0 005.46 5.46l1.06-2.12a1 1 0 011.2-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z" />
                             </svg>
-                            +855 97 513 5135
+                            +855 975135135
                         </a>
                     </div>
                 </div>
@@ -195,19 +195,19 @@ $saleSupportIcon = asset('storage/home/support/saleSupportIcon.png');
                     </div>
                 </div>
             </div>
-            <div data-animate="fade-up" class="py-6 my-8 opacity-0 translate-y-8 transition-all duration-300">
-                <h4 class="text-xl sm:text-2xl font-bold text-[#8fc74a] pb-6 text-center uppercase tracking-wide">
+            <div data-animate="fade-up" class="py-6 my-8 opacity-0 translate-y-8 transition-all duration-300 w-full max-w-7xl mx-auto">
+                <h4 class="text-xl sm:text-2xl font-bold text-[#8fc74a] pb-8 text-center uppercase tracking-wide">
                     {{ $isKm ? 'ដំណាក់កាលឆ្លើយតប' : 'Escalation Path Procedure' }}
                 </h4>
 
-                <div class="relative flex flex-col md:flex-row md:items-start gap-8 md:gap-4 px-4 sm:px-0">
-                    {{-- connecting line: vertical on mobile, horizontal on desktop --}}
-                    <div class="absolute left-16 sm:left-20 top-8 bottom-8 w-0.5 bg-[#F79633]/40 md:left-0 md:right-0 md:top-12 md:bottom-auto md:h-0.5 md:w-auto"></div>
+                <div class="relative flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-0 px-4 md:px-0">
+                    {{-- Connecting line: vertical on mobile, horizontal edge-to-edge on desktop --}}
+                    <div class="absolute left-20 sm:left-24 top-10 bottom-10 w-0.5 bg-[#F79633]/40 md:left-0 md:right-0 md:top-16 md:bottom-auto md:h-0.5 md:w-full"></div>
 
                     {{-- Level 1 --}}
-                    <div class="relative z-10 flex md:flex-col items-center gap-4 md:gap-3 md:flex-1 md:text-center">
-                        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
-                            <img src="{{ $tseLevel }}" alt="NOC Team" class="w-full h-full object-contain">
+                    <div class="relative z-10 flex md:flex-col items-center gap-4 md:gap-3 md:text-center">
+                        <div class="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+                            <img src="{{ $tseLevel }}" alt="NOC Team" class="w-full h-full object-cover">
                         </div>
                         <div class="min-w-0 flex-1 md:w-full">
                             <p class="text-xs sm:text-sm font-semibold text-[#F79633]">1<sup>st</sup> Level</p>
@@ -216,8 +216,8 @@ $saleSupportIcon = asset('storage/home/support/saleSupportIcon.png');
                     </div>
 
                     {{-- Level 2 --}}
-                    <div class="relative z-10 flex md:flex-col items-center gap-4 md:gap-3 md:flex-1 md:text-center">
-                        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
+                    <div class="relative z-10 flex md:flex-col items-center gap-4 md:gap-3 md:text-center">
+                        <div class="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
                             <img src="{{ $nocLevel }}" alt="Head of NOC" class="w-full h-full object-cover">
                         </div>
                         <div class="min-w-0 flex-1 md:w-full">
@@ -227,13 +227,13 @@ $saleSupportIcon = asset('storage/home/support/saleSupportIcon.png');
                     </div>
 
                     {{-- Level 3 --}}
-                    <div class="relative z-10 flex md:flex-col items-center gap-4 md:gap-3 md:flex-1 md:text-center">
-                        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
+                    <div class="relative z-10 flex md:flex-col items-center gap-4 md:gap-3 md:text-center">
+                        <div class="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full border-4 border-[#8fc74a] bg-white flex-shrink-0 overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
                             <img src="{{ $noc1Level }}" alt="Operation & Director" class="w-full h-full object-cover">
                         </div>
                         <div class="min-w-0 flex-1 md:w-full">
                             <p class="text-xs sm:text-sm font-semibold text-[#F79633]">3<sup>rd</sup> Level</p>
-                            <h5 class="text-sm sm:text-base font-extrabold text-[#8fc74a] truncate">OPERATIONS DIRECTOR</h5>
+                            <h5 class="text-sm sm:text-base font-extrabold text-[#8fc74a] truncate">OPERATIONS <br> DIRECTOR</h5>
                         </div>
                     </div>
                 </div>
@@ -329,7 +329,7 @@ $saleSupportIcon = asset('storage/home/support/saleSupportIcon.png');
                 <div class="flex flex-wrap gap-3">
                     <a href="tel:+855975135135" class="inline-flex items-center gap-2 text-xs font-bold text-slate-700 bg-white hover:bg-[#8fc74a]/10 hover:text-[#8fc74a] px-3 py-2 rounded-lg transition shadow-sm">
                         <i class="fa-solid fa-phone text-[#F79633]"></i>
-                        <span>Kh / En: +855 97 513 5135</span>
+                        <span>Kh / En: +855 975135135</span>
                     </a>
                 </div>
             </div>

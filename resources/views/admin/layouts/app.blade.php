@@ -108,7 +108,6 @@
                 ['route' => 'admin.services.index', 'icon' => 'fa-bolt', 'label' => __('admin.nav.services')],
                 ['route' => 'admin.tariffs.index', 'icon' => 'fa-wifi', 'label' => __('app.internet.tariff.title')],
                 ['route' => 'admin.branches.index', 'icon' => 'fa-map-pin', 'label' => __('admin.nav.branches')],
-                ['route' => 'admin.teams.index', 'icon' => 'fa-users', 'label' => __('admin.nav.team')],
                 ]
                 ],
                 [
@@ -124,13 +123,6 @@
                 'title' => __('admin.nav.catalogs.support') ?? 'Careers & HR',
                 'items' => [
                 ['route' => 'admin.careers.index', 'icon' => 'fa-briefcase', 'label' => __('admin.nav.contact')],
-                ]
-                ],
-                [
-                'title' => __('admin.nav.catalogs.career') ?? 'Careers & HR',
-                'items' => [
-                ['route' => 'admin.careers.index', 'icon' => 'fa-briefcase', 'label' => __('admin.nav.careers')],
-                ['route' => 'admin.career-applications.index', 'icon' => 'fa-file-lines', 'label' => __('admin.nav.cv_applications'), 'badge' => \App\Models\CareerApplication::where('status', 'new')->count()],
                 ]
                 ],
 

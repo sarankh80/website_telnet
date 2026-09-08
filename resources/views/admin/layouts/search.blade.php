@@ -1,6 +1,6 @@
 <fieldset class=" border border-gray-300 dark:border-gray-700 shadow-lg rounded-lg p-4 bg-white dark:bg-[#161b22]">
-    <legend class="text-xl bold !font-bold px-2 text-gray-600 dark:text-blue-400">
-        {{ $sub_title ?? 'Searches Catalog' }}
+    <legend class=" px-2 text-gray-600 dark:text-blue-400">
+        <h1 class="text-xl bold !font-bold">{{ $sub_title ?? 'Searches Catalog' }}</h1>
     </legend>
     <!-- Row 1 -->
     <div class="grid grid-cols-1 md:grid-cols-{{$colspanRow1??4}} gap-4 items-end mb-1">
