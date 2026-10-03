@@ -37,11 +37,10 @@ $latlong="11.54732899907136,104.9089653152003";
                 ['href'=>route('services'), 'label'=> __('app.footer.business')],
                 ['href'=>route('support'), 'label'=> __('app.footer.support')],
                 ['href'=>route('about'), 'label'=> __('app.footer.about')],
-                ['href'=>route('career'), 'label'=> __('app.footer.careers')],
-                ['href'=>route('portal'), 'label'=> __('app.footer.portal')],
                 ] as $link)
                 <p><a href="{{ $link['href'] }}" class="hover:text-brand-green transition">{{ $link['label'] }}</a></p>
                 @endforeach
+                <p><a target="_blank" href="http://103.115.172.243:8888/recruitment/recruitments/opening" class="hover:text-brand-green transition">{{ __('app.nav.careers') }}</a></p>
             </div>
 
             {{-- Contact --}}

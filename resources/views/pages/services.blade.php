@@ -16,10 +16,6 @@ $images = [
 "id" => 3,
 "image" => asset('storage/home/services/bgImage3.png'),
 ],
-[
-"id" => 4,
-"image" => asset('storage/home/services/bgImage4.png'),
-],
 ];
 $capacityImage=asset('storage/home/services/bgImage4.png');
 $cdnImage=asset("storage/home/services/cdn.png");
@@ -96,95 +92,53 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
 
     </div>
 </nav>
-<section class="w-full h-[50vh] sm:h-[60vh] md:h-[80vh] lg:h-[90vh] relative overflow-hidden ">
+<section class="w-full h-[40vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] relative overflow-hidden top-0">
+    <div x-data="tileSlider({{ json_encode($images) }})"
+        @mouseenter="stopAutoplay()"
+        @mouseleave="startAutoplay()"
+        class="relative w-full h-full">
 
-    <div x-data="tileSlider({{ json_encode($images) }})" class="relative grid grid-cols-1 md:grid-cols-2 w-full h-full">
-        <!-- Tile 1 (Left / Large) -->
-        <div class="relative overflow-hidden shadow-lg gradient-b-to-t">
-            <template x-for="(image, index) in images" :key="index">
-                <div x-show="currentIndexes[0] === index"
-                    x-transition:enter="transition ease-out duration-1000"
-                    x-transition:enter-start="opacity-0 scale-105"
-                    x-transition:enter-end="opacity-100 scale-100"
-                    x-transition:leave="transition ease-in duration-1000"
-                    x-transition:leave-start="opacity-100 scale-100"
-                    x-transition:leave-end="opacity-0 scale-95"
-                    class="absolute inset-0 w-full h-full">
-                    <img :src="image.image" class="w-full h-full object-cover wallpaper-infinite">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
-                </div>
-            </template>
-            <!-- Text Overlay Container (Positioned On Top of Image) -->
-            <div class="absolute inset-0 z-20 flex flex-col justify-end items-center text-center p-4 sm:p-6 pointer-events-none">
-                <div class="pointer-events-auto max-w-4xl mx-auto flex flex-col items-center sm:items-start">
+        <!-- Sliding Track -->
+        <div class="relative w-full h-full overflow-hidden shadow-lg">
+            <div class="flex h-full"
+                :class="animate ? 'transition-transform ease-in-out' : ''"
+                :style="`transform: translateX(-${currentIndex * 100}%); transition-duration: ${animate ? duration : 0}ms`">
+                <template x-for="(image, index) in slides" :key="index">
+                    <div class="relative w-full h-full shrink-0 grow-0 basis-full">
+                        <img :src="image.image" class="w-full h-full object-cover" alt="">
+                        <!-- Gradient overlay for legibility -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                </template>
+            </div>
 
-                    <h1 class="flex flex-col gap-2 w-full">
-                        <!-- Primary Title Text -->
-                        <span class="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold uppercase text-white leading-tight drop-shadow-md tracking-wide">
+            <!-- Text & Tag Overlay (stays fixed while images slide) -->
+            <div class="absolute inset-0 z-20 flex flex-col justify-end items-start text-left p-6 sm:p-10 md:p-16 pointer-events-none">
+                <div class="pointer-events-auto w-full max-w-7xl mx-auto flex flex-col items-start">
+
+                    <h1 class="flex flex-col gap-2 w-full text-left">
+                        <span class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase text-white leading-tight drop-shadow-lg tracking-wide">
                             {{ __('app.internet.title') }}
                         </span>
                     </h1>
 
-                    <!-- Feature Keywords -->
-                    <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 md:gap-3 pt-4 sm:pt-6 w-full">
-                        <span class="inline-flex hover:cursor-pointer items-center gap-1.5 px-3 sm:px-5 md:px-8 py-1.5 sm:py-2 rounded-full text-xs sm:text-base md:text-lg lg:text-xl font-semibold text-white bg-[#F79633]/40 border border-[#F79633] backdrop-blur-md shadow-lg transition-all duration-200 hover:bg-[#F79633] hover:scale-110">
-                            {{__('app.internet.fast')}}
+                    <div class="flex flex-wrap items-center justify-start gap-2 sm:gap-3 md:gap-4 pt-6 sm:pt-8 w-full">
+                        @foreach (['fast', 'reliable', 'stable', 'scalable'] as $key)
+                        <span class="inline-flex hover:cursor-pointer items-center gap-1.5 px-4 sm:px-6 md:px-8 py-2 rounded-full text-xs sm:text-base md:text-lg font-semibold text-white bg-[#F79633]/40 border border-[#F79633] backdrop-blur-md shadow-lg transition-all duration-200 hover:bg-[#F79633] hover:scale-105">
+                            {{ __('app.internet.' . $key) }}
                         </span>
-                        <span class="inline-flex hover:cursor-pointer items-center gap-1.5 px-3 sm:px-5 md:px-8 py-1.5 sm:py-2 rounded-full text-xs sm:text-base md:text-lg lg:text-xl font-semibold text-white bg-[#F79633]/40 border border-[#F79633] backdrop-blur-md shadow-lg transition-all duration-200 hover:bg-[#F79633] hover:scale-110">
-                            {{__('app.internet.reliable')}}
-                        </span>
-                        <span class="inline-flex hover:cursor-pointer items-center gap-1.5 px-3 sm:px-5 md:px-8 py-1.5 sm:py-2 rounded-full text-xs sm:text-base md:text-lg lg:text-xl font-semibold text-white bg-[#F79633]/40 border border-[#F79633] backdrop-blur-md shadow-lg transition-all duration-200 hover:bg-[#F79633] hover:scale-110">
-                            {{__('app.internet.stable')}}
-                        </span>
-                        <span class="inline-flex hover:cursor-pointer items-center gap-1.5 px-3 sm:px-5 md:px-8 py-1.5 sm:py-2 rounded-full text-xs sm:text-base md:text-lg lg:text-xl font-semibold text-white bg-[#F79633]/40 border border-[#F79633] backdrop-blur-md shadow-lg transition-all duration-200 hover:bg-[#F79633] hover:scale-110">
-                            {{__('app.internet.scalable')}}
-                        </span>
+                        @endforeach
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <!-- Right Column (Tile 2 & Tile 3 Split) -->
-        <div class="grid grid-rows-2 h-full">
-            <!-- Tile 2 (Top Right) -->
-            <div class="relative overflow-hidden  shadow-lg">
-                <template x-for="(image, index) in images" :key="index">
-                    <div x-show="currentIndexes[1] === index"
-                        x-transition:enter="transition ease-out duration-1000"
-                        x-transition:enter-start="opacity-0"
-                        x-transition:enter-end="opacity-100"
-                        x-transition:leave="transition ease-in duration-1000"
-                        x-transition:leave-start="opacity-100"
-                        x-transition:leave-end="opacity-0"
-                        class="absolute inset-0 w-full h-full">
-                        <img :src="image.image" class="w-full h-full object-cover wallpaper-infinite">
-                        <div class="absolute inset-0 "></div>
-                    </div>
-                </template>
-            </div>
-
-            <!-- Tile 3 (Bottom Right) -->
-            <div class="relative overflow-hidden shadow-lg ">
-                <template x-for="(image, index) in images" :key="index">
-                    <div x-show="currentIndexes[2] === index"
-                        x-transition:enter="transition ease-out duration-1000"
-                        x-transition:enter-start="opacity-0"
-                        x-transition:enter-end="opacity-100"
-                        x-transition:leave="transition ease-in duration-1000"
-                        x-transition:leave-start="opacity-100"
-                        x-transition:leave-end="opacity-0"
-                        class="absolute inset-0 w-full h-full">
-                        <img :src="image.image" class="w-full h-full object-cover wallpaper-infinite">
-                        <div class="absolute inset-0 "></div>
-                    </div>
-                </template>
-            </div>
-        </div>
-
         <!-- Navigation Controls -->
-        <button @click="nextSlide()" class="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 bg-[#8fc74a]/30 hover:bg-[#8fc74a] hover:text-white transition backdrop-blur text-white w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full z-30 flex items-center justify-center shadow-lg text-sm sm:text-base">❮</button>
-        <button @click="nextSlide()" class="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 bg-[#8fc74a]/30 hover:bg-[#8fc74a] hover:text-white transition backdrop-blur text-white w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full z-30 flex items-center justify-center shadow-lg text-sm sm:text-base">❯</button>
+        <button type="button" @click="prevSlide()" aria-label="Previous Slide"
+            class="absolute left-3 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 bg-[#8fc74a]/40 hover:bg-[#8fc74a] hover:text-white transition backdrop-blur-md text-white w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full z-30 flex items-center justify-center shadow-xl text-base sm:text-lg">❮</button>
+        <button type="button" @click="nextSlide()" aria-label="Next Slide"
+            class="absolute right-3 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 bg-[#8fc74a]/40 hover:bg-[#8fc74a] hover:text-white transition backdrop-blur-md text-white w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full z-30 flex items-center justify-center shadow-xl text-base sm:text-lg">❯</button>
     </div>
 </section>
 
@@ -192,34 +146,80 @@ $bizIcon=asset("storage/home/services/biz_icon.png");
     document.addEventListener('alpine:init', () => {
         Alpine.data('tileSlider', (images) => ({
             images: images,
-            currentIndexes: [0, 1, 2],
+            currentIndex: 0,
+            animate: true,
+            busy: false,
             timer: null,
+            interval: 4000, // delay between slides
+            duration: 700, // slide speed
 
-            init() {
-                // Automatically swap images every 4 seconds
-                this.timer = setInterval(() => {
-                    this.nextSlide();
-                }, 4000);
+            // Real slides plus a clone of the first one at the end for the seamless loop
+            get slides() {
+                return this.images.length ? [...this.images, this.images[0]] : [];
             },
 
-            nextSlide() {
-                if (this.images.length < 3) return;
+            init() {
+                this.startAutoplay();
+            },
 
-                // Pick a random tile position (0, 1, or 2) to change
-                const tileToSwap = Math.floor(Math.random() * 3);
+            startAutoplay() {
+                this.stopAutoplay();
+                if (this.images.length < 2) return;
+                this.timer = setInterval(() => this.nextSlide(false), this.interval);
+            },
 
-                // Get array of image indices not currently displayed anywhere on screen
-                const availableIndices = this.images
-                    .map((_, idx) => idx)
-                    .filter(idx => !this.currentIndexes.includes(idx));
+            stopAutoplay() {
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                }
+            },
 
-                if (availableIndices.length === 0) return;
+            // Re-enable the transition after an instant (non-animated) jump
+            resumeAnimation(callback) {
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    this.animate = true;
+                    if (callback) callback();
+                }));
+            },
 
-                // Pick a random new image from available ones
-                const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+            nextSlide(manual = true) {
+                if (this.images.length < 2 || this.busy) return;
+                this.busy = true;
+                this.currentIndex++;
 
-                // Update only that targeted tile so it fades smoothly
-                this.currentIndexes[tileToSwap] = randomIndex;
+                setTimeout(() => {
+                    // Landed on the clone of slide 1: jump to the real slide 1 with no animation
+                    if (this.currentIndex === this.images.length) {
+                        this.animate = false;
+                        this.currentIndex = 0;
+                        this.resumeAnimation();
+                    }
+                    this.busy = false;
+                }, this.duration);
+
+                if (manual) this.startAutoplay();
+            },
+
+            prevSlide() {
+                if (this.images.length < 2 || this.busy) return;
+                this.busy = true;
+
+                if (this.currentIndex === 0) {
+                    // Jump to the clone at the end (looks identical to slide 1), then slide back one
+                    this.animate = false;
+                    this.currentIndex = this.images.length;
+                    this.resumeAnimation(() => {
+                        this.currentIndex = this.images.length - 1;
+                    });
+                } else {
+                    this.currentIndex--;
+                }
+
+                setTimeout(() => {
+                    this.busy = false;
+                }, this.duration + 50);
+                this.startAutoplay();
             }
         }))
     })

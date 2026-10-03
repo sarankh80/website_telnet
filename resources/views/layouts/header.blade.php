@@ -26,8 +26,6 @@
                 ['route' => 'business', 'label' => __('app.nav.business'), ],
                 ['route' => 'support', 'label' => __('app.nav.support'), ],
                 ['route' => 'about', 'label' => __('app.nav.about'), ],
-                ['route' => 'career', 'label' => __('app.nav.careers'), ],
-                ['route' => 'admin.login', 'label' => __('app.nav.portal'),],
                 ];
                 @endphp
                 @foreach($navLinks as $link)
@@ -39,6 +37,10 @@
                     <span class="text-[1rem]">{{ $link['label'] }}</span>
                 </a>
                 @endforeach
+                <a target="_blank" href="http://103.115.172.243:8888/recruitment/recruitments/opening"
+                    class="nav-link-pill text-slate-500 px-3 py-2 rounded-lg hover:text-brand-green hover:bg-brand-green/5 transition flex items-center gap-1.5 ">
+                    <span class="text-[1rem]">{{ __('app.nav.careers')}}</span>
+                </a>
             </nav>
 
             <!-- Desktop Actions: Language + Theme -->
