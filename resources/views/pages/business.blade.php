@@ -139,7 +139,7 @@ $bizImage=asset("storage/home/business/business1.png");
             ['num'=>'100+', 'label_en'=>'Corporate Clients', 'label_km'=>'អតិថិជនសហស្ថាប័ន'],
             ['num'=>'99.9%', 'label_en'=>'Network Uptime SLA', 'label_km'=>'SLA ហ្វូបណ្តាញ'],
             ['num'=>'24/7', 'label_en'=>'NOC Support', 'label_km'=>'ការគាំទ្រ NOC'],
-            ['num'=>'12+', 'label_en'=>'PoPs Nationwide', 'label_km'=>'PoP ទូទាំងប្រទេស'],
+            ['num'=>$countBranch, 'label_en'=>'PoPs Nationwide', 'label_km'=>'PoP ទូទាំងប្រទេស'],
             ];
             @endphp
             @foreach($stats as $s)
@@ -410,7 +410,215 @@ $bizImage=asset("storage/home/business/business1.png");
         </div>
     </div>
 </section>
-{{-- CTA --}}
+<section class="bg-slate-50 py-12 px-4 sm:px-6 lg:px-8" x-data="{ interval: 'monthly' }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section Header -->
+        <div class="text-left max-w-2xl mb-10">
+            <p class="text-3xl font-extrabold text-[#8fc74a] sm:text-4xl capitalize"> {{__('app.business.payment.term.title')}}</p>
+            <p class="mt-3 text-base text-slate-600">{{__('app.business.payment.term.desc')}}</p>
+        </div>
+
+        <!-- Payment Term Selector Tabs -->
+        <div class="flex justify-center mb-12">
+            <div class="inline-flex p-1.5 bg-slate-200/80 rounded-2xl shadow-inner max-w-lg w-full justify-between gap-1"
+                x-data="{
+            terms: [
+                { key: 'monthly', label: @js(__('app.business.payment.term.monthly.title')) },
+                { key: 'quarterly', label: @js(__('app.business.payment.term.quaterly.title')) },
+                { key: 'yearly', label: @js(__('app.business.payment.term.yearly.title')) },
+                { key: 'flexible', label: @js(__('app.business.payment.term.flexible.title')) }
+            ]
+         }">
+                <template x-for="term in terms" :key="term.key">
+                    <button
+                        type="button"
+                        @click="interval = term.key"
+                        :class="interval === term.key ? 'bg-[#8fc74a] text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'"
+                        class="w-full py-2.5 px-3 text-xs sm:text-sm font-semibold rounded-xl transition-all duration-200 focus:outline-none"
+                        x-text="term.label">
+                    </button>
+                </template>
+            </div>
+        </div>
+
+        <!-- Term Details -->
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
+
+            <!-- Left: Selected Term Overview -->
+            <div class="lg:col-span-2 bg-white rounded-2xl shadow-lg border-2 border-[#8fc74a] p-8 flex flex-col justify-between">
+                <div>
+                    <!-- Monthly -->
+                    <template x-if="interval === 'monthly'">
+                        <div>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-[#F79633]/15 text-[#F79633] rounded-full">{{__('app.business.payment.term.monthly.tag')}}</span>
+                            <h3 class="mt-4 text-2xl font-bold text-[#8fc74a]">{{__('app.business.payment.term.monthly.label')}}</h3>
+                            <p class="mt-3 text-sm text-slate-600">{{__('app.business.payment.term.monthly.desc')}}</p>
+                        </div>
+                    </template>
+                    <!-- Quarterly -->
+                    <template x-if="interval === 'quarterly'">
+                        <div>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-[#F79633]/15 text-[#F79633] rounded-full">{{__('app.business.payment.term.quaterly.tag')}}</span>
+                            <h3 class="mt-4 text-2xl font-bold text-[#8fc74a]">{{__('app.business.payment.term.quaterly.label')}}</h3>
+                            <p class="mt-3 text-sm text-slate-600">{{__('app.business.payment.term.quaterly.desc')}}</p>
+                        </div>
+                    </template>
+                    <!-- Yearly -->
+                    <template x-if="interval === 'yearly'">
+                        <div>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-[#F79633]/15 text-[#F79633] rounded-full">{{__('app.business.payment.term.yearly.tag')}}</span>
+                            <h3 class="mt-4 text-2xl font-bold text-[#8fc74a]">{{__('app.business.payment.term.yearly.label')}}</h3>
+                            <p class="mt-3 text-sm text-slate-600">{{__('app.business.payment.term.yearly.desc')}}</p>
+                        </div>
+                    </template>
+                    <!-- Flexible -->
+                    <template x-if="interval === 'flexible'">
+                        <div>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-[#F79633]/15 text-[#F79633] rounded-full">{{__('app.business.payment.term.flexible.tag')}}</span>
+                            <h3 class="mt-4 text-2xl font-bold text-[#8fc74a]">{{__('app.business.payment.term.flexible.label')}}</h3>
+                            <p class="mt-3 text-sm text-slate-600">{{__('app.business.payment.term.flexible.desc')}}</p>
+                        </div>
+                    </template>
+                </div>
+
+                <a href="#" class="mt-8 w-full text-center py-2 px-4 rounded-xl font-semibold bg-[#8fc74a] hover:opacity-90 text-white shadow-md transition-all">
+                    {{__('app.business.payment.choose')}}
+                </a>
+            </div>
+
+            <!-- Right: Advantages -->
+            <div class="lg:col-span-3 bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                <h4 class="text-lg font-bold text-slate-900 mb-6">{{__('app.business.payment.term.monthly.adventage_title')}}</h4>
+
+                <!-- Monthly advantages -->
+                <ul x-show="interval === 'monthly'" class="space-y-5 text-sm text-slate-600">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.monthly.adventage_subtitle')}}</p>
+                            <p>{{__('app.business.payment.term.monthly.adventage_desc')}}</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.monthly.adventage_subtitle1')}}</p>
+                            <p>{{__('app.business.payment.term.monthly.adventage_desc1')}}</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.monthly.adventage_subtitle2')}}</p>
+                            <p>{{__('app.business.payment.term.monthly.adventage_desc2')}}</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Quarterly advantages -->
+                <ul x-show="interval === 'quarterly'" x-cloak class="space-y-5 text-sm text-slate-600">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.quaterly.adventage_subtitle')}}</p>
+                            <p>{{__('app.business.payment.term.quaterly.adventage_desc')}}</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.quaterly.adventage_subtitle1')}}</p>
+                            <p>{{__('app.business.payment.term.quaterly.adventage_desc1')}}</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.quaterly.adventage_subtitle2')}}</p>
+                            <p>{{__('app.business.payment.term.quaterly.adventage_desc2')}}</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Yearly advantages -->
+                <ul x-show="interval === 'yearly'" x-cloak class="space-y-5 text-sm text-slate-600">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.yearly.adventage_subtitle')}}</p>
+                            <p>{{__('app.business.payment.term.yearly.adventage_desc')}}</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.yearly.adventage_subtitle1')}}</p>
+                            <p>{{__('app.business.payment.term.yearly.adventage_desc1')}}</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.yearly.adventage_subtitle2')}}</p>
+                            <p>{{__('app.business.payment.term.yearly.adventage_desc2')}}</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Flexible advantages -->
+                <ul x-show="interval === 'flexible'" x-cloak class="space-y-5 text-sm text-slate-600">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.flexible.adventage_subtitle')}}</p>
+                            <p>{{__('app.business.payment.term.flexible.adventage_desc')}}</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.flexible.adventage_subtitle1')}}</p>
+                            <p>{{__('app.business.payment.term.flexible.adventage_desc1')}}</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-[#8fc74a] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">{{__('app.business.payment.term.flexible.adventage_subtitle2')}}</p>
+                            <p>{{__('app.business.payment.term.flexible.adventage_desc2')}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
 <section class="py-16">
     <div class="max-w-3xl mx-auto px-4 text-center space-y-5">
         <h2 class="text-2xl sm:text-3xl font-extrabold text-adaptive-main">

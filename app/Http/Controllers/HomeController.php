@@ -69,8 +69,9 @@ class HomeController extends Controller
         $services   = Service::active()->get();
         $slugs = Slugs::all();
         $branches = $this->repository->getSelectOption(Branch::class, 'id', 'name_en');
+        $countBranch=Branch::count("id");
         $corporates = CorporateSubscriber::active()->get();
-        return view('pages.business', compact('services', 'corporates', 'slugs', 'branches', 'paymentMethods'));
+        return view('pages.business', compact('services', 'corporates', 'slugs', 'branches', 'paymentMethods', 'countBranch'));
     }
     public function businessShow(string $id)
     {
